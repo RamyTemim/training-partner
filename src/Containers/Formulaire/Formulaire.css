@@ -1,0 +1,57 @@
+.title{
+    display: block;
+    position: absolute;
+    margin-left: 20px;
+    width: 50px;
+}
+
+.name{
+    display: block;
+    position: absolute;
+    margin-left: 330px;
+    width: 50px;
+    text-align: center;
+}
+
+.score{
+    display: block;
+    position: absolute;
+    margin-left: 600px;
+    width: 50px;
+
+}
+
+.submitForm{
+    display: block;
+    position: absolute;
+    margin-left: 380px;
+    margin-top: 50px;
+}
+
+.formulaire{
+    display: block;
+    position: relative;
+    background-color: white;
+    border: 1px solid black ;
+    border-radius: 30px;
+    margin-top: 10px;
+    margin-left: 80px;
+    margin-bottom: 80px;
+    height: 800px;
+    width: 860px;
+
+}
+
+.selection{
+    display: block;
+    position: relative;
+    background-color: white;
+    border: 1px solid black ;
+    border-radius: 30px;
+    border-radius: 30px;
+    margin-left: 80px;
+    margin-right: 80px;
+    width: 860px;
+    height: 100px;
+}
+
