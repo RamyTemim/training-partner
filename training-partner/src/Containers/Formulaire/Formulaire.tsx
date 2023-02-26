@@ -1,16 +1,8 @@
 //import { title } from "process";
 import React, { useState } from "react";
-import {
-  Chart as ChartJS,
-  RadialLinearScale,
-  PointElement,
-  LineElement,
-  Filler,
-  Tooltip,
-  Legend,
-} from 'chart.js';
-import { Radar } from 'react-chartjs-2';
+import { Radar } from "react-chartjs-2";
 import './Formulaire.css';
+import {Chart as ChartJS,RadialLinearScale,PointElement,LineElement,Tooltip,Legend,} from 'chart.js';
 
 interface FormData {
   name: string;
@@ -21,7 +13,7 @@ interface FormTitle {
   title:string;
 }
 
-const Formulaire: React.FC = () => {
+const Formulaire: React.FC= () => {
   
   
   ChartJS.register(RadialLinearScale,PointElement,LineElement,Tooltip,Legend);
@@ -43,6 +35,7 @@ const Formulaire: React.FC = () => {
     score: 0,
   });
 
+  
 
   const [chartDonnee, setchartDonnee] = useState({
     labels: [formDonnee.name],
@@ -75,7 +68,6 @@ const Formulaire: React.FC = () => {
 
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    let nom:string = formDonnee.name;
     event.preventDefault();
     formDonnee.name==="" 
     ? setchartDonnee({
@@ -99,6 +91,7 @@ const Formulaire: React.FC = () => {
     })
     formTitle.title="";
     formDonnee.name="";
+    formDonnee.score=0;
   };
   return (
     <>
