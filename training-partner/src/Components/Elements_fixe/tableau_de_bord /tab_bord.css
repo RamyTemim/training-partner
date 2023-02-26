@@ -1,25 +1,114 @@
 #TB_Div{
     background-color: black;
     position: absolute;
-    width: 76px;
+    width: 80px;
     height: 100%;
     left: 0px;
     top: 0px;
 
-background: #000000;
 }
 
 #TB_Accueil{
-    background-color: blue;
+    position: absolute;
+    width: 100px;
+    height: 30px;
+    top: 50px;
+}
+#LogoAcceuil{
+    position: absolute;
+    width: 150px;
+    height: 40px;
+    top: 50px;
+    left:-50px;
 }
 
-#Boite{
-    background-color: black;
+#TB_Activite{
     position: absolute;
-    width: 76px;
+    width: 100px;
+    height: 30px;
+    top: 150px;    
+}
+#LogoActivite{
+    position: absolute;
+    width: 150px;
+    height: 40px;
+    top: 150px;
+    left:-50px;    
+}
+
+
+#TB_Conseil{
+    position: absolute;
+    width: 100px;
+    height: 30px;
+    top: 250px;
+}
+#LogoConseil{
+    position: absolute;
+    width: 150px;
+    height: 40px;
+    top: 250px;
+    left:-50px;    
+}
+
+#TB_Charts{
+    position: absolute;
+    width: 100px;
+    height: 30px;
+    top: 350px;
+}
+#LogoCharts{
+    position: absolute;
+    width: 150px;
+    height: 40px;
+    top: 350px;
+    left:-50px;    
+}
+
+#TB_Battle{   
+    position: absolute;
+    width: 100px;
+    height: 30px;
+    top: 450px;
+}
+#LogoBattle{
+    position: absolute;
+    width: 150px;
+    height: 40px;
+    top: 450px;
+    left:-50px;    
+}
+
+
+
+
+#Boite{
+    position: absolute;
+    width: 80px;
     height: 100%;
     left: 0px;
-    top: 0px;
+    top: 69px;
 
+    background: #000000;
+}
 
+button{
+    position: absolute;
+    width: 100px;
+    height: 30px;
+    
+    padding: 0px;
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 20px;
+    display: flex;
+    left: 80px;
+
+    
+    
+    color: #FFFFFF;    
+    background-color: #000000;
+    border: none;
 }
