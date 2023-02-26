@@ -1,0 +1,25 @@
+#TB_Div{
+    background-color: black;
+    position: absolute;
+    width: 76px;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+
+background: #000000;
+}
+
+#TB_Accueil{
+    background-color: blue;
+}
+
+#Boite{
+    background-color: black;
+    position: absolute;
+    width: 76px;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+
+
+}

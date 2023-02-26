@@ -1,6 +1,6 @@
 //Library
 import React from 'react';
-import { getValue } from '@testing-library/user-event/dist/utils';
+//import { getValue } from '@testing-library/user-event/dist/utils';
 import {Chart as ChartJS,RadialLinearScale,PointElement,LineElement,Tooltip,Legend,} from 'chart.js';
 import { Radar } from 'react-chartjs-2';
 import './SpiderChart.css';

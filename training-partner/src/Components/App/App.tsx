@@ -1,7 +1,8 @@
 //Library
 import React, { useState } from 'react';
 import './App.css';
-import '../../Containers/Formulaire/Formulaire.tsx';
+import '../../Containers/Formulaire/Formulaire';
+import Tab_bord  from '../Elements_fixe/tableau_de_bord /tab_bord';
 
 
 //Components
@@ -11,7 +12,11 @@ function App() {
  return(
   <div className='App'>
     <Formulaire/>  
+    <div>
+      <Tab_bord/>
   </div>
+  </div>
+  
  );
 }
 
