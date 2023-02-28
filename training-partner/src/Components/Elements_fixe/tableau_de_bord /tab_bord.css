@@ -1,23 +1,46 @@
-#TB_Div{
+#TB_Deplie{
     background-color: black;
     position: absolute;
     width: 80px;
     height: 100%;
     left: 0px;
     top: 0px;
-
+    transition: 0.3s all ;
+    transform: translateX(0);
 }
+
+#TB_Plie{
+    position: absolute;
+    width: 80px;
+    height: 100%;
+    left: 0px;
+    top: 69px;
+    background-color:black;
+    transition: transform 0.5s ease-in-out;
+}
+
+#TB_Plie.clicked #TB_Deplie {
+    transform: translateX(100%);
+  }
+
 
 #TB_Accueil{
     position: absolute;
-    width: 100px;
+    width: 150px;
     height: 30px;
     top: 50px;
+}
+#TB_Accueil_logo{
+    position: absolute;
+    width: 150px;
+    height: 30px;
+    top: 50px;
+    left:-50px;
 }
 #LogoAcceuil{
     position: absolute;
     width: 150px;
-    height: 40px;
+    height: 30px;
     top: 50px;
     left:-50px;
 }
@@ -28,6 +51,13 @@
     height: 30px;
     top: 150px;    
 }
+#TB_Activite_logo{
+    position: absolute;
+    width: 150px;
+    height: 40px;
+    top: 150px;
+    left:-50px;    
+}
 #LogoActivite{
     position: absolute;
     width: 150px;
@@ -36,12 +66,19 @@
     left:-50px;    
 }
 
-
 #TB_Conseil{
     position: absolute;
     width: 100px;
     height: 30px;
     top: 250px;
+}
+
+#TB_Conseil_logo{
+    position: absolute;
+    width: 150px;
+    height: 40px;
+    top: 250px;
+    left:-50px;   
 }
 #LogoConseil{
     position: absolute;
@@ -57,6 +94,14 @@
     height: 30px;
     top: 350px;
 }
+
+#TB_Charts_logo{
+    position: absolute;
+    width: 150px;
+    height: 40px;
+    top: 350px;
+    left:-50px;    
+}
 #LogoCharts{
     position: absolute;
     width: 150px;
@@ -71,6 +116,14 @@
     height: 30px;
     top: 450px;
 }
+#TB_Battle_logo{
+    position: absolute;
+    width: 150px;
+    height: 40px;
+    top: 450px;
+    left:-50px;   
+
+}
 #LogoBattle{
     position: absolute;
     width: 150px;
@@ -80,23 +133,10 @@
 }
 
 
-
-
-#Boite{
-    position: absolute;
-    width: 80px;
-    height: 100%;
-    left: 0px;
-    top: 69px;
-
-    background: #000000;
-}
-
 button{
     position: absolute;
     width: 100px;
     height: 30px;
-    
     padding: 0px;
     font-family: 'Arial';
     font-style: normal;
@@ -105,10 +145,15 @@ button{
     line-height: 20px;
     display: flex;
     left: 80px;
-
-    
-    
     color: #FFFFFF;    
     background-color: #000000;
     border: none;
+}
+
+.slide-out {
+    transform: translateX(100%);
+  }
+  
+.slide-in {
+    transform: translateX(0);
 }

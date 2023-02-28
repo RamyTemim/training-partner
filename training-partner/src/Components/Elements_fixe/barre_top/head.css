@@ -1,7 +1,7 @@
 header{
     position: absolute;
-    width: 1440px;
-    height: 71px;
+    width: 100%;
+    height: 60px;
     left: 0px;
     top: 0px;
     background: #1E1E1E;
@@ -13,6 +13,7 @@ header{
     justify-content: space-between;
     align-items: center;
     padding: 20px;
+    height: 30px;
 }
 
 .head p {
@@ -20,17 +21,15 @@ header{
 }
 
 .container{
-    box-sizing: border-box;
-
+    box-sizing: border-box;    
     position: absolute;
     width: 348px;
     height: 54px;
     left: 546px;
-    top: 13px;
-    
+    top: 13px;        
     background: #1E1E1E;
     border: 1px solid #1E1E1E;
-}
+    }
 
 .Date{
     position: absolute;
@@ -58,7 +57,7 @@ header{
     left: 24px;
     top: 4px;
     
-    font-family: 'Inter';
+    font-family: 'Arial';
     font-style: normal;
     font-weight: 700;
     font-size: 32px;
@@ -68,6 +67,15 @@ header{
     color : white;
     }
 
+
+#logo_top{
+    position: absolute;
+    width: 35px;
+    height: 41.41px;
+    left: 10px;
+    top: 5px;
+
+}
 .Pseudo{
     position: absolute;
     width: 74px;

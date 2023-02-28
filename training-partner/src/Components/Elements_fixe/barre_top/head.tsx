@@ -10,6 +10,7 @@ function Header(){
                     <Date />
                 </p>
                 <div className='container'>
+                    <img src="logo.png" id = "logo_top"/>
                     <a href ="#" className='Title'>Training Partner</a>
                 </div>
                 <p className='Pseudo'>Pseudo</p>
