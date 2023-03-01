@@ -9,7 +9,9 @@ function Tab_bord() {
     const handleClick = () => {
         setIsClicked(!isCLicked);
     }
-
+    const handleTest=() =>{
+      console.log("test bouton acceuil");
+    }
     return (
   
     <div onClick={handleClick} id="TB_Plie">
@@ -39,7 +41,7 @@ function Tab_bord() {
             <svg xmlns="http://www.w3.org/2000/svg" id="TB_Accueil_logo" viewBox="0 0 24 24" fill="green">
               <path fillRule="evenodd" d="M3 6a3 3 0 013-3h2.25a3 3 0 013 3v2.25a3 3 0 01-3 3H6a3 3 0 01-3-3V6zm9.75 0a3 3 0 013-3H18a3 3 0 013 3v2.25a3 3 0 01-3 3h-2.25a3 3 0 01-3-3V6zM3 15.75a3 3 0 013-3h2.25a3 3 0 013 3V18a3 3 0 01-3 3H6a3 3 0 01-3-3v-2.25zm9.75 0a3 3 0 013-3H18a3 3 0 013 3V18a3 3 0 01-3 3h-2.25a3 3 0 01-3-3v-2.25z" clipRule="evenodd" />
             </svg>
-            <button id = "TB_Accueil">Accueil</button>
+            <button id = "TB_Accueil" >Accueil</button>
             
             <svg xmlns="http://www.w3.org/2000/svg" id= "TB_Activite_logo" viewBox="0 0 24 24" fill="green" className="w-6 h-6">
               <path fillRule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clipRule="evenodd" />
@@ -51,15 +53,24 @@ function Tab_bord() {
             </svg>
             <button id= "TB_Conseil">Conseil</button>
 
+            <svg xmlns="http://www.w3.org/2000/svg" id='TB_Charts_logo' fill="blue" viewBox="0 0 24 24" strokeWidth={1.5} stroke="blue">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
+            </svg>
+            <button id= "TB_Charts">Charts</button>
+            <div>
+              <ul>
+                <li id='TB_Charts_Visu'><button >Visualisé</button></li>
+                <li id ='TB_Charts_Cree' ><button>Créé</button></li>
+              </ul>
+            </div>
+
+
             <svg xmlns="http://www.w3.org/2000/svg" id='TB_Battle_logo' fill="blue" viewBox="0 0 24 24" strokeWidth={4} stroke="blue">
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
             <button id= "TB_Battle">Battle</button>
             
-            <svg xmlns="http://www.w3.org/2000/svg" id='TB_Charts_logo' fill="blue" viewBox="0 0 24 24" strokeWidth={1.5} stroke="blue">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
-            </svg>
-            <button id= "TB_Charts">Charts</button>
+            
 
           </div>)}
     </div>
