@@ -33,15 +33,15 @@
 #TB_Accueil_logo{
     position: absolute;
     width: 150px;
-    height: 30px;
-    top: 50px;
+    height: 40px;
+    top: 36px;
     left:-50px;
 }
 #LogoAcceuil{
     position: absolute;
     width: 150px;
     height: 30px;
-    top: 50px;
+    top: 36px;
     left:-50px;
 }
 
@@ -51,18 +51,19 @@
     height: 30px;
     top: 150px;    
 }
+
 #TB_Activite_logo{
     position: absolute;
     width: 150px;
     height: 40px;
-    top: 150px;
+    top: 136px;
     left:-50px;    
 }
 #LogoActivite{
     position: absolute;
     width: 150px;
     height: 40px;
-    top: 150px;
+    top: 136px;
     left:-50px;    
 }
 
@@ -77,14 +78,14 @@
     position: absolute;
     width: 150px;
     height: 40px;
-    top: 250px;
+    top: 236px;
     left:-50px;   
 }
 #LogoConseil{
     position: absolute;
     width: 150px;
     height: 40px;
-    top: 250px;
+    top: 236px;
     left:-50px;    
 }
 
@@ -99,14 +100,14 @@
     position: absolute;
     width: 150px;
     height: 40px;
-    top: 350px;
+    top: 336px;
     left:-50px;    
 }
 #LogoCharts{
     position: absolute;
     width: 150px;
     height: 40px;
-    top: 350px;
+    top: 336px;
     left:-50px;    
 }
 
@@ -120,7 +121,7 @@
     position: absolute;
     width: 150px;
     height: 40px;
-    top: 450px;
+    top: 436px;
     left:-50px;   
 
 }
@@ -128,7 +129,7 @@
     position: absolute;
     width: 150px;
     height: 40px;
-    top: 450px;
+    top: 436px;
     left:-50px;    
 }
 
