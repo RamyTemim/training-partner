@@ -4,7 +4,7 @@
     position: absolute;
     width: 200px;
     height: 104px;
-    left: -10px;
+    left: 30px;
     top: 50px;
     opacity: 80%;
 
@@ -26,6 +26,9 @@
     
     color: #FFFFFF;
     
+}
+#b1_img{
+    left:-10px;
 }
 
 #b2{

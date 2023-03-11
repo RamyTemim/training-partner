@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './head.css';
 import Date from './Date';
 import logo from './logo.png';
+import logo_user from './logo_user.png';
 import UserMenu from './menuUser/user_menu';
 
 function Header(){
@@ -22,7 +23,7 @@ function Header(){
                     <a href ="#" className='Title'>Training Partner</a>
                 </div>
                 <div className='Pseudo'>
-                    <button onClick={affMenu}>Pseudo</button>
+                    <button onClick={affMenu} id="buttonUser"><img src={logo_user} id = "logo_user"/>Pseudo</button>
                     {showmenu && <UserMenu/>}
                 </div>
             </nav>

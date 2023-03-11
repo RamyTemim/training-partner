@@ -23,9 +23,9 @@ header{
 .container{
     box-sizing: border-box;    
     position: absolute;
-    width: 348px;
+    width: 20%;
     height: 54px;
-    left: 546px;
+    left: 30%;
     top: 13px;        
     background: #1E1E1E;
     }
@@ -79,7 +79,7 @@ header{
     position: absolute;
     width: 74px;
     height: 38px;
-    left: 90%;
+    left: 80%;
     top: 23px;
     
     font-family: 'Arial';
@@ -90,7 +90,19 @@ header{
     display: flex;
     align-items: center;
     text-align: center;
+    background-color: #1E1E1E;
     
     color: #FFFFFF;
 }
 
+#logo_user{
+    top: -20px;
+    position:relative;
+    background-color: #1E1E1E;
+
+}
+
+#buttonUser{
+    background-color: #1E1E1E;
+
+}
