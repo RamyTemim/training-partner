@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Radar } from "react-chartjs-2";
 import './Formulaire.css';
 import {Chart,RadialLinearScale,PointElement,LineElement,Tooltip,Legend} from 'chart.js';
+import trash from './trash.png';
 
 interface FormData {
   name: string;
@@ -71,44 +72,54 @@ const Formulaire: React.FC = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if(formDonnee.name==="")
-    { setchartDonnee({
-      labels: [...chartDonnee.labels],
-      datasets: [
-        {
-          ...chartDonnee.datasets[0],
-          label: formTitle.title,
-          data:[...chartDonnee.datasets[0].data],
-        },
-      ],
+    if(formDonnee.name===""){
+      alert("Entrer un nom d'attribut ");
+    }
+    else{
+      setchartDonnee({
+        labels: [...chartDonnee.labels, formDonnee.name],
+        datasets: [
+          {
+            ...chartDonnee.datasets[0],
+            data:[...chartDonnee.datasets[0].data, formDonnee.score],
+          },
+        ],
     })
   }
-  else if (formTitle.title===""){
-     setchartDonnee({
-      labels: [...chartDonnee.labels, formDonnee.name],
-      datasets: [
-        {
-          ...chartDonnee.datasets[0],
-          data:[...chartDonnee.datasets[0].data, formDonnee.score],
-        },
-      ],
-    })
-  }
-  else {
-    setchartDonnee({
-      labels: [...chartDonnee.labels, formDonnee.name],
-      datasets: [
-        {
-          ...chartDonnee.datasets[0],
-          label: formTitle.title,
-          data:[...chartDonnee.datasets[0].data, formDonnee.score],
-        },
-      ],
-    })
-  }
-  formTitle.title="";
-  formDonnee.name="";
+  setformDonnee({name :"",score :0});
   };
+
+  const handleSave=(event: React.FormEvent<HTMLFormElement> ) => {
+    event.preventDefault();
+    if (formTitle.title != ""){
+      setchartDonnee({
+        labels: [...chartDonnee.labels],
+        datasets: [
+          {
+            ...chartDonnee.datasets[0],
+            label: formTitle.title,
+            data:[...chartDonnee.datasets[0].data,],
+          },
+        ],
+      })}
+      setformTitle({title:""});
+
+  }
+  const handleDelete = (id: string) => {
+    setchartDonnee((prevState) => ({
+      ...prevState,
+      labels: prevState.labels.filter((label) => label !== id),
+      datasets: [
+        {
+          ...prevState.datasets[0],
+          data: prevState.datasets[0].data.filter((data, index) => {
+            return prevState.labels[index] !== id;
+          }),
+        },
+      ],
+    }));
+  };
+  
 
   return (
     <>
@@ -121,12 +132,23 @@ const Formulaire: React.FC = () => {
             <button className="submitForm1" type="submit">Ajouter</button>
           </div>
       </form>
+      <div className='listeAttribut'>
+        <h1 id='listeTitre'>Vos attribut</h1>
+          <ol id='attribut'>
+            {chartDonnee.labels.map((value: string, index: number) => (
+              <li key={index}>{value}<button onClick={() => handleDelete(value)}> 
+              <img title='trash' src={trash} />
+            </button></li>
+            
+            ))}
+            </ol>
+      </div>
 
-      <div className="formulaire">
+      <div className="chart">
         <Radar className="spiderchart" data={chartDonnee} options={reglage}/>
       </div>
 
-      <form className="Titre" onSubmit={handleSubmit}>
+      <form className="save" onSubmit={handleSave}>
         <div>
           <label htmlFor="title"><p className="titre">Titre :</p></label>
           <input type="text" id="title" name="title" placeholder="Entrer un titre" value={formTitle.title} onChange={handleTitleChange} />

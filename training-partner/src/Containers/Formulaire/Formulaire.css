@@ -4,32 +4,38 @@ body{
 
 .selection{
     position: absolute;
-    width: 1301px;
     height: 293px;
-    left: 100px;
+    width: 80%;
+    left: 200px;
+    right:200px;
     top: 197px;
+    border-radius: 20px;
 
     background: #FFFFFF;
     border: 10px solid #FFFFFF;
 }
 
-.formulaire{
+.chart{
     position: absolute;
-    width: 1304px;
     height: 813px;
-    left: 96px;
+    width: 80%;
+    left: 200px;
+    right:200px;
     top: 1113px;
+    border-radius: 20px;
 
     background: #FFFFFF;
     border: 10px solid #FFFFFF;
 }
 
-.Titre{
+.save{
     position: absolute;
-    width: 1301px;
     height: 293px;
-    left: 96px;
+    width: 80%;
+    left: 200px;
+    right:200px;
     top: 1965px;
+    border-radius: 20px;
 
     background: #FFFFFF;
     border: 10px solid #FFFFFF;
@@ -117,11 +123,13 @@ body{
     height: 55px;
     left: 518px;
     top: 219px;
+    border-radius: 20px;
     
     font-family: 'Arial';
     font-style: normal;
     font-weight: 700;
     font-size: 40px;
+    padding : 5px 50px 10px 50px;
 
     color: #000000;
     background: #0F9F49;
@@ -163,13 +171,13 @@ body{
 }
 
 .Sport{
-    position: absolute;
+    position: relative;
     width: 194px;
     height: 32px;
     left: 954px;
     top: 0px;
     
-    font-family: 'Inter';
+    font-family: 'Arial';
     font-style: normal;
     font-weight: 700;
     font-size: 40px;
@@ -218,13 +226,44 @@ body{
     height: 55px;
     left: 507px;
     top: 207px;
+    border-radius: 20px;
 
     font-family: 'Arial';
     font-style: normal;
     font-weight: 700;
     font-size: 40px;
+    padding : 5px 50px 10px 50px;
 
     color: #000000;
     background: #0F9F49;
     border: 10px solid #0F9F49;
+}
+
+.listeAttribut{
+    position: absolute;
+    height: 450px;
+    width: 80%;
+    left: 200px;
+    right:200px;
+    top: 550px;
+    border-radius: 20px;
+
+    background: #FFFFFF;
+    border: 10px solid #FFFFFF;
+}
+#listeTitre{
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+   
+}
+
+#attribut{
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    text-align: left;
+    left: 4px;
 }

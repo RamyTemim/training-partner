@@ -7,16 +7,15 @@ import './App.css';
 //Components
 
 
-import TabBord from '../ElementsFixe/TableauDeBord/TabBord';
-import Header from '../ElementsFixe/BarreTop/head';
+
+import ChartCreate from '../Pages/ChartCreate/ChartCreate';
 
 
 
 function App() {    
  return(
   <div className='App'>
-    <Header/>
-    <TabBord/>
+    <ChartCreate/>
   </div>
  );
 }
