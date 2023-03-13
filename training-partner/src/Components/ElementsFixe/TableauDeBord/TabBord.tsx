@@ -1,4 +1,4 @@
-import "./tab_bord.css";
+import "./TabBord.css";
 import React, { useState } from 'react';
 import '../../../../src/logo.svg';
 

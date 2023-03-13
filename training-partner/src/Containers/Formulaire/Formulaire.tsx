@@ -38,11 +38,11 @@ const Formulaire: React.FC= () => {
   
 
   const [chartDonnee, setchartDonnee] = useState({
-    labels: [formDonnee.name],
+    labels: [] as string[],
     datasets: [
       {
         label:formTitle.title,
-        data: [formDonnee.score],
+        data: [] as number [],
         backgroundColor: 'white',
         borderColor: 'DDDDDD',
         borderWidth: 3,
