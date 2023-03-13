@@ -1,0 +1,40 @@
+.containerMenus{
+    position: absolute;
+    width: 1232px;
+    height: 321px;
+    left: 141px;
+    top: 266px;
+
+    background: #FFFFFF;
+    border: 10px solid #FFFFFF;
+}
+
+.Sport{
+    position: absolute;
+    width: 206px;
+    height: 61px;
+    left: 256px;
+    top: 75px;
+
+    background: #0F9F49;
+}
+
+.SeanceX {
+    position: absolute;
+    width: 206px;
+    height: 61px;
+    left: 506px;
+    top: 75px;
+
+    background: #0F9F49;
+}
+
+.SeanceY {
+    position: absolute;
+    width: 206px;
+    height: 61px;
+    left: 756px;
+    top: 75px;
+    
+    background: #0F9F49;
+}

@@ -18,7 +18,7 @@ function BarChart(){
                 angleLines: {display: true,color:'green'},
                 grid:{display:true,color:'black'},
                 suggestedMin: 0,
-                suggestedMax: 10
+                suggestedMax: 10,
             }
         }
     };

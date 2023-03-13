@@ -2,20 +2,15 @@
 import React from 'react';
 import './App.css';
 
-
-
 //Components
 
-
-
 import ChartCreate from '../Pages/ChartCreate/ChartCreate';
-
-
+import PageBattle from '../Pages/PageBattle';
 
 function App() {    
  return(
   <div className='App'>
-    <ChartCreate/>
+    <PageBattle/>
   </div>
  );
 }

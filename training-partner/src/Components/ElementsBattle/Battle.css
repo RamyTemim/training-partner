@@ -1,0 +1,47 @@
+.containerBattle{
+    position: absolute;
+    width: 1232px;
+    height: 102px;
+    left: 141px;
+    top: 111px;
+
+    background: #FFFFFF;
+    border: 10px solid #FFFFFF;
+}
+
+.paragraphe{
+    position: absolute;
+    width: 1152px;
+    height: 94px;
+    left: 21px;
+    top: 4px;
+
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 22px;
+
+    align-items: center;
+
+    color: #000000;
+}
+
+.containerBar{
+    position: absolute;
+    width: 1232px;
+    height: 628px;
+    left: 141px;
+    top: 640px;
+
+    background: #FFFFFF;
+    border: 10px solid #FFFFFF;
+}
+
+.Bar{
+    position: absolute;
+    width: 982px;
+    height: 455px;
+    left: 125px;
+    top: 86px;
+}
