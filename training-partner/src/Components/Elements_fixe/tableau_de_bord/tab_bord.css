@@ -1,0 +1,182 @@
+#TB_Deplie{
+    background-color: black;
+    position: absolute;
+    width: 80px;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    transition: 0.3s all ;
+    transform: translateX(0);
+}
+
+#TB_Plie{
+    position: absolute;
+    width: 80px;
+    height: 100%;
+    left: 0px;
+    top: 69px;
+    background-color:black;
+    transition: transform 0.5s ease-in-out;
+}
+
+#TB_Plie.clicked #TB_Deplie {
+    transform: translateX(100%);
+  }
+
+
+#TB_Accueil{
+    position: absolute;
+    width: 150px;
+    height: 30px;
+    top: 50px;
+}
+#TB_Accueil_logo{
+    position: absolute;
+    width: 150px;
+    height: 40px;
+    top: 36px;
+    left:-50px;
+}
+#LogoAcceuil{
+    position: absolute;
+    width: 150px;
+    height: 30px;
+    top: 36px;
+    left:-50px;
+}
+
+#TB_Activite{
+    position: absolute;
+    width: 100px;
+    height: 30px;
+    top: 150px;    
+}
+
+#TB_Activite_logo{
+    position: absolute;
+    width: 150px;
+    height: 40px;
+    top: 136px;
+    left:-50px;    
+}
+#LogoActivite{
+    position: absolute;
+    width: 150px;
+    height: 40px;
+    top: 136px;
+    left:-50px;    
+}
+
+#TB_Conseil{
+    position: absolute;
+    width: 100px;
+    height: 30px;
+    top: 250px;
+}
+
+#TB_Conseil_logo{
+    position: absolute;
+    width: 150px;
+    height: 40px;
+    top: 236px;
+    left:-50px;   
+}
+#LogoConseil{
+    position: absolute;
+    width: 150px;
+    height: 40px;
+    top: 236px;
+    left:-50px;    
+}
+
+#TB_Charts{
+    position: absolute;
+    width: 100px;
+    height: 30px;
+    top: 350px;
+}
+
+#TB_Charts_logo{
+    position: absolute;
+    width: 150px;
+    height: 40px;
+    top: 336px;
+    left:-50px;    
+}
+#TB_Charts_Visu{
+    color:#FFFFFF;
+    position: absolute;
+    font-weight: 600px;
+    font-size: 18px;
+    width: 100px;
+    height: 30px;
+    top: 410px;
+    left: 60px;
+}
+
+#TB_Charts_Cree{
+    color:#FFFFFF;
+    position: absolute;
+    font-weight: 600px;
+    font-size: 18px;
+    width: 100px;
+    height: 30px;
+    top: 460px;
+    left: 60px;
+}
+
+#LogoCharts{
+    position: absolute;
+    width: 150px;
+    height: 40px;
+    top: 336px;
+    left:-50px;    
+}
+
+#TB_Battle{   
+    position: absolute;
+    width: 100px;
+    height: 30px;
+    top: 530px;
+}
+#TB_Battle_logo{
+    position: absolute;
+    width: 150px;
+    height: 40px;
+    top: 516px;
+    left:-50px;   
+
+}
+#LogoBattle{
+    position: absolute;
+    width: 150px;
+    height: 40px;
+    top: 436px;
+    left:-50px;    
+}
+
+
+button{
+    position: absolute;
+    width: 100px;
+    height: 30px;
+    padding: 0px;
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 20px;
+    display: flex;
+    left: 80px;
+    color: #FFFFFF;    
+    background-color: #000000;
+    border: none;
+}
+
+.slide-out {
+    transform: translateX(100%);
+  }
+  
+.slide-in {
+    transform: translateX(0);
+}
