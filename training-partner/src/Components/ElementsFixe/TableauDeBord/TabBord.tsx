@@ -65,7 +65,7 @@ function TabBord() {
             </div>
 
 
-            <svg xmlns="http://www.w3.org/2000/svg" id='TB_Battle_logo' fill="blue" viewBox="0 0 24 24" strokeWidth={4} stroke="blue">
+            <svg xmlns="http://www.w3.org/2000/svg"  id='TB_Battle_logo' fill="blue" viewBox="0 0 24 24" strokeWidth={4} stroke="blue">
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
             <button id= "TB_Battle">Battle</button>

@@ -241,53 +241,50 @@ body{
 
 .listeAttribut{
     position: absolute;
-    height: 450px;
+    height: auto;
     width: 80%;
     left: 200px;
     right:200px;
     top: 600px;
     border-radius: 20px;
-
     background: #FFFFFF;
     border: 10px solid #FFFFFF;
 }
-#listeTitre{
-    font-family: 'Arial';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 40px;
-   
-}
 
-#attribut{
-    font-family: 'Arial';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 40px;
-    text-align: left;
-    left: 4px;
-}
 
 .trashButton{
     border-radius: 5px;
     top: auto;
-    left: 250px;
     background-color: red;
     width: 30px;
     color: black;
 }
 
-#headTab{
+th[scope="col"] {
+    background-color:green;
+    color: black;
+}
+th{
+    border-radius: 10px;
+    width: 100%;
+  
+    padding: 10px 60px 10px 60px;
+}
 
+td {
     font-family: 'Arial';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 30px;
-    text-align: left;
-    left: 4px;
+    font-weight: bold;
+    text-align: center;
+}
+table {
+    border-radius: 10px;
+    border-collapse: collapse;
+
+    letter-spacing: 1px;
+    font-family: 'Arial';
+    font-size: 40px;
 }
 
-table{
-    border : solid 2px green;
-    border-radius: 20px;
-}
+
+
+
