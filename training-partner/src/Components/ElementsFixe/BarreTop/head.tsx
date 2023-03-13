@@ -3,7 +3,7 @@ import './head.css';
 import Date from './Date';
 import logo from './logo.png';
 import logo_user from './logo_user.png';
-import UserMenu from './menuUser/user_menu';
+import UserMenu from './MenuUser/UserMenu';
 
 function Header(){
     const [showmenu, setshowmenu] = useState(false);
@@ -23,7 +23,7 @@ function Header(){
                     <a href ="#" className='Title'>Training Partner</a>
                 </div>
                 <div className='Pseudo'>
-                    <button onClick={affMenu} id="buttonUser"><img src={logo_user} id = "logo_user"/>Pseudo</button>
+                    <button onClick={affMenu} id="buttonUser"><img title='photo profil' alt='photo profil' src={logo_user} id = "logo_user"/>Pseudo</button>
                     {showmenu && <UserMenu/>}
                 </div>
             </nav>

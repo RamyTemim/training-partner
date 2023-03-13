@@ -96,8 +96,9 @@ header{
 }
 
 #logo_user{
+    left : 100px;
     top: -20px;
-    position:relative;
+    position:absolute;
     background-color: #1E1E1E;
 
 }
