@@ -1,57 +1,230 @@
-.title{
-    display: block;
-    position: absolute;
-    margin-left: 20px;
-    width: 50px;
-}
-
-.name{
-    display: block;
-    position: absolute;
-    margin-left: 330px;
-    width: 50px;
-    text-align: center;
-}
-
-.score{
-    display: block;
-    position: absolute;
-    margin-left: 600px;
-    width: 50px;
-
-}
-
-.submitForm{
-    display: block;
-    position: absolute;
-    margin-left: 380px;
-    margin-top: 50px;
-}
-
-.formulaire{
-    display: block;
-    position: relative;
-    background-color: white;
-    border: 1px solid black ;
-    border-radius: 30px;
-    margin-top: 10px;
-    margin-left: 80px;
-    margin-bottom: 80px;
-    height: 800px;
-    width: 860px;
-
+body{
+    background : #DDDDDD;   
 }
 
 .selection{
-    display: block;
-    position: relative;
-    background-color: white;
-    border: 1px solid black ;
-    border-radius: 30px;
-    border-radius: 30px;
-    margin-left: 80px;
-    margin-right: 80px;
-    width: 860px;
-    height: 100px;
+    position: absolute;
+    width: 1301px;
+    height: 293px;
+    left: 100px;
+    top: 197px;
+
+    background: #FFFFFF;
+    border: 10px solid #FFFFFF;
 }
 
+.formulaire{
+    position: absolute;
+    width: 1304px;
+    height: 813px;
+    left: 96px;
+    top: 1113px;
+
+    background: #FFFFFF;
+    border: 10px solid #FFFFFF;
+}
+
+.Titre{
+    position: absolute;
+    width: 1301px;
+    height: 293px;
+    left: 96px;
+    top: 1965px;
+
+    background: #FFFFFF;
+    border: 10px solid #FFFFFF;
+}
+
+.spiderchart{
+    position: absolute;
+    width: 788px;
+    height: 700px;
+    left: 268px;
+    top: 39px;
+}
+
+.Attribut{
+    position: absolute;
+    width: 194px;
+    height: 32px;
+    left: 31px;
+    top: 9px;
+
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 48px;
+    display: flex;
+    align-items: center;
+
+    color: #000000;
+}
+
+.Score{
+    position: absolute;
+    width: 194px;
+    height: 32px;
+    left: 909px;
+    top: 9px;
+
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 48px;
+    display: flex;
+    align-items: center;
+
+    color: #000000;
+}
+
+#name{
+    position: absolute;
+    width: 748px;
+    height: 76px;
+    left: 31px;
+    top: 100px;
+
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+
+    border: 3px solid #0F9F49;
+    border-radius: 20px;
+}
+
+#score{
+    position: absolute;
+    width: 304px;
+    height: 76px;
+    left: 909px;
+    top: 100px;
+
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+
+    border: 3px solid #0F9F49;
+    border-radius: 20px;
+}
+
+.submitForm1{
+    position: absolute;
+    width: 265px;
+    height: 55px;
+    left: 518px;
+    top: 219px;
+    
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+
+    color: #000000;
+    background: #0F9F49;
+    border: 10px solid #0F9F49;
+}
+
+.Ajouter{
+    position: absolute;
+    width: 174px;
+    height: 28px;
+    left: 53px;
+    top: -38px;
+
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 48px;
+    
+    color: #000000;
+}
+
+.titre{
+    position: absolute;
+    width: 194px;
+    height: 32px;
+    left: 43px;
+    top: 0px;
+
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 48px;
+    display: flex;
+    align-items: center;
+
+    color: #000000;
+}
+
+.Sport{
+    position: absolute;
+    width: 194px;
+    height: 32px;
+    left: 954px;
+    top: 0px;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 48px;
+    display: flex;
+    align-items: center;
+    
+    color: #000000;
+}
+
+#title{
+    position: absolute;
+    width: 748px;
+    height: 76px;
+    left: 36px;
+    top: 84px;
+
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+
+    border: 3px solid #0F9F49;
+    border-radius: 20px;
+}
+
+#sport{
+    position: absolute;
+    width: 304px;
+    height: 76px;
+    left: 954px;
+    top: 84px;
+
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+
+    border: 3px solid #0F9F49;
+    border-radius: 20px;
+}
+
+.submitForm2{
+    position: absolute;
+    width: 375px;
+    height: 55px;
+    left: 507px;
+    top: 207px;
+
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+
+    color: #000000;
+    background: #0F9F49;
+    border: 10px solid #0F9F49;
+}
