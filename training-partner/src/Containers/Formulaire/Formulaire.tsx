@@ -95,7 +95,6 @@ const Formulaire: React.FC= () => {
   };
   return (
     <>
-      
       <form className="selection" onSubmit={handleSubmit}>
         <div className="title">
           <label htmlFor="title">Titre :</label><br />
@@ -111,7 +110,7 @@ const Formulaire: React.FC= () => {
         </div>
         <br /><button className="submitForm" type="submit">Soumettre</button>
       </form>
-      <div className="formulaire"><Radar  className="spiderchart" data={chartDonnee} options={reglage}/></div>
+      <div className="formulaire"><Radar className="spiderchart" data={chartDonnee} options={reglage}/></div>
     </>
   );
 };
