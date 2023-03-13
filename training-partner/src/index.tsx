@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './Components/App/App';
-import HomeChart from './Components/Pages/page_chart/page_chart';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(
