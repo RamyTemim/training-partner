@@ -245,7 +245,7 @@ body{
     width: 80%;
     left: 200px;
     right:200px;
-    top: 550px;
+    top: 600px;
     border-radius: 20px;
 
     background: #FFFFFF;
@@ -266,4 +266,28 @@ body{
     font-size: 40px;
     text-align: left;
     left: 4px;
+}
+
+.trashButton{
+    border-radius: 5px;
+    top: auto;
+    left: 250px;
+    background-color: red;
+    width: 30px;
+    color: black;
+}
+
+#headTab{
+
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    text-align: left;
+    left: 4px;
+}
+
+table{
+    border : solid 2px green;
+    border-radius: 20px;
 }
