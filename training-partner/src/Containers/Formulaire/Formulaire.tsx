@@ -1,8 +1,8 @@
-//import { title } from "process";
 import React, { useState } from "react";
 import { Radar } from "react-chartjs-2";
 import './Formulaire.css';
-import {Chart as ChartJS,RadialLinearScale,PointElement,LineElement,Tooltip,Legend,} from 'chart.js';
+import {Chart,RadialLinearScale,PointElement,LineElement,Tooltip,Legend} from 'chart.js';
+import trash from './trash.png';
 
 interface FormData {
   name: string;
@@ -13,10 +13,13 @@ interface FormTitle {
   title:string;
 }
 
-const Formulaire: React.FC= () => {
+interface FormSport {
+  sport:string;
+}
+
+const Formulaire: React.FC = () => {
   
-  
-  ChartJS.register(RadialLinearScale,PointElement,LineElement,Tooltip,Legend);
+  Chart.register(RadialLinearScale,PointElement,LineElement,Tooltip,Legend);
   const reglage ={
       scales: {
           r: {
@@ -27,28 +30,21 @@ const Formulaire: React.FC= () => {
           }
       }
   };
-  const [formTitle,setformTitle]= useState<FormTitle>({title: "",});
-
-
-  const [formDonnee, setformDonnee] = useState<FormData>({
-    name: "",
-    score: 0,
-  });
-
-  
+  const [formTitle,setformTitle]= useState<FormTitle>({title: ""});
+  const [formDonnee, setformDonnee]= useState<FormData>({name: "",score : 0});
+  const [formSport,setformSport]= useState<FormSport>({sport: ""});
 
   const [chartDonnee, setchartDonnee] = useState({
-    labels: [formDonnee.name],
+    labels: [] as string[],
     datasets: [
       {
         label:formTitle.title,
-        data: [formDonnee.score],
+        data: [] as number[],
         backgroundColor: 'white',
         borderColor: 'DDDDDD',
         borderWidth: 3,
       },
     ],
-
   });
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -62,56 +58,107 @@ const Formulaire: React.FC= () => {
     event.preventDefault();
     setformTitle({
       ...formTitle,
-      [event.target.name]:event.target.value
+      title:event.target.value
     })
   };
 
+  const handleSportChange=(event: React.ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault();
+    setformSport({
+      ...formSport,
+      sport:event.target.value
+    })
+  };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    formDonnee.name==="" 
-    ? setchartDonnee({
-      labels: [...chartDonnee.labels],
-      datasets: [
-        {
-          ...chartDonnee.datasets[0],
-          label: formTitle.title,
-          data:[...chartDonnee.datasets[0].data],
-        },
-      ],
+    if(formDonnee.name===""){
+      alert("Entrer un nom d'attribut ");
+    }
+    else{
+      setchartDonnee({
+        labels: [...chartDonnee.labels, formDonnee.name],
+        datasets: [
+          {
+            ...chartDonnee.datasets[0],
+            data:[...chartDonnee.datasets[0].data, formDonnee.score],
+          },
+        ],
     })
-    : setchartDonnee({
-      labels: [...chartDonnee.labels, formDonnee.name],
-      datasets: [
-        {
-          ...chartDonnee.datasets[0],
-          data:[...chartDonnee.datasets[0].data, formDonnee.score],
-        },
-      ],
-    })
-    formTitle.title="";
-    formDonnee.name="";
-    formDonnee.score=0;
+  }
+  setformDonnee({name :"",score :0});
   };
+
+  const handleSave=(event: React.FormEvent<HTMLFormElement> ) => {
+    event.preventDefault();
+    if (formTitle.title != ""){
+      setchartDonnee({
+        labels: [...chartDonnee.labels],
+        datasets: [
+          {
+            ...chartDonnee.datasets[0],
+            label: formTitle.title,
+            data:[...chartDonnee.datasets[0].data,],
+          },
+        ],
+      })}
+      setformTitle({title:""});
+
+  }
+  const handleDelete = (id: string) => {
+    setchartDonnee((prevState) => ({
+      ...prevState,
+      labels: prevState.labels.filter((label) => label !== id),
+      datasets: [
+        {
+          ...prevState.datasets[0],
+          data: prevState.datasets[0].data.filter((data, index) => {
+            return prevState.labels[index] !== id;
+          }),
+        },
+      ],
+    }));
+  };
+  
+
   return (
     <>
-      
       <form className="selection" onSubmit={handleSubmit}>
-        <div className="title">
-          <label htmlFor="title">Titre :</label><br />
-          <input type="text" id="title" name="title" placeholder="Entrer un titre" value={formTitle.title} onChange={handleTitleChange} />
-        </div>
-        <div className="name">
-          <label htmlFor="name">Nom :</label><br />
-          <input type="text" id="name" name="name" placeholder="Entre l'attribut" value={formDonnee.name} onChange={handleInputChange}/>
-        </div>
-        <div className="score">
-          <label htmlFor="score">Score :</label><br />
-          <input type="number" id="score" name="score" value={formDonnee.score} onChange={handleInputChange}/>
-        </div>
-        <br /><button className="submitForm" type="submit">Soumettre</button>
+          <div>
+            <label htmlFor="name"><p className="Attribut">Attribut :</p></label><br />
+            <input type="text" id="name" name="name" placeholder="Entre l'attribut" value={formDonnee.name} onChange={handleInputChange}/>
+            <label htmlFor="score"><p className="Score">Score :</p></label><br />
+            <input type="number" id="score" name="score" value={formDonnee.score} onChange={handleInputChange}/>
+            <button className="submitForm1" type="submit">Ajouter</button>
+          </div>
       </form>
-      <div className="formulaire"><Radar  className="spiderchart" data={chartDonnee} options={reglage}/></div>
+      <div className='listeAttribut'>
+        <h1 id='listeTitre'>Vos attribut</h1>
+          <ol id='attribut'>
+            {chartDonnee.labels.map((value: string, index: number) => (
+              <li key={index}>{value}<button onClick={() => handleDelete(value)}> 
+              <img title='trash' src={trash} />
+            </button></li>
+            
+            ))}
+            </ol>
+      </div>
+
+      <div className="chart">
+        <Radar className="spiderchart" data={chartDonnee} options={reglage}/>
+      </div>
+
+      <form className="save" onSubmit={handleSave}>
+        <div>
+          <label htmlFor="title"><p className="titre">Titre :</p></label>
+          <input type="text" id="title" name="title" placeholder="Entrer un titre" value={formTitle.title} onChange={handleTitleChange} />
+          <label htmlFor="sport"><p className="Sport">Sport :</p></label>
+          <input type="text" id="sport" name="sport" placeholder="Escalade" value={formSport.sport} onChange={handleSportChange} ></input>
+          <button className="submitForm2" type="submit">Sauvegarder</button>
+        </div>
+      </form>
+
+      
     </>
   );
 };

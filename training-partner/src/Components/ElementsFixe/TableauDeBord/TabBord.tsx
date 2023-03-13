@@ -1,9 +1,9 @@
-import "./tab_bord.css";
+import "./TabBord.css";
 import React, { useState } from 'react';
 import '../../../../src/logo.svg';
 
 
-function Tab_bord() {
+function TabBord() {
     const [isCLicked, setIsClicked] = useState(false);
 
     const handleClick = () => {
@@ -36,7 +36,7 @@ function Tab_bord() {
         </svg>
         {isCLicked && (
 
-          <div style={{ display: 'flex', justifyContent: 'space-between', width: '300px' }} id="TB_Deplie">
+          <div  id="TB_Deplie">
 
             <svg xmlns="http://www.w3.org/2000/svg" id="TB_Accueil_logo" viewBox="0 0 24 24" fill="green">
               <path fillRule="evenodd" d="M3 6a3 3 0 013-3h2.25a3 3 0 013 3v2.25a3 3 0 01-3 3H6a3 3 0 01-3-3V6zm9.75 0a3 3 0 013-3H18a3 3 0 013 3v2.25a3 3 0 01-3 3h-2.25a3 3 0 01-3-3V6zM3 15.75a3 3 0 013-3h2.25a3 3 0 013 3V18a3 3 0 01-3 3H6a3 3 0 01-3-3v-2.25zm9.75 0a3 3 0 013-3H18a3 3 0 013 3V18a3 3 0 01-3 3h-2.25a3 3 0 01-3-3v-2.25z" clipRule="evenodd" />
@@ -77,4 +77,4 @@ function Tab_bord() {
     );
   }
   
-  export default Tab_bord;
+  export default TabBord;
