@@ -17,9 +17,7 @@ import TabBord from '../ElementsFixe/TableauDeBord/TabBord';
 function App() {    
  return(
   <div className='App'>
-    <Header/>
-    <TabBord/>
-    <ChartVisu/>
+    <ChartCreate/>
   </div>
  );
 }
