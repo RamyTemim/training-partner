@@ -12,41 +12,6 @@ body{
     border-radius: 20px;
 
     background: #FFFFFF;
-    border: 10px solid #FFFFFF;
-}
-
-.chart{
-    position: absolute;
-    height: 813px;
-    width: 80%;
-    left: 200px;
-    right:200px;
-    top: 1113px;
-    border-radius: 20px;
-
-    background: #FFFFFF;
-    border: 10px solid #FFFFFF;
-}
-
-.save{
-    position: absolute;
-    height: 293px;
-    width: 80%;
-    left: 200px;
-    right:200px;
-    top: 1965px;
-    border-radius: 20px;
-
-    background: #FFFFFF;
-    border: 10px solid #FFFFFF;
-}
-
-.spiderchart{
-    position: absolute;
-    width: 788px;
-    height: 700px;
-    left: 268px;
-    top: 39px;
 }
 
 .Attribut{
@@ -237,52 +202,6 @@ body{
     color: #000000;
     background: #0F9F49;
     border: 10px solid #0F9F49;
-}
-
-.listeAttribut{
-    position: absolute;
-    height: auto;
-    width: 80%;
-    left: 200px;
-    right:200px;
-    top: 600px;
-    border-radius: 20px;
-    background: #FFFFFF;
-    border: 10px solid #FFFFFF;
-}
-
-
-.trashButton{
-    border-radius: 5px;
-    top: auto;
-    background-color: red;
-    width: 30px;
-    color: black;
-}
-
-th[scope="col"] {
-    background-color:green;
-    color: black;
-}
-th{
-    border-radius: 10px;
-    width: 100%;
-  
-    padding: 10px 60px 10px 60px;
-}
-
-td {
-    font-family: 'Arial';
-    font-weight: bold;
-    text-align: center;
-}
-table {
-    border-radius: 10px;
-    border-collapse: collapse;
-
-    letter-spacing: 1px;
-    font-family: 'Arial';
-    font-size: 40px;
 }
 
 
