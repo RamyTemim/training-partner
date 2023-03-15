@@ -2,59 +2,25 @@ body{
     background : #DDDDDD;   
 }
 
+
+
 .selection{
-    position: absolute;
+    position: relative;
     height: 293px;
-    width: 80%;
-    left: 200px;
-    right:200px;
-    top: 197px;
+    width: 90%;
+    margin-left:7%;
+    top: 90px;
     border-radius: 20px;
 
     background: #FFFFFF;
-    border: 10px solid #FFFFFF;
-}
-
-.chart{
-    position: absolute;
-    height: 813px;
-    width: 80%;
-    left: 200px;
-    right:200px;
-    top: 1113px;
-    border-radius: 20px;
-
-    background: #FFFFFF;
-    border: 10px solid #FFFFFF;
-}
-
-.save{
-    position: absolute;
-    height: 293px;
-    width: 80%;
-    left: 200px;
-    right:200px;
-    top: 1965px;
-    border-radius: 20px;
-
-    background: #FFFFFF;
-    border: 10px solid #FFFFFF;
-}
-
-.spiderchart{
-    position: absolute;
-    width: 788px;
-    height: 700px;
-    left: 268px;
-    top: 39px;
 }
 
 .Attribut{
     position: absolute;
-    width: 194px;
+    width: 60%;
     height: 32px;
     left: 31px;
-    top: 9px;
+    margin-top: 30px;
 
     font-family: 'Arial';
     font-style: normal;
@@ -68,11 +34,11 @@ body{
 }
 
 .Score{
-    position: absolute;
-    width: 194px;
+    position: relative;
+    width: 60%;
     height: 32px;
-    left: 909px;
-    top: 9px;
+    left: 65%;
+    margin-top:20px;
 
     font-family: 'Arial';
     font-style: normal;
@@ -87,7 +53,7 @@ body{
 
 #name{
     position: absolute;
-    width: 748px;
+    width: 60%;
     height: 76px;
     left: 31px;
     top: 100px;
@@ -103,9 +69,9 @@ body{
 
 #score{
     position: absolute;
-    width: 304px;
+    width: 30%;
     height: 76px;
-    left: 909px;
+    left: 65%;
     top: 100px;
 
     font-family: 'Arial';
@@ -121,7 +87,7 @@ body{
     position: absolute;
     width: 265px;
     height: 55px;
-    left: 518px;
+    left: 40%;
     top: 219px;
     border-radius: 20px;
     
@@ -136,119 +102,16 @@ body{
     border: 10px solid #0F9F49;
 }
 
-.Ajouter{
-    position: absolute;
-    width: 174px;
-    height: 28px;
-    left: 53px;
-    top: -38px;
-
-    font-family: 'Arial';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 40px;
-    line-height: 48px;
-    
-    color: #000000;
-}
-
-.titre{
-    position: absolute;
-    width: 194px;
-    height: 32px;
-    left: 43px;
-    top: 0px;
-
-    font-family: 'Arial';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 40px;
-    line-height: 48px;
-    display: flex;
-    align-items: center;
-
-    color: #000000;
-}
-
-.Sport{
-    position: relative;
-    width: 194px;
-    height: 32px;
-    left: 954px;
-    top: 0px;
-    
-    font-family: 'Arial';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 40px;
-    line-height: 48px;
-    display: flex;
-    align-items: center;
-    
-    color: #000000;
-}
-
-#title{
-    position: absolute;
-    width: 748px;
-    height: 76px;
-    left: 36px;
-    top: 84px;
-
-    font-family: 'Arial';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 40px;
-
-    border: 3px solid #0F9F49;
-    border-radius: 20px;
-}
-
-#sport{
-    position: absolute;
-    width: 304px;
-    height: 76px;
-    left: 954px;
-    top: 84px;
-
-    font-family: 'Arial';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 40px;
-
-    border: 3px solid #0F9F49;
-    border-radius: 20px;
-}
-
-.submitForm2{
-    position: absolute;
-    width: 375px;
-    height: 55px;
-    left: 507px;
-    top: 207px;
-    border-radius: 20px;
-
-    font-family: 'Arial';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 40px;
-    padding : 5px 50px 10px 50px;
-
-    color: #000000;
-    background: #0F9F49;
-    border: 10px solid #0F9F49;
-}
-
 .listeAttribut{
-    position: absolute;
+
+    position: relative;
     height: auto;
-    width: 80%;
-    left: 200px;
-    right:200px;
-    top: 600px;
+    width: 90%;
+    top: 100px;
+    margin-left:7%;
     border-radius: 20px;
     background: #FFFFFF;
-    border: 10px solid #FFFFFF;
+
 }
 
 
@@ -256,12 +119,20 @@ body{
     border-radius: 5px;
     top: auto;
     background-color: red;
-    width: 30px;
+    width: 35px;
+    color: black;
+}
+.editButton{
+    border-radius: 5px;
+    top: auto;
+    background-color: green;
+    width: 35px;
+    margin-right: 5%;
     color: black;
 }
 
 th[scope="col"] {
-    background-color:green;
+    background-color:#0F9F49;
     color: black;
 }
 th{
@@ -283,6 +154,167 @@ table {
     letter-spacing: 1px;
     font-family: 'Arial';
     font-size: 40px;
+}
+
+
+#typeList{
+    position: relative;
+    background-color: #FFFFFF;
+    font-weight: bold;
+    font-family: "Arial";
+    font-size: 40px;
+    width: 90%;
+    top: 80px;
+    height: 100px;
+    margin-left: 4%;
+    text-align: center;
+    border: 2px solid white;
+    border-radius: 20px;    
+}
+#choisirGraph{
+    font-family: "Arial";
+    font-size: 40px;
+    top:0%;
+}
+
+.chart{
+    position: relative;
+    height: 1000px;
+    width: 90%;
+    margin-left:7%;
+    top: 110px;
+    border-radius: 20px;
+    background: #FFFFFF;
+
+}
+
+.graphRadar{
+    position: relative;
+    width: 50%;
+    height: 60%;
+    margin-left: auto;
+    margin-right:auto;
+    top: 10%;
+}
+
+.graphPolar{
+    position: relative;
+    width: 50%;
+    height: 60%;
+    margin-left: auto;
+    margin-right:auto;
+    top: 10%;
+}
+
+.graphBar{
+    position: relative;
+    width: 50%;
+    height: 60%;
+    margin-left: auto;
+    margin-right:auto;
+    top: 30%;
+}
+
+
+
+
+.save{
+    position: relative;
+    height: 293px;
+    width: 90%;
+    margin-left:7%;
+    top: 140px;
+    border-radius: 20px;
+    background: #FFFFFF;
+}
+
+.titre{
+    position: absolute;
+    width: 60%;
+    height: 32px;
+    left: 34px;
+    margin-top: 30px;
+
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 48px;
+    display: flex;
+    align-items: center;
+
+    color: #000000;
+}
+
+.Sport{
+    position: absolute;
+    width: 194px;
+    height: 32px;
+    left: 65%;
+    margin-top: 30px;
+
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 48px;
+    display: flex;
+    align-items: center;
+
+    color: #000000;
+
+}
+
+#title{
+    position: absolute;
+    width: 60%;
+    height: 76px;
+    left: 36px;
+    top: 84px;
+
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+
+    border: 3px solid #0F9F49;
+    border-radius: 20px;
+}
+
+#sport{
+    position: absolute;
+    width: 30%;
+    height: 76px;
+    left: 65%;
+    top: 84px;
+
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+
+    border: 3px solid #0F9F49;
+    border-radius: 20px;
+}
+
+.submitForm2{
+    position: absolute;
+    width: 340px;
+    height: 55px;
+    left: 40%;
+    top: 219px;
+    border-radius: 20px;
+
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    text-align: center;
+    padding : 5px 50px 10px 50px;
+
+    color: #000000;
+    background: #0F9F49;
+    border: 10px solid #0F9F49;
 }
 
 
