@@ -1,8 +1,11 @@
 import React, { useState } from "react";
-import { Radar } from "react-chartjs-2";
+import { Bar, PolarArea, Radar } from 'react-chartjs-2';
 import './Formulaire.css';
-import {Chart,RadialLinearScale,PointElement,LineElement,Tooltip,Legend} from 'chart.js';
-import trash from './trash.png';
+import {Chart,RadialLinearScale,PointElement,LineElement,Filler,Tooltip,Legend,LinearScale,CategoryScale,BarElement,Title,ArcElement} from 'chart.js';
+
+
+
+
 
 interface FormData {
   name: string;
@@ -16,36 +19,43 @@ interface FormTitle {
 interface FormSport {
   sport:string;
 }
+type GraphType = "spiderchart" | "bar" | "polar";
 
 const Formulaire: React.FC = () => {
-  
-  Chart.register(RadialLinearScale,PointElement,LineElement,Tooltip,Legend);
-  const reglage ={
-      scales: {
-          r: {
-              angleLines: {display: true,color:'green'},
-              grid:{display:true,color:'black'},
-              suggestedMin: 0,
-              suggestedMax: 10
-          }
-      }
-  };
+
   const [formTitle,setformTitle]= useState<FormTitle>({title: ""});
   const [formDonnee, setformDonnee]= useState<FormData>({name: "",score : 0});
   const [formSport,setformSport]= useState<FormSport>({sport: ""});
-
+  
   const [chartDonnee, setchartDonnee] = useState({
     labels: [] as string[],
     datasets: [
       {
         label:formTitle.title,
         data: [] as number[],
-        backgroundColor: 'white',
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.5)',
+          'rgba(54, 162, 235, 0.5)',
+          'rgba(255, 206, 86, 0.5)',
+          'rgba(75, 192, 192, 0.5)',
+          'rgba(153, 102, 255, 0.5)',
+          'rgba(255, 159, 64, 0.5)',
+        ],
         borderColor: 'DDDDDD',
         borderWidth: 3,
       },
     ],
   });
+  const reglage={
+    scales: {
+        r: {
+            angleLines: {display: true,color:'green'},
+            grid:{display:true,color:'black'},
+            suggestedMin: 0,
+            suggestedMax: 10
+        }
+    }
+};
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setformDonnee({
@@ -119,9 +129,35 @@ const Formulaire: React.FC = () => {
       ],
     }));
   };
-  
 
-  return (
+
+
+  const [selectedType, setSelectedType] = useState<GraphType>("spiderchart");
+
+  const handleTypeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedType(event.target.value as GraphType);
+  };
+
+    const getGraph = () => {
+      switch (selectedType) {
+        case "bar":{
+          Chart.register(CategoryScale,Filler,LinearScale,BarElement,Title,Tooltip,Legend,);
+      
+          return <Bar className="graphBar" data={chartDonnee} options={reglage}/>;
+      }
+        case "polar":{
+          Chart.register(RadialLinearScale,Filler, ArcElement, Tooltip, Legend);
+
+          return <PolarArea className="graphPolar" data={chartDonnee} options={reglage}/>;
+        }
+        case "spiderchart":{
+          Chart.register(RadialLinearScale,Filler,PointElement,LineElement,Tooltip,Legend,);
+          return <Radar className="graphRadar" data={chartDonnee} options={reglage} />;
+        }
+      }
+    };
+  
+    return (
     <>
       <form className="selection" onSubmit={handleSubmit}>
           <div>
@@ -155,10 +191,17 @@ const Formulaire: React.FC = () => {
             </tbody>
           </table>
       </div>
-
+      <div>
+      <label id="choisirGraph" htmlFor="typeList">Choisir le graphique </label>
+        <select  id="typeList" value={selectedType} onChange={handleTypeChange}>
+          <option value="spiderchart">Spider Chart</option>
+          <option value="bar">Bar Chart</option>
+          <option value="polar">Polar Chart</option>
+        </select>
+        </div>
 
       <div className="chart">
-        <Radar className="spiderchart" data={chartDonnee} options={reglage}/>
+        {getGraph()}
       </div>
 
       <form className="save" onSubmit={handleSave}>

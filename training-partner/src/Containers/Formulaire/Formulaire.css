@@ -2,13 +2,14 @@ body{
     background : #DDDDDD;   
 }
 
+
+
 .selection{
-    position: absolute;
+    position: relative;
     height: 293px;
-    width: 80%;
-    left: 200px;
-    right:200px;
-    top: 197px;
+    width: 90%;
+    margin-left:7%;
+    top: 90px;
     border-radius: 20px;
 
     background: #FFFFFF;
@@ -16,7 +17,7 @@ body{
 
 .Attribut{
     position: absolute;
-    width: 194px;
+    width: 60%;
     height: 32px;
     left: 31px;
     top: 9px;
@@ -33,10 +34,10 @@ body{
 }
 
 .Score{
-    position: absolute;
+    position: relative;
     width: 194px;
     height: 32px;
-    left: 909px;
+    left: 65%;
     top: 9px;
 
     font-family: 'Arial';
@@ -52,7 +53,7 @@ body{
 
 #name{
     position: absolute;
-    width: 748px;
+    width: 60%;
     height: 76px;
     left: 31px;
     top: 100px;
@@ -68,9 +69,9 @@ body{
 
 #score{
     position: absolute;
-    width: 304px;
+    width: 30%;
     height: 76px;
-    left: 909px;
+    left: 65%;
     top: 100px;
 
     font-family: 'Arial';
@@ -86,7 +87,7 @@ body{
     position: absolute;
     width: 265px;
     height: 55px;
-    left: 518px;
+    left: 40%;
     top: 219px;
     border-radius: 20px;
     
@@ -101,28 +102,130 @@ body{
     border: 10px solid #0F9F49;
 }
 
-.Ajouter{
-    position: absolute;
-    width: 174px;
-    height: 28px;
-    left: 53px;
-    top: -38px;
+.listeAttribut{
 
+    position: relative;
+    height: auto;
+    width: 90%;
+    top: 100px;
+    margin-left:7%;
+    border-radius: 20px;
+    background: #FFFFFF;
+
+}
+
+
+.trashButton{
+    border-radius: 5px;
+    top: auto;
+    background-color: red;
+    width: 30px;
+    color: black;
+}
+
+th[scope="col"] {
+    background-color:green;
+    color: black;
+}
+th{
+    border-radius: 10px;
+    width: 100%;
+  
+    padding: 10px 60px 10px 60px;
+}
+
+td {
     font-family: 'Arial';
-    font-style: normal;
-    font-weight: 700;
+    font-weight: bold;
+    text-align: center;
+}
+table {
+    border-radius: 10px;
+    border-collapse: collapse;
+
+    letter-spacing: 1px;
+    font-family: 'Arial';
     font-size: 40px;
-    line-height: 48px;
-    
-    color: #000000;
+}
+
+
+#typeList{
+    position: relative;
+    background-color: #FFFFFF;
+    font-family: "Arial";
+    font-size: 40px;
+    width: 90%;
+    top: 80px;
+    height: 100px;
+    margin-left: 4%;
+    text-align: center;
+    border: 2px solid white;
+    border-radius: 20px;    
+}
+#choisirGraph{
+    font-family: "Arial";
+    font-size: 40px;
+    top:0%;
+}
+
+.chart{
+    position: relative;
+    height: 1000px;
+    width: 90%;
+    margin-left:7%;
+    top: 130px;
+    border-radius: 20px;
+    background: #FFFFFF;
+
+}
+
+.graphRadar{
+    position: relative;
+    width: 50%;
+    height: 60%;
+    margin-left: auto;
+    margin-right:auto;
+    top: 10%;
+}
+
+.graphPolar{
+    position: relative;
+    width: 50%;
+    height: 60%;
+    margin-left: auto;
+    margin-right:auto;
+    top: 10%;
+}
+
+.graphBar{
+    position: relative;
+    width: 50%;
+    height: 60%;
+    margin-left: auto;
+    margin-right:auto;
+    top: 30%;
+}
+
+
+
+
+.save{
+    position: relative;
+    height: 293px;
+    width: 90%;
+    margin-left:7%;
+    top: 190px;
+    border-radius: 20px;
+
+    background: #FFFFFF;
 }
 
 .titre{
     position: absolute;
-    width: 194px;
+    width: 60%;
     height: 32px;
-    left: 43px;
-    top: 0px;
+    left: 31px;
+    top: 9px;
 
     font-family: 'Arial';
     font-style: normal;
@@ -136,12 +239,12 @@ body{
 }
 
 .Sport{
-    position: relative;
+    position: absolute;
     width: 194px;
     height: 32px;
-    left: 954px;
-    top: 0px;
-    
+    left: 65%;
+    top: 9px;
+
     font-family: 'Arial';
     font-style: normal;
     font-weight: 700;
@@ -149,13 +252,14 @@ body{
     line-height: 48px;
     display: flex;
     align-items: center;
-    
+
     color: #000000;
+
 }
 
 #title{
     position: absolute;
-    width: 748px;
+    width: 60%;
     height: 76px;
     left: 36px;
     top: 84px;
@@ -171,9 +275,9 @@ body{
 
 #sport{
     position: absolute;
-    width: 304px;
+    width: 30%;
     height: 76px;
-    left: 954px;
+    left: 65%;
     top: 84px;
 
     font-family: 'Arial';
@@ -187,16 +291,17 @@ body{
 
 .submitForm2{
     position: absolute;
-    width: 375px;
+    width: 340px;
     height: 55px;
-    left: 507px;
-    top: 207px;
+    left: 40%;
+    top: 219px;
     border-radius: 20px;
 
     font-family: 'Arial';
     font-style: normal;
     font-weight: 700;
     font-size: 40px;
+    text-align: center;
     padding : 5px 50px 10px 50px;
 
     color: #000000;
