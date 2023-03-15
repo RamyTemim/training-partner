@@ -1,4 +1,4 @@
-.containerBattle{
+.containerParagraphe{
     position: absolute;
     width: 1232px;
     height: 102px;
@@ -28,7 +28,7 @@
 }
 
 .containerBar{
-    position: absolute;
+    position: relative;
     width: 1232px;
     height: 628px;
     left: 141px;
