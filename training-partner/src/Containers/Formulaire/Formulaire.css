@@ -20,7 +20,7 @@ body{
     width: 60%;
     height: 32px;
     left: 31px;
-    top: 9px;
+    margin-top: 30px;
 
     font-family: 'Arial';
     font-style: normal;
@@ -35,10 +35,10 @@ body{
 
 .Score{
     position: relative;
-    width: 194px;
+    width: 60%;
     height: 32px;
     left: 65%;
-    top: 9px;
+    margin-top:20px;
 
     font-family: 'Arial';
     font-style: normal;
@@ -119,12 +119,20 @@ body{
     border-radius: 5px;
     top: auto;
     background-color: red;
-    width: 30px;
+    width: 35px;
+    color: black;
+}
+.editButton{
+    border-radius: 5px;
+    top: auto;
+    background-color: green;
+    width: 35px;
+    margin-right: 5%;
     color: black;
 }
 
 th[scope="col"] {
-    background-color:green;
+    background-color:#0F9F49;
     color: black;
 }
 th{
@@ -152,6 +160,7 @@ table {
 #typeList{
     position: relative;
     background-color: #FFFFFF;
+    font-weight: bold;
     font-family: "Arial";
     font-size: 40px;
     width: 90%;
@@ -173,7 +182,7 @@ table {
     height: 1000px;
     width: 90%;
     margin-left:7%;
-    top: 130px;
+    top: 110px;
     border-radius: 20px;
     background: #FFFFFF;
 
@@ -214,9 +223,8 @@ table {
     height: 293px;
     width: 90%;
     margin-left:7%;
-    top: 190px;
+    top: 140px;
     border-radius: 20px;
-
     background: #FFFFFF;
 }
 
@@ -224,8 +232,8 @@ table {
     position: absolute;
     width: 60%;
     height: 32px;
-    left: 31px;
-    top: 9px;
+    left: 34px;
+    margin-top: 30px;
 
     font-family: 'Arial';
     font-style: normal;
@@ -243,7 +251,7 @@ table {
     width: 194px;
     height: 32px;
     left: 65%;
-    top: 9px;
+    margin-top: 30px;
 
     font-family: 'Arial';
     font-style: normal;
