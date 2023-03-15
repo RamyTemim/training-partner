@@ -1,5 +1,5 @@
 //Library
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 
 
@@ -15,9 +15,26 @@ import TabBord from '../ElementsFixe/TableauDeBord/TabBord';
 
 
 function App() {    
- return(
+  const [chartVisu, setChartVisu] = useState(false);
+  const [chartCreate,setChartCreate] = useState(false);
+
+  const clickcv = (page : number)=>{
+    console.log("Page est egale à "+ page);
+    if (page ==3){
+      setChartVisu(true); setChartCreate(false)
+      console.log("Page visu ")
+   }
+    else if(page==4) {
+      setChartCreate(true); setChartVisu(false)
+      console.log("Page create")
+     }
+    }
+return(
   <div className='App'>
-    <ChartCreate/>
+    <TabBord onPageChange ={clickcv}/>
+    <Header/>
+    {chartCreate && <ChartCreate/> }
+    {chartVisu && <ChartVisu/>}
   </div>
  );
 }

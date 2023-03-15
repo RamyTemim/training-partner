@@ -1,17 +1,20 @@
 import "./TabBord.css";
 import React, { useState } from 'react';
 import '../../../../src/logo.svg';
+import ChartCreate from "../../Pages/ChartCreate/ChartCreate";
+import { isNumber } from "util";
 
 
-function TabBord() {
+function TabBord(props: any) {
     const [isCLicked, setIsClicked] = useState(false);
-
     const handleClick = () => {
         setIsClicked(!isCLicked);
     }
-    const handleTest=() =>{
-      console.log("test bouton acceuil");
-    }
+
+    const pCV =()=> {Chartvisu(3)}
+    const PCC =()=> {Chartvisu(4)}
+
+    const Chartvisu =(nbr : number) => {props.onPageChange(nbr) ;}
     return (
   
     <div onClick={handleClick} id="TB_Plie">
@@ -59,8 +62,8 @@ function TabBord() {
             <button id= "TB_Charts">Charts</button>
             <div>
               <ul>
-                <li id='TB_Charts_Visu'><button >Visualisé</button></li>
-                <li id ='TB_Charts_Cree' ><button>Créé</button></li>
+                <li id='TB_Charts_Visu'><button onClick={()=>{pCV()}} >Visualiser</button></li>
+                <li id ='TB_Charts_Cree' ><button onClick={()=>{PCC()}}>Créer</button></li>
               </ul>
             </div>
 
