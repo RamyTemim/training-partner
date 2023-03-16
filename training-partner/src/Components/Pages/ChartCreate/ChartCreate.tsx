@@ -6,8 +6,7 @@ import Formulaire from '../../../Containers/Formulaire/Formulaire';
 function ChartCreate(){
     return (
         <div id="main">
-            <TabBord/>
-            <Header/>
+
             <Formulaire/>
         </div>
     );
