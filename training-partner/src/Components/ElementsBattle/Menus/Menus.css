@@ -9,7 +9,7 @@
     border: 10px solid #FFFFFF;
 }
 
-.Sport{
+#dropMenuSport{
     position: absolute;
     width: 206px;
     height: 61px;
@@ -19,7 +19,7 @@
     background: #0F9F49;
 }
 
-.SeanceX {
+#dropMenuSeanceX {
     position: absolute;
     width: 206px;
     height: 61px;
@@ -29,7 +29,7 @@
     background: #0F9F49;
 }
 
-.SeanceY {
+#dropMenuSeanceY {
     position: absolute;
     width: 206px;
     height: 61px;

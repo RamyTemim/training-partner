@@ -1,55 +1,70 @@
 import react, { useState } from 'react';
 import './Menus.css';
 
+interface Seance {
+    nom : string;
+    sport : string;
+}
+
 function Menus(){
-    const [isOpen, setIsOpen] = useState(false);
-    const sports = ["Escalade", "Natation"];
-    const [isOpenX, setIsOpenX] = useState(false);
-    const seanceX = ["Seance1", "Seance2"];
-    const [isOpenY, setIsOpenY] = useState(false);
-    const seanceY = ["Seance1", "Seance2"];
+    const [seances,setSeances] = useState<Seance[]>([
+        { nom : "SeanceX1", sport : "Natation" },
+        { nom : "SeanceY1", sport : "Natation" },
+        { nom : "SeanceX1", sport : "Escalade" },
+        { nom : "SeanceY1", sport : "Escalade" },
+        { nom : "SeanceX2", sport : "Natation" },
+        { nom : "SeanceY2", sport : "Natation" },
+        { nom : "SeanceX2", sport : "Escalade" },
+        { nom : "SeanceY2", sport : "Escalade" },
+    ])
+    const [selectedSport, setSelectedSport] = useState<string>("Sport");
+    const [selectedSeanceX, setSelectedSeanceX] = useState<string>("");
+    const [selectedSeanceY, setSelectedSeanceY] = useState<string>("");
+
+    const sports : string[] = ["Natation","Escalade","Basketball"];
+    const [filteredSeances, setFilteredSeances] = useState<Seance[]>([]);
+    const seanceX = seances.filter( (seance) => seance.sport === selectedSport && seance.nom.startsWith("Seance")).map(seance => seance.nom);
+    const seanceY = seances.filter( (seance) => seance.sport === selectedSport && seance.nom.startsWith("Seance")).map(seance => seance.nom);
+    const handleSportChange = (sport : string) => {
+        setSelectedSport(sport); 
+        const filtered = seances.filter( (seance) => seance.sport === sport );
+        setFilteredSeances(filtered);
+    }
+
+    const handleSeanceXChange = (seance : string) => {
+        setSelectedSeanceX(seance);
+        setSelectedSeanceY(seanceY.filter(item => item !==seance)[0]);
+    }
+    const handleSeanceYChange = (seance : string) => {
+        setSelectedSeanceY(seance);
+        setSelectedSeanceX(seanceX.filter(item => item !==seance)[0]);
+    }
 
     return (
-        <div className='containerMenus'>
-            <button className="Sport" onClick={() => setIsOpen(!isOpen)}>
-                <span>Sports</span>
-                <span className={`icon ${isOpen ? 'up' : 'down'}`}>&#9660;</span>
-            </button>
-            {isOpen && (
-                <ul className="dropMenu">
-                    {sports.map(sport =>(
-                        <li key = {sport}>
-                            <a href="#">{sport}</a>
-                        </li>
-                    ))}
-                </ul>
-            )}
-            <button className="SeanceX" onClick={() => setIsOpenX(!isOpenX)}>
-                <span>seanceX</span>
-                <span className={`icon ${isOpenX ? 'up' : 'down'}`}>&#9660;</span>
-            </button>
-            {isOpenX && (
-                <ul className="dropMenuSeanceX">
-                    {seanceX.map(seance =>(
-                        <li key = {seance}>
-                            <a href="#">{seance}</a>
-                        </li>
-                    ))}
-                </ul>
-            )}
-            <button className="SeanceY" onClick={() => setIsOpenY(!isOpenY)}>
-                <span>seanceY</span>
-                <span className={`icon ${isOpenY ? 'up' : 'down'}`}>&#9660;</span>
-            </button>
-            {isOpenY && (
-                <ul className="dropMenuSeanceY">
-                    {seanceY.map(seance =>(
-                        <li key = {seance}>
-                            <a href="#">{seance}</a>
-                        </li>
-                    ))}
-                </ul>
-            )}
+        <div className='containerMenus'>       
+            <select id="dropMenuSport" onChange={ (event)=> handleSportChange(event.target.value) }>
+                {sports.map((sport) =>(
+                    <option key ={sport}>
+                        {sport}
+                    </option>
+                ))}
+            </select>
+
+            <select id="dropMenuSeanceX" value={selectedSeanceX} onChange={ (event)=> handleSeanceXChange(event.target.value) }>
+                {filteredSeances.map((seance) =>(
+                    <option key = {seance.nom}>
+                        {seance.nom}
+                    </option>
+                ))}
+            </select>
+
+            <select id="dropMenuSeanceY" value={selectedSeanceY} onChange={ (event)=> handleSeanceYChange(event.target.value) }>
+                {filteredSeances.map((seance) =>(
+                    <option key = {seance.nom}>
+                        {seance.nom}
+                    </option>
+                ))}
+            </select>
         </div>
     )
 }
