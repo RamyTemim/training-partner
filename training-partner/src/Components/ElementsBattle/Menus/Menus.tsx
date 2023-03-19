@@ -10,21 +10,23 @@ function Menus(){
     const [seances,setSeances] = useState<Seance[]>([
         { nom : "SeanceX1", sport : "Natation" },
         { nom : "SeanceY1", sport : "Natation" },
-        { nom : "SeanceX1", sport : "Escalade" },
-        { nom : "SeanceY1", sport : "Escalade" },
+        { nom : "SeanceX3", sport : "Escalade" },
+        { nom : "SeanceY3", sport : "Escalade" },
         { nom : "SeanceX2", sport : "Natation" },
         { nom : "SeanceY2", sport : "Natation" },
-        { nom : "SeanceX2", sport : "Escalade" },
-        { nom : "SeanceY2", sport : "Escalade" },
+        { nom : "SeanceX4", sport : "Escalade" },
+        { nom : "SeanceY4", sport : "Escalade" },
     ])
+    
     const [selectedSport, setSelectedSport] = useState<string>("Sport");
     const [selectedSeanceX, setSelectedSeanceX] = useState<string>("");
     const [selectedSeanceY, setSelectedSeanceY] = useState<string>("");
 
     const sports : string[] = ["Natation","Escalade","Basketball"];
     const [filteredSeances, setFilteredSeances] = useState<Seance[]>([]);
-    const seanceX = seances.filter( (seance) => seance.sport === selectedSport && seance.nom.startsWith("Seance")).map(seance => seance.nom);
-    const seanceY = seances.filter( (seance) => seance.sport === selectedSport && seance.nom.startsWith("Seance")).map(seance => seance.nom);
+    const seanceX = filteredSeances.filter( (seance) => seance.sport === selectedSport && seance.nom.startsWith("Seance")).map(seance => seance.nom);
+    const seanceY = filteredSeances.filter( (seance) => seance.sport === selectedSport && seance.nom.startsWith("Seance")).map(seance => seance.nom);
+    
     const handleSportChange = (sport : string) => {
         setSelectedSport(sport); 
         const filtered = seances.filter( (seance) => seance.sport === sport );
