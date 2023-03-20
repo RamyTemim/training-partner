@@ -44,7 +44,7 @@ return(
     <TabBord onPageChange ={clickcv}/>
     <Header/>
     
-    {chartVisu && <ChartVisu/>}{chartCreate && <ChartCreate/> }{Accueil && <ChartCreate/>} 
+    {chartCreate && <ChartCreate/>}{chartVisu && <ChartVisu/>} {Accueil && <ChartCreate/>} 
   </div>
  );
 }

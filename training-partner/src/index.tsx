@@ -5,7 +5,7 @@ import App from './Components/App/App';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(
-  document.getElementById('body') as HTMLElement
+  document.getElementById('root') as HTMLElement
 );
 //const body = ReactDOM.createRoot(
 //  document.getElementById('body') as HTMLElement);
