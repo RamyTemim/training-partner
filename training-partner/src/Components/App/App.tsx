@@ -6,11 +6,12 @@ import './App.css';
 
 import ChartCreate from '../Pages/ChartCreate/ChartCreate';
 import PageBattle from '../Pages/Battle/PageBattle';
+import Activite from '../Pages/Activite/Activite';
 
 function App() {    
  return(
   <div className='App'>
-    <PageBattle/>
+    <Activite/>
   </div>
  );
 }
