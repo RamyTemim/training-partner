@@ -3,7 +3,12 @@ import "./ChartVisu.css";
 import defilement from "./defilement.png"
 import TabBord from '../../ElementsFixe/TableauDeBord/TabBord';
 import Header from '../../ElementsFixe/BarreTop/head';
-import { resolveTripleslashReference } from 'typescript';
+import {Chart,RadialLinearScale,PointElement,LineElement,Filler,Tooltip,Legend,LinearScale,CategoryScale,BarElement,Title,ArcElement} from 'chart.js';
+import { Bar, PolarArea, Radar } from 'react-chartjs-2';
+
+
+type GraphType = "spiderchart" | "bar" | "polar";
+
 function ChartVisu(){
     return (
         <div id="main">
@@ -95,31 +100,76 @@ function SeanceMuscu(){
 
 
 function BoxGraphique(){
-    const [showGraphMenu, setGraphMenu] = useState(false);
-    const affMenu =()=>{
-        setGraphMenu(!showGraphMenu)
-    }
+    let dateSeance= "22/02/23"
+    const [selectedType, setSelectedType] = useState<GraphType>("spiderchart");
+    const [chartDonnee, setchartDonnee] = useState({
+        labels: [] as string[],
+        datasets: [
+          {
+            label:"Seance du " + dateSeance,
+            data: [] as number[],
+            backgroundColor: [
+              'rgba(255, 99, 132, 0.5)',
+              'rgba(54, 162, 235, 0.5)',
+              'rgba(255, 206, 86, 0.5)',
+              'rgba(75, 192, 192, 0.5)',
+              'rgba(153, 102, 255, 0.5)',
+              'rgba(255, 159, 64, 0.5)',
+            ],
+            borderColor: 'DDDDDD',
+            borderWidth: 2,
+          },
+        ],
+      });
+      const reglage={
+        scales: {
+            r: {
+                angleLines: {display: true,color:'green'},
+                grid:{display:true,color:'black'},
+                suggestedMin: 0,
+                suggestedMax: 10
+            }
+        }
+    };
+
+    const handleTypeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        setSelectedType(event.target.value as GraphType);
+      };
+    const getGraph = () => {
+      switch (selectedType) {
+        case "bar":{
+          Chart.register(CategoryScale,Filler,LinearScale,BarElement,Title,Tooltip,Legend,);
+      
+          return <Bar className="graphBar" data={chartDonnee} options={reglage}/>;
+      }
+        case "polar":{
+          Chart.register(RadialLinearScale,Filler, ArcElement, Tooltip, Legend);
+
+          return <PolarArea className="graphPolar" data={chartDonnee} options={reglage}/>;
+        }
+        case "spiderchart":{
+          Chart.register(RadialLinearScale,Filler,PointElement,LineElement,Tooltip,Legend,);
+          return <Radar className="graphRadar" data={chartDonnee} options={reglage} />;
+        }
+      }
+    };
+    
     return(
+        <>
         <div className ="boxGraphique">
-
-            <button onClick={affMenu}><span className='txt_button'>Graphique <img title='' alt= ''src={defilement} id="defilgraph"/></span></button>
-            {showGraphMenu && <GraphMenu/>}
+        <select  id="typeList" value={selectedType} onChange={handleTypeChange}>
+          <option value="spiderchart">Spider Chart</option>
+          <option value="bar">Bar Chart</option>
+          <option value="polar">Polar Chart</option>
+        </select>
         </div>
+        <div className="chartVisu">
+            {getGraph()}
+        </div>
+        </>
     )
 
 }
 
-function GraphMenu(){
-    return (
-        <div className='menuGraph'>
-            <button id="menuGraph1">Baton Horizontale</button>
-            <button id="menuGraph2">Baton Verticale</button>
-            <button id="menuGraph3">Spider Chart</button>
-            <button id="menuGraph4">Polar Chart</button>
-            <button id="menuGraph5">Linear</button>
-
-        </div>
-    )
-}
 
 export default ChartVisu;
