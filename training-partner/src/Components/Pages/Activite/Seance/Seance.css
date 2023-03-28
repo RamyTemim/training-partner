@@ -1,9 +1,11 @@
 .lastseance{
     position: absolute;
-    background-color: white;
-    border-radius: 10%;
-    margin-left: 12%;
+    
+    border-radius: 20px;
+    background: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    margin-left: 7%;
     top: 90px;
     height: 300px;
-    width: 45%
+    width: 44%
 }
