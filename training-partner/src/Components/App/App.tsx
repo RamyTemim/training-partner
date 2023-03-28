@@ -5,10 +5,12 @@ import './App.css';
 //Components
 
 
+
 import ChartCreate from '../Pages/ChartCreate/ChartCreate';
 import ChartVisu from '../Pages/ChartVisu/ChartVisu';
 import Header from '../ElementsFixe/BarreTop/head';
 import TabBord from '../ElementsFixe/TableauDeBord/TabBord';
+
 
 
 function App() {    
@@ -38,10 +40,12 @@ function App() {
     }
 return(
   <div className='App'>
+
     <TabBord onPageChange ={clickcv}/>
     <Header/>
     
     {chartCreate && <ChartCreate/>}{chartVisu && <ChartVisu/>} {Accueil && <ChartCreate/>} 
+
   </div>
  );
 }

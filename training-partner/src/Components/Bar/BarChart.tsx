@@ -13,12 +13,20 @@ function BarChart(){
         Tooltip,
         Legend,);
     const reglage={
+        indexAxis : 'y' as const,
         scales: {
-            r: {
-                angleLines: {display: true,color:'green'},
+            x: {
+                display: true,
+                color:'green',
                 grid:{display:true,color:'black'},
                 suggestedMin: 0,
-                suggestedMax: 10
+                suggestedMax: 10,
+            },
+            y:{
+                display : true,
+                tick : {
+                    reverse : false
+                }
             }
         }
     };

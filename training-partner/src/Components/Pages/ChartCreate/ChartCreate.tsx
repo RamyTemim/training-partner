@@ -14,6 +14,4 @@ function ChartCreate(){
 }
 
 
-
-
 export default ChartCreate;
