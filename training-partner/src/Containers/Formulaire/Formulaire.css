@@ -1,57 +1,322 @@
-.title{
-    display: block;
-    position: absolute;
-    margin-left: 20px;
-    width: 50px;
+body{
+    background : #DDDDDD;   
 }
 
-.name{
-    display: block;
-    position: absolute;
-    margin-left: 330px;
-    width: 50px;
-    text-align: center;
-}
 
-.score{
-    display: block;
-    position: absolute;
-    margin-left: 600px;
-    width: 50px;
-
-}
-
-.submitForm{
-    display: block;
-    position: absolute;
-    margin-left: 380px;
-    margin-top: 50px;
-}
-
-.formulaire{
-    display: block;
-    position: relative;
-    background-color: white;
-    border: 1px solid black ;
-    border-radius: 30px;
-    margin-top: 10px;
-    margin-left: 80px;
-    margin-bottom: 80px;
-    height: 800px;
-    width: 860px;
-
-}
 
 .selection{
-    display: block;
     position: relative;
-    background-color: white;
-    border: 1px solid black ;
-    border-radius: 30px;
-    border-radius: 30px;
-    margin-left: 80px;
-    margin-right: 80px;
-    width: 860px;
-    height: 100px;
+    height: 293px;
+    width: 90%;
+    margin-left:7%;
+    top: 90px;
+    border-radius: 20px;
+
+    background: #FFFFFF;
 }
+
+.Attribut{
+    position: absolute;
+    width: 60%;
+    height: 32px;
+    left: 31px;
+    margin-top: 30px;
+
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 48px;
+    display: flex;
+    align-items: center;
+
+    color: #000000;
+}
+
+.Score{
+    position: relative;
+    width: 60%;
+    height: 32px;
+    left: 65%;
+    margin-top:20px;
+
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 48px;
+    display: flex;
+    align-items: center;
+
+    color: #000000;
+}
+
+#name{
+    position: absolute;
+    width: 60%;
+    height: 76px;
+    left: 31px;
+    top: 100px;
+
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+
+    border: 3px solid #0F9F49;
+    border-radius: 20px;
+}
+
+#score{
+    position: absolute;
+    width: 30%;
+    height: 76px;
+    left: 65%;
+    top: 100px;
+
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+
+    border: 3px solid #0F9F49;
+    border-radius: 20px;
+}
+
+.submitForm1{
+    position: absolute;
+    width: 265px;
+    height: 55px;
+    left: 40%;
+    top: 219px;
+    border-radius: 20px;
+    
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    padding : 5px 50px 10px 50px;
+
+    color: #000000;
+    background: #0F9F49;
+    border: 10px solid #0F9F49;
+}
+
+.listeAttribut{
+
+    position: relative;
+    height: auto;
+    width: 90%;
+    top: 100px;
+    margin-left:7%;
+    border-radius: 20px;
+    background: #FFFFFF;
+
+}
+
+
+.trashButton{
+    border-radius: 5px;
+    top: auto;
+    background-color: red;
+    width: 35px;
+    color: black;
+}
+.editButton{
+    border-radius: 5px;
+    top: auto;
+    background-color: green;
+    width: 35px;
+    margin-right: 5%;
+    color: black;
+}
+
+th[scope="col"] {
+    background-color:#0F9F49;
+    color: black;
+}
+th{
+    border-radius: 10px;
+    width: 100%;
+  
+    padding: 10px 60px 10px 60px;
+}
+
+td {
+    font-family: 'Arial';
+    font-weight: bold;
+    text-align: center;
+}
+table {
+    border-radius: 10px;
+    border-collapse: collapse;
+
+    letter-spacing: 1px;
+    font-family: 'Arial';
+    font-size: 40px;
+}
+
+
+#typeList{
+    position: relative;
+    background-color: #FFFFFF;
+    font-weight: bold;
+    font-family: "Arial";
+    font-size: 40px;
+    width: 90%;
+    top: 80px;
+    height: 100px;
+    margin-left: 4%;
+    text-align: center;
+    border: 2px solid white;
+    border-radius: 20px;    
+}
+#choisirGraph{
+    font-family: "Arial";
+    font-size: 40px;
+    top:0%;
+}
+
+.chart{
+    position: relative;
+    height: 1000px;
+    width: 90%;
+    margin-left:7%;
+    top: 110px;
+    border-radius: 20px;
+    background: #FFFFFF;
+
+}
+
+.graphRadar{
+    position: relative;
+    width: 50%;
+    height: 60%;
+    margin-left: auto;
+    margin-right:auto;
+    top: 10%;
+}
+
+.graphPolar{
+    position: relative;
+    width: 50%;
+    height: 60%;
+    margin-left: auto;
+    margin-right:auto;
+    top: 10%;
+}
+
+.graphBar{
+    position: relative;
+    width: 50%;
+    height: 60%;
+    margin-left: auto;
+    margin-right:auto;
+    top: 30%;
+}
+
+
+
+
+.save{
+    position: relative;
+    height: 293px;
+    width: 90%;
+    margin-left:7%;
+    top: 140px;
+    border-radius: 20px;
+    background: #FFFFFF;
+}
+
+.titre{
+    position: absolute;
+    width: 60%;
+    height: 32px;
+    left: 34px;
+    margin-top: 30px;
+
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 48px;
+    display: flex;
+    align-items: center;
+
+    color: #000000;
+}
+
+.Sport{
+    position: absolute;
+    width: 194px;
+    height: 32px;
+    left: 65%;
+    margin-top: 30px;
+
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 48px;
+    display: flex;
+    align-items: center;
+
+    color: #000000;
+
+}
+
+#title{
+    position: absolute;
+    width: 60%;
+    height: 76px;
+    left: 36px;
+    top: 84px;
+
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+
+    border: 3px solid #0F9F49;
+    border-radius: 20px;
+}
+
+#sport{
+    position: absolute;
+    width: 30%;
+    height: 76px;
+    left: 65%;
+    top: 84px;
+
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+
+    border: 3px solid #0F9F49;
+    border-radius: 20px;
+}
+
+.submitForm2{
+    position: absolute;
+    width: 340px;
+    height: 55px;
+    left: 40%;
+    top: 219px;
+    border-radius: 20px;
+
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    text-align: center;
+    padding : 5px 50px 10px 50px;
+
+    color: #000000;
+    background: #0F9F49;
+    border: 10px solid #0F9F49;
+}
+
+
+
 

@@ -2,16 +2,21 @@ import "./TabBord.css";
 import React, { useState } from 'react';
 import '../../../../src/logo.svg';
 
+import ChartCreate from "../../Pages/ChartCreate/ChartCreate";
+import { isNumber } from "util";
 
-function Tab_bord() {
+
+function TabBord(props: any) {
     const [isCLicked, setIsClicked] = useState(false);
-
     const handleClick = () => {
         setIsClicked(!isCLicked);
     }
-    const handleTest=() =>{
-      console.log("test bouton acceuil");
-    }
+    const pACC = ()=> {Chartvisu(0); console.log("passe dans pACC")}
+    const pCV =()=> {Chartvisu(3);console.log("passe dans pCV")}
+    const PCC =()=> {Chartvisu(4);console.log("passe dans pCC")}
+
+    const Chartvisu =(nbr : number) => {props.onPageChange(nbr)}
+
     return (
   
     <div onClick={handleClick} id="TB_Plie">
@@ -36,12 +41,16 @@ function Tab_bord() {
         </svg>
         {isCLicked && (
 
-          <div style={{ display: 'flex', justifyContent: 'space-between', width: '300px' }} id="TB_Deplie">
+
+          <div  id="TB_Deplie">
+
 
             <svg xmlns="http://www.w3.org/2000/svg" id="TB_Accueil_logo" viewBox="0 0 24 24" fill="green">
               <path fillRule="evenodd" d="M3 6a3 3 0 013-3h2.25a3 3 0 013 3v2.25a3 3 0 01-3 3H6a3 3 0 01-3-3V6zm9.75 0a3 3 0 013-3H18a3 3 0 013 3v2.25a3 3 0 01-3 3h-2.25a3 3 0 01-3-3V6zM3 15.75a3 3 0 013-3h2.25a3 3 0 013 3V18a3 3 0 01-3 3H6a3 3 0 01-3-3v-2.25zm9.75 0a3 3 0 013-3H18a3 3 0 013 3V18a3 3 0 01-3 3h-2.25a3 3 0 01-3-3v-2.25z" clipRule="evenodd" />
             </svg>
-            <button id = "TB_Accueil" >Accueil</button>
+
+            <button id = "TB_Accueil" onClick={()=>{pACC()}} >Accueil</button>
+
             
             <svg xmlns="http://www.w3.org/2000/svg" id= "TB_Activite_logo" viewBox="0 0 24 24" fill="green" className="w-6 h-6">
               <path fillRule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clipRule="evenodd" />
@@ -59,13 +68,14 @@ function Tab_bord() {
             <button id= "TB_Charts">Charts</button>
             <div>
               <ul>
-                <li id='TB_Charts_Visu'><button >Visualisé</button></li>
-                <li id ='TB_Charts_Cree' ><button>Créé</button></li>
+                <li id='TB_Charts_Visu'><button onClick={()=>{pCV()}} >Visualiser</button></li>
+                <li id ='TB_Charts_Cree' ><button onClick={()=>{PCC()}}>Créer</button></li>
               </ul>
             </div>
 
 
-            <svg xmlns="http://www.w3.org/2000/svg" id='TB_Battle_logo' fill="blue" viewBox="0 0 24 24" strokeWidth={4} stroke="blue">
+            <svg xmlns="http://www.w3.org/2000/svg"  id='TB_Battle_logo' fill="blue" viewBox="0 0 24 24" strokeWidth={4} stroke="blue">
+
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
             <button id= "TB_Battle">Battle</button>
@@ -77,4 +87,5 @@ function Tab_bord() {
     );
   }
   
-  export default Tab_bord;
+export default TabBord;
+

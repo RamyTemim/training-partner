@@ -1,22 +1,22 @@
 #TB_Deplie{
+    z-index: 10;
     background-color: black;
-    position: absolute;
-    width: 80px;
+    position: fixed;
+    width: 300px;
     height: 100%;
     left: 0px;
-    top: 0px;
-    transition: 0.3s all ;
-    transform: translateX(0);
+    top: 69px;
 }
 
 #TB_Plie{
-    position: absolute;
+    z-index: 10 ;
+    position: fixed;
     width: 80px;
     height: 100%;
     left: 0px;
     top: 69px;
     background-color:black;
-    transition: transform 0.5s ease-in-out;
+
 }
 
 #TB_Plie.clicked #TB_Deplie {
