@@ -2,10 +2,7 @@
 import React, {useState} from 'react';
 import './App.css';
 
-
-
 //Components
-
 
 
 import ChartCreate from '../Pages/ChartCreate/ChartCreate';

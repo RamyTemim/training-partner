@@ -32,6 +32,7 @@ const Formulaire: React.FC = () => {
     datasets: [
       {
         label:formTitle.title,
+
         data: [] as number[],
         backgroundColor: [
           'rgba(255, 99, 132, 0.5)',
@@ -41,6 +42,7 @@ const Formulaire: React.FC = () => {
           'rgba(153, 102, 255, 0.5)',
           'rgba(255, 159, 64, 0.5)',
         ],
+
         borderColor: 'DDDDDD',
         borderWidth: 2,
       },
@@ -160,6 +162,7 @@ const Formulaire: React.FC = () => {
     };
   
     return (
+
     <>
       <form className="selection" onSubmit={handleSubmit}>
           <div>
@@ -220,7 +223,6 @@ const Formulaire: React.FC = () => {
         </div>
       </form>
 
-      
     </>
   );
 };

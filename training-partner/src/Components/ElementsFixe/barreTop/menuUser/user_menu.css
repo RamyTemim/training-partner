@@ -1,0 +1,68 @@
+#user_menu{
+    border-radius: 10px;
+    background-color: #1E1E1E;
+    position: absolute;
+    width: 200px;
+    height: 104px;
+    left: 30px;
+    top: 50px;
+    opacity: 80%;
+
+}
+
+#b1{
+    background-color: #1E1E1E;
+    position: absolute;
+    width: 133px;
+    height: 16px;
+    left: 30px;
+    top: 12px;
+    
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    
+    color: #FFFFFF;
+    
+}
+#b1_img{
+    left:-10px;
+}
+
+#b2{
+    background-color: #1E1E1E;
+    position: absolute;
+    width: 133px;
+    height: 16px;
+    left: 30px;
+    top: 40px;
+
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+
+    color: #FFFFFF;
+
+}
+
+#b3{
+    background-color: #1E1E1E;
+    position: absolute;
+    width: 133px;
+    height: 16px;
+    left: 30px;
+    top: 80px;
+
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+
+    color: #FFFFFF;
+    
+}
