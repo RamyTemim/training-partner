@@ -1,0 +1,16 @@
+.formSeance{
+    text-align:left;
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 48px;
+    position: relative;
+    border-radius: 20px;
+    background: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    margin-left: 7%;
+    top: 410px;
+    height: 450px;
+    width: 90%;
+}

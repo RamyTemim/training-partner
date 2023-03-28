@@ -1,0 +1,91 @@
+.calendrier {
+    position:absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial;
+    border-radius: 20px;
+    background: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    padding-top: 10px;
+    margin-left: 7%;
+    top: 900px;
+    width: 90%;
+    height: 600px;
+  }
+  
+  .calendrier-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+.dateSemaine{
+    font-size: 30px;
+    position:absolute;
+    left:44%; 
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    outline: none;
+    width: auto; 
+    height: auto;
+}
+#previous{
+    position:relative;
+    top:5%;
+    left:50px;
+    background-color: green;
+    border: 1px solid green;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    outline: none;
+    width: 40px; 
+    height: 20px;
+}
+
+#next{
+    position:relative;
+    top:5%;
+    left:-50px;
+    background-color: green;
+    border: 1px solid green;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    outline: none;
+    width: 40px; 
+    height: 20px;
+}
+  
+  .calendrier-header div {
+    font-size: 18px;
+  }
+  
+  .calendrier-contenu {
+    position: relative;
+    top:85%;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 10px;
+  }
+  
+  .calendrier-contenu div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: #eee;
+    color: #333;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  
+  .calendrier-contenu div:hover {
+    background-color: #ccc;
+    color: #fff;
+  }

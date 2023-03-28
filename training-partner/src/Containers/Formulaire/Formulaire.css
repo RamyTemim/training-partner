@@ -157,7 +157,7 @@ table {
 }
 
 
-#typeList{
+.typeList{
     position: relative;
     background-color: #FFFFFF;
     font-weight: bold;
@@ -168,7 +168,7 @@ table {
     height: 100px;
     margin-left: 4%;
     text-align: center;
-    border: 2px solid white;
+    border: 10px solid white;
     border-radius: 20px;    
 }
 #choisirGraph{
