@@ -10,41 +10,53 @@ import ChartCreate from '../Pages/ChartCreate/ChartCreate';
 import ChartVisu from '../Pages/ChartVisu/ChartVisu';
 import Header from '../ElementsFixe/BarreTop/head';
 import TabBord from '../ElementsFixe/TableauDeBord/TabBord';
+import PageBattle from '../Pages/Battle/PageBattle';
 
 
 
 function App() {    
+
+  const [Accueil, setAccueil] = useState(false);
+  const [Activite, setActivite] = useState(false);
+  const [Conseil, setConseil] = useState(false);
   const [chartVisu, setChartVisu] = useState(false);
   const [chartCreate,setChartCreate] = useState(false);
-  const [Accueil, setAccueil] = useState(false);
-
+  const [Battle, setBattle] = useState(false);
   const clickcv = (page : number)=>{
 
     console.log("Page est egale à "+ page);
 
     if (page ==0){
-      setAccueil(true);setChartCreate(false);setChartVisu(false)
+      setAccueil(true);setActivite(false);setConseil(false);setChartCreate(false);setChartVisu(false);setBattle(false);
+    }
+    if (page == 1){
+      setActivite(true);setConseil(false);setChartCreate(false);setChartVisu(false);setBattle(false);setAccueil(false);
+    }
+    if (page ==2){
+      setConseil(true);setChartCreate(false);setChartVisu(false);setBattle(false);setAccueil(false);setActivite(false);
     }
     if (page ==3){
-      setChartVisu(true); setChartCreate(false); setAccueil(false);
-      console.log("Page visu ")
-
+      setChartVisu(true);setChartCreate(false);setBattle(false);setAccueil(false);setActivite(false);setConseil(false);
    }
-    else if (page == 4){
-      setChartCreate(true); setChartVisu(false); setAccueil(false);
-      console.log("Page create");
+    if (page == 4){
+      setChartCreate(true);setChartVisu(false);setBattle(false);setAccueil(false);setActivite(false);setConseil(false);
      }
-     else {
-       console.log(" cps 3 ni 4");
-     }
+    if (page ==5){
+      setBattle(true);setAccueil(false);setActivite(false);setConseil(false);setChartCreate(false);setChartVisu(false);
+    }
     }
 return(
   <div className='App'>
 
     <TabBord onPageChange ={clickcv}/>
     <Header/>
-    
-    {chartCreate && <ChartCreate/>}{chartVisu && <ChartVisu/>} {Accueil && <ChartCreate/>} 
+    {Accueil && <ChartCreate/>} 
+    {Activite && null}
+    {Conseil && null}
+    {chartCreate && <ChartCreate/>}
+    {chartVisu && <ChartVisu/>}
+    {Battle && <PageBattle/>}
+
 
   </div>
  );
