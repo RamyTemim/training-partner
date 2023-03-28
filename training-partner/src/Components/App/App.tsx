@@ -11,7 +11,7 @@ import ChartVisu from '../Pages/ChartVisu/ChartVisu';
 import Header from '../ElementsFixe/BarreTop/head';
 import TabBord from '../ElementsFixe/TableauDeBord/TabBord';
 import PageBattle from '../Pages/Battle/PageBattle';
-
+import PageActivite from '../Pages/Activite/Activite';
 
 
 function App() {    
@@ -51,7 +51,7 @@ return(
     <TabBord onPageChange ={clickcv}/>
     <Header/>
     {Accueil && <ChartCreate/>} 
-    {Activite && null}
+    {Activite && <PageActivite/>}
     {Conseil && null}
     {chartCreate && <ChartCreate/>}
     {chartVisu && <ChartVisu/>}

@@ -5,16 +5,14 @@ import FormSeance from "./FormSeance/FormSeance";
 import Seance from "./Seance/Seance";
 import SportsList from "./Sport/Sport";
 
-const Activite : React.FC =()=>{
+function PageActivite(){
     return (
         <div>
-           <TabBord/>
            <Seance/>
            <SportsList/>
            <FormSeance/>
-           <Header/>
         </div>
     )
 }
 
-export default Activite;
+export default PageActivite;
