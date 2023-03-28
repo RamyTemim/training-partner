@@ -1,5 +1,6 @@
 header{
-    position: absolute;
+    z-index: 5;
+    position: fixed;
     width: 100%;
     height: 60px;
     left: 0px;
@@ -96,7 +97,7 @@ header{
 }
 
 #logo_user{
-    left:100px;
+    left : 100px;
     top: -20px;
     position:absolute;
     background-color: #1E1E1E;
