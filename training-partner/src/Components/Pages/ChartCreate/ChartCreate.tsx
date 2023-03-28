@@ -5,8 +5,7 @@ import Header from '../../ElementsFixe/BarreTop/head';
 import Formulaire from '../../../Containers/Formulaire/Formulaire';
 function ChartCreate(){
     return (
-        <div id="main">
-
+        <div>
             <Formulaire/>
         </div>
     );
