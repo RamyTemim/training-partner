@@ -10,6 +10,7 @@ import ChartCreate from '../Pages/ChartCreate/ChartCreate';
 import ChartVisu from '../Pages/ChartVisu/ChartVisu';
 import Header from '../ElementsFixe/BarreTop/head';
 import TabBord from '../ElementsFixe/TableauDeBord/TabBord';
+import Activite from '../Pages/Activite/Activite';
 
 
 
@@ -43,7 +44,7 @@ return(
 
     <TabBord onPageChange ={clickcv}/>
     <Header/>
-    
+    <Activite/>
     {chartCreate && <ChartCreate/>}{chartVisu && <ChartVisu/>} {Accueil && <ChartCreate/>} 
 
   </div>

@@ -1,5 +1,5 @@
 .calendrier {
-    position:absolute;
+    position:relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -9,7 +9,7 @@
     border: 1px solid #FFFFFF;
     padding-top: 10px;
     margin-left: 7%;
-    top: 900px;
+    top: 450px;
     width: 90%;
     height: 600px;
   }
