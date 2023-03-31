@@ -7,8 +7,8 @@ function Head(){
             <nav className="navigation">
                 <h1>TrainingPartner</h1>
                 <ul>
-                    <li><a href="/user/signUp">Inscription</a></li>
-                    <li><a href="/user/login">Connexion</a></li>
+                    <li><button className="nav" onClick={() => {}}>Inscription</button></li>
+                    <li><button className="nav" onClick={() => {}}>Connexion</button></li>
                     <li>
                         <form action="/user/logout" method="post">
                             <button type="submit">Deconnexion</button>
