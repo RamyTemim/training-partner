@@ -1,5 +1,5 @@
 //Library
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 
 //Components
@@ -12,20 +12,34 @@ import Header from '../ElementsFixe/BarreTop/head';
 import TabBord from '../ElementsFixe/TableauDeBord/TabBord';
 import PageBattle from '../Pages/Battle/PageBattle';
 import PageActivite from '../Pages/Activite/Activite';
-
+import { getSystemErrorName } from 'util';
 
 function App() {    
-
   const [Accueil, setAccueil] = useState(false);
   const [Activite, setActivite] = useState(false);
   const [Conseil, setConseil] = useState(false);
   const [chartVisu, setChartVisu] = useState(false);
   const [chartCreate,setChartCreate] = useState(false);
   const [Battle, setBattle] = useState(false);
+  
+  useEffect(() => {
+    const message = {
+      name: "John Doe",
+      age: 30,
+      email: "jongenshin@example.com"
+    };
+    fetch('http://localhost:3000/bite', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(message)
+    })
+      .then(response => response.text())
+      .then(data => console.log(data))
+  }, []);
+  
   const clickcv = (page : number)=>{
-
-    console.log("Page est egale à "+ page);
-
     if (page ==0){
       setAccueil(true);setActivite(false);setConseil(false);setChartCreate(false);setChartVisu(false);setBattle(false);
     }
@@ -50,7 +64,7 @@ return(
 
     <TabBord onPageChange ={clickcv}/>
     <Header/>
-    {Accueil && <ChartCreate/>} 
+    {Accueil && null} 
     {Activite && <PageActivite/>}
     {Conseil && null}
     {chartCreate && <ChartCreate/>}

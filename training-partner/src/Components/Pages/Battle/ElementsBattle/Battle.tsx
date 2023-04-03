@@ -11,8 +11,6 @@ import BarChart from '../../../Bar/BarChart';
 function Battle(){
     return (
         <div>
-            <Header/>
-            <TabBord/>
             <div className='containerParagraphe'>
                 <p className="paragraphe">Vous etes votre plus grand rival, et qui de mieux que vous pour le surpasser?
                 Cette section vous permet de vous comparer avec une ancienne version de vous-même,
