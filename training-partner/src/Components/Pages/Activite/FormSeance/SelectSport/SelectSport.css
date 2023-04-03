@@ -1,0 +1,14 @@
+.sportList{
+    position: relative ;
+    background-color: #FFFFFF;
+    font-weight: bold;
+    font-family: "Arial";
+    font-size: 40px;
+    width: 90%;
+    top: 410px;
+    margin-left: 4%;
+    height: 100px;
+    text-align: center;
+    border: 10px solid white;
+    border-radius: 20px;    
+}
