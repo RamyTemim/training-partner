@@ -22,3 +22,9 @@
     padding: 1em;
     color : white;
 }
+
+.navigation li {
+    list-style-type: none;
+}
+
+

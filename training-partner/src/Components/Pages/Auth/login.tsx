@@ -1,4 +1,4 @@
-import react , { useState } from 'react';
+import react , { useState, useEffect } from 'react';
 import axios from 'axios';
 //import { useNavigate } from 'react-router-dom';
 import './auth.css';
@@ -12,6 +12,23 @@ interface Login {
 const PageLogin : React.FC = () => {
     const [login ,setLogin] = useState<Login>({username : '', password : ''});
     const [error, setError] = useState<string>('');
+    //const navigate=useNavigate();
+
+    useEffect(() => {
+        const message = {
+            username: "Gabriel",
+            password : "root",
+        };
+        fetch('http://localhost:3001/user/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(message)
+        })
+        .then(response => response.text())
+        .then(data => console.log(data))
+    }, []);
 
     const handleInputChange = (event : React.ChangeEvent<HTMLInputElement>) : void => {
         const { name, value } = event.target;
@@ -20,7 +37,7 @@ const PageLogin : React.FC = () => {
     const handleSubmit = async (event : React.FormEvent<HTMLFormElement>) : Promise<void> => {
         event.preventDefault();
         try{
-            const response = await axios.post ('http://localhost:3000/user/login', login, {
+            const response = await axios.post ('http://localhost:3001/user/login', login, {
                 withCredentials : true,
                 headers : { 
                     'Content-Type' : 'application/json',
@@ -29,15 +46,16 @@ const PageLogin : React.FC = () => {
             if (response.status >= 200 && response.status < 300){
                 const donnee = await response.data;
                 localStorage.setItem('token', donnee.token);
+                //navigate("/");
             }
         }
         catch (error){
             console.error(error);
         }
+        
     };
     return (
         <div>
-            <Head />
             <div className='FormulaireAuth'>
                 <form onSubmit = {handleSubmit} >
                     <label htmlFor='username'>Username : </label>

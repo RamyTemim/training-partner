@@ -16,6 +16,7 @@ interface signUp {
 const PageSignUp : React.FC = () => {
     const [signUp ,setSignUp] = useState<signUp>({ firstname : '', lastname : '', username : '', email : '', password : '', confirmedpassword : ''});
     const [error, setError] = useState<string>('');
+    //const navigate=useNavigate();
 
     const handleInputChange = (event : React.ChangeEvent<HTMLInputElement>) : void => {
         const { name, value } = event.target;
@@ -24,7 +25,10 @@ const PageSignUp : React.FC = () => {
     const handleSubmit = async (event : React.FormEvent<HTMLFormElement>) : Promise<void> => {
         event.preventDefault();
         try{
-            const response = await axios.post ('http://localhost:3000/user/signUp', signUp)
+            const response = await axios.post ('http://localhost:3001/user/signUp', signUp)
+            /*if (response.status >= 200 && response.status < 300){
+                navigate('/user/login');
+            }*/
         }
         catch (error){
             console.error(error);
@@ -33,7 +37,6 @@ const PageSignUp : React.FC = () => {
 
     return(
         <div>
-            <Head />
             <div className='FormulaireAuth'>
                 <form onSubmit = {handleSubmit} >
                 <label htmlFor='username'>Username : </label>

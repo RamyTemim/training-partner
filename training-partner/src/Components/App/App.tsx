@@ -11,14 +11,15 @@ import ChartVisu from '../Pages/ChartVisu/ChartVisu';
 import Header from '../ElementsFixe/BarreTop/head';
 import TabBord from '../ElementsFixe/TableauDeBord/TabBord';
 import PageLogin from '../Pages/Auth/login';
-import PageSignUp from '../Pages/Auth/signUp';
+//import PageSignUp from '../Pages/Auth/signUp';
+import Auth from '../Pages/Auth/Auth';
 
 
 function App() {    
 
   return(
     <div className='App'>
-      <PageLogin />
+      <Auth />
     </div>
   );
 }
