@@ -14,3 +14,73 @@
     height: 450px;
     width: 90%;
 }
+.nomTitre{
+    position: absolute;
+    width: 60%;
+    height: 32px;
+    top: auto;
+
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 48px;
+    display: flex;
+    align-items: center;
+
+    color: #000000;
+}
+#name{
+position: absolute;
+width: 60%;
+height: 76px;
+top:20%;
+
+font-family: 'Arial';
+font-style: normal;
+font-weight: 700;
+font-size: 40px;
+
+border: 3px solid #0F9F49;
+border-radius: 20px;
+}
+
+#buttonSubmitSeance{
+    position: absolute;
+    width: 150px;
+    height: 40px;
+    left: 87%;
+    top: 80%;
+    border-radius: 20px;
+    
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    padding-left: 30px;
+
+    color: #000000;
+    background: #0F9F49;
+ 
+    border: 10px solid #0F9F49;
+}
+
+#buttonSubmitEx{
+    position: absolute;
+    width: auto;
+    height: 40px;
+    left: 4%;
+    top: 90%;
+    border-radius: 20px;
+    
+    text-align: center;
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    padding: auto;
+
+    color: #000000;
+    background: #0F9F49;
+    border: 10px solid #0F9F49;
+}

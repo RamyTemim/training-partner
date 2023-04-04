@@ -1,23 +1,50 @@
 import React, { useState } from "react";
+import FormCourse from "./FormCourse";
+import FormEscalade from "./FormEscalade";
+import FormMuscu from "./FormMuscu";
 import "./FormSeance.css";
-import Calendrier from "./Calendrier";
+
+
+
 
 
 
 interface FormValues {
   name: string;
   duree: string;
-  distance: number;
-  heartRate: number;
+ 
 }
 
 const FormSeance: React.FC = () => {
+  const [sport,setSport]=useState("musculation");
+
+  const handleSportChange =(event: React.ChangeEvent<HTMLSelectElement>)=>{
+      setSport(event.target.value);
+  }
+  
+  const getForm = () => {
+      switch (sport) {
+        case "musculation":{
+      
+          return <FormMuscu/>;
+      }
+        case "escalade":{
+         
+          return <FormEscalade/>;
+        }
+        case "course":{
+
+          return <FormCourse/>;
+        }
+      }
+    };
+
   const [values, setValues] = useState<FormValues>({
     name: "",
     duree: "00:00",
-    distance: 0,
-    heartRate: 0,
+
   });
+
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -33,53 +60,25 @@ const FormSeance: React.FC = () => {
   return (
     <>
       <form className="formSeance" onSubmit={handleSubmit}>
-        <label>
-          Nom:
-          <br />
-          <input
-            type="text"
-            name="nom"
-            value={values.name}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <label>
-          Durée (hh:mm):
-          <br />
-          <input
-            type="time"
-            name="duree"
-            value={values.duree}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <label>
-          Distance (en kilometres): <br />
-          <input
-            type="number"
-            name="distance"
-            value={values.distance}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <label>
-          Rythme Cardique moyen(en bpm): <br />
-          <input
-            type="number"
-            name="heartRate"
-            value={values.heartRate}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <button type="submit">Submit</button>
-      </form>
-      <div>
-        <Calendrier/>
-      </div>
+      <label>Nom séance :
+        <input name="Nom" type="string" onChange={handleChange} value={values.name}></input></label>
+        <br/>
+        <label>Durée :
+        <input name="duree" type="time" onChange={handleChange} value={values.duree} step="60"></input></label><br/>
+        <select  className="sportList" value={sport} onChange={handleSportChange}>
+          <option value="musculation">Musculation</option>
+          <option value="escalade">Escalade</option>
+          <option value="course">Course à pieds</option>
+        </select>
+        <div>
+          {getForm()}
+        </div>
+        <button id="buttonSubmitSeance" type="submit">Enregistrer</button>
+        </form>
+        
+
+        
+     
     </>
   );
 };
