@@ -1,19 +1,19 @@
 import react , { useState } from 'react';
 import axios from 'axios';
 import './auth.css';
-import Head from './head';
 
 interface signUp {
-    firstname : string;
-    lastname : string;
     username : string;
+    lastname : string;
+    firstname : string;
+    birthdate : string;
     email : string;
     password : string;
     confirmedpassword : string;
 }
 
 const PageSignUp : React.FC = () => {
-    const [signUp ,setSignUp] = useState<signUp>({ firstname : '', lastname : '', username : '', email : '', password : '', confirmedpassword : ''});
+    const [signUp ,setSignUp] = useState<signUp>({ username : '', lastname : '', firstname : '', birthdate : '', email : '', password : '', confirmedpassword : ''});
     const [error, setError] = useState<string>('');
 
     const handleInputChange = (event : React.ChangeEvent<HTMLInputElement>) : void => {
@@ -34,8 +34,14 @@ const PageSignUp : React.FC = () => {
         <div>
             <div className='FormulaireAuth'>
                 <form onSubmit = {handleSubmit} >
-                <label htmlFor='username'>Username : </label>
+                    <label htmlFor='username'>Username : </label>
                     <input type='username' id='username' name='username' value = {signUp.username} onChange={handleInputChange}/>
+                    <label htmlFor='lastname'>Lastname : </label>
+                    <input type='lastname' id='lastname' name='lastname' value = {signUp.lastname} onChange={handleInputChange}/>
+                    <label htmlFor='birthdate'>Birthdate : </label>
+                    <input type="date" id='birthdate' name='birthdate' value = {signUp.birthdate} onChange={handleInputChange}/>
+                    <label htmlFor='firstname'>Firstname : </label>
+                    <input type='firstname' id='firstname' name='firstname' value = {signUp.firstname} onChange={handleInputChange}/>
                     <label htmlFor='email'>Email : </label>
                     <input type='email' id='email' name='email' value = {signUp.email} onChange={handleInputChange}/>
                     <label htmlFor='password'>Mot de passe : </label>
