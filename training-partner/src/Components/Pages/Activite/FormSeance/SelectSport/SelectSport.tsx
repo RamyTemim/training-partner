@@ -21,4 +21,3 @@ const SelectSport:React.FC=()=>{
 
 export default SelectSport;
 
-export default SelectSport;
