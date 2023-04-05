@@ -1,6 +1,4 @@
-div{
-    cursor: pointer;
-}
+
 .formSeance{
     
     position: relative;
@@ -32,6 +30,7 @@ label{
     color: #000000;
 }
 input{
+    cursor: pointer;
     position: absolute;
     font-family: 'Arial';
     font-style: normal;
@@ -44,6 +43,7 @@ input{
     border-radius: 20px;
 }
 select{
+    cursor: pointer;
     background: none repeat scroll 0 0 #FFFFFF;
     border-radius: 40px ;
     box-shadow: 0 0 10px #E8E8E8 inset;
@@ -63,6 +63,7 @@ select{
 }
 
 #buttonSubmitSeance{
+    cursor: pointer;
     position: absolute;
     width: 150px;
     height: 40px;
@@ -83,6 +84,7 @@ select{
 }
 
 #buttonSubmitEx{
+    cursor: pointer;
     position: absolute;
     width: auto;
     height: 40px;

@@ -50,19 +50,19 @@ const FormMuscu: React.FC= ()=>{
     return (
         <div>
             <form onSubmit={handleAdd}>
-                <label > Nom de l'exercice
+                <label htmlFor="nom" > Nom de l'exercice
                     <input name="nom" type="text" value={valeur.nom} onChange={handleChange}/>
                 </label><br/>
-                <label > Nombre de séries
+                <label htmlFor="nbrSerie" > Nombre de séries
                     <input name="nbrSerie" type="number" value={valeur.nbrSerie} onChange={handleChange}/>
                 </label><br/>
-                <label > Nombre de répétitions
+                <label htmlFor="nbrRep" > Nombre de répétitions
                     <input name="nbrRep" type="number" value={valeur.nbrRep} onChange={handleChange}/>
                 </label><br/>
-                <label > Poids (en kg)
+                <label htmlFor="poids" > Poids (en kg)
                     <input name="poids" type="number" value={valeur.poids} onChange={handleChange}/>
                 </label><br/>
-                <label > Temps de repos 
+                <label htmlFor="restTime" > Temps de repos 
                     <input name="restTime" type="time" value={valeur.restTime} onChange={handleChange} step={60}/>
                 </label>
                 <button id="buttonSubmitEx" type="submit"  >Ajouter l'exercice</button>
