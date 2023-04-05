@@ -35,6 +35,16 @@ const FormEscalade: React.FC= ()=>{
         });
     };
     
+    const [details, setDetails] = useState(-1);
+
+    const showDetails = (index: number) => {
+        if (details === index) {
+            setDetails(-1);
+        } else {
+            setDetails(index);
+        }
+    };
+
     return (
         <div>
             <form onSubmit={handleSubmit}>
@@ -52,6 +62,22 @@ const FormEscalade: React.FC= ()=>{
                 </label>
                 <button id="buttonSubmitEx" type="submit">Ajouter l'exercice</button>
             </form>
+            <div>
+            <h4>Liste des exercices :</h4>
+                <ul>
+                    {exercices.map((exercice, index) => (
+                        <li key={index}>
+                            <button onClick={() => showDetails(index)}>{exercice.nom} +</button>
+                            {details === index && (
+                                <ul>
+                                    <li>Type: {exercice.type}</li>
+                                    <li>Nombre de prises : {exercice.nbrprise}</li>
+                                    <li>Difficulté : {exercice.difficulte}</li>
+                                </ul>
+                            )}
+                        </li>
+                    ))}
+                </ul></div>
         </div>
     )
 }

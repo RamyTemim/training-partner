@@ -19,6 +19,7 @@ const FormSeance: React.FC = () => {
   const [sport,setSport]=useState("musculation");
 
   const handleSportChange =(event: React.ChangeEvent<HTMLSelectElement>)=>{
+      event.preventDefault();
       setSport(event.target.value);
   }
   
@@ -60,11 +61,10 @@ const FormSeance: React.FC = () => {
   return (
     <>
       <form className="formSeance" onSubmit={handleSubmit}>
-      <label>Nom séance :
-        <input name="Nom" type="string" onChange={handleChange} value={values.name}></input></label>
-        <br/>
-        <label>Durée :
-        <input name="duree" type="time" onChange={handleChange} value={values.duree} step="60"></input></label><br/>
+        <label htmlFor="Nom" id="nomTitre" >Nom séance
+          <input id="inputNS" name="Nom" type="string" onChange={handleChange} value={values.name} placeholder="Séance A"></input></label><br/>
+        <label htmlFor="duree" id="duree">Durée
+          <input name="duree" type="time" onChange={handleChange} value={values.duree} step="60"></input></label><br/>
         <select  className="sportList" value={sport} onChange={handleSportChange}>
           <option value="musculation">Musculation</option>
           <option value="escalade">Escalade</option>
@@ -73,6 +73,7 @@ const FormSeance: React.FC = () => {
         <div>
           {getForm()}
         </div>
+
         <button id="buttonSubmitSeance" type="submit">Enregistrer</button>
         </form>
         

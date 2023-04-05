@@ -9,11 +9,9 @@ import SportsList from "./Sport/Sport";
 function PageActivite(){
     return (
         <div>
-           <Seance/>
-           <SportsList/>
 
            <FormSeance/>
-           <Calendrier/>
+  
         </div>
     )
 }

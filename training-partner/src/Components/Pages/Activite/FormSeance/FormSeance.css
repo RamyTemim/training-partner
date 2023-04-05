@@ -1,4 +1,8 @@
+div{
+    cursor: pointer;
+}
 .formSeance{
+    
     position: relative;
     text-align:left;
     font-family: 'Arial';
@@ -10,39 +14,52 @@
     background: #FFFFFF;
     border: 1px solid #FFFFFF;
     margin-left: 7%;
-    top: 430px;
-    height: 450px;
+    top: 90px;
+    height: auto;
     width: 90%;
 }
-.nomTitre{
-    position: absolute;
-    width: 60%;
-    height: 32px;
-    top: auto;
 
+label{
     font-family: 'Arial';
     font-style: normal;
-    font-weight: 700;
-    font-size: 40px;
+    font-weight: 600;
+    font-size: 30px;
     line-height: 48px;
     display: flex;
     align-items: center;
+    padding-left: 5px;
 
     color: #000000;
 }
-#name{
-position: absolute;
-width: 60%;
-height: 76px;
-top:20%;
+input{
+    position: absolute;
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    margin-left: 30%;
+    top:auto;
 
-font-family: 'Arial';
-font-style: normal;
-font-weight: 700;
-font-size: 40px;
+    border: 3px solid #0F9F49;
+    border-radius: 20px;
+}
+select{
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-radius: 40px ;
+    box-shadow: 0 0 10px #E8E8E8 inset;
+    padding: 10px;
+    position: relative;
+    color:black;
+    font-weight: bold;
+    font-family: "Arial";
+    font-size: 30px;
+    width: 30%;
+    top: auto;
+    height: auto;
+    margin-left: 2%;
+    text-align: center;
+    border: 1px solid white;
 
-border: 3px solid #0F9F49;
-border-radius: 20px;
 }
 
 #buttonSubmitSeance{
@@ -70,7 +87,6 @@ border-radius: 20px;
     width: auto;
     height: 40px;
     left: 4%;
-    top: 90%;
     border-radius: 20px;
     
     text-align: center;
