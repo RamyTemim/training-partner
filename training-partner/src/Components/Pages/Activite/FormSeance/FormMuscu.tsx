@@ -26,7 +26,7 @@ const FormMuscu: React.FC= ()=>{
       };
 
     
-    const handleAdd= (event: React.FormEvent<HTMLFormElement>)=>{
+    const handleSubmit= (event: React.FormEvent<HTMLFormElement>)=>{
         event.preventDefault();
         setExercices([...exercices, valeur]);
         setValeur({
@@ -49,7 +49,7 @@ const FormMuscu: React.FC= ()=>{
 
     return (
         <div>
-            <form onSubmit={handleAdd}>
+            <form onSubmit={handleSubmit}>
                 <label htmlFor="nom" > Nom de l'exercice
                     <input name="nom" type="text" value={valeur.nom} onChange={handleChange}/>
                 </label><br/>

@@ -10,7 +10,7 @@ import "./FormSeance.css";
 
 
 interface FormValues {
-  name: string;
+  nom: string;
   duree: string;
  
 }
@@ -41,7 +41,7 @@ const FormSeance: React.FC = () => {
     };
 
   const [values, setValues] = useState<FormValues>({
-    name: "",
+    nom: "",
     duree: "00:00",
 
   });
@@ -61,8 +61,8 @@ const FormSeance: React.FC = () => {
   return (
     <>
       <form className="formSeance" onSubmit={handleSubmit}>
-        <label htmlFor="Nom" id="nomTitre" >Nom séance
-          <input id="inputNS" name="Nom" type="string" onChange={handleChange} value={values.name} placeholder="Séance A"></input></label><br/>
+        <label htmlFor="nom" id="nomTitre" >Nom séance
+          <input id="inputNS" name="nom" type="string" onChange={handleChange} value={values.nom} placeholder="Séance A"></input></label><br/>
         <label htmlFor="duree" id="duree">Durée
           <input name="duree" type="time" onChange={handleChange} value={values.duree} step="60"></input></label><br/>
         <select  className="sportList" value={sport} onChange={handleSportChange}>

@@ -24,10 +24,10 @@ const FormEscalade: React.FC= ()=>{
         setValeur({ ...valeur, [name]: value });
       };
 
-      const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault(); // Empêche la soumission du formulaire
-        setExercices([...exercices, valeur]);// Ajoute l'exercice courant à la liste des exercices
-        setValeur({// Réinitialise les valeurs du formulaire
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        setExercices([...exercices, valeur]);
+        setValeur({
             nom:"",
             type : "",
             nbrprise:0,

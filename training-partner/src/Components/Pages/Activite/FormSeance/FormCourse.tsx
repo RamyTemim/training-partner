@@ -27,9 +27,9 @@ const FormCourse: React.FC= ()=>{
       };
       
       const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault(); // Empêche la soumission du formulaire
-        setExercices([...exercices, valeur]);// Ajoute l'exercice courant à la liste des exercices
-        setValeur({// Réinitialise les valeurs du formulaire
+        event.preventDefault();
+        setExercices([...exercices, valeur]);
+        setValeur({
             nom:"",
             distance : 0,
             vitesse:0,

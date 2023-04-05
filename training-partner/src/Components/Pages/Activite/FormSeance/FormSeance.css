@@ -10,7 +10,7 @@
     line-height: 48px;
     border-radius: 20px;
     background: #FFFFFF;
-    border: 1px solid #FFFFFF;
+    border: 10px solid #FFFFFF;
     margin-left: 7%;
     top: 90px;
     height: auto;
@@ -48,6 +48,7 @@ select{
     border-radius: 40px ;
     box-shadow: 0 0 10px #E8E8E8 inset;
     padding: 10px;
+    margin-bottom: 5px;
     position: relative;
     color:black;
     font-weight: bold;
