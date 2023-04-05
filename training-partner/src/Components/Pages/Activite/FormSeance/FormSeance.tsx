@@ -1,23 +1,45 @@
 import React, { useState } from "react";
+import FormCourse from "./FormCourse";
+import FormEscalade from "./FormEscalade";
+import FormMuscu from "./FormMuscu";
 import "./FormSeance.css";
-import Calendrier from "./Calendrier";
-
-
 
 interface FormValues {
-  name: string;
+  nom: string;
   duree: string;
-  distance: number;
-  heartRate: number;
+ 
 }
 
 const FormSeance: React.FC = () => {
+  const [sport,setSport]=useState("musculation");
+  const handleSportChange =(event: React.ChangeEvent<HTMLSelectElement>)=>{
+      event.preventDefault();
+      setSport(event.target.value);
+  }
+  
+  const getForm = () => {
+      switch (sport) {
+        case "musculation":{
+      
+          return <FormMuscu/>;
+      }
+        case "escalade":{
+         
+          return <FormEscalade/>;
+        }
+        case "course":{
+
+          return <FormCourse/>;
+        }
+      }
+    };
+
   const [values, setValues] = useState<FormValues>({
-    name: "",
+    nom: "",
     duree: "00:00",
-    distance: 0,
-    heartRate: 0,
+
   });
+
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -26,61 +48,37 @@ const FormSeance: React.FC = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(values);
+    if(values.duree=="00:00"|| values.nom==""){
+      alert("Veuillez remplir tous les champs obligatoires");
+    }else{
+      console.log(values);
+      setValues({
+        nom:"",
+        duree:"00:00",
+      });
+    }
   };
 
 
   return (
-    <>
+    <div>
       <form className="formSeance" onSubmit={handleSubmit}>
-        <label>
-          Nom:
-          <br />
-          <input
-            type="text"
-            name="nom"
-            value={values.name}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <label>
-          Durée (hh:mm):
-          <br />
-          <input
-            type="time"
-            name="duree"
-            value={values.duree}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <label>
-          Distance (en kilometres): <br />
-          <input
-            type="number"
-            name="distance"
-            value={values.distance}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <label>
-          Rythme Cardique moyen(en bpm): <br />
-          <input
-            type="number"
-            name="heartRate"
-            value={values.heartRate}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <button type="submit">Submit</button>
-      </form>
-      <div>
-        <Calendrier/>
-      </div>
-    </>
+      <span className="infoObl" id="needed">*</span><span className="infoObl" >champs obligatoires</span>
+        <label htmlFor="nom" id="nomTitre" >Nom séance<span id="needed">*</span>
+          <input id="inputNS" name="nom" type="string" onChange={handleChange} value={values.nom} placeholder="Nom de la séance"></input></label><br/>
+        <label htmlFor="duree" id="duree">Durée<span id="needed">*</span>
+          <input name="duree" type="time" onChange={handleChange} value={values.duree} step="60"></input></label><br/>
+        <select  className="sportList" value={sport} onChange={handleSportChange}>
+          <option value="musculation">Musculation</option>
+          <option value="escalade">Escalade</option>
+          <option value="course">Course à pieds</option>
+        </select>
+        <button id="buttonSubmitSeance" type="submit">Enregistrer Séance</button>
+        </form> 
+        <div>
+          {getForm()}
+        </div>
+    </div>
   );
 };
 
