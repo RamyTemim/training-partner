@@ -149,10 +149,20 @@ select{
     color: #000000;
 }
 
-ul {
-    list-style-type: none;
+ul.exercice{
+    list-style: none;
+    text-align:left;
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 550;
+    font-size: 25px;
+    line-height: 48px;
 }
-
+.fleche{
+    position: relative;
+    top: -4px;
+    left: 15px;
+}
 .trashButton{
     position:relative;
     left:-20px;
