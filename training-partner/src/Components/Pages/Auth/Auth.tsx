@@ -6,7 +6,7 @@ import PageLogin from './login';
 
 //Components
 
-function Auth() {    
+function Auth() {
     const [SignUp, setSignUp] = useState(true);
     const [Login, setLogin] = useState(false);
     const [ForgotPassword, setForgotPassword] = useState(false);
@@ -25,14 +25,10 @@ function Auth() {
     
     return(
     <div className='App'>
-
         <Head onPageChange ={onClick}/>
-
         {SignUp && <PageSignUp/>}
-        {Login && <PageLogin />}
+        {Login && <PageLogin/>}
         {ForgotPassword && null }
-
-
     </div>
  );
 }

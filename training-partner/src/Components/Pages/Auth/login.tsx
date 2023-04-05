@@ -1,18 +1,16 @@
 import react , { useState, useEffect } from 'react';
 import axios from 'axios';
-//import { useNavigate } from 'react-router-dom';
 import './auth.css';
-import Head from './head';
 
 interface Login {
     username : string;
     password : string;
 }
 
-const PageLogin : React.FC = () => {
+function PageLogin (props : any) {
     const [login ,setLogin] = useState<Login>({username : '', password : ''});
     const [error, setError] = useState<string>('');
-    //const navigate=useNavigate();
+    const [connected, setConnected] = useState(false);
 
     useEffect(() => {
         const message = {
@@ -46,7 +44,7 @@ const PageLogin : React.FC = () => {
             if (response.status >= 200 && response.status < 300){
                 const donnee = await response.data;
                 localStorage.setItem('token', donnee.token);
-                //navigate("/");
+                setConnected(true);
             }
         }
         catch (error){
