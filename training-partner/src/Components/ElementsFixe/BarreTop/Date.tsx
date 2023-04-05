@@ -1,4 +1,3 @@
-import { setDate } from "date-fns";
 import React, { useEffect, useState } from "react";
 
 function CurrentDate(){
@@ -15,7 +14,7 @@ function CurrentDate(){
 
         return (
             <div>
-                <p>{date} </p>
+                <p>{date}</p>
             </div>
         )
 }

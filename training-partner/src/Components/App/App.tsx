@@ -10,6 +10,8 @@ import Header from '../ElementsFixe/BarreTop/head';
 import TabBord from '../ElementsFixe/TableauDeBord/TabBord';
 import PageBattle from '../Pages/Battle/PageBattle';
 import PageActivite from '../Pages/Activite/Activite';
+import Auth from '../Pages/Auth/Auth';
+import Informations from '../ElementsFixe/BarreTop/MenuUser/Informations';
 import { getSystemErrorName } from 'util';
 
 function App() {    
@@ -61,14 +63,7 @@ function App() {
 
   return(
     <div className='App'>
-      <TabBord onPageChange ={clickcv}/>
-      <Header/>
-      {Accueil && null} 
-      {Activite && <PageActivite/>}
-      {Conseil && null}
-      {chartCreate && <ChartCreate/>}
-      {chartVisu && <ChartVisu/>}
-      {Battle && <PageBattle/>}
+      <Auth />
     </div>
   );
 }

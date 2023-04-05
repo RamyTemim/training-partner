@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./FormSeance.css";
-import Calendrier from "./Calendrier";
+
 
 
 
@@ -77,9 +77,6 @@ const FormSeance: React.FC = () => {
         <br />
         <button type="submit">Submit</button>
       </form>
-      <div>
-        <Calendrier/>
-      </div>
     </>
   );
 };
