@@ -52,6 +52,10 @@ const FormSeance: React.FC = () => {
       alert("Veuillez remplir tous les champs obligatoires");
     }else{
       console.log(values);
+      setValues({
+        nom:"",
+        duree:"00:00",
+      });
     }
   };
 
