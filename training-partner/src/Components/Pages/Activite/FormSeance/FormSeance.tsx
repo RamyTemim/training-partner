@@ -51,7 +51,7 @@ const FormSeance: React.FC = () => {
     if(values.duree=="00:00"|| values.nom==""){
       alert("Veuillez remplir tous les champs obligatoires");
     }else{
-      se
+      console.log(values);
     }
   };
 
