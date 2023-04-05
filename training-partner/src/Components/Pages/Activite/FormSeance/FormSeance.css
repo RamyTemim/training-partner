@@ -1,6 +1,38 @@
 
 .formSeance{
-    
+    position: relative;
+    text-align:left;
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 48px;
+    border-radius: 20px 20px 0px 0px;
+    background: #FFFFFF;
+    border: 10px solid #FFFFFF;
+    margin-left: 7%;
+    top: 90px;
+    height: auto;
+    width: 90%;
+}
+.formEX{
+    position: relative;
+    text-align:left;
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 48px;
+    border-radius: 0px 0px 20px 20px;
+    background: #FFFFFF;
+    border: 10px solid #FFFFFF;
+    margin-left: 7%;
+    top: 90px;
+    height: 530px;
+    width: 90%;
+}
+
+.ListEx{
     position: relative;
     text-align:left;
     font-family: 'Arial';
@@ -12,9 +44,10 @@
     background: #FFFFFF;
     border: 10px solid #FFFFFF;
     margin-left: 7%;
-    top: 90px;
+    top: 150px;
     height: auto;
     width: 90%;
+    margin-bottom: 200px;
 }
 
 label{
@@ -64,19 +97,20 @@ select{
 }
 
 #buttonSubmitSeance{
+    z-index: 10;
     cursor: pointer;
-    position: absolute;
-    width: 150px;
+    position: relative ;
+    width: auto;
     height: 40px;
     left: 87%;
-    top: 80%;
+    top:575px;
     border-radius: 20px;
     
     font-family: 'Arial';
     font-style: normal;
     font-weight: 700;
     font-size: 20px;
-    padding-left: 30px;
+    padding: auto;
 
     color: #000000;
     background: #0F9F49;
@@ -91,7 +125,8 @@ select{
     height: 40px;
     left: 4%;
     border-radius: 20px;
-    
+    top: 460px;
+
     text-align: center;
     font-family: 'Arial';
     font-style: normal;
@@ -102,4 +137,24 @@ select{
     color: #000000;
     background: #0F9F49;
     border: 10px solid #0F9F49;
+}
+#needed{
+    color:red;
+}
+.infoObl{
+    font-size: 15px;
+}
+#buttonExercice{
+    background-color: #FFFFFF;
+    color: #000000;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.trashButton{
+    position:relative;
+    left:-20px;
+    top:-10px;
 }

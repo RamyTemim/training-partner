@@ -4,11 +4,6 @@ import FormEscalade from "./FormEscalade";
 import FormMuscu from "./FormMuscu";
 import "./FormSeance.css";
 
-
-
-
-
-
 interface FormValues {
   nom: string;
   duree: string;
@@ -17,7 +12,6 @@ interface FormValues {
 
 const FormSeance: React.FC = () => {
   const [sport,setSport]=useState("musculation");
-
   const handleSportChange =(event: React.ChangeEvent<HTMLSelectElement>)=>{
       event.preventDefault();
       setSport(event.target.value);
@@ -54,33 +48,33 @@ const FormSeance: React.FC = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(values);
+    if(values.duree=="00:00"|| values.nom==""){
+      alert("Veuillez remplir tous les champs obligatoires");
+    }else{
+      se
+    }
   };
 
 
   return (
-    <>
+    <div>
       <form className="formSeance" onSubmit={handleSubmit}>
-        <label htmlFor="nom" id="nomTitre" >Nom séance
-          <input id="inputNS" name="nom" type="string" onChange={handleChange} value={values.nom} placeholder="Séance A"></input></label><br/>
-        <label htmlFor="duree" id="duree">Durée
+      <span className="infoObl" id="needed">*</span><span className="infoObl" >champs obligatoires</span>
+        <label htmlFor="nom" id="nomTitre" >Nom séance<span id="needed">*</span>
+          <input id="inputNS" name="nom" type="string" onChange={handleChange} value={values.nom} placeholder="Nom de la séance"></input></label><br/>
+        <label htmlFor="duree" id="duree">Durée<span id="needed">*</span>
           <input name="duree" type="time" onChange={handleChange} value={values.duree} step="60"></input></label><br/>
         <select  className="sportList" value={sport} onChange={handleSportChange}>
           <option value="musculation">Musculation</option>
           <option value="escalade">Escalade</option>
           <option value="course">Course à pieds</option>
         </select>
+        <button id="buttonSubmitSeance" type="submit">Enregistrer Séance</button>
+        </form> 
         <div>
           {getForm()}
         </div>
-
-        <button id="buttonSubmitSeance" type="submit">Enregistrer</button>
-        </form>
-        
-
-        
-     
-    </>
+    </div>
   );
 };
 
