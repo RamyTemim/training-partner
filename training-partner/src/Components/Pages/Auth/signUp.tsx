@@ -22,7 +22,7 @@ const PageSignUp : React.FC = () => {
         const { name, value } = event.target;
         setSignUp((signUp)=>({...signUp, [name] : value}))
     };
-    const handleSubmit = async (event : React.FormEvent<HTMLFormElement>) : Promise<void> => {
+    const handleSubmitSignUp = async (event : React.FormEvent<HTMLFormElement>) : Promise<void> => {
         event.preventDefault();
         try{
             const response = await axios.post ('http://localhost:3001/user/signUp', signUp)
@@ -35,7 +35,7 @@ const PageSignUp : React.FC = () => {
     return(
         <div>
             <div className='FormulaireAuth'>
-                <form onSubmit = {handleSubmit} >
+                <form onSubmit = {handleSubmitSignUp} >
                     <label htmlFor='username'>Username : </label>
                     <input type='text' id='username' name='username' value = {signUp.username} onChange={handleInputChange}/>
                     <label htmlFor='lastname'>Lastname : </label>

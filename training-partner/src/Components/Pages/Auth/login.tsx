@@ -1,5 +1,4 @@
 import react , { useState, useEffect } from 'react';
-import axios from 'axios';
 import './auth.css';
 
 interface Login {
@@ -32,17 +31,18 @@ function PageLogin (props : any) {
         const { name, value } = event.target;
         setLogin({...login, [name] : value})
     };
-    const handleSubmit = async (event : React.FormEvent<HTMLFormElement>) : Promise<void> => {
+    const handleSubmitLogin = async (event : React.FormEvent<HTMLFormElement>) : Promise<void> => {
         event.preventDefault();
         try{
-            const response = await axios.post ('http://localhost:3001/user/login', login, {
-                withCredentials : true,
+            const response = await fetch ('http://localhost:3001/user/login', {
+                method : 'POST',
+                credentials : 'include',
                 headers : { 
                     'Content-Type' : 'application/json',
                 },
             })
-            if (response.status >= 200 && response.status < 300){
-                const donnee = await response.data;
+            if (response.ok){
+                const donnee = await response.json();
                 localStorage.setItem('token', donnee.token);
                 setConnected(true);
             }
@@ -55,7 +55,7 @@ function PageLogin (props : any) {
     return (
         <div>
             <div className='FormulaireAuth'>
-                <form onSubmit = {handleSubmit} >
+                <form onSubmit = {handleSubmitLogin} >
                     <label htmlFor='username'>Username : </label>
                     <input type='text' id='username' name='username' value = {login.username} onChange={handleInputChange}/>
                     <label htmlFor='password'>Mot de passe : </label>
