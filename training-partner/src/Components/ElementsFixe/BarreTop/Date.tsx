@@ -15,9 +15,9 @@ function CurrentDate(){
     },[]);
 
         return (
-            <div>
-                <p>{date} </p>
-            </div>
+            <>
+            {date}
+            </>
         )
 }
 

@@ -1,0 +1,30 @@
+.FormulaireAuth{
+    border : 2px solid black;
+    padding: 2em;
+    width: 500px;
+    margin: 1rem auto;
+}
+
+.FormulaireAuth input{
+    width : 100%;
+}
+
+.FormulaireAuth label{
+    display: block;
+    text-align: center;
+}
+
+.navigation{
+    display : flex;
+    background-color: #1E1E1E;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1em;
+    color : white;
+}
+
+.navigation li {
+    list-style-type: none;
+}
+
+

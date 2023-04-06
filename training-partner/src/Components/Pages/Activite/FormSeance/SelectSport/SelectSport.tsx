@@ -3,11 +3,12 @@ import "./SelectSport.css";
 
 
 const SelectSport:React.FC=()=>{
-    const [sport,setSport]=useState("Musculation");
+    const [sport,setSport]=useState("musculation");
 
     const handleSportChange =(event: React.ChangeEvent<HTMLSelectElement>)=>{
         setSport(event.target.value);
     }
+    
 
     return (
         <select  className="sportList" value={sport} onChange={handleSportChange}>
@@ -19,3 +20,4 @@ const SelectSport:React.FC=()=>{
 }
 
 export default SelectSport;
+

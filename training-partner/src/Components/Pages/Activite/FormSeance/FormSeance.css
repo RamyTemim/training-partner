@@ -1,4 +1,37 @@
+
 .formSeance{
+    position: relative;
+    text-align:left;
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 48px;
+    border-radius: 20px 20px 0px 0px;
+    background: #FFFFFF;
+    border: 10px solid #FFFFFF;
+    margin-left: 7%;
+    top: 90px;
+    height: auto;
+    width: 90%;
+}
+.formEX{
+    position: relative;
+    text-align:left;
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 48px;
+    border-radius: 0px 0px 20px 20px;
+    background: #FFFFFF;
+    border: 10px solid #FFFFFF;
+    margin-left: 7%;
+    top: 90px;
+    height: 530px;
+    width: 90%;
+}
+.ListEx{
     position: relative;
     text-align:left;
     font-family: 'Arial';
@@ -8,9 +41,129 @@
     line-height: 48px;
     border-radius: 20px;
     background: #FFFFFF;
-    border: 1px solid #FFFFFF;
+    border: 10px solid #FFFFFF;
     margin-left: 7%;
-    top: 430px;
-    height: 450px;
+    top: 150px;
+    height: auto;
     width: 90%;
+    margin-bottom: 200px;
+}
+
+label{
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 48px;
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+
+    color: #000000;
+}
+input{
+    cursor: pointer;
+    position: absolute;
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    margin-left: 30%;
+    top:auto;
+
+    border: 3px solid #0F9F49;
+    border-radius: 20px;
+}
+select{
+    cursor: pointer;
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-radius: 40px ;
+    box-shadow: 0 0 10px #E8E8E8 inset;
+    padding: 10px;
+    margin-bottom: 5px;
+    position: relative;
+    color:black;
+    font-weight: bold;
+    font-family: "Arial";
+    font-size: 30px;
+    width: 30%;
+    top: auto;
+    height: auto;
+    margin-left: 2%;
+    text-align: center;
+    border: 1px solid white;
+
+}
+
+#buttonSubmitSeance{
+    z-index: 10;
+    cursor: pointer;
+    position: relative ;
+    width: auto;
+    height: 40px;
+    left: 87%;
+    top:575px;
+    border-radius: 20px;
+    
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    padding: auto;
+
+    color: #000000;
+    background: #0F9F49;
+ 
+    border: 10px solid #0F9F49;
+}
+
+#buttonSubmitEx{
+    cursor: pointer;
+    position: absolute;
+    width: auto;
+    height: 40px;
+    left: 4%;
+    border-radius: 20px;
+    top: 460px;
+
+    text-align: center;
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    padding: auto;
+
+    color: #000000;
+    background: #0F9F49;
+    border: 10px solid #0F9F49;
+}
+#needed{
+    color:red;
+}
+.infoObl{
+    font-size: 15px;
+}
+#buttonExercice{
+    background-color: #FFFFFF;
+    color: #000000;
+}
+
+ul.exercice{
+    list-style: none;
+    text-align:left;
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 550;
+    font-size: 25px;
+    line-height: 48px;
+}
+.fleche{
+    position: relative;
+    top: -4px;
+    left: 15px;
+}
+.trashButton{
+    position:relative;
+    left:-20px;
+    top:-10px;
 }
