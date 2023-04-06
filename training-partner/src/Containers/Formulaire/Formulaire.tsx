@@ -2,11 +2,6 @@ import React, { useState } from "react";
 import { Bar, PolarArea, Radar } from 'react-chartjs-2';
 import './Formulaire.css';
 import {Chart,RadialLinearScale,PointElement,LineElement,Filler,Tooltip,Legend,LinearScale,CategoryScale,BarElement,Title,ArcElement} from 'chart.js';
-
-
-
-
-
 interface FormData {
   name: string;
   score: number;
@@ -26,7 +21,7 @@ const Formulaire: React.FC = () => {
   const [formTitle,setformTitle]= useState<FormTitle>({title: ""});
   const [formDonnee, setformDonnee]= useState<FormData>({name: "",score : 0});
   const [formSport,setformSport]= useState<FormSport>({sport: ""});
-  
+  const [date,setDate] = useState('');
   const [chartDonnee, setchartDonnee] = useState({
     labels: [] as string[],
     datasets: [
@@ -114,6 +109,30 @@ const Formulaire: React.FC = () => {
           },
         ],
       })}
+      fetch('http://localhost:3000/date')
+        .then(response =>response.text())
+        .then((data) =>{
+            setDate(data);
+            console.log(date);
+        })
+      console.log(date)
+      const jsonData = JSON.stringify({
+        labels: chartDonnee.labels,
+        values: chartDonnee.datasets[0].data,
+        title: formTitle.title,
+        sport: formSport.sport,
+        graph: selectedType,
+        date: date
+      });
+
+      fetch('http://localhost:3000/chartCreate/saveGraph',{
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: jsonData
+      })
+      console.log("c'est passé")
       setformTitle({title:""});
 
   }

@@ -1,5 +1,6 @@
-import { setDate } from "date-fns";
 import React, { useEffect, useState } from "react";
+
+
 
 function CurrentDate(){
     const [date,setDate] = useState("");
