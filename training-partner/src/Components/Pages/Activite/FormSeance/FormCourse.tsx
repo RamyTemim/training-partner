@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface Course{
     nom:string;
@@ -10,7 +10,8 @@ interface Course{
 }
 
 
-const FormCourse: React.FC= ()=>{
+function FormCourse( props: any){
+    const[ind, setInd] = useState(0);
     const [valeur,setValeur]=useState<Course>({
         nom:"",
         distance : 0,
@@ -40,6 +41,21 @@ const FormCourse: React.FC= ()=>{
             chrono:"00:00",
         })};
     };
+
+    useEffect(() => {
+        if (exercices.length > ind){
+            let temp = JSON.stringify({
+                nom:exercices[ind].nom,
+                distance :exercices[ind].distance ,
+                vitesse: exercices[ind].vitesse ,
+                heartRate : exercices[ind].heartRate,
+                chrono : exercices[ind].chrono
+            })
+            console.log(temp);
+            props.onSendValue(temp);
+            setInd(ind + 1);}
+      }, [exercices]);
+
     const [details, setDetails] = useState(-1);
 
     const showDetails = (index: number) => {

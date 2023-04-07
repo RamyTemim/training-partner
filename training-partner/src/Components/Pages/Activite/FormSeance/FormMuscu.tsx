@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { stringify } from "querystring";
+import { useState, useEffect} from "react";
 
 interface Muscu{
     nom:string;
@@ -9,7 +10,8 @@ interface Muscu{
 }
 var triangle:any;
 
-const FormMuscu: React.FC= ()=>{
+function FormMuscu(props : any){
+    const[ind, setInd] = useState(0);
     const [valeur,setValeur]=useState<Muscu>({
         nom:"",
         nbrSerie : 0,
@@ -25,7 +27,6 @@ const FormMuscu: React.FC= ()=>{
         setValeur({ ...valeur, [name]: value });
     };
 
-    
     const handleSubmit= (event: React.FormEvent<HTMLFormElement>)=>{
         event.preventDefault();
         if (valeur.nbrRep==0 || valeur.nom=="" ||valeur.nbrSerie==0 ){
@@ -38,8 +39,25 @@ const FormMuscu: React.FC= ()=>{
             nbrRep:0,
             poids : 0,
             restTime:"00:00"
-        })};
+        })
     };
+    };
+    useEffect(() => {
+        if (exercices.length > ind){
+            let temp = JSON.stringify({
+                nom:exercices[ind].nom,
+                nbrSerie :exercices[ind].nbrSerie ,
+                nbrRep: exercices[ind].nbrRep ,
+                poids : exercices[ind].poids,
+                restTime:exercices[ind].restTime
+            })
+            console.log(temp);
+            props.onSendValue(temp);
+            setInd(ind + 1);}
+      }, [exercices]);
+
+
+
     const [details, setDetails] = useState(-1);
 
     const showDetails = (index: number) => {
@@ -72,7 +90,7 @@ const FormMuscu: React.FC= ()=>{
                 <label htmlFor="restTime" > Temps de repos 
                     <input name="restTime" type="time" value={valeur.restTime} onChange={handleChange} step={60}/>
                 </label>
-                <button id="buttonSubmitEx" type="submit"  >Ajouter l'exercice</button>
+                <button id="buttonSubmitEx" type="submit" >Ajouter l'exercice</button>
             </form>
             <div className="ListEx">
             <h4>Liste des exercices </h4>

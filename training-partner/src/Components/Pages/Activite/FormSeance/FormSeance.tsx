@@ -12,24 +12,30 @@ interface FormValues {
 
 const FormSeance: React.FC = () => {
   const [sport,setSport]=useState("musculation");
+  const [valueSeance, setValueseance] = useState<string[]>([])
   const handleSportChange =(event: React.ChangeEvent<HTMLSelectElement>)=>{
       event.preventDefault();
       setSport(event.target.value);
   }
-  
+  const getValue = (val : string)=>{
+    console.log( "dans get value" +val);
+    const updatedValueSeance = [...valueSeance, val];
+    setValueseance(updatedValueSeance);
+
+  }
   const getForm = () => {
       switch (sport) {
         case "musculation":{
       
-          return <FormMuscu/>;
+          return <FormMuscu onSendValue = {getValue}/>;
       }
         case "escalade":{
          
-          return <FormEscalade/>;
+          return <FormEscalade onSendValue = {getValue}/>;
         }
         case "course":{
 
-          return <FormCourse/>;
+          return <FormCourse onSendValue = {getValue}/>;
         }
       }
     };
@@ -51,12 +57,26 @@ const FormSeance: React.FC = () => {
     if(values.duree=="00:00"|| values.nom==""){
       alert("Veuillez remplir tous les champs obligatoires");
     }else{
-      console.log(values);
       setValues({
         nom:"",
         duree:"00:00",
       });
     }
+    const seanceArray = valueSeance.map(seance => JSON.parse(seance));
+    let result = JSON.stringify({
+      titre : values.nom,
+      duree : values.duree,
+      seance : seanceArray
+    })
+    //result = result.concat(valueSeance);
+    console.log(result);
+    fetch('http://localhost:3000/activite/creer',{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: result
+    })
   };
 
 

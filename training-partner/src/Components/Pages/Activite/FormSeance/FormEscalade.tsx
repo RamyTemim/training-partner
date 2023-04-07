@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect} from "react";
 
 interface Escalade{
     nom:string;
@@ -9,7 +9,8 @@ interface Escalade{
 }
 
 
-const FormEscalade: React.FC= ()=>{
+function FormEscalade( props: any){
+    const[ind, setInd] = useState(0);
     const [valeur,setValeur]=useState<Escalade>({
         nom:"",
         type : "",
@@ -38,6 +39,20 @@ const FormEscalade: React.FC= ()=>{
         })};
     };
     
+    useEffect(() => {
+        if (exercices.length > ind){
+            let temp = JSON.stringify({
+                nom:exercices[ind].nom,
+                type :exercices[ind].type ,
+                nbrprise: exercices[ind].nbrprise ,
+                difficulte : exercices[ind].difficulte,
+            })
+            console.log(temp);
+            props.onSendValue(temp);
+            setInd(ind + 1);}
+      }, [exercices]);
+
+
     const [details, setDetails] = useState(-1);
 
     const showDetails = (index: number) => {

@@ -1,5 +1,5 @@
 import react , { useState } from 'react';
-import axios from 'axios';
+//import axios from 'axios';
 import './auth.css';
 
 interface signUp {
@@ -23,7 +23,7 @@ const PageSignUp : React.FC = () => {
     const handleSubmit = async (event : React.FormEvent<HTMLFormElement>) : Promise<void> => {
         event.preventDefault();
         try{
-            const response = await axios.post ('http://localhost:3001/user/signUp', signUp)
+            //const response = await axios.post ('http://localhost:3001/user/signUp', signUp)
         }
         catch (error){
             console.error(error);

@@ -1,5 +1,4 @@
 import react , { useState, useEffect } from 'react';
-import axios from 'axios';
 import './auth.css';
 
 interface Login {
@@ -33,23 +32,7 @@ function PageLogin (props : any) {
         setLogin({...login, [name] : value})
     };
     const handleSubmit = async (event : React.FormEvent<HTMLFormElement>) : Promise<void> => {
-        event.preventDefault();
-        try{
-            const response = await axios.post ('http://localhost:3001/user/login', login, {
-                withCredentials : true,
-                headers : { 
-                    'Content-Type' : 'application/json',
-                },
-            })
-            if (response.status >= 200 && response.status < 300){
-                const donnee = await response.data;
-                localStorage.setItem('token', donnee.token);
-                setConnected(true);
-            }
-        }
-        catch (error){
-            console.error(error);
-        }
+       console.log("submit");
         
     };
     return (
