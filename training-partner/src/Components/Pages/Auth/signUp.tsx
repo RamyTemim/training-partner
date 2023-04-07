@@ -25,7 +25,7 @@ const PageSignUp : React.FC = () => {
     const handleSubmitSignUp = async (event : React.FormEvent<HTMLFormElement>) : Promise<void> => {
         event.preventDefault();
         try{
-            const response = await axios.post ('http://localhost:3001/user/signUp', signUp)
+            const response = await axios.post ('http://localhost:3001/signUp', signUp)
         }
         catch (error){
             console.error(error);

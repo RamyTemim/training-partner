@@ -4,18 +4,17 @@ import './App.css';
 
 //Components
 
-import ChartCreate from '../Pages/ChartCreate/ChartCreate';
-import ChartVisu from '../Pages/ChartVisu/ChartVisu';
-import Header from '../ElementsFixe/BarreTop/head';
-import TabBord from '../ElementsFixe/TableauDeBord/TabBord';
-import PageBattle from '../Pages/Battle/PageBattle';
-import PageActivite from '../Pages/Activite/Activite';
-import Auth from '../Pages/Auth/Auth';
-import Informations from '../ElementsFixe/BarreTop/MenuUser/Informations';
+import ChartCreate from '../ChartCreate/ChartCreate';
+import ChartVisu from '../ChartVisu/ChartVisu';
+import Header from '../../ElementsFixe/BarreTop/head';
+import TabBord from '../../ElementsFixe/TableauDeBord/TabBord';
+import PageBattle from '../Battle/PageBattle';
+import PageActivite from '../Activite/Activite';
+import PageAccueil from './PageAccueil';
 import { getSystemErrorName } from 'util';
 
-function App() {    
-  const [Accueil, setAccueil] = useState(false);
+function Accueil() {    
+  const [Accueil, setAccueil] = useState(true);
   const [Activite, setActivite] = useState(false);
   const [Conseil, setConseil] = useState(false);
   const [chartVisu, setChartVisu] = useState(false);
@@ -62,10 +61,17 @@ function App() {
   }
 
   return(
-    <div className='App'>
-      <Auth />
+    <div className='Acceuil'>
+      <TabBord onPageChange ={clickcv}/>
+      <Header/>
+      {Accueil && <PageAccueil/>} 
+      {Activite && <PageActivite/>}
+      {Conseil && null}
+      {chartCreate && <ChartCreate/>}
+      {chartVisu && <ChartVisu/>}
+      {Battle && <PageBattle/>}
     </div>
   );
 }
 
-export default App;
+export default Accueil;

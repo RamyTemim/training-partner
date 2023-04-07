@@ -16,15 +16,21 @@ function PageLogin (props : any) {
             username: "Gabriel",
             password : "root",
         };
-        fetch('http://localhost:3001/user/login', {
+        fetch('http://localhost:3001/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(message)
         })
-        .then(response => response.text())
+        .then(response => {
+            if (response.ok){
+                console.log("log in")
+                return response.text();
+            }
+            throw new Error("Network was not ok.")})
         .then(data => console.log(data))
+        .catch(error => console.error(error))
     }, []);
 
     const handleInputChange = (event : React.ChangeEvent<HTMLInputElement>) : void => {
@@ -34,22 +40,31 @@ function PageLogin (props : any) {
     const handleSubmitLogin = async (event : React.FormEvent<HTMLFormElement>) : Promise<void> => {
         event.preventDefault();
         try{
-            const response = await fetch ('http://localhost:3001/user/login', {
-                method : 'POST',
-                credentials : 'include',
-                headers : { 
-                    'Content-Type' : 'application/json',
+            const response = await fetch('http://localhost:3001/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
                 },
+                body: JSON.stringify({username : login.username ,password : login.password })
             })
             if (response.ok){
-                const donnee = await response.json();
-                localStorage.setItem('token', donnee.token);
-                setConnected(true);
+                const donnee = await response.text();
+                if(donnee){
+                    const donnees = JSON.parse(donnee);
+                    localStorage.setItem('token', donnees.token);
+                    console.log("le json marche?")
+                }
+                console.log("connecté")
+            }
+            else {
+                setError("invalid username or password.");
             }
         }
         catch (error){
             console.error(error);
+            setError("An error occur while trying to log in.")
         }
+        
         
     };
     return (
