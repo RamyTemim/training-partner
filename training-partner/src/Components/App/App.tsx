@@ -10,7 +10,7 @@ import Header from '../ElementsFixe/BarreTop/head';
 import TabBord from '../ElementsFixe/TableauDeBord/TabBord';
 import PageBattle from '../Pages/Battle/PageBattle';
 import PageActivite from '../Pages/Activite/Activite';
-import pageAccueil from '../Pages/Accueil/accueil';
+import PageAccueil from '../Pages/Accueil/accueil';
 import { getSystemErrorName } from 'util';
 
 function App() {    
@@ -48,7 +48,7 @@ function App() {
     <div className='App'>
       <TabBord onPageChange ={clickcv}/>
       <Header/>
-      {Accueil && <pageAccueil/>} 
+      {Accueil && <PageAccueil/>} 
       {Activite && <PageActivite/>}
       {Conseil && null}
       {chartCreate && <ChartCreate/>}
