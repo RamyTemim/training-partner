@@ -6,32 +6,10 @@ interface Login {
     password : string;
 }
 
-function PageLogin (props : any) {
+function PageLogin (props : {onLogin : () => void}) {
     const [login ,setLogin] = useState<Login>({username : '', password : ''});
     const [error, setError] = useState<string>('');
     const [connected, setConnected] = useState(false);
-
-    useEffect(() => {
-        const message = {
-            username: "Gabriel",
-            password : "root",
-        };
-        fetch('http://localhost:3001/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(message)
-        })
-        .then(response => {
-            if (response.ok){
-                console.log("log in")
-                return response.text();
-            }
-            throw new Error("Network was not ok.")})
-        .then(data => console.log(data))
-        .catch(error => console.error(error))
-    }, []);
 
     const handleInputChange = (event : React.ChangeEvent<HTMLInputElement>) : void => {
         const { name, value } = event.target;
@@ -52,8 +30,10 @@ function PageLogin (props : any) {
                 if(donnee){
                     const donnees = JSON.parse(donnee);
                     localStorage.setItem('token', donnees.token);
+                    //props.setIsConnected(true);
                     console.log("le json marche?")
                 }
+                props.onLogin();
                 console.log("connecté")
             }
             else {

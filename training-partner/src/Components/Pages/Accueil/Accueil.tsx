@@ -1,6 +1,5 @@
 //Library
 import React, {useState, useEffect} from 'react';
-import './App.css';
 
 //Components
 
@@ -61,7 +60,7 @@ function Accueil() {
   }
 
   return(
-    <div className='Acceuil'>
+    <div>
       <TabBord onPageChange ={clickcv}/>
       <Header/>
       {Accueil && <PageAccueil/>} 
