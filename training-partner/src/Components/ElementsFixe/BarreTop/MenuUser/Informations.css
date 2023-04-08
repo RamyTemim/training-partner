@@ -1,0 +1,15 @@
+.FormulaireInfos{
+    border : 2px solid black;
+    padding: 2em;
+    width: 500px;
+    margin: 10rem auto;
+}
+
+.FormulaireInfos input{
+    width : 100%;
+}
+
+.FormulaireInfos label{
+    display: block;
+    text-align: center;
+}
