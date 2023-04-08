@@ -3,13 +3,19 @@ import React, {useState, useEffect} from 'react';
 import Head from './head';
 import PageSignUp from './signUp';
 import PageLogin from './login';
+import Accueil from '../Accueil/Accueil';
 
 //Components
 
-function Auth() {
+type AuthProps ={
+    onLogin : () => void
+}
+
+function Auth(props : AuthProps) {
     const [SignUp, setSignUp] = useState(true);
     const [Login, setLogin] = useState(false);
     const [ForgotPassword, setForgotPassword] = useState(false);
+    const [isConnected, setIsConnected] = useState(false);
   
     const onClick = (page : number)=>{
         if (page === 0){
@@ -22,15 +28,24 @@ function Auth() {
             setForgotPassword(true);setSignUp(false);setLogin(false);
         }
     }
-    
+
+    useEffect(() =>{
+        if(isConnected){
+            setLogin(false);
+        }
+    },[isConnected])
+    //{isConnected && <Accueil />}
+
+   
     return(
-    <div className='App'>
-        <Head onPageChange ={onClick}/>
+    <div>
+        {!isConnected && <Head onPageChange ={onClick}/>}
         {SignUp && <PageSignUp/>}
-        {Login && <PageLogin/>}
+        {Login && <PageLogin onLogin = { () => setIsConnected(true) }/>}
         {ForgotPassword && null }
+        
     </div>
- );
+ )
 }
 
 export default Auth;

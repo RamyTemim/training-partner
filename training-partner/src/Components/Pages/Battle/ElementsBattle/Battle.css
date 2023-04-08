@@ -1,20 +1,20 @@
 .containerParagraphe{
-    position: absolute;
-    width: 1232px;
-    height: 102px;
-    left: 141px;
-    top: 111px;
-
+    position: relative;
+    width: 90%;
+    height: auto;
+    top: 90px;
+    margin-left : 4%;
     background: #FFFFFF;
     border: 10px solid #FFFFFF;
+    border-radius: 20px;
 }
 
 .paragraphe{
-    position: absolute;
+    position: relative;
     width: 1152px;
     height: 94px;
     left: 21px;
-    top: 4px;
+    padding-top: 2em;
 
     font-family: 'Arial';
     font-style: normal;
@@ -29,17 +29,18 @@
 
 .containerBar{
     position: relative;
-    width: 1232px;
-    height: 628px;
-    left: 141px;
-    top: 640px;
+    width: 90%;
+    height: auto;
+    margin-left: 4%;
+    top: 200px;
 
     background: #FFFFFF;
     border: 10px solid #FFFFFF;
+    border-radius: 20px;
 }
 
 .Bar{
-    position: absolute;
+    position: relative;
     width: 982px;
     height: 455px;
     left: 125px;

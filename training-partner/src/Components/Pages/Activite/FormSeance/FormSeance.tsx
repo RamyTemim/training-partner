@@ -4,6 +4,7 @@ import FormEscalade from "./FormEscalade";
 import FormMuscu from "./FormMuscu";
 import "./FormSeance.css";
 
+
 interface FormValues {
   nom: string;
   duree: string;
@@ -99,6 +100,7 @@ const FormSeance: React.FC = () => {
           {getForm()}
         </div>
     </div>
+
   );
 };
 
