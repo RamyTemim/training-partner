@@ -22,7 +22,7 @@ function App() {
 
   return(
     <div className='App'>
-      {!isConnected && <Auth onLogin={handleLogin} />}    
+      {!isConnected && <Auth onLogin={handleLogin} />}   
     </div>
   );
 }

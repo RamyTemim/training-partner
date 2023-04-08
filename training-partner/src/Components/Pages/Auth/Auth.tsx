@@ -43,7 +43,6 @@ function Auth(props : AuthProps) {
         {SignUp && <PageSignUp/>}
         {Login && <PageLogin onLogin = { () => setIsConnected(true) }/>}
         {ForgotPassword && null }
-        
     </div>
  )
 }

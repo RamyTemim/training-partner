@@ -6,11 +6,12 @@ import logo_user from './logo_user.png';
 import UserMenu from './MenuUser/UserMenu';
 
 function Header(){
-    const [showmenu, setshowmenu] = useState(false);
+    const [showMenu, setShowMenu] = useState(false);
 
     const affMenu = ()=>{
-        setshowmenu(!showmenu);
+        setShowMenu(!showMenu);
     }
+
     return (
         <header className='head'>
             <nav>
@@ -24,7 +25,8 @@ function Header(){
                 </div>
                 <div className='Pseudo'>
                     <button onClick={affMenu} id="buttonUser"><img title='photo profil' alt='photo profil' src={logo_user} id = "logo_user"/>Pseudo</button>
-                    {showmenu && <UserMenu/>}
+                    {showMenu && <UserMenu />}
+
                 </div>
             </nav>
         </header>
