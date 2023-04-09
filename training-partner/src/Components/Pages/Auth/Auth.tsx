@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react';
 import Head from './head';
 import PageSignUp from './signUp';
 import PageLogin from './login';
-import Accueil from '../Accueil/Accueil';
+
 
 //Components
 

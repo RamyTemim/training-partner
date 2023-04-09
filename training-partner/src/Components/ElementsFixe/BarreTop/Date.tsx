@@ -11,7 +11,6 @@ function CurrentDate(){
         .then((data) =>{
             setDate(data);
         })
-        console.log(date)
     },[]);
 
         return (

@@ -1,6 +1,6 @@
 //Library
 import React, {useState, useEffect} from 'react';
-import Accueil from '../Pages/Accueil/accueil';
+import Accueil from '../Pages/Accueil/Acceuil';
 import './App.css';
 
 //Components

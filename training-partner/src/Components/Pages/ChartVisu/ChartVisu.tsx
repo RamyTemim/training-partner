@@ -1,8 +1,5 @@
 import React, {useState} from 'react';
 import "./ChartVisu.css";
-import defilement from "./defilement.png"
-import TabBord from '../../ElementsFixe/TableauDeBord/TabBord';
-import Header from '../../ElementsFixe/BarreTop/head';
 import {Chart,RadialLinearScale,PointElement,LineElement,Filler,Tooltip,Legend,LinearScale,CategoryScale,BarElement,Title,ArcElement} from 'chart.js';
 import { Bar, PolarArea, Radar } from 'react-chartjs-2';
 
@@ -10,103 +7,63 @@ import { Bar, PolarArea, Radar } from 'react-chartjs-2';
 type GraphType = "spiderchart" | "bar" | "polar";
 
 function ChartVisu(){
+    const [lstGraph, setLstGraph] = useState<string[]>([""])
+    const changeLst = (lst : Array<string>)=>{
+        setLstGraph(lst);
+    }
+
     return (
         <div id="main">
-            <BoxSport/>
-            <BoxGraphique/>
+            <BoxSport onCall = {changeLst}/>
+            <BoxGraphique donnee = {lstGraph}/>
         </div>
     );
 
 }
 
-function BoxSport(){
-    const [showSportMenu, setSportMenu] = useState(false);
+function BoxSport(props : any){
+    const [save,setSave] = useState("")
 
-    const affMenu = ()=>{
-        setSportMenu(!showSportMenu);
+    const handleSelect = (event: React.ChangeEvent<HTMLSelectElement>)=>{
+    
+        const value = JSON.stringify({
+            sport : event.target.value
+        })
+        fetch("http://localhost:3001/chartVisu/getlstGraph",{
+            method: 'POST',
+            headers:{
+                'Content-Type': 'application/json',
+              },
+            body: value
+        })
+        .then(response => response.json())
+        .then((data) => {
+            let temp2 = Object.values(data);
+            console.log(temp2);
+            props.onCall(temp2);
+
+        });
     }
-    
-    
     return(
+        //Select le sport
     <div className='boxSport'>
-
-        <button onClick={affMenu}>Sport <img title='defilement' alt='defilement' src={defilement} id="defilsport"/></button>
-        {showSportMenu && <MenuSport/>}
+        <select className='selectSport' onChange={handleSelect}>
+            <option value="escalade">Escalade</option>
+            <option value="course">Course</option>
+            <option value="musculation">Musculation</option>
+        </select>
     </div>
     );
 }   
 
-function MenuSport(){
-    const[showEscalade,setShowEscalade] = useState(false);
-    const[showCourse, setShowCourse] = useState(false);
-    const[showMuscu, setShowMuscu] = useState(false);
-
-    const affEsca =()=>{
-        setShowEscalade(!showEscalade)
-        setShowCourse(false)
-        setShowMuscu(false)
-
-    }
-    const affCourse = ()=>{
-        setShowCourse(!showCourse)
-        setShowMuscu(false)
-        setShowEscalade(false)
-    }
-    const affMuscu =()=>{
-        setShowMuscu(!showMuscu)
-        setShowEscalade(false)
-        setShowCourse(false)
-    }
-    return (
-        <div className='menuSport'>
-            <button onClick={affEsca} id="menuSport1">Escalade</button>
-            {showEscalade && <SeanceEscalade/>}
-            <button onClick={affCourse}id="menuSport2">Course</button>
-            {showCourse && <SeanceCourse/>}
-            <button onClick={affMuscu} id="menuSport3">Musculation</button>
-            {showMuscu && <SeanceMuscu/>}
-        </div>
-    );
-    
-}
-function SeanceEscalade(){
-    return(
-        <div className='seanceEsca'>
-            <button id ="seanceEscaladeA">Seance A</button>
-            <button id ="seanceEscaladeB">Seance B</button>
-            <button id ="seanceEscaladeC">Seance C</button>
-        </div>
-    )
-}
-
-function SeanceCourse(){
-    return(
-        <div className='seanceCourse'>
-            <button id ="seanceCourseA">Seance D</button>
-            <button id ="seanceCourseB">Seance E</button>
-            <button id ="seanceCourseC">Seance F</button>
-        </div>
-    )
-}
-function SeanceMuscu(){
-    return(
-        <div className='seanceMuscu'>
-            <button id ="seanceMuscuA">Seance G</button>
-            <button id ="seanceMuscuB">Seance H</button>
-            <button id ="seanceMuscuC">Seance I</button>
-        </div>
-    )
-}
-
-
-function BoxGraphique(){
-    let dateSeance= "22/02/23"
+function BoxGraphique(donnee : any){
+    const [selectedOption, setSelectedOption] = useState("");
     const [selectedType, setSelectedType] = useState<GraphType>("spiderchart");
     const [chartDonnee, setchartDonnee] = useState({
         labels: [] as string[],
         datasets: [
           {
-            label:"Seance du " + dateSeance,
+            label:"Graphique du " ,
             data: [] as number[],
             backgroundColor: [
               'rgba(255, 99, 132, 0.5)',
@@ -132,8 +89,9 @@ function BoxGraphique(){
         }
     };
 
-    const handleTypeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        setSelectedType(event.target.value as GraphType);
+    const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        setSelectedOption(event.target.value);
+        console.log(donnee.donnee);
       };
     const getGraph = () => {
       switch (selectedType) {
@@ -157,10 +115,12 @@ function BoxGraphique(){
     return(
         <>
         <div className ="boxGraphique">
-        <select  id="typeList" value={selectedType} onChange={handleTypeChange}>
-          <option value="spiderchart">Spider Chart</option>
-          <option value="bar">Bar Chart</option>
-          <option value="polar">Polar Chart</option>
+        <select value={selectedOption} onChange={handleChange} id = "typeList">
+            {donnee.donnee.map((graph : any) =>(
+                    <option key ={graph}>
+                        {graph}
+                    </option>
+                ))}
         </select>
         </div>
         <div className="chartVisu">

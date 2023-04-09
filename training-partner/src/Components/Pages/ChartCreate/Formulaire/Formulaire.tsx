@@ -215,7 +215,7 @@ const Formulaire: React.FC = () => {
       </div>
       <div>
       <label id="choisirGraph" htmlFor="typeList">Choisir le graphique </label>
-        <select  className="typeList" value={selectedType} onChange={handleTypeChange}>
+        <select  title="selectType" className="typeList" value={selectedType} onChange={handleTypeChange}>
           <option value="spiderchart">Spider Chart</option>
           <option value="bar">Bar Chart</option>
           <option value="polar">Polar Chart</option>
