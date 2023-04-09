@@ -88,7 +88,7 @@ const FormSeance: React.FC = () => {
           <input id="inputNS" name="nom" type="string" onChange={handleChange} value={values.nom} placeholder="Nom de la séance"></input></label><br/>
         <label htmlFor="duree" id="duree">Durée<span id="needed">*</span>
           <input name="duree" type="time" onChange={handleChange} value={values.duree} step="60"></input></label><br/>
-        <select  className="sportList" value={sport} onChange={handleSportChange}>
+        <select  title="selectSport" className="sportList" value={sport} onChange={handleSportChange}>
           <option value="musculation">Musculation</option>
           <option value="escalade">Escalade</option>
           <option value="course">Course à pieds</option>

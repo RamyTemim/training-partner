@@ -1,10 +1,10 @@
 //Library
 import React, {useState, useEffect} from 'react';
+import Accueil from '../Pages/Accueil/Acceuil';
 import './App.css';
 
 //Components
 
-import Accueil from '../Pages/Accueil/Accueil';
 
 function App() {    
   const [isConnected,setIsConnected] = useState(true);
