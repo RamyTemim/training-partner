@@ -1,15 +1,4 @@
-.titreAjout{
-    position: relative;
-    color:#000000;
-    margin-left: 7%;
-    top: 90px;
-    text-decoration: underline;
-    
-    font-family: 'Arial';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 40px;
-}
+
 .formSeance{
     position: relative;
     text-align:left;

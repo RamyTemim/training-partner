@@ -82,7 +82,6 @@ const FormSeance: React.FC = () => {
 
   return (
     <div>
-      <p className="titreAjout">Ajout de séance </p>
       <form className="formSeance" onSubmit={handleSubmit}>
       <span className="infoObl" id="needed">*</span><span className="infoObl" >champs obligatoires</span>
         <label htmlFor="nom" id="nomTitre" >Nom séance<span id="needed">*</span>
