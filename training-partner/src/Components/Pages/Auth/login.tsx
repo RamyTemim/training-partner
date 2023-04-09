@@ -18,7 +18,7 @@ function PageLogin (props : {onLogin : () => void}) {
     const handleSubmitLogin = async (event : React.FormEvent<HTMLFormElement>) : Promise<void> => {
         event.preventDefault();
         try{
-            const response = await fetch('http://localhost:3001/login', {
+            const response = await fetch('http://localhost:3001/user/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
