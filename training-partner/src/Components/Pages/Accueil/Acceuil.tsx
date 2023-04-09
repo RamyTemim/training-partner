@@ -10,11 +10,7 @@ import TabBord from '../../ElementsFixe/TableauDeBord/TabBord';
 import PageBattle from '../Battle/PageBattle';
 import PageActivite from '../Activite/Activite';
 import PageAccueil from './PageAccueil';
-<<<<<<< HEAD:training-partner/src/Components/Pages/Accueil/accueil.tsx
-import { getSystemErrorName } from 'util';
-=======
 
->>>>>>> 851c4665cc5c4cab74c09aa5892dfbb031854876:training-partner/src/Components/Pages/Accueil/Acceuil.tsx
 
 function Accueil() {    
   const [Accueil, setAccueil] = useState(true);

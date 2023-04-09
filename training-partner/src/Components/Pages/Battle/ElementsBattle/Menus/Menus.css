@@ -2,7 +2,7 @@
     position: relative;
     width: 90%;
     height: auto;
-    margin-left: 4%;
+    margin-left: 7%;
     top: 150px;
     background: #FFFFFF;
     border: 10px solid #FFFFFF;
@@ -20,11 +20,13 @@ select{
 }
 
 #dropMenuSport{
-    left : -100px;
+    left : 30px;
+}
+#dropMenuSeanceX {
+    left : 210px;
 }
 
-
 #dropMenuSeanceY {
-    left : 100px;
+    left : 400px;
 }
 
