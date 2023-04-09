@@ -3,12 +3,9 @@ import "./ChartVisu.css";
 import {Chart,RadialLinearScale,PointElement,LineElement,Filler,Tooltip,Legend,LinearScale,CategoryScale,BarElement,Title,ArcElement} from 'chart.js';
 import { Bar, PolarArea, Radar } from 'react-chartjs-2';
 
-
-type GraphType = "spiderchart" | "bar" | "polar";
-
 function ChartVisu(){
-    const [lstGraph, setLstGraph] = useState<string[]>([""])
-    const changeLst = (lst : Array<string>)=>{
+    const [lstGraph, setLstGraph] = useState<any[]>([""])
+    const changeLst = (lst : Array<any>)=>{
         setLstGraph(lst);
     }
 
@@ -22,7 +19,7 @@ function ChartVisu(){
 }
 
 function BoxSport(props : any){
-    const [save,setSave] = useState("")
+    const [save,setSave] = useState("escalade")
 
     const handleSelect = (event: React.ChangeEvent<HTMLSelectElement>)=>{
     
@@ -39,7 +36,6 @@ function BoxSport(props : any){
         .then(response => response.json())
         .then((data) => {
             let temp2 = Object.values(data);
-            console.log(temp2);
             props.onCall(temp2);
 
         });
@@ -47,7 +43,8 @@ function BoxSport(props : any){
     return(
         //Select le sport
     <div className='boxSport'>
-        <select className='selectSport' onChange={handleSelect}>
+        <select className='selectSport' onChange={handleSelect} value={undefined}>
+            <option> Selectionnez un sport</option>
             <option value="escalade">Escalade</option>
             <option value="course">Course</option>
             <option value="musculation">Musculation</option>
@@ -63,12 +60,11 @@ function BoxGraphique(donnee : any){
         score : [],
         type : ""
     })
-    const [selectedType, setSelectedType] = useState<GraphType>("spiderchart");
     const [chartDonnee, setchartDonnee] = useState({
         labels: donneeGraph.attribut as string[],
         datasets: [
           {
-            label:"Graphique du " ,
+            label:"Graphique" ,
             data: donneeGraph.score as number[],
             backgroundColor: [
               'rgba(255, 99, 132, 0.5)',
@@ -95,11 +91,33 @@ function BoxGraphique(donnee : any){
     };
 
     const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        if (event.target.value == "base"){
+            
+        }
+        else{
+        let temp = JSON.parse(event.target.value)
         setSelectedOption(event.target.value);
-        setDonneeGraph({
-            ...donneeGraph, attribut: donnee.donnee[1], score: donnee.donnee[2], type : donnee.donnee[4]
-        })
-      };
+        setDonneeGraph({attribut: temp.labels, score: temp.values, type: temp.graph});
+        setchartDonnee({
+            labels: temp.labels,
+            datasets: [
+              {
+                label: "Graphique",
+                data: temp.values,
+                backgroundColor: [
+                  'rgba(255, 99, 132, 0.5)',
+                  'rgba(54, 162, 235, 0.5)',
+                  'rgba(255, 206, 86, 0.5)',
+                  'rgba(75, 192, 192, 0.5)',
+                  'rgba(153, 102, 255, 0.5)',
+                  'rgba(255, 159, 64, 0.5)',
+                ],
+                borderColor: 'DDDDDD',
+                borderWidth: 2,
+              },
+            ],
+          });}
+      }
     const getGraph = () => {
       switch (donneeGraph.type) {
         case "bar":{
@@ -123,9 +141,10 @@ function BoxGraphique(donnee : any){
         <>
         <div className ="boxGraphique">
         <select value={selectedOption} onChange={handleChange} id = "typeList">
+            <option value = "base">Choisir un Graph</option>
             {donnee.donnee.map((graph : any) =>(
-                    <option key ={graph} value={graph}>
-                        {graph}
+                    <option value={JSON.stringify(graph)}>
+                        {graph.title}
                     </option>
                 ))}
         </select>
