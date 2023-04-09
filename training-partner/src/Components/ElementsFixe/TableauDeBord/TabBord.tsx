@@ -2,10 +2,6 @@ import "./TabBord.css";
 import React, { useState } from 'react';
 import '../../../../src/logo.svg';
 
-import ChartCreate from "../../Pages/ChartCreate/ChartCreate";
-import { isNumber } from "util";
-
-
 function TabBord(props: any) {
     const [isCLicked, setIsClicked] = useState(false);
     const handleClick = () => {

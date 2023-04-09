@@ -9,6 +9,7 @@ import Header from '../../ElementsFixe/BarreTop/head';
 import TabBord from '../../ElementsFixe/TableauDeBord/TabBord';
 import PageBattle from '../Battle/PageBattle';
 import PageActivite from '../Activite/Activite';
+import PageAccueil from './PageAccueil';
 import { getSystemErrorName } from 'util';
 
 function Accueil() {    
@@ -45,7 +46,7 @@ function Accueil() {
     <div>
       <TabBord onPageChange ={clickcv}/>
       <Header/>
-      {Accueil && null} 
+      {Accueil && <PageAccueil/>} 
       {Activite && <PageActivite/>}
       {Conseil && null}
       {chartCreate && <ChartCreate/>}
