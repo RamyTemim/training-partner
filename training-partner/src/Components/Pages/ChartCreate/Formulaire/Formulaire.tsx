@@ -87,7 +87,7 @@ const Formulaire: React.FC = () => {
 
   const handleSave=(event: React.FormEvent<HTMLFormElement> ) => {
     event.preventDefault();
-    if (formTitle.title != ""){
+    if (formTitle.title !== ""){
       setchartDonnee({
         labels: [...chartDonnee.labels],
         datasets: [

@@ -55,7 +55,7 @@ const FormSeance: React.FC = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if(values.duree=="00:00"|| values.nom==""){
+    if(values.duree==="00:00"|| values.nom===""){
       alert("Veuillez remplir tous les champs obligatoires");
     }else{
       setValues({

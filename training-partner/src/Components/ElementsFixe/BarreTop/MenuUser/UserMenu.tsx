@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './UserMenu.css'
 import mail from './mail.png';
 import deconnexion from './deconnexion.png';

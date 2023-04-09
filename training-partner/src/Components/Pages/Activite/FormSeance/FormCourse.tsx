@@ -29,7 +29,7 @@ function FormCourse( props: any){
       
       const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        if(valeur.chrono=="00:00" || valeur.distance==0||valeur.nom==""){
+        if(valeur.chrono === "00:00" || valeur.distance === 0 || valeur.nom === "" ){
             alert("Veuillez remplir tous les champs obligatoires")
         }else{
         setExercices([...exercices, valeur]);

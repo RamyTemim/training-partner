@@ -1,5 +1,5 @@
-import react , { useState } from 'react';
-import './auth.css';
+import { useState } from 'react';
+import './Auth.css';
 
 interface signUp {
     username : string;
