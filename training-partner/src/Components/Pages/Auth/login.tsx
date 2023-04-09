@@ -2,12 +2,12 @@ import  { useState } from 'react';
 import './Auth.css';
 
 interface Login {
-    username : string;
-    password : string;
+    pseudo : string;
+    motdepasse : string;
 }
 
 function PageLogin (props : {onLogin : () => void}) {
-    const [login ,setLogin] = useState<Login>({username : '', password : ''});
+    const [login ,setLogin] = useState<Login>({pseudo : '', motdepasse : ''});
     const [error, setError] = useState<string>('');
 
     const handleInputChange = (event : React.ChangeEvent<HTMLInputElement>) : void => {
@@ -23,7 +23,7 @@ function PageLogin (props : {onLogin : () => void}) {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({username : login.username ,password : login.password })
+                body: JSON.stringify({pseudo : login.pseudo ,motdepasse : login.motdepasse })
             })
             if (response.ok){
                 const donnee = await response.text();
@@ -49,10 +49,10 @@ function PageLogin (props : {onLogin : () => void}) {
         <div>
             <div className='FormulaireAuth'>
                 <form onSubmit = {handleSubmitLogin} >
-                    <label htmlFor='username'>Username : </label>
-                    <input type='text' id='username' name='username' value = {login.username} onChange={handleInputChange}/>
-                    <label htmlFor='password'>Mot de passe : </label>
-                    <input type='password' id='password' name='password' value = {login.password} onChange={handleInputChange}/>
+                    <label htmlFor='pseudo'>Username : </label>
+                    <input type='text' id='pseudo' name='pseudo' value = {login.pseudo} onChange={handleInputChange}/>
+                    <label htmlFor='motdepasse'>Mot de passe : </label>
+                    <input type='password' id='motdepasse' name='motdepasse' value = {login.motdepasse} onChange={handleInputChange}/>
                     {error && <div>{error}</div>}
                     <button type='submit'>Login</button>
                 </form>

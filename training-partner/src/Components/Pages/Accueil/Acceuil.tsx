@@ -10,10 +10,7 @@ import TabBord from '../../ElementsFixe/TableauDeBord/TabBord';
 import PageBattle from '../Battle/PageBattle';
 import PageActivite from '../Activite/Activite';
 import PageAccueil from './PageAccueil';
-<<<<<<< HEAD
-=======
 
->>>>>>> 54938e24f321ab1c3133fca49056e1dbbbfedff8
 
 function Accueil() {    
   const [Accueil, setAccueil] = useState(true);
