@@ -42,8 +42,8 @@ function BoxSport(props : any){
     }
     return(
         //Select le sport
-    <div className='boxSport'>
-        <select className='selectSport' onChange={handleSelect} value={undefined}>
+    <div>
+        <select className='SportVisu' onChange={handleSelect} value={undefined}>
             <option> Selectionnez un sport</option>
             <option value="escalade">Escalade</option>
             <option value="course">Course</option>
@@ -139,8 +139,8 @@ function BoxGraphique(donnee : any){
     
     return(
         <>
-        <div className ="boxGraphique">
-        <select value={selectedOption} onChange={handleChange} id = "typeList">
+        <div>
+        <select value={selectedOption} onChange={handleChange} className = "ListGraph">
             <option value = "base">Choisir un Graph</option>
             {donnee.donnee.map((graph : any) =>(
                     <option value={JSON.stringify(graph)}>

@@ -1,72 +1,44 @@
-#main{ /* Div contenant la page */
-    margin-top: 20%;
-    margin-left: 0%;
-    width: 100%;
-    height: 100%;
-    display: inline-block;
-    z-index: 0;
-}
 
-.boxGraphique{ /* Div contenant le select de graph */
- 
-    position: absolute;
-    width: 44%;
-    height: 6%;
-    left: 52.7%;
-    top: 96px;
-    border-radius: 10px;
-    background: #FFFFFF;
-    border: 10px solid #FFFFFF;
-}
-
-#typeList{ /* Select de graph */
-    top :0px;
-    left:-20px;
-    width: 90%;
-    height: 100%;
-    border: none;
-    background-color:white; ;
-    background-color: #FFFFFF;
+.SportVisu{ /* select du sport*/
+    position:relative;
+    top:90px;
+    width: 42%;
+    height: 60px;
+    cursor: pointer;
+    background: none repeat scroll 0 0 #FFFFFF;
+    color:black;
     font-weight: bold;
     font-family: "Arial";
     font-size: 30px;
-    margin-left: 4%;
-    text-align: right;
+    margin-left: 7%;
+    text-align: center;
+    border: 1px solid white;
 }
 
-.boxSport{  /* Div contenant le select de sport*/
-    
-    position: absolute;
-    width: 44%;
-    height: 6%;
-    left: 6.7%;
-    top: 96px;
-    border-radius: 10px;
-    background: #FFFFFF;
-    border: 10px solid #FFFFFF;
-}
-
-.selectSport{ /* select du sport*/
-    top :0px;
-    left:-20px;
-    width: 90%;
-    height: 100%;
-    border: none;
-    background-color:white; ;
-    background-color: #FFFFFF;
+.ListGraph{ /* Select de graph */
+    position: relative;
+    width: 42%;
+    top:29px;
+    height: 60px;
+    cursor: pointer;
+    background: none repeat scroll 0 0 #FFFFFF;
+    color:black;
     font-weight: bold;
     font-family: "Arial";
     font-size: 30px;
-    margin-left: 4%;
-    text-align: right;
+    margin-left: 55%;
+    text-align: center;
+    border: 1px solid white;
 }
+
 
 .chartVisu{
-    background: white;
     position: relative;
-    border-radius: 10px;
-    top : 0%;
-    height: 100%;
-    width: 91%;
-    left: 6.7%;
+    background: white;
+    border-radius: 20px;
+    top:90px;
+    margin-bottom: 5%;
+    height:900px;
+    width: 90%;
+    margin-left: 7%;
 }
