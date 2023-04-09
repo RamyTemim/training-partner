@@ -11,16 +11,13 @@ interface FormTitle {
   title:string;
 }
 
-interface FormSport {
-  sport:string;
-}
+
 type GraphType = "spiderchart" | "bar" | "polar";
 
 const Formulaire: React.FC = () => {
-
+  const [sport,setSport]=useState("musculation");
   const [formTitle,setformTitle]= useState<FormTitle>({title: ""});
   const [formDonnee, setformDonnee]= useState<FormData>({name: "",score : 0});
-  const [formSport,setformSport]= useState<FormSport>({sport: ""});
   const [date,setDate] = useState('');
   const [chartDonnee, setchartDonnee] = useState({
     labels: [] as string[],
@@ -69,14 +66,6 @@ const Formulaire: React.FC = () => {
     })
   };
 
-  const handleSportChange=(event: React.ChangeEvent<HTMLInputElement>) => {
-    event.preventDefault();
-    setformSport({
-      ...formSport,
-      sport:event.target.value
-    })
-  };
-
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if(formDonnee.name===""){
@@ -120,7 +109,7 @@ const Formulaire: React.FC = () => {
         labels: chartDonnee.labels,
         values: chartDonnee.datasets[0].data,
         title: formTitle.title,
-        sport: formSport.sport,
+        sport: sport,
         graph: selectedType,
         date: date
       });
@@ -177,7 +166,10 @@ const Formulaire: React.FC = () => {
         }
       }
     };
-  
+    const handleSportChange =(event: React.ChangeEvent<HTMLSelectElement>)=>{
+      event.preventDefault();
+      setSport(event.target.value);
+    }
     return (
 
     <>
@@ -214,7 +206,6 @@ const Formulaire: React.FC = () => {
           </table>
       </div>
       <div>
-      <label id="choisirGraph" htmlFor="typeList">Choisir le graphique </label>
         <select  title="selectType" className="typeList" value={selectedType} onChange={handleTypeChange}>
           <option value="spiderchart">Spider Chart</option>
           <option value="bar">Bar Chart</option>
@@ -230,8 +221,12 @@ const Formulaire: React.FC = () => {
         <div>
           <label htmlFor="title"><p className="titre">Titre :</p></label>
           <input type="text" id="title" name="title" placeholder="Entrer un titre" value={formTitle.title} onChange={handleTitleChange} />
-          <label htmlFor="sport"><p className="Sport">Sport :</p></label>
-          <input type="text" id="sport" name="sport" placeholder="Escalade" value={formSport.sport} onChange={handleSportChange} ></input>
+          <label htmlFor="selecSport" className="Sport">Sport :</label>
+          <select  title="selectSport" className="sportList" value={sport} onChange={handleSportChange}>
+            <option value="musculation">Musculation</option>
+            <option value="escalade">Escalade</option>
+            <option value="course">Course à pieds</option>
+          </select>
           <button className="submitForm2" type="submit">Sauvegarder</button>
         </div>
       </form>
