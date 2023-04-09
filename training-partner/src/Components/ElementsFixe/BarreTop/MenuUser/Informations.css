@@ -3,6 +3,7 @@
     padding: 2em;
     width: 500px;
     margin: 10rem auto;
+    z-index: 12;
 }
 
 .FormulaireInfos input{

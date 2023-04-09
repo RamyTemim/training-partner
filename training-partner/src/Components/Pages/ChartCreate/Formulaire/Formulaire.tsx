@@ -109,7 +109,7 @@ const Formulaire: React.FC = () => {
           },
         ],
       })}
-      fetch('http://localhost:3000/date')
+      fetch('http://localhost:3001/date')
         .then(response =>response.text())
         .then((data) =>{
             setDate(data);
@@ -117,15 +117,15 @@ const Formulaire: React.FC = () => {
         })
       console.log(date)
       const jsonData = JSON.stringify({
+        title: formTitle.title,
         labels: chartDonnee.labels,
         values: chartDonnee.datasets[0].data,
-        title: formTitle.title,
         sport: formSport.sport,
         graph: selectedType,
         date: date
       });
 
-      fetch('http://localhost:3000/chartCreate/saveGraph',{
+      fetch('http://localhost:3001/chartCreate/saveGraph',{
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

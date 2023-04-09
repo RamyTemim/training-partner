@@ -58,13 +58,18 @@ function BoxSport(props : any){
 
 function BoxGraphique(donnee : any){
     const [selectedOption, setSelectedOption] = useState("");
+    const [donneeGraph, setDonneeGraph] = useState({
+        attribut : [""],
+        score : [],
+        type : ""
+    })
     const [selectedType, setSelectedType] = useState<GraphType>("spiderchart");
     const [chartDonnee, setchartDonnee] = useState({
-        labels: [] as string[],
+        labels: donneeGraph.attribut as string[],
         datasets: [
           {
             label:"Graphique du " ,
-            data: [] as number[],
+            data: donneeGraph.score as number[],
             backgroundColor: [
               'rgba(255, 99, 132, 0.5)',
               'rgba(54, 162, 235, 0.5)',
@@ -91,10 +96,12 @@ function BoxGraphique(donnee : any){
 
     const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setSelectedOption(event.target.value);
-        console.log(donnee.donnee);
+        setDonneeGraph({
+            ...donneeGraph, attribut: donnee.donnee[1], score: donnee.donnee[2], type : donnee.donnee[4]
+        })
       };
     const getGraph = () => {
-      switch (selectedType) {
+      switch (donneeGraph.type) {
         case "bar":{
           Chart.register(CategoryScale,Filler,LinearScale,BarElement,Title,Tooltip,Legend,);
       
@@ -117,7 +124,7 @@ function BoxGraphique(donnee : any){
         <div className ="boxGraphique">
         <select value={selectedOption} onChange={handleChange} id = "typeList">
             {donnee.donnee.map((graph : any) =>(
-                    <option key ={graph}>
+                    <option key ={graph} value={graph}>
                         {graph}
                     </option>
                 ))}
