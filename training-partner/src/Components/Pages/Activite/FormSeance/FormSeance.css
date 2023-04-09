@@ -158,7 +158,10 @@ input{
     background-color: #FFFFFF;
     color: #000000;
 }
-
+h4{
+    text-align: center;
+    text-decoration: underline;
+}
 ul.exercice{
     list-style: none;
     text-align:left;
