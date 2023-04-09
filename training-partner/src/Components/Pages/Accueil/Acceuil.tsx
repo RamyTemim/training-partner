@@ -10,7 +10,7 @@ import TabBord from '../../ElementsFixe/TableauDeBord/TabBord';
 import PageBattle from '../Battle/PageBattle';
 import PageActivite from '../Activite/Activite';
 import PageAccueil from './PageAccueil';
-import { getSystemErrorName } from 'util';
+
 
 function Accueil() {    
   const [Accueil, setAccueil] = useState(true);
