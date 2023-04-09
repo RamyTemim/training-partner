@@ -10,9 +10,7 @@ function UserMenu(){
   const info = ()=>{
     console.log("info")
     return(
-      <div>
         <Informations/>
-      </div>
     )
   }
 

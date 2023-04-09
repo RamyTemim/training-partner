@@ -91,7 +91,7 @@ function BoxGraphique(donnee : any){
     };
 
     const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        if (event.target.value == "base"){
+        if (event.target.value === "base"){
             
         }
         else{

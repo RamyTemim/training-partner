@@ -12,7 +12,6 @@ interface Info {
 
 function Informations(){
     const [info ,setInfo] = useState<Info>({ username : '', lastname : '', firstname : '', email : '', password : ''});
-
     const handleInputChange = (event : React.ChangeEvent<HTMLInputElement>) : void => {
         const { name, value } = event.target;
         setInfo((info)=>({...info, [name] : value}))
