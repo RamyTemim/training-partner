@@ -1,0 +1,36 @@
+.btt_showForm{
+    position: relative;
+    background-color: #FFFFFF;
+    color: #000000;
+    margin-left: 50%;
+    top: 90px;
+    width:40%;
+    height: auto;
+    border-radius: 20px;
+    
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    color: #000000;
+    background: #0F9F49;
+    border: 30px solid #0F9F49;
+}
+
+.btt_showSeance{
+    position: relative;
+    background-color: #FFFFFF;
+    color: #000000;
+    margin-left: 7%;
+    top: 10px;
+    width:40%;
+    height: auto;
+    border-radius: 20px;
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    color: #000000;
+    background: #0F9F49;
+    border: 30px solid #0F9F49;
+}

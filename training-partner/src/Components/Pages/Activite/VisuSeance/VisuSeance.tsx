@@ -13,7 +13,6 @@ const VisuSeance : React.FC =()=>{
 
     return (
         <div>
-            <p className="titreVisu">Visualisation de Seance</p>
             <select  title="selectSport" className="selectSportVisu" value={sport} onChange={handleSportChange}>
                 <option value="musculation">Musculation</option>
                 <option value="escalade">Escalade</option>
