@@ -1,4 +1,15 @@
-
+.titreAjout{
+    position: relative;
+    color:#000000;
+    margin-left: 7%;
+    top: 90px;
+    text-decoration: underline;
+    
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 40px;
+}
 .formSeance{
     position: relative;
     text-align:left;
@@ -74,7 +85,7 @@ input{
     border: 3px solid #0F9F49;
     border-radius: 20px;
 }
-select{
+.selectSport{
     cursor: pointer;
     background: none repeat scroll 0 0 #FFFFFF;
     border-radius: 40px ;

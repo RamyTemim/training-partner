@@ -167,6 +167,7 @@ table {
 .typeList{
     position: relative;
     background-color: #FFFFFF;
+    color: #000000;
     font-weight: bold;
     font-family: "Arial";
     font-size: 40px;
