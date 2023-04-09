@@ -6,7 +6,7 @@ import './App.css';
 //Components
 
 
-function App() {    
+function App() { 
   const [isConnected,setIsConnected] = useState(true);
 
 
