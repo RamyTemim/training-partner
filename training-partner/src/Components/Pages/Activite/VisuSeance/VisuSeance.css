@@ -1,0 +1,30 @@
+.selectSportVisu{
+    cursor: pointer;
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-radius: 20px ;
+    padding: 10px;
+    margin-left:7%;
+    position: relative;
+    color:black;
+    font-weight: bold;
+    font-family: "Arial";
+    font-size: 40px;
+    width: 91%;
+    top: auto;
+    height: auto;
+    text-align: center;
+    border: 10px solid white;  
+}
+
+.titreVisu{
+    position: relative;
+    color:#000000;
+    margin-left: 7%;
+    top: 0px;
+    text-decoration: underline;
+    
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 40px;
+}

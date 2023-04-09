@@ -11,13 +11,13 @@ function TabBord(props: any) {
     const handleClick = () => {
         setIsClicked(!isCLicked);
     }
-    const pACC = ()=> {Chartvisu(0)}
-    const pACT = ()=> {Chartvisu(1)}
-    const pCON = ()=> {Chartvisu(2)}
-    const pVIS =()=> {Chartvisu(3)}
-    const pCRE =()=> {Chartvisu(4)}
-    const pBAT = ()=> {Chartvisu(5)}
-    const Chartvisu =(nbr : number) => {props.onPageChange(nbr)}
+    const pACC = ()=> {Pagevisu(0)}
+    const pACT = ()=> {Pagevisu(1)}
+    const pCON = ()=> {Pagevisu(2)}
+    const pVIS =()=> {Pagevisu(3)}
+    const pCRE =()=> {Pagevisu(4)}
+    const pBAT = ()=> {Pagevisu(5)}
+    const Pagevisu =(nbr : number) => {props.onPageChange(nbr)}
 
     return (
   
