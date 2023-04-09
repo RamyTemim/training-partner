@@ -62,23 +62,22 @@ const FormSeance: React.FC = () => {
         nom:"",
         duree:"00:00",
       });
-    }
+    
     const seanceArray = valueSeance.map(seance => JSON.parse(seance));
     let result = JSON.stringify({
       titre : values.nom,
       duree : values.duree,
       seance : seanceArray
     })
-    //result = result.concat(valueSeance);
-    console.log(result);
-    fetch('http://localhost:3000/activite/creer',{
+    fetch('http://localhost:3001/activite/creer',{
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: result
     })
-  };
+    //setValueseance<string[]>([]); IL FAUT REMETTRE VALUESEANCE A 0
+  }};
 
 
   return (

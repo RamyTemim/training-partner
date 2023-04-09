@@ -1,4 +1,4 @@
-#main{
+#main{ /* Div contenant la page */
     margin-top: 20%;
     margin-left: 0%;
     width: 100%;
@@ -7,22 +7,22 @@
     z-index: 0;
 }
 
-.boxGraphique{
+.boxGraphique{ /* Div contenant le select de graph */
  
     position: absolute;
-    width: 632px;
-    height: 52px;
-    left: 758px;
+    width: 44%;
+    height: 6%;
+    left: 52.7%;
     top: 96px;
     border-radius: 10px;
     background: #FFFFFF;
     border: 10px solid #FFFFFF;
 }
 
-#typeList{
+#typeList{ /* Select de graph */
     top :0px;
     left:-20px;
-    width: 100%;
+    width: 90%;
     height: 100%;
     border: none;
     background-color:white; ;
@@ -34,246 +34,38 @@
     text-align: right;
 }
 
-#defilgraph{
-
-    position: absolute;
-    width: 25px;
-    height: 25px;
-    left: 580px;
-    top: 15px;
-}
-
-.boxGraphique button {
-    display: inline-block;
-    background: #FFFFFF;
-    position: absolute;
-    width: 632px;
-    height: 60px;
-    left:0px;
-    padding:10px;
-    color:black;
-}
-
-.txtbutton{
-    left: 50px;
-
-}
-
-
-.boxSport{
+.boxSport{  /* Div contenant le select de sport*/
     
     position: absolute;
-    width: 628px;
-    height: 52px;
-    left: 97px;
+    width: 44%;
+    height: 6%;
+    left: 6.7%;
     top: 96px;
     border-radius: 10px;
     background: #FFFFFF;
     border: 10px solid #FFFFFF;
 }
 
-.boxSport button {
-    display: inline-block;
-    background: #FFFFFF;
-    position: absolute;
-    width: 632px;
-    height: 60px;
-    left:0px;
-    padding:10px;
-    color:black;
-}
-
-#defilsport{
-    position: absolute;
-    width: 25px;
-    height: 25px;
-    left: 580px;
-    top: 15px;
-}
-
-.menuSport{
-    position: absolute;
-    width: 623px;
-    height: 167px;
-    left: Opx;
-    top: 65px;
-    background: #DDDDDD;
-    border: 1px solid #111111;
-    border-radius: 10px;
-    padding: 5px;
-}
-
-#menuSport1{
-    position: absolute;
-    width: 619px;
-    height: 50px;
-    left: 4px;
-    top: 5px;
-    background-color: #DDDDDD;
-    border-radius: 5px;
-}
-#menuSport1:hover{
-    background: rgb(0,0,0,0.46);
-}
-
-.seanceEsca{
-    position: absolute;
-    width: 162px;
-    height: 242px;
-    left: 640px;
-    top: 0px;
-    background-color: #8A8A8A;
-    color:black;
-    border-radius: 5px;
-    padding: 5px;
-    z-index: 3;
-}
-#seanceEscaladeA{
-    position: absolute;
-    width: 162px;
-    height: 50px;
-    left: 0px;
-    top: 0px;
-    background-color: #8A8A8A;
-
-}
-
-#seanceEscaladeB{
-    position: absolute;
-    width: 162px;
-    height: 50px;
-    left: 0px;
-    top: 55px;
-    background-color: #8A8A8A;
-}
-#seanceEscaladeC{
-    position: absolute;
-    width: 162px;
-    height: 50px;
-    left: 0px;
-    top: 110px;
-    background-color: #8A8A8A;
-}
-
-#menuSport2{
-    position: absolute;
-    width: 620px;
-    height: 50px;
-    left: 4px;
-    top: 60px;
-    background-color: #DDDDDD;
-    border-radius: 5px;
-}
-#menuSport2:hover{
-    background: rgb(0,0,0,0.46);
-}
-.seanceCourse{
-    position: absolute;
-    width: 162px;
-    height: 242px;
-    left: 640px;
-    top: 55px;
-    background-color: #8A8A8A;
-    border-radius: 5px;
-    padding: 5px;
-    z-index: 3;
-}
-#seanceCourseA{
-    position: absolute;
-    width: 162px;
-    height: 50px;
-    left: 0px;
-    top: 0px;
-    background-color: #8A8A8A;;  
-}
-
-#seanceCourseB{
-    position: absolute;
-    width: 162px;
-    height: 50px;
-    left: 0px;
-    top: 55px;
-    background-color: #8A8A8A;;  
-}
-#seanceCourseC{
-    position: absolute;
-    width: 162px;
-    height: 50px;
-    left: 0px;
-    top: 110px;
-    background-color: #8A8A8A;;  
-}
-
-
-
-#menuSport3{
-    position: absolute;
-    width: 617px;
-    height: 50px;
-    left: 6px;
-    top: 115px;
-    background-color: #DDDDDD;
-    border-radius: 5px;
-    z-index: 3;
-}
-#menuSport3:hover{
-    background: #8A8A8A;;
-}
-
-
-.seanceMuscu{
-    position: absolute;
-    width: 162px;
-    height: 242px;
-    left: 640px;
-    top: 110px;
-    background-color: #8A8A8A;
-    border-radius: 5px;
-    padding: 5px;
-}
-#seanceMuscuA{
-    position: absolute;
-    width: 162px;
-    height: 50px;
-    left: 0px;
-    top: 0px;
-    background-color: #8A8A8A;;  
-}
-
-#seanceMuscuB{
-    position: absolute;
-    width: 162px;
-    height: 50px;
-    left: 0px;
-    top: 55px;
-    background-color: #8A8A8A;;  
-}
-#seanceMuscuC{
-    position: absolute;
-    width: 162px;
-    height: 50px;
-    left: 0px;
-    top: 110px;
-    background-color: #8A8A8A;;  
-}
-
-
-.menuGraph{
-    position: relative;
-    width: 623px;
-    height: 275px;
-    left: 0px;
-    top: 65px;
-    background: #DDDDDD;
-    border: 1px solid #111111;
-    border-radius: 10px;
-    padding: 5px;
+.selectSport{ /* select du sport*/
+    top :0px;
+    left:-20px;
+    width: 90%;
+    height: 100%;
+    border: none;
+    background-color:white; ;
+    background-color: #FFFFFF;
+    font-weight: bold;
+    font-family: "Arial";
+    font-size: 30px;
+    margin-left: 4%;
+    text-align: right;
 }
 
 .chartVisu{
     background: white;
     position: relative;
     border-radius: 10px;
+    top : 0%;
     height: 100%;
     width: 91%;
     left: 6.7%;
