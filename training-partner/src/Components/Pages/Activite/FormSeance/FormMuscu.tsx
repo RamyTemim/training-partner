@@ -29,7 +29,7 @@ function FormMuscu(props : any){
 
     const handleSubmit= (event: React.FormEvent<HTMLFormElement>)=>{
         event.preventDefault();
-        if (valeur.nbrRep==0 || valeur.nom=="" ||valeur.nbrSerie==0 ){
+        if (valeur.nbrRep===0 || valeur.nom==="" ||valeur.nbrSerie===0 ){
             alert("Veuillez remplir tous les champs obligatoires");
         }else{
         setExercices([...exercices, valeur]);

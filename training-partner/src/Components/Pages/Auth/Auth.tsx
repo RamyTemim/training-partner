@@ -1,9 +1,9 @@
 //Library
-import React, {useState, useEffect} from 'react';
+import {useState, useEffect} from 'react';
 import Head from './head';
 import PageSignUp from './signUp';
 import PageLogin from './login';
-import Accueil from '../Accueil/Accueil';
+
 
 //Components
 
@@ -39,7 +39,7 @@ function Auth(props : AuthProps) {
    
     return(
     <div>
-        {!isConnected && <Head onPageChange ={onClick}/>}
+        {!isConnected && <Head onPageChange = {onClick}/>}
         {SignUp && <PageSignUp/>}
         {Login && <PageLogin onLogin = { () => setIsConnected(true) }/>}
         {ForgotPassword && null }

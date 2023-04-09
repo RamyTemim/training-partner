@@ -1,10 +1,7 @@
-import react, { useState } from 'react';
 import "./Battle.css";
 
 
 import Menus from './Menus/Menus';
-import Header from '../../../ElementsFixe/BarreTop/head';
-import TabBord from '../../../ElementsFixe/TableauDeBord/TabBord';
 import BarChart from '../../../Bar/BarChart';
 
 

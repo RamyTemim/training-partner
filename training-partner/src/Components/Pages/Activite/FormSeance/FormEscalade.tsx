@@ -27,7 +27,7 @@ function FormEscalade( props: any){
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        if(valeur.nom==""||valeur.type==""){
+        if(valeur.nom===""||valeur.type===""){
             alert("Veuillez remplir tous les champs obligatoires");
         }else{
         setExercices([...exercices, valeur]);

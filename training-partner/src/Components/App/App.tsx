@@ -1,12 +1,12 @@
 //Library
-import React, {useState, useEffect} from 'react';
-import './App.css';
+import { useState } from 'react';
+import Accueil from '../Pages/Accueil/Acceuil';
+
 
 //Components
 
-import Accueil from '../Pages/Accueil/Accueil';
 
-function App() {    
+function App() { 
   const [isConnected,setIsConnected] = useState(true);
 
 

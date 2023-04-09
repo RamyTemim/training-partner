@@ -1,6 +1,5 @@
 //Library
-import React, { useEffect, useState } from 'react';
-import { getValue } from '@testing-library/user-event/dist/utils';
+import { useEffect, useState } from 'react';
 import {Chart as ChartJS,  CategoryScale,LinearScale,BarElement,Title,Tooltip,Legend} from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import './BarChart.css';

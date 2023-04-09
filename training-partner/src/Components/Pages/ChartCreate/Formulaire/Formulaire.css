@@ -20,7 +20,7 @@ body{
     width: 60%;
     height: 32px;
     left: 31px;
-    margin-top: 30px;
+    margin-top: 130px;
 
     font-family: 'Arial';
     font-style: normal;
@@ -34,11 +34,11 @@ body{
 }
 
 .Score{
-    position: relative;
+    position: absolute;
     width: 60%;
     height: 32px;
     left: 65%;
-    margin-top:20px;
+    margin-top: 90px;
 
     font-family: 'Arial';
     font-style: normal;
@@ -55,7 +55,7 @@ body{
     position: absolute;
     width: 60%;
     height: 76px;
-    left: 31px;
+    margin-left: 2%;
     top: 100px;
 
     font-family: 'Arial';
@@ -71,7 +71,7 @@ body{
     position: absolute;
     width: 30%;
     height: 76px;
-    left: 65%;
+    margin-left: 65%;
     top: 100px;
 
     font-family: 'Arial';
@@ -87,7 +87,7 @@ body{
     position: absolute;
     width: 265px;
     height: 55px;
-    left: 40%;
+    margin-left: 37%;
     top: 219px;
     border-radius: 20px;
     
@@ -113,7 +113,14 @@ body{
     background: #FFFFFF;
 
 }
-
+#listeTitre{
+    position:relative;
+    margin-left: 42%;
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+}
 
 .trashButton{
     border-radius: 5px;
@@ -164,25 +171,21 @@ table {
     font-family: "Arial";
     font-size: 40px;
     width: 90%;
-    top: 80px;
+    margin-top: 7%;
     height: 100px;
-    margin-left: 4%;
+    margin-left: 7%;
     text-align: center;
     border: 10px solid white;
     border-radius: 20px;    
 }
-#choisirGraph{
-    font-family: "Arial";
-    font-size: 40px;
-    top:0%;
-}
+
 
 .chart{
     position: relative;
     height: 1000px;
     width: 90%;
     margin-left:7%;
-    top: 110px;
+    margin-top: 2%;
     border-radius: 20px;
     background: #FFFFFF;
 
@@ -223,7 +226,7 @@ table {
     height: 293px;
     width: 90%;
     margin-left:7%;
-    top: 140px;
+    margin-top: 3%;
     border-radius: 20px;
     background: #FFFFFF;
 }
@@ -232,8 +235,8 @@ table {
     position: absolute;
     width: 60%;
     height: 32px;
-    left: 34px;
-    margin-top: 30px;
+    left: 31px;
+    margin-top: 130px;
 
     font-family: 'Arial';
     font-style: normal;
@@ -248,10 +251,10 @@ table {
 
 .Sport{
     position: absolute;
-    width: 194px;
+    width: 60%;
     height: 32px;
     left: 65%;
-    margin-top: 30px;
+    margin-top: 2%;
 
     font-family: 'Arial';
     font-style: normal;
@@ -269,8 +272,8 @@ table {
     position: absolute;
     width: 60%;
     height: 76px;
-    left: 36px;
-    top: 84px;
+    margin-left: 2%;
+    top: 100px;
 
     font-family: 'Arial';
     font-style: normal;
@@ -281,12 +284,12 @@ table {
     border-radius: 20px;
 }
 
-#sport{
+.sportList{
     position: absolute;
     width: 30%;
-    height: 76px;
-    left: 65%;
-    top: 84px;
+    height: 85px;
+    margin-left: 65%;
+    top: 100px;
 
     font-family: 'Arial';
     font-style: normal;
@@ -316,7 +319,3 @@ table {
     background: #0F9F49;
     border: 10px solid #0F9F49;
 }
-
-
-
-
