@@ -19,7 +19,7 @@
 -- Table structure for table `user`
 --
 
-DROP TABLE IF EXISTS `user`;
+
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user` (
@@ -27,10 +27,10 @@ CREATE TABLE `user` (
   `nom` varchar(25) NOT NULL,
   `prenom` varchar(25) NOT NULL,
   `datenaissance` date NOT NULL,
-  `motdepasse` varchar(15) NOT NULL,
   `email` varchar(70) NOT NULL,
   `message_mdp` varchar(100) NOT NULL,
   `reponse_message` varchar(100) NOT NULL,
+  `motdepasse` varchar(15) NOT NULL,
   PRIMARY KEY (`pseudo`),
   UNIQUE KEY `pseudo_UNIQUE` (`pseudo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
