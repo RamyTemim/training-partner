@@ -1,6 +1,7 @@
 import { useState } from "react";
 import TableauSeance from "./TableauSeance";
 import "./VisuSeance.css";
+
 const VisuSeance : React.FC =()=>{
     const [sport,setSport]=useState("musculation");
 
@@ -8,8 +9,6 @@ const VisuSeance : React.FC =()=>{
         event.preventDefault();
         setSport(event.target.value);
     }
-
- 
 
     return (
         <div>

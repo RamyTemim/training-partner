@@ -1,16 +1,9 @@
 import { useState } from "react";
+import { Seance } from "../../../../Interfaces/Seance";
 
 interface IAttribute {
     name: string;
     value: number;
-    }
-
-
-
-    interface Seance {
-    name: string;
-    duration: number;
-    date: Date;
     }
 
     const seance: Seance[] = [
@@ -29,9 +22,7 @@ interface IAttribute {
 
     ];
 
-    const PAGE_SIZE = 10;
-
-    
+    const PAGE_SIZE = 10;   
 
     const TableauSeance: React.FC = () => {
     const [currentPage, setCurrentPage] = useState(1);
