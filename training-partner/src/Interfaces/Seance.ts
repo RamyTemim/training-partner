@@ -1,5 +1,5 @@
 export interface Seance {
-    name: string;
-    duration: number;
+    nom: string;
+    duree : number;
     date: Date;
     }

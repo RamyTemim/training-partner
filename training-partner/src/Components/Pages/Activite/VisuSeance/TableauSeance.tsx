@@ -8,14 +8,14 @@ interface IAttribute {
 
     const seance: Seance[] = [
     {
-        name: 'Session 1',
-        duration: 60,
+        nom: 'Session 1',
+        duree : 60,
         date: new Date('2022-05-01T10:30:00'),
 
     },
     {
-        name: 'Session 2',
-        duration: 90,
+        nom: 'Session 2',
+        duree : 90,
         date: new Date('2022-05-03T14:00:00'),
       
     },
@@ -58,8 +58,8 @@ interface IAttribute {
                 <tbody>
                     {sessionsToDisplay.map((session, index) => (
                     <tr key={index}>
-                        <td>{session.name}</td>
-                        <td>{session.duration}</td>
+                        <td>{session.nom}</td>
+                        <td>{session.duree}</td>
                         <td>{session.date.toLocaleDateString()}</td>
                         <td>
                         <button onClick={() => handleSeanceClick()}>Voir les exercices</button>
