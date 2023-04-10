@@ -8,7 +8,7 @@ import Auth from '../Pages/Auth/Auth';
 
 
 function App() { 
-  const [isConnected,setIsConnected] = useState(true);
+  const [isConnected,setIsConnected] = useState(false);
 
 
   const handleLogin = () => {
@@ -17,7 +17,7 @@ function App() {
 
   return(
     <div className='App'>
-      {isConnected && <Accueil />}
+      {!isConnected && <Auth onLogin={handleLogin} />}
     </div>
   );
 }

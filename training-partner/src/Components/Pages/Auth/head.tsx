@@ -1,4 +1,4 @@
-import react, { useState } from 'react';
+import { useState } from 'react';
 import './Auth.css';
 
 function Head(props : any){
@@ -12,6 +12,19 @@ function Head(props : any){
     const signUp = ()=> {Auth(0); console.log("passe dans signUp")}
     const login =()=> {Auth(1);console.log("passe dans login")}
     const forgotPassword =()=> {Auth(2);console.log("passe dans forgotPassword")}
+
+    const handleLogout = async() => {
+        try {
+        const reponse = await fetch ('/logout', {method : "POST"})
+        const donnee = await reponse.text();
+        console.log(donnee);//affiche déconnexion réussi dans la console
+        }
+        catch(error){
+            console.error(error)
+            alert("Une erreur est survenu lors de la déconnexion !")
+        }
+       
+    }
     
 
     return ( 
@@ -22,7 +35,7 @@ function Head(props : any){
                     <li><button className="nav" onClick={()=>{signUp()}}>Inscription</button></li>
                     <li><button className="nav" onClick={()=>{login()}}>Connexion</button></li>
                     <li>
-                        <form action="/user/logout" method="post">
+                        <form onSubmit={(event) => {event.preventDefault(); handleLogout();}}>
                             <button type="submit">Deconnexion</button>
                         </form>
                     </li>

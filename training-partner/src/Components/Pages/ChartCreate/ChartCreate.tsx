@@ -1,7 +1,5 @@
-
-
-
 import Formulaire from './Formulaire/Formulaire';
+
 function ChartCreate(){
     return (
         <div>
