@@ -1,19 +1,9 @@
-import react , { useState } from 'react';
+import { useState } from 'react';
 import './Auth.css';
-
-interface signUp {
-    pseudo : string;
-    nom : string;
-    prenom : string;
-    datedenaissance : string;
-    email : string;
-    message_mdp : string;
-    reponse_message : string;
-    motdepasse : string;
-}
+import { User } from '../../../Interfaces/User';
 
 const PageSignUp : React.FC = () => {
-    const [signUp ,setSignUp] = useState<signUp>({ pseudo : '', nom : '', prenom : '', datedenaissance : '', email : '', message_mdp : '', reponse_message : '', motdepasse : ''});
+    const [signUp ,setSignUp] = useState<User>({ pseudo : '', nom : '', prenom : '', datedenaissance : '', email : '', message_mdp : '', reponse_message : '', motdepasse : ''});
     const [error, setError] = useState<string>('');
 
     const handleInputChange = (event : React.ChangeEvent<HTMLInputElement>) : void => {
@@ -29,7 +19,7 @@ const PageSignUp : React.FC = () => {
                 headers : {'Content-Type' : 'application/json'},
                 body : JSON.stringify(signUp)
             })
-            console.log("response", response)
+            console.log("response")
             if(response.ok){
                 const donnee = await response.json();
                 console.log("donnee",donnee)

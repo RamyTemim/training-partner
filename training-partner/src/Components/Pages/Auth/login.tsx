@@ -1,13 +1,9 @@
 import  { useState } from 'react';
 import './Auth.css';
-
-interface Login {
-    pseudo : string;
-    motdepasse : string;
-}
+import { User } from '../../../Interfaces/User';
 
 function PageLogin (props : {onLogin : () => void}) {
-    const [login ,setLogin] = useState<Login>({pseudo : '', motdepasse : ''});
+    const [login ,setLogin] = useState<User>({ pseudo : '', nom : '', prenom : '', datedenaissance : '', email : '', message_mdp : '', reponse_message : '', motdepasse : ''});
     const [error, setError] = useState<string>('');
 
     const handleInputChange = (event : React.ChangeEvent<HTMLInputElement>) : void => {
