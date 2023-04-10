@@ -1,21 +1,14 @@
 import { useState, useEffect} from "react";
-
-interface Escalade{
-    nom:string;
-    type: string;
-    nbrprise: number;
-    difficulte: string;
-
-}
+import { Escalade } from "../../../../Interfaces/Escalade";
 
 
-function FormEscalade( props: any){
+function FormEscalade(props: any){
     const[ind, setInd] = useState(0);
     const [valeur,setValeur]=useState<Escalade>({
+        difficulte : "",
         nom:"",
         type : "",
-        nbrprise:0,
-        difficulte : "",
+        nbr_prise:0,
     });
 
     const [exercices, setExercices] = useState<Escalade[]>([]);
@@ -32,20 +25,20 @@ function FormEscalade( props: any){
         }else{
         setExercices([...exercices, valeur]);
         setValeur({
+            difficulte : "",
             nom:"",
             type : "",
-            nbrprise:0,
-            difficulte : "",
+            nbr_prise:0,
         })};
     };
     
     useEffect(() => {
         if (exercices.length > ind){
             let temp = JSON.stringify({
+                difficulte : exercices[ind].difficulte,
                 nom:exercices[ind].nom,
                 type :exercices[ind].type ,
-                nbrprise: exercices[ind].nbrprise ,
-                difficulte : exercices[ind].difficulte,
+                nbrprise: exercices[ind].nbr_prise ,
             })
             console.log(temp);
             props.onSendValue(temp);
@@ -70,6 +63,9 @@ function FormEscalade( props: any){
     return (
         <div>
             <form className="formEX"  onSubmit={handleSubmit}>
+            <label > Difficulté
+                    <input name="difficulte" type="string" value={valeur.difficulte} onChange={handleChange} placeholder="Difficulté"/>
+                </label><br/>
                 <label > Nom de l'exercice<span id="needed">*</span>
                     <input name="nom" type="string" value={valeur.nom} onChange={handleChange} placeholder="Nom de l'exercice"/>
                 </label><br/>
@@ -77,10 +73,7 @@ function FormEscalade( props: any){
                     <input name="type" type="string" value={valeur.type} onChange={handleChange} placeholder="Type d'escalade"/>
                 </label><br/>
                 <label > Nombre de prise
-                    <input name="nbrprise" type="number" value={valeur.nbrprise} onChange={handleChange}/>
-                </label><br/>
-                <label > Difficulté
-                    <input name="difficulte" type="string" value={valeur.difficulte} onChange={handleChange} placeholder="Difficulté"/>
+                    <input name="nbr_prise" type="number" value={valeur.nbr_prise} onChange={handleChange}/>
                 </label>
                 <button id="buttonSubmitEx" type="submit">Ajouter l'exercice</button>
             </form>
@@ -99,9 +92,9 @@ function FormEscalade( props: any){
                             </svg>
                             {details === index && (
                                 <ul  className="exercice">
-                                    <li>Type: {exercice.type}</li>
-                                    <li>Nombre de prises : {exercice.nbrprise}</li>
                                     <li>Difficulté : {exercice.difficulte}</li>
+                                    <li>Type: {exercice.type}</li>
+                                    <li>Nombre de prises : {exercice.nbr_prise}</li>
                                 </ul>
                             )}
                         </li>
