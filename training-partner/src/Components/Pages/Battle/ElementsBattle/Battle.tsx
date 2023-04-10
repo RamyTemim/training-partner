@@ -1,6 +1,4 @@
 import "./Battle.css";
-
-
 import Menus from './Menus/Menus';
 import BarChart from '../../../Bar/BarChart';
 
