@@ -1,23 +1,17 @@
 import { stringify } from "querystring";
 import { useState, useEffect} from "react";
+import { Muscu } from "../../../../Interfaces/Muscu";
 
-interface Muscu{
-    nom:string;
-    nbrSerie: number;
-    nbrRep: number;
-    poids: number;
-    restTime: string;
-}
 var triangle:any;
 
 function FormMuscu(props : any){
     const[ind, setInd] = useState(0);
     const [valeur,setValeur]=useState<Muscu>({
-        nom:"",
-        nbrSerie : 0,
-        nbrRep:0,
+        nbr_serie : 0,
+        nbr_rep : 0,
         poids : 0,
-        restTime:"00:00"
+        nom:"",
+        tmps_repos :"00:00",
     });
 
     const [exercices, setExercices] = useState<Muscu[]>([]);
@@ -29,27 +23,27 @@ function FormMuscu(props : any){
 
     const handleSubmit= (event: React.FormEvent<HTMLFormElement>)=>{
         event.preventDefault();
-        if (valeur.nbrRep===0 || valeur.nom==="" ||valeur.nbrSerie===0 ){
+        if (valeur.nbr_rep===0 || valeur.nom==="" ||valeur.nbr_serie===0 ){
             alert("Veuillez remplir tous les champs obligatoires");
         }else{
         setExercices([...exercices, valeur]);
         setValeur({
-            nom:"",
-            nbrSerie : 0,
-            nbrRep:0,
+            nbr_serie : 0,
+            nbr_rep:0,
             poids : 0,
-            restTime:"00:00"
+            nom:"",
+            tmps_repos:"00:00",
         })
     };
     };
     useEffect(() => {
         if (exercices.length > ind){
             let temp = JSON.stringify({
-                nom:exercices[ind].nom,
-                nbrSerie :exercices[ind].nbrSerie ,
-                nbrRep: exercices[ind].nbrRep ,
+                nbrSerie :exercices[ind].nbr_serie ,
+                nbrRep: exercices[ind].nbr_rep ,
                 poids : exercices[ind].poids,
-                restTime:exercices[ind].restTime
+                nom:exercices[ind].nom,
+                restTime:exercices[ind].tmps_repos,
             })
             console.log(temp);
             props.onSendValue(temp);
@@ -75,20 +69,20 @@ function FormMuscu(props : any){
     return (
         <div>
             <form className="formEX" onSubmit={handleSubmit}>
-                <label htmlFor="nom" > Nom de l'exercice<span id="needed">*</span>
-                    <input name="nom" type="text" value={valeur.nom} onChange={handleChange} placeholder="Nom de l'exercice"/>
+                <label htmlFor="nbr_serie" > Nombre de séries<span id="needed">*</span>
+                    <input name="nbr_serie" type="number" value={valeur.nbr_serie} onChange={handleChange}/>
                 </label><br/>
-                <label htmlFor="nbrSerie" > Nombre de séries<span id="needed">*</span>
-                    <input name="nbrSerie" type="number" value={valeur.nbrSerie} onChange={handleChange}/>
-                </label><br/>
-                <label htmlFor="nbrRep" > Nombre de répétitions<span id="needed">*</span>
-                    <input name="nbrRep" type="number" value={valeur.nbrRep} onChange={handleChange}/>
+                <label htmlFor="nbr_rep" > Nombre de répétitions<span id="needed">*</span>
+                    <input name="nbr_rep" type="number" value={valeur.nbr_rep} onChange={handleChange}/>
                 </label><br/>
                 <label htmlFor="poids" > Poids (en kg)<span id="needed">*</span>
                     <input name="poids" type="number" value={valeur.poids} onChange={handleChange}/>
                 </label><br/>
-                <label htmlFor="restTime" > Temps de repos 
-                    <input name="restTime" type="time" value={valeur.restTime} onChange={handleChange} step={60}/>
+                <label htmlFor="nom" > Nom de l'exercice<span id="needed">*</span>
+                    <input name="nom" type="text" value={valeur.nom} onChange={handleChange} placeholder="Nom de l'exercice"/>
+                </label><br/>
+                <label htmlFor="tmps_repos" > Temps de repos 
+                    <input name="tmps_repos" type="time" value={valeur.tmps_repos} onChange={handleChange} step={60}/>
                 </label>
                 <button id="buttonSubmitEx" type="submit" >Ajouter l'exercice</button>
             </form>
@@ -107,10 +101,10 @@ function FormMuscu(props : any){
                             </svg>
                             {details === index && (
                                 <ul  className="exercice">
-                                    <li>Nombre de séries : {exercice.nbrSerie}</li>
-                                    <li>Nombre de répétitions : {exercice.nbrRep}</li>
+                                    <li>Nombre de séries : {exercice.nbr_serie}</li>
+                                    <li>Nombre de répétitions : {exercice.nbr_rep}</li>
                                     <li>Poids (en kg) : {exercice.poids}</li>
-                                    <li>Temps de repos : {exercice.restTime}</li>
+                                    <li>Temps de repos : {exercice.tmps_repos}</li>
                                 </ul>
                             )}
                         </li>
