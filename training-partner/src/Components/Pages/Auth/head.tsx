@@ -1,5 +1,5 @@
 import react, { useState } from 'react';
-import './auth.css';
+import './Auth.css';
 
 function Head(props : any){
     const [isCLicked, setIsClicked] = useState(false);

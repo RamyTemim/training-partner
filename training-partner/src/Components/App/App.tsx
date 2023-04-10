@@ -1,13 +1,14 @@
 //Library
 import { useState } from 'react';
 import Accueil from '../Pages/Accueil/Acceuil';
+import Auth from '../Pages/Auth/Auth';
 
 
 //Components
 
 
 function App() { 
-  const [isConnected,setIsConnected] = useState(true);
+  const [isConnected,setIsConnected] = useState(false);
 
 
   const handleLogin = () => {
@@ -16,7 +17,7 @@ function App() {
 
   return(
     <div className='App'>
-      {isConnected && <Accueil/>}
+      {!isConnected && <Auth onLogin={handleLogin} />}
     </div>
   );
 }
