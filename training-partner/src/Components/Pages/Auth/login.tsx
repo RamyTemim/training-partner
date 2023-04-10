@@ -3,17 +3,22 @@ import './Auth.css';
 import { User } from '../../../Interfaces/User';
 
 function PageLogin (props : {onLogin : () => void}) {
+    //Définit le state login pour stocker les informations du formulaire
     const [login ,setLogin] = useState<User>({ pseudo : '', nom : '', prenom : '', datedenaissance : '', email : '', message_mdp : '', reponse_message : '', motdepasse : ''});
+    //Définit le state error pour stocker les erreurs de validation du formulaire
     const [error, setError] = useState<string>('');
 
+    //Gère les changements dans les champs du formulaire et met à jour le state login
     const handleInputChange = (event : React.ChangeEvent<HTMLInputElement>) : void => {
         const { name, value } = event.target;
         setLogin({...login, [name] : value})
     };
 
+    //Gère la soumission du formulaire
     const handleSubmitLogin = async (event : React.FormEvent<HTMLFormElement>) : Promise<void> => {
-        event.preventDefault();
+        event.preventDefault();//Empêche la page de se recharger lors de la soumission du formulaire
         try{
+            //Envoie les données du formulaire à l'API pour connecter un utilisateur
             const response = await fetch('http://localhost:3001/login', {
                 method: 'POST',
                 headers: {
@@ -21,6 +26,7 @@ function PageLogin (props : {onLogin : () => void}) {
                 },
                 body: JSON.stringify({pseudo : login.pseudo ,motdepasse : login.motdepasse })
             })
+            //Si la réponse de l'API est réussi affiche un message de confirmation
             if (response.ok){
                 const donnee = await response.text();
                 if(donnee){

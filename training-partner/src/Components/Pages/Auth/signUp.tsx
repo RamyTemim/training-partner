@@ -3,23 +3,31 @@ import './Auth.css';
 import { User } from '../../../Interfaces/User';
 
 const PageSignUp : React.FC = () => {
+    //Définit le state signUp pour stocker les informations du formulaire
     const [signUp ,setSignUp] = useState<User>({ pseudo : '', nom : '', prenom : '', datedenaissance : '', email : '', message_mdp : '', reponse_message : '', motdepasse : ''});
+    
+    //Définit le state error pour stocker les erreurs de validation du formulaire
     const [error, setError] = useState<string>('');
 
+    //Gère les changements dans les champs du formulaire et met à jour le state signUp
     const handleInputChange = (event : React.ChangeEvent<HTMLInputElement>) : void => {
         const { name, value } = event.target;
             setSignUp((signUp)=>({...signUp, [name] : value}))
     };
+
+    //Gère la soumission du formulaire
     const handleSubmitSignUp = async (event : React.FormEvent<HTMLFormElement>) : Promise<void> => {
-        event.preventDefault();
+        event.preventDefault();//Empêche la page de se recharger lors de la soumission du formulaire
         try{
             console.log(signUp)
+            //Envoie les données du formulaire à l'API pour enregistrer un nouvel utilisateur
             const response = await fetch ('http://localhost:3001/signUp',{
                 method : 'POST',
                 headers : {'Content-Type' : 'application/json'},
                 body : JSON.stringify(signUp)
             })
             console.log("response")
+            //Si la réponse de l'API est réussi affiche un message de confirmation
             if(response.ok){
                 const donnee = await response.json();
                 console.log("donnee",donnee)
