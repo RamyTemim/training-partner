@@ -20,9 +20,9 @@ function Head(props : any){
     //Définition de la fonction handleLogout qui envoie une requête de déconnexion au serveur
     const handleLogout = async() => {
         try {
-        const reponse = await fetch ('/logout', {method : "POST"})
+        const reponse = await fetch ('http://localhost:3001/logout', {method : "POST"})
         const donnee = await reponse.text();
-        console.log(donnee);//affiche déconnexion réussi dans la console
+        console.log("déconnexion réussi",donnee);//affiche déconnexion réussi dans la console
         }
         catch(error){
             console.error(error)

@@ -1,17 +1,10 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import './Informations.css';
-
-interface Info {
-    username : string;
-    lastname : string;
-    firstname : string;
-    email : string;
-    password : string;
-}
+import { User } from '../../../../Interfaces/User';
 
 function Informations(){
-    const [info ,setInfo] = useState<Info>({ username : '', lastname : '', firstname : '', email : '', password : ''});
+    const [info ,setInfo] = useState<User>({ pseudo : '', nom : '', prenom : '', datedenaissance : '', email : '', message_mdp : '', reponse_message : '', motdepasse : ''});
     const handleInputChange = (event : React.ChangeEvent<HTMLInputElement>) : void => {
         const { name, value } = event.target;
         setInfo((info)=>({...info, [name] : value}))
@@ -54,16 +47,16 @@ function Informations(){
     return (
         <div className='FormulaireInfos'>
             <form onSubmit = {handleSubmit} >
-                    <label htmlFor='username'>Username : </label>
-                    <input type='text' id='username' name='username' value = {info.username} onChange={handleInputChange}/>
-                    <label htmlFor='lastname'>Lastname : </label>
-                    <input type='text' id='lastname' name='lastname' value = {info.lastname} readOnly/>
-                    <label htmlFor='firstname'>Firstname : </label>
-                    <input type='texte' id='firstname' name='firstname' value = {info.firstname} readOnly/>
-                    <label htmlFor='birthdate'>Birthdate : </label>
+                    <label htmlFor='pseudo'>Pseudo : </label>
+                    <input type='text' id='pseudo' name='pseudo' value = {info.pseudo} onChange={handleInputChange}/>
+                    <label htmlFor='nom'>Nom : </label>
+                    <input type='text' id='nom' name='nom' value = {info.nom} readOnly/>
+                    <label htmlFor='prenom'>Prénom : </label>
+                    <input type='texte' id='prenom' name='prenom' value = {info.prenom} readOnly/>
+                    <label htmlFor='email'>Email : </label>
                     <input type='email' id='email' name='email' value = {info.email} readOnly/>
-                    <label htmlFor='password'>Mot de passe : </label>
-                    <input type='password' id='password' name='password' value = {info.password} onChange={handleInputChange}/>
+                    <label htmlFor='motdepasse'>Mot de passe : </label>
+                    <input type='password' id='motdepasse' name='motdepasse' value = {info.motdepasse} onChange={handleInputChange}/>
             </form>
         </div>
     )
