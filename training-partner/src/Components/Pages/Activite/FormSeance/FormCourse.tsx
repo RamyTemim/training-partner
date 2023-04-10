@@ -1,23 +1,14 @@
-
 import { useState, useEffect } from "react";
+import { Course } from '../../../../Interfaces/Course';
 
-interface Course{
-    nom:string;
-    distance: number;
-    vitesse: number;
-    heartRate: number;
-    chrono:string;
-}
-
-
-function FormCourse( props: any){
+function FormCourse(props: any){
     const[ind, setInd] = useState(0);
     const [valeur,setValeur]=useState<Course>({
-        nom:"",
         distance : 0,
+        chrono:"00:00",
+        bpm : 0,
         vitesse:0,
-        heartRate : 0,
-        chrono:"00:00"
+        nom:"",
     });
 
     const [exercices, setExercices] = useState<Course[]>([]);
@@ -34,22 +25,22 @@ function FormCourse( props: any){
         }else{
         setExercices([...exercices, valeur]);
         setValeur({
-            nom:"",
             distance : 0,
-            vitesse:0,
-            heartRate : 0,
             chrono:"00:00",
+            bpm : 0,
+            vitesse:0,
+            nom:"",
         })};
     };
 
     useEffect(() => {
         if (exercices.length > ind){
             let temp = JSON.stringify({
+                distance :exercices[ind].distance,
+                chrono : exercices[ind].chrono,
+                bpm : exercices[ind].bpm,
+                vitesse: exercices[ind].vitesse,
                 nom:exercices[ind].nom,
-                distance :exercices[ind].distance ,
-                vitesse: exercices[ind].vitesse ,
-                heartRate : exercices[ind].heartRate,
-                chrono : exercices[ind].chrono
             })
             console.log(temp);
             props.onSendValue(temp);
@@ -83,11 +74,11 @@ function FormCourse( props: any){
                 <label >Chrono<span id="needed">*</span>
                     <input name="chrono" type="time" value={valeur.chrono} onChange={handleChange} step="60"/>
                 </label><br/>
+                <label > Rythme cardiaque
+                    <input name="bpm" type="number" value={valeur.bpm} onChange={handleChange}/>
+                </label><br/>
                 <label > Vitesse (en km/h)
                     <input name="vitesse" type="number" value={valeur.vitesse} onChange={handleChange}/>
-                </label><br/>
-                <label > Rythme cardiaque
-                    <input name="heartRate" type="number" value={valeur.heartRate} onChange={handleChange}/>
                 </label>
                 <button id="buttonSubmitEx" type="submit">Ajouter l'exercice</button>
             </form>
@@ -107,9 +98,9 @@ function FormCourse( props: any){
                             {details === index && (
                                 <ul className="exercice">
                                     <li>Distance : {exercice.distance}</li>
-                                    <li>Vitesse : {exercice.vitesse}</li>
                                     <li>Chrono : {exercice.chrono}</li>
-                                    <li>Rythme Cardiaque : {exercice.heartRate}</li>
+                                    <li>Rythme Cardiaque : {exercice.bpm}</li>
+                                    <li>Vitesse : {exercice.vitesse}</li>
                                 </ul>
                             )}
                         </li>
