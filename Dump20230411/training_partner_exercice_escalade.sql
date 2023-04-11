@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.32, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
 --
--- Host: localhost    Database: Training_partner
+-- Host: localhost    Database: training_partner
 -- ------------------------------------------------------
--- Server version	8.0.32-0ubuntu0.22.04.2
+-- Server version	8.0.32
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,30 +16,32 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `donnee_graph`
+-- Table structure for table `exercice_escalade`
 --
 
-
+DROP TABLE IF EXISTS `exercice_escalade`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `donnee_graph` (
-  `nomattribut` varchar(25) NOT NULL,
-  `valeur` int NOT NULL,
-  `id_graph` int NOT NULL,
-  `id_donnee` int NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id_donnee`,`id_graph`),
-  KEY `fk_donnee_graph_1_idx` (`id_graph`),
-  CONSTRAINT `fk_donnee_graph_1` FOREIGN KEY (`id_graph`) REFERENCES `graphique` (`id_graph`) ON DELETE CASCADE
+CREATE TABLE `exercice_escalade` (
+  `idexercice_escalade` int NOT NULL AUTO_INCREMENT,
+  `id_seance` int NOT NULL,
+  `difficulte` varchar(10) DEFAULT NULL,
+  `nom` varchar(45) NOT NULL,
+  `nbr_prise` int DEFAULT NULL,
+  `type` varchar(45) NOT NULL,
+  PRIMARY KEY (`idexercice_escalade`,`id_seance`),
+  KEY `fk_exerciceM1_seance_idx` (`id_seance`),
+  CONSTRAINT `fk_exerciceM1_seance` FOREIGN KEY (`id_seance`) REFERENCES `seance` (`id_seance`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `donnee_graph`
+-- Dumping data for table `exercice_escalade`
 --
 
-LOCK TABLES `donnee_graph` WRITE;
-/*!40000 ALTER TABLE `donnee_graph` DISABLE KEYS */;
-/*!40000 ALTER TABLE `donnee_graph` ENABLE KEYS */;
+LOCK TABLES `exercice_escalade` WRITE;
+/*!40000 ALTER TABLE `exercice_escalade` DISABLE KEYS */;
+/*!40000 ALTER TABLE `exercice_escalade` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -51,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-08 14:25:16
+-- Dump completed on 2023-04-11 12:09:35

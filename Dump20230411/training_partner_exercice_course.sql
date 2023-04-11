@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.32, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
 --
--- Host: localhost    Database: Training_partner
+-- Host: localhost    Database: training_partner
 -- ------------------------------------------------------
--- Server version	8.0.32-0ubuntu0.22.04.2
+-- Server version	8.0.32
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -19,19 +19,20 @@
 -- Table structure for table `exercice_course`
 --
 
+DROP TABLE IF EXISTS `exercice_course`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `exercice_course` (
-  `idexerciceCourse` int NOT NULL,
-  `idSeance` int NOT NULL,
+  `idexerciceCourse` int NOT NULL AUTO_INCREMENT,
+  `id_seance` int NOT NULL,
   `distance` int NOT NULL,
   `chrono` int NOT NULL,
   `bpm` int DEFAULT NULL,
   `vitesse` int DEFAULT NULL,
   `nom` varchar(45) NOT NULL,
-  PRIMARY KEY (`idexerciceCourse`,`idSeance`),
-  KEY `fk_exerciceCourse_1_idx` (`idSeance`),
-  CONSTRAINT `fk_exerciceCourse_1` FOREIGN KEY (`idSeance`) REFERENCES `seance` (`id_seance`) ON DELETE CASCADE ON UPDATE RESTRICT
+  PRIMARY KEY (`idexerciceCourse`,`id_seance`),
+  KEY `fk_exerciceC1_seance_idx` (`id_seance`),
+  CONSTRAINT `fk_exerciceC1_seance` FOREIGN KEY (`id_seance`) REFERENCES `seance` (`id_seance`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -53,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-08 14:25:16
+-- Dump completed on 2023-04-11 12:09:36

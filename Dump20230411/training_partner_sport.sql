@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.32, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
 --
--- Host: localhost    Database: Training_partner
+-- Host: localhost    Database: training_partner
 -- ------------------------------------------------------
--- Server version	8.0.32-0ubuntu0.22.04.2
+-- Server version	8.0.32
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,34 +16,25 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `seance`
+-- Table structure for table `sport`
 --
 
-
+DROP TABLE IF EXISTS `sport`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `seance` (
-  `id_seance` int NOT NULL,
-  `user_pseudo` varchar(20) NOT NULL,
-  `nom` varchar(25) NOT NULL,
-  `duree` time NOT NULL,
-  `nom_sport` varchar(15) NOT NULL,
-  `date` date NOT NULL,
-  PRIMARY KEY (`id_seance`,`user_pseudo`),
-  KEY `fk_seance_1_idx` (`nom_sport`),
-  KEY `fk_seance_2_idx` (`user_pseudo`),
-  CONSTRAINT `fk_seance_1` FOREIGN KEY (`nom_sport`) REFERENCES `sport` (`nom`),
-  CONSTRAINT `fk_seance_2` FOREIGN KEY (`user_pseudo`) REFERENCES `user` (`pseudo`)
+CREATE TABLE `sport` (
+  `nom` varchar(15) NOT NULL,
+  PRIMARY KEY (`nom`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `seance`
+-- Dumping data for table `sport`
 --
 
-LOCK TABLES `seance` WRITE;
-/*!40000 ALTER TABLE `seance` DISABLE KEYS */;
-/*!40000 ALTER TABLE `seance` ENABLE KEYS */;
+LOCK TABLES `sport` WRITE;
+/*!40000 ALTER TABLE `sport` DISABLE KEYS */;
+/*!40000 ALTER TABLE `sport` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -55,4 +46,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-08 14:25:16
+-- Dump completed on 2023-04-11 12:09:37
