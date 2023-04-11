@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import { Bar, PolarArea, Radar } from 'react-chartjs-2';
 import './Formulaire.css';
 import {Chart,RadialLinearScale,PointElement,LineElement,Filler,Tooltip,Legend,LinearScale,CategoryScale,BarElement,Title,ArcElement} from 'chart.js';
-interface FormData {
+interface DonneGraph {
   name: string;
   score: number;
 }
 
-interface FormTitle {
+interface Graphique {
+  sport: string;
   title:string;
 }
 
@@ -15,15 +16,14 @@ interface FormTitle {
 type GraphType = "spiderchart" | "bar" | "polar";
 
 const Formulaire: React.FC = () => {
-  const [sport,setSport]=useState("musculation");
-  const [formTitle,setformTitle]= useState<FormTitle>({title: ""});
-  const [formDonnee, setformDonnee]= useState<FormData>({name: "",score : 0});
+  const [formSave,setformSave]= useState<Graphique>({title: "",sport:"musculation"});
+  const [formDonnee, setformDonnee]= useState<DonneGraph>({name: "",score : 0});
   const [date,setDate] = useState('');
   const [chartDonnee, setchartDonnee] = useState({
     labels: [] as string[],
     datasets: [
       {
-        label:formTitle.title,
+        label:formSave.title,
 
         data: [] as number[],
         backgroundColor: [
@@ -60,8 +60,8 @@ const Formulaire: React.FC = () => {
 
   const handleTitleChange=(event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
-    setformTitle({
-      ...formTitle,
+    setformSave({
+      ...formSave,
       title:event.target.value
     })
   };
@@ -87,13 +87,13 @@ const Formulaire: React.FC = () => {
 
   const handleSave=(event: React.FormEvent<HTMLFormElement> ) => {
     event.preventDefault();
-    if (formTitle.title !== ""){
+    if (formSave.title !== ""){
       setchartDonnee({
         labels: [...chartDonnee.labels],
         datasets: [
           {
             ...chartDonnee.datasets[0],
-            label: formTitle.title,
+            label: formSave.title,
             data:[...chartDonnee.datasets[0].data,],
           },
         ],
@@ -106,10 +106,10 @@ const Formulaire: React.FC = () => {
         })
       console.log(date)
       const jsonData = JSON.stringify({
-        title: formTitle.title,
+        title: formSave.title,
         labels: chartDonnee.labels,
         values: chartDonnee.datasets[0].data,
-        sport: sport,
+        sport: formSave.sport,
         graph: selectedType,
         date: date
       });
@@ -122,7 +122,7 @@ const Formulaire: React.FC = () => {
         body: jsonData
       })
       console.log("c'est passé")
-      setformTitle({title:""});
+      setformSave({title:"",sport:"musculation"});
 
   }
   const handleDelete = (id: string) => {
@@ -168,7 +168,10 @@ const Formulaire: React.FC = () => {
     };
     const handleSportChange =(event: React.ChangeEvent<HTMLSelectElement>)=>{
       event.preventDefault();
-      setSport(event.target.value);
+      setformSave({
+        ...formSave,
+        sport:event.target.value
+      });
     }
     return (
 
@@ -220,9 +223,9 @@ const Formulaire: React.FC = () => {
       <form className="save" onSubmit={handleSave}>
         <div>
           <label htmlFor="title"><p className="titre">Titre :</p></label>
-          <input type="text" id="title" name="title" placeholder="Entrer un titre" value={formTitle.title} onChange={handleTitleChange} />
+          <input type="text" id="title" name="title" placeholder="Entrer un titre" value={formSave.title} onChange={handleTitleChange} />
           <label htmlFor="selecSport" className="Sport">Sport :</label>
-          <select  title="selectSport" className="sportList" value={sport} onChange={handleSportChange}>
+          <select  title="selectSport" className="sportList" value={formSave.sport} onChange={handleSportChange}>
             <option value="musculation">Musculation</option>
             <option value="escalade">Escalade</option>
             <option value="course">Course à pieds</option>
