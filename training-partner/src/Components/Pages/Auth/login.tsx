@@ -19,7 +19,7 @@ function PageLogin (props : {onLogin : () => void}) {
         event.preventDefault();//Empêche la page de se recharger lors de la soumission du formulaire
         try{
             //Envoie les données du formulaire à l'API pour connecter un utilisateur
-            const response = await fetch('http://localhost:3001/login', {
+            const response = await fetch('http://localhost:3001/user/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

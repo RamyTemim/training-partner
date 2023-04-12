@@ -21,7 +21,7 @@ const PageSignUp : React.FC = () => {
         try{
             console.log(signUp)
             //Envoie les données du formulaire à l'API pour enregistrer un nouvel utilisateur
-            const response = await fetch ('http://localhost:3001/signUp',{
+            const response = await fetch ('http://localhost:3001//user/signUp',{
                 method : 'POST',
                 headers : {'Content-Type' : 'application/json'},
                 body : JSON.stringify(signUp)
