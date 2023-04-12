@@ -3,7 +3,7 @@ import './UserMenu.css'
 import mail from './mail.png';
 import deconnexion from './deconnexion.png';
 import user from './user.png';
-import Informations from './Informations';
+import Informations from './Profil';
 
 function UserMenu(){
 

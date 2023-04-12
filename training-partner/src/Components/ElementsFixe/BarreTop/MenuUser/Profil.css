@@ -1,4 +1,4 @@
-.FormulaireInfos{
+.FormulaireProfil{
     border : 2px solid black;
     padding: 2em;
     width: 500px;
@@ -6,11 +6,11 @@
     z-index: 12;
 }
 
-.FormulaireInfos input{
+.FormulaireProfil input{
     width : 100%;
 }
 
-.FormulaireInfos label{
+.FormulaireProfil label{
     display: block;
     text-align: center;
 }

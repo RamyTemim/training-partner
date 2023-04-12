@@ -17,7 +17,7 @@ function App() {
 
   return(
     <div className='App'>
-      {!isConnected && <Auth onLogin={handleLogin} />}
+      {!isConnected && <Accueil />}
     </div>
   );
 }
