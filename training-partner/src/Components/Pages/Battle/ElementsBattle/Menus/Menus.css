@@ -9,7 +9,7 @@
     border-radius: 20px;
 }
 
-select{
+.containerMenus select{
     position: relative;
     width: 25%;
     height: 61px;
@@ -20,11 +20,14 @@ select{
 }
 
 #dropMenuSport{
-    left : -100px;
+    left : 0px;
 }
 
-
-#dropMenuSeanceY {
+#dropMenuSeanceX {
     left : 100px;
 }
+#dropMenuSeanceY {
+    left : 200px;
+}
+
 

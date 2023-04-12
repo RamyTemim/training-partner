@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './Menus.css';
+import Seance from '../../../Activite/Seance/Seance';
 
 //interfaces 
 interface ExerciceEscalade{
+    idExercice : number;
     nomExercice : string;
     type : string;
     nbPrises : number;
@@ -10,6 +12,7 @@ interface ExerciceEscalade{
 }
 
 interface ExerciceCourse{
+    idExercice : number;
     nomExercice : string;
     distance : string;
     chrono : number;
@@ -18,6 +21,7 @@ interface ExerciceCourse{
 }
 
 interface ExerciceMuscu{
+    idExercice : number;
     nomExercice : string;
     nbSeries : string;
     nbRepetitions : string;
@@ -26,85 +30,72 @@ interface ExerciceMuscu{
 }
 
 interface Seance {
+    idSeance : number;
     nom : string;
     sport : string;
     exercices : (ExerciceEscalade | ExerciceCourse | ExerciceMuscu) [];
 }
 
 function Menus(){
+    //Tableau qui contient les différents sports disponibles
+    const sports : string[] = ["Course","Escalade","Musculation"];
+    //Tableau des séances avec des exercices pour chaque séance
     const [seances,setSeances] = useState<Seance[]>([
-        { nom : "SeanceX1", sport : "Course", exercices : [{ nomExercice : "100m", distance : "100m", chrono : 30, vitesse : 10, rythmeCardiaque : 80 }]},
-        { nom : "SeanceY1", sport : "Course" , exercices : [{ nomExercice : "100m", distance : "100m", chrono : 30, vitesse : 10, rythmeCardiaque : 80 }]},
-        { nom : "SeanceX3", sport : "Escalade", exercices : [{ nomExercice : "exercice2", type : "valeur1", nbPrises : 3, difficulte :"facile" }]},
-        { nom : "SeanceY3", sport : "Escalade", exercices : [{ nomExercice : "exercice2", type : "valeur1", nbPrises : 2, difficulte : "moyen" }]},
+        { idSeance : 1, nom : "SeanceX1", sport : "Course", exercices : [{ idExercice : 1, nomExercice : "100m", distance : "100m", chrono : 30, vitesse : 10, rythmeCardiaque : 80 }]},
+        { idSeance : 2, nom : "SeanceY1", sport : "Course" , exercices : [{ idExercice : 2, nomExercice : "100m", distance : "100m", chrono : 30, vitesse : 10, rythmeCardiaque : 80 }]},
+        { idSeance : 3, nom : "SeanceX3", sport : "Escalade", exercices : [{ idExercice : 3, nomExercice : "exercice2", type : "valeur1", nbPrises : 3, difficulte :"facile" }]},
+        { idSeance : 4, nom : "SeanceY3", sport : "Escalade", exercices : [{ idExercice : 4,nomExercice : "exercice2", type : "valeur1", nbPrises : 2, difficulte : "moyen" }]},
     ])
-    
+
+    //Etat pour stocker le sport sélectionné
     const [selectedSport, setSelectedSport] = useState<string>("Sport");
+
+    //Etat pour stocker les noms des séances sélectionnées pour les comparaisons et l'exercice comparé
     const [selectedSeanceX, setSelectedSeanceX] = useState<string>("");
     const [selectedSeanceY, setSelectedSeanceY] = useState<string>("");
-    const [identicalExercices, setIdenticalExercices] = useState<(ExerciceCourse | ExerciceEscalade | ExerciceMuscu)[]>([]);
+    const [selectedExercice, setSelectedExercice] = useState<string>("");
 
-    const sports : string[] = ["Course","Escalade","Musculation"];
+    //Etat pour stocker les séances filtrées en fonction du sport sélectionné
     const [filteredSeances, setFilteredSeances] = useState<Seance[]>([]);
-    const seanceX = filteredSeances.filter( (seance) => seance.sport === selectedSport && seance.nom.startsWith("Seance")).map(seance => seance.nom);
-    const seanceY = filteredSeances.filter( (seance) => seance.sport === selectedSport && seance.nom.startsWith("Seance")).map(seance => seance.nom);
-    
+    //On initialise le tableau qui contient les exercices en communs des 2 séances
+    const [exercicesCommuns,setExercicesCommuns] = useState<(ExerciceMuscu | ExerciceEscalade | ExerciceCourse)[]>([]);
+
+    //Tableau de nom de séances filtrées en fonction du sport sélectionné
+    const seanceX = filteredSeances.filter( (seance) => seance.sport === selectedSport).map(seance => seance.nom);
+    const seanceY = filteredSeances.filter( (seance) => seance.sport === selectedSport).map(seance => seance.nom);
+  
+    useEffect(()=>{
+        //Cherche les séances selectionnées
+        const seanceXSelectionne = seances.find(seance=>seance.nom === selectedSeanceX);
+        const seanceYSelectionne = seances.find(seance=>seance.nom === selectedSeanceY);
+        //Vérifie si 2 séances ont été selectionné et modifie la liste des exercices en communs
+        if(seanceXSelectionne && seanceYSelectionne){
+            const exoCommuns = seanceXSelectionne.exercices.filter(exerciceX => seanceYSelectionne.exercices.some(exerciceY => exerciceY.nomExercice === exerciceX.nomExercice));
+            setExercicesCommuns(exoCommuns);
+        }
+    },[selectedSeanceX, selectedSeanceY])
+
+    //fonction appelé lorsqu'un sport est sélectionné
     const handleSportChange = (sport : string) => {
         setSelectedSport(sport); 
         const filtered = seances.filter( (seance) => seance.sport === sport );
         setFilteredSeances(filtered);
     }
 
+    //fonction appelé lorsqu'une séanceX est sélectionné
     const handleSeanceXChange = (seance : string) => {
         setSelectedSeanceX(seance);
         setSelectedSeanceY(seanceY.filter(item => item !==seance)[0]);
     }
+    //fonction appelé lorsqu'une séanceY est sélectionné
     const handleSeanceYChange = (seance : string) => {
         setSelectedSeanceY(seance);
         setSelectedSeanceX(seanceX.filter(item => item !==seance)[0]);
     }
 
-    const handleExerciceSeanceXChange = (index : number, updatedExercice : ExerciceCourse | ExerciceEscalade | ExerciceMuscu) => {
-        const newSeances = [...filteredSeances]; //copie les séances filtrées
-        const seanceXIndex = newSeances.findIndex((seance)=>seance.nom===selectedSeanceX)//trouve l'index de la séanceX sélectionnée
-        const updatedExercices = [...newSeances[seanceXIndex].exercices];//copie les exercices de la séance sélectionné
-        updatedExercices[index] = updatedExercice; //modifie l'exercice sélectionné
-        newSeances[seanceXIndex]={
-            ...newSeances[seanceXIndex],//copie la seance X sélectionné
-            exercices : updatedExercices,}//remplace les exercices de la séance X modifiée
-    }
-
-    const handleExerciceSeanceYChange = (index : number, updatedExercice : ExerciceCourse | ExerciceEscalade | ExerciceMuscu) => {
-        const newSeances = [...filteredSeances]; //copie les séances filtrées
-        const seanceYIndex = newSeances.findIndex((seance)=>seance.nom===selectedSeanceX)//trouve l'index de la séanceX sélectionnée
-        const updatedExercices = [...newSeances[seanceYIndex].exercices];//copie les exercices de la séance sélectionné
-        updatedExercices[index] = updatedExercice; //modifie l'exercice sélectionné
-        newSeances[seanceYIndex]={
-            ...newSeances[seanceYIndex],//copie la seance Y sélectionné
-            exercices : updatedExercices,}//remplace les exercices de la séance Y modifiée
-    }
-
-    //fonction qui compare 2 exercices
-    const compareExercices = (seanceX : Seance, seanceY : Seance) => {
-        const exercicesX = seanceX.exercices;
-        const exercicesY = seanceY.exercices;
-        const identicalExercices : (ExerciceMuscu | ExerciceEscalade | ExerciceCourse )[] = [];
-
-        exercicesX.forEach((exerciceX)=> {
-            const matchingExerciceY = exercicesY.find((exerciceY) => exerciceY.nomExercice === exerciceX.nomExercice);
-            if (matchingExerciceY){
-                if ("type" in exerciceX && "type" in matchingExerciceY && exerciceX.type === matchingExerciceY.type){
-                    identicalExercices.push(exerciceX);
-                }
-                else if ("distance" in exerciceX && "distance" in matchingExerciceY && exerciceX.distance === matchingExerciceY.distance){
-                    identicalExercices.push(exerciceX);
-                }
-                else if ("nbSeries" in exerciceX && "nbSeries" in matchingExerciceY && exerciceX.nbSeries === matchingExerciceY.nbSeries){
-                    identicalExercices.push(exerciceX);
-                }
-            }
-        })
-        return identicalExercices;
+    //fonction appelé lorsqu'un exercice est selectionné
+    const handleExerciceChange = (exercice : string) => {
+        setSelectedExercice(exercice);
     }
 
     return (
@@ -125,7 +116,7 @@ function Menus(){
                 ))}
             </select>
 
-            <select id="dropMenuSeanceY" value={selectedSeanceY} onChange={ (event)=> handleSeanceYChange(event.target.value) }>
+            <select id="dropMenuSeanceY" value={selectedSeanceY} onChange={ (event) => handleSeanceYChange(event.target.value) }>
                 {filteredSeances.map((seance) =>(
                     <option key = {seance.nom}>
                         {seance.nom}
@@ -133,18 +124,10 @@ function Menus(){
                 ))}
             </select>
 
-            <select id="dropMenuExerciceSeanceX" value={selectedSeanceX} onChange={ (event)=> handleExerciceSeanceXChange(event.target.value) }>
-                {filteredSeances.map((seance) =>(
-                    <option key = {seance.nom}>
-                        {seance.nom}
-                    </option>
-                ))}
-            </select>
-
-            <select id="dropMenuExerciceSeanceY" value={selectedSeanceX} onChange={ (event)=> handleExerciceSeanceXChange(event.target.value) }>
-                {filteredSeances.map((seance) =>(
-                    <option key = {seance.nom}>
-                        {seance.nom}
+            <select id="dropMenuExercices" value={selectedExercice} onChange={ (event) => handleExerciceChange(event.target.value) }>
+                {exercicesCommuns.map((exercice) =>(
+                    <option key = {exercice.nomExercice} >
+                        {exercice.nomExercice}
                     </option>
                 ))}
             </select>
