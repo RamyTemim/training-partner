@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import './Menus.css';
 
@@ -36,14 +35,6 @@ interface Seance {
     exercices : (ExerciceEscalade | ExerciceCourse | ExerciceMuscu) [];
 }
 
-left : 30px;
-}
-#dropMenuSeanceX {
-    left : 210px;
-}
-
-#dropMenuSeanceY {
-    left : 400px;
 function Menus(){
     //Tableau qui contient les différents sports disponibles
     const sports : string[] = ["Course","Escalade","Musculation"];

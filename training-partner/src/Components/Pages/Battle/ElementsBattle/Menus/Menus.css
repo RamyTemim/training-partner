@@ -2,7 +2,7 @@
     position: relative;
     width: 90%;
     height: auto;
-    margin-left: 4%;
+    margin-left: 7%;
     top: 150px;
     background: #FFFFFF;
     border: 10px solid #FFFFFF;
@@ -29,5 +29,3 @@
 #dropMenuSeanceY {
     left : 200px;
 }
-
-
