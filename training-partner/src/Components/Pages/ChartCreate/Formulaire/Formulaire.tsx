@@ -19,6 +19,7 @@ const Formulaire: React.FC = () => {
   const [formSave,setformSave]= useState<Graphique>({title: "",sport:"musculation"});
   const [formDonnee, setformDonnee]= useState<DonneGraph>({name: "",score : 0});
   const [date,setDate] = useState('');
+  const [selectedType, setSelectedType] = useState<GraphType>("spiderchart");
   const [chartDonnee, setchartDonnee] = useState({
     labels: [] as string[],
     datasets: [
@@ -140,9 +141,6 @@ const Formulaire: React.FC = () => {
     }));
   };
 
-
-
-  const [selectedType, setSelectedType] = useState<GraphType>("spiderchart");
 
   const handleTypeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedType(event.target.value as GraphType);
