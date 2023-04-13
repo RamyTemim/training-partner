@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.32, for Linux (x86_64)
 --
--- Host: localhost    Database: training_partner
+-- Host: localhost    Database: Training_partner
 -- ------------------------------------------------------
--- Server version	8.0.32
+-- Server version	8.0.32-0ubuntu0.22.04.2
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -23,16 +23,16 @@ DROP TABLE IF EXISTS `graphique`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `graphique` (
-  `typegraph` int NOT NULL,
-  `id_graph` int NOT NULL AUTO_INCREMENT,
-  `U_pseudo` varchar(20) NOT NULL,
-  `nom_sport` varchar(15) NOT NULL,
+  `typeGraph` int NOT NULL,
+  `idGraph` int NOT NULL AUTO_INCREMENT,
+  `userPseudo` varchar(20) NOT NULL,
+  `nomSport` varchar(15) NOT NULL,
   `titre` varchar(15) NOT NULL,
-  PRIMARY KEY (`id_graph`,`U_pseudo`),
-  KEY `U_pseudo_idx` (`U_pseudo`),
-  KEY `nom_sport_idx` (`nom_sport`),
-  CONSTRAINT `nom_sport` FOREIGN KEY (`nom_sport`) REFERENCES `sport` (`nom`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `U_pseudo` FOREIGN KEY (`U_pseudo`) REFERENCES `user` (`pseudo`) ON DELETE CASCADE ON UPDATE CASCADE
+  PRIMARY KEY (`idGraph`,`userPseudo`),
+  KEY `U_pseudo_idx` (`userPseudo`),
+  KEY `nom_sport_idx` (`nomSport`),
+  CONSTRAINT `nomSport` FOREIGN KEY (`nomSport`) REFERENCES `sport` (`nom`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `userPseudo` FOREIGN KEY (`userPseudo`) REFERENCES `user` (`pseudo`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -54,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-11 12:09:36
+-- Dump completed on 2023-04-13 11:17:10

@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.32, for Linux (x86_64)
 --
--- Host: localhost    Database: training_partner
+-- Host: localhost    Database: Training_partner
 -- ------------------------------------------------------
--- Server version	8.0.32
+-- Server version	8.0.32-0ubuntu0.22.04.2
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,27 +16,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `sessions`
+-- Table structure for table `exerciceCourse`
 --
 
-DROP TABLE IF EXISTS `sessions`;
+DROP TABLE IF EXISTS `exerciceCourse`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `sessions` (
-  `session_id` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  `expires` int unsigned NOT NULL,
-  `data` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
-  PRIMARY KEY (`session_id`)
+CREATE TABLE `exerciceCourse` (
+  `idExerciceCourse` int NOT NULL AUTO_INCREMENT,
+  `idSeance` int NOT NULL,
+  `distance` int NOT NULL,
+  `chrono` int NOT NULL,
+  `bpm` int DEFAULT NULL,
+  `vitesse` int DEFAULT NULL,
+  `nom` varchar(45) NOT NULL,
+  PRIMARY KEY (`idExerciceCourse`,`idSeance`),
+  KEY `fk_exerciceC1_seance_idx` (`idSeance`),
+  CONSTRAINT `fk_exerciceC1_seance` FOREIGN KEY (`idSeance`) REFERENCES `seance` (`idSeance`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `sessions`
+-- Dumping data for table `exerciceCourse`
 --
 
-LOCK TABLES `sessions` WRITE;
-/*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
+LOCK TABLES `exerciceCourse` WRITE;
+/*!40000 ALTER TABLE `exerciceCourse` DISABLE KEYS */;
+/*!40000 ALTER TABLE `exerciceCourse` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -48,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-11 12:09:36
+-- Dump completed on 2023-04-13 11:17:10

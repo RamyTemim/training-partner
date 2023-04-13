@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.32, for Linux (x86_64)
 --
--- Host: localhost    Database: training_partner
+-- Host: localhost    Database: Training_partner
 -- ------------------------------------------------------
--- Server version	8.0.32
+-- Server version	8.0.32-0ubuntu0.22.04.2
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,30 +16,35 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `donnee_graph`
+-- Table structure for table `seance`
 --
 
-DROP TABLE IF EXISTS `donnee_graph`;
+DROP TABLE IF EXISTS `seance`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `donnee_graph` (
-  `id_donnee` int NOT NULL AUTO_INCREMENT,
-  `id_graph` int NOT NULL,
-  `nomattribut` varchar(25) NOT NULL,
-  `valeur` int NOT NULL,
-  PRIMARY KEY (`id_donnee`,`id_graph`),
-  KEY `fk_id_graph_idx` (`id_graph`),
-  CONSTRAINT `fk_id_graph` FOREIGN KEY (`id_graph`) REFERENCES `graphique` (`id_graph`) ON DELETE CASCADE ON UPDATE CASCADE
+CREATE TABLE `seance` (
+  `idSeance` int NOT NULL AUTO_INCREMENT,
+  `userPseudo` varchar(20) NOT NULL,
+  `nom` varchar(25) NOT NULL,
+  `duree` time NOT NULL,
+  `distance` int DEFAULT NULL,
+  `nomSport` varchar(15) NOT NULL,
+  `date` date NOT NULL,
+  PRIMARY KEY (`idSeance`,`userPseudo`),
+  KEY `fk_seance_1_idx` (`nomSport`),
+  KEY `fk_seance_2_idx` (`userPseudo`),
+  CONSTRAINT `fk_seance_1` FOREIGN KEY (`nomSport`) REFERENCES `sport` (`nom`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_seance_2` FOREIGN KEY (`userPseudo`) REFERENCES `user` (`pseudo`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `donnee_graph`
+-- Dumping data for table `seance`
 --
 
-LOCK TABLES `donnee_graph` WRITE;
-/*!40000 ALTER TABLE `donnee_graph` DISABLE KEYS */;
-/*!40000 ALTER TABLE `donnee_graph` ENABLE KEYS */;
+LOCK TABLES `seance` WRITE;
+/*!40000 ALTER TABLE `seance` DISABLE KEYS */;
+/*!40000 ALTER TABLE `seance` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -51,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-11 12:09:37
+-- Dump completed on 2023-04-13 11:17:10

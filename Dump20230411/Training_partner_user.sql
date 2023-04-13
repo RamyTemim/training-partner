@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.32, for Linux (x86_64)
 --
--- Host: localhost    Database: training_partner
+-- Host: localhost    Database: Training_partner
 -- ------------------------------------------------------
--- Server version	8.0.32
+-- Server version	8.0.32-0ubuntu0.22.04.2
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,33 +16,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `exercice_muscu`
+-- Table structure for table `user`
 --
 
-DROP TABLE IF EXISTS `exercice_muscu`;
+DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `exercice_muscu` (
-  `idexercice` int NOT NULL AUTO_INCREMENT,
-  `idseance` int NOT NULL,
-  `nbr_serie` int NOT NULL,
-  `nbr_rep` int NOT NULL,
-  `poids` int NOT NULL,
-  `nom` varchar(45) NOT NULL,
-  `tmps_repos` int DEFAULT NULL,
-  PRIMARY KEY (`idexercice`,`idseance`),
-  KEY `fk_exercice1_seance_idx` (`idseance`),
-  CONSTRAINT `fk_exercice1_seance` FOREIGN KEY (`idseance`) REFERENCES `seance` (`id_seance`) ON DELETE CASCADE ON UPDATE CASCADE
+CREATE TABLE `user` (
+  `pseudo` varchar(255) NOT NULL,
+  `nom` varchar(255) NOT NULL,
+  `prenom` varchar(255) NOT NULL,
+  `dateDeNaissance` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `messageMdp` varchar(255) NOT NULL,
+  `reponseMessage` varchar(255) NOT NULL,
+  `motDePasse` varchar(255) NOT NULL,
+  PRIMARY KEY (`pseudo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `exercice_muscu`
+-- Dumping data for table `user`
 --
 
-LOCK TABLES `exercice_muscu` WRITE;
-/*!40000 ALTER TABLE `exercice_muscu` DISABLE KEYS */;
-/*!40000 ALTER TABLE `exercice_muscu` ENABLE KEYS */;
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES ('John','Long','Jonathan','2003-02-02','jonathanlong52@gmail.com','root','root','$2b$10$44qhd0Gzyene4rlarm6fhO/KyNZK.adTUlM6nzuLXqtnM4ujCf846'),('Oxouille','Trullard','Martin','2003-02-27','martin.trullard@gmail.com','root','root','$2b$10$1E4ErwerLqi31h4G6X29KeB.foJeR3PSIkJJMaIMsUqbIWiWJ7Wp.');
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -54,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-11 12:09:37
+-- Dump completed on 2023-04-13 11:17:10

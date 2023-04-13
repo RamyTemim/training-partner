@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.32, for Linux (x86_64)
 --
--- Host: localhost    Database: training_partner
+-- Host: localhost    Database: Training_partner
 -- ------------------------------------------------------
--- Server version	8.0.32
+-- Server version	8.0.32-0ubuntu0.22.04.2
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,33 +16,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `user`
+-- Table structure for table `exerciceMuscu`
 --
 
-DROP TABLE IF EXISTS `user`;
+DROP TABLE IF EXISTS `exerciceMuscu`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `user` (
-  `pseudo` varchar(255) NOT NULL,
-  `nom` varchar(255) NOT NULL,
-  `prenom` varchar(255) NOT NULL,
-  `datedenaissance` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `message_mdp` varchar(255) NOT NULL,
-  `reponse_message` varchar(255) NOT NULL,
-  `motdepasse` varchar(255) NOT NULL,
-  PRIMARY KEY (`pseudo`)
+CREATE TABLE `exerciceMuscu` (
+  `idExercice` int NOT NULL AUTO_INCREMENT,
+  `idSeance` int NOT NULL,
+  `nbrSerie` int NOT NULL,
+  `nbrRep` int NOT NULL,
+  `poids` int NOT NULL,
+  `nom` varchar(45) NOT NULL,
+  `tmpsRepos` int DEFAULT NULL,
+  PRIMARY KEY (`idExercice`,`idSeance`),
+  KEY `fk_exercice1_seance_idx` (`idSeance`),
+  CONSTRAINT `fk_exercice1_seance` FOREIGN KEY (`idSeance`) REFERENCES `seance` (`idSeance`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `user`
+-- Dumping data for table `exerciceMuscu`
 --
 
-LOCK TABLES `user` WRITE;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('John','Long','Jonathan','2003-02-02','jonathanlong52@gmail.com','root','root','$2b$10$44qhd0Gzyene4rlarm6fhO/KyNZK.adTUlM6nzuLXqtnM4ujCf846'),('Oxouille','Trullard','Martin','2003-02-27','martin.trullard@gmail.com','root','root','$2b$10$1E4ErwerLqi31h4G6X29KeB.foJeR3PSIkJJMaIMsUqbIWiWJ7Wp.');
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+LOCK TABLES `exerciceMuscu` WRITE;
+/*!40000 ALTER TABLE `exerciceMuscu` DISABLE KEYS */;
+/*!40000 ALTER TABLE `exerciceMuscu` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -54,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-11 12:09:36
+-- Dump completed on 2023-04-13 11:17:10
