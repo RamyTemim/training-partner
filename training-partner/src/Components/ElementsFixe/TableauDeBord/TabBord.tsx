@@ -66,8 +66,8 @@ function TabBord(props: any) {
             <button id= "TB_Charts" >Charts</button>
             <div>
               <ul>
-                <li id='TB_Charts_Visu'><button onClick={()=>{pVIS()}} >Visualiser</button></li>
-                <li id ='TB_Charts_Cree' ><button onClick={()=>{pCRE()}}>Créer</button></li>
+                <li><button  id='TB_Charts_Visu' onClick={()=>{pVIS()}} >Visualiser</button></li>
+                <li><button id ='TB_Charts_Cree' onClick={()=>{pCRE()}}>Créer</button></li>
               </ul>
             </div>
 

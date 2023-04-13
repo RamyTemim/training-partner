@@ -113,7 +113,7 @@
     width: 100px;
     height: 30px;
     top: 410px;
-    left: 60px;
+    margin-left: 60px;
 }
 
 #TB_Charts_Cree{
@@ -124,7 +124,7 @@
     width: 100px;
     height: 30px;
     top: 460px;
-    left: 60px;
+    margin-left: 60px;
 }
 
 #LogoCharts{

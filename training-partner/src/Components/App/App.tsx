@@ -14,11 +14,11 @@ function App() {
   const handleLogin = () => {
     setIsConnected(true);
   }
-
+//{!isConnected && <Auth onLogin={handleLogin} />}
   return(
     <div className='App'>
-      {!isConnected && <Auth onLogin={handleLogin} />}
-      {isConnected && <Accueil />}
+
+      {!isConnected && <Accueil />}
     </div>
   );
 }
