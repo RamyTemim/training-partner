@@ -158,7 +158,7 @@
 }
 
 
-button #TB_Activite,button #TB_Conseil,button #TB_Charts,button #TB_Battle{
+#TB_Accueil,#TB_Activite,#TB_Conseil, #TB_Charts,#TB_Charts_Cree,#TB_Charts_Visu,#TB_Battle{
     position: absolute;
     width: 100px;
     height: 30px;
