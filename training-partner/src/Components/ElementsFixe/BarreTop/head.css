@@ -105,6 +105,10 @@ header{
 }
 
 #buttonUser{
+    border:none;
+    font-family: 'Arial';
+    font-weight: bold;
+    color:white;
     background-color: #1E1E1E;
 
 }

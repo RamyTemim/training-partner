@@ -11,14 +11,15 @@
 
 }
 
-#b1{
+#btt_email{
+    border:none;
     background-color: #1E1E1E;
     position: absolute;
     width: 133px;
     height: 16px;
-    left: 30px;
+    left: 0px;
     top: 12px;
-    
+    text-align: left;
     font-family: 'Arial';
     font-style: normal;
     font-weight: 400;
@@ -28,18 +29,17 @@
     color: #FFFFFF;
     
 }
-#b1_img{
-    left:-10px;
-}
 
-#b2{
+
+#btt_profil{
+    border:none;
     background-color: #1E1E1E;
     position: absolute;
     width: 133px;
     height: 16px;
-    left: 30px;
+    left: 0px;
     top: 40px;
-
+    text-align: left;
     font-family: 'Arial';
     font-style: normal;
     font-weight: 400;
@@ -50,13 +50,18 @@
 
 }
 
-#b3{
+#btt_deco{
+    border-top: 2px solid #7452FF;
+    border-bottom:none;
+    border-left: none;
+    border-right: none;
     background-color: #1E1E1E;
     position: absolute;
-    width: 133px;
-    height: 16px;
-    left: 30px;
-    top: 80px;
+    width: 100%;
+    height: 20px;
+    text-align: left;
+    left: 0px;
+    top: 70px;
 
     font-family: 'Arial';
     font-style: normal;

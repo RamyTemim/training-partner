@@ -16,9 +16,9 @@ function UserMenu(){
 
   return (
     <div id= "user_menu">
-      <p><button id ="b1"> <img title='Email' alt='Email' src={mail}/> Email</button></p>
-      <p><button id ="b2" onClick={info}><img title='Profil' alt='Profil' src={user}/>Profil Utilisateur</button></p>
-      <p><button id ="b3"><img title='deconnexion' alt='deconnexion' src={deconnexion}/>Déconnexion</button></p>
+      <pre><button id ="btt_email"> <img title='Email' alt='Email' src={mail}/>    Email</button></pre>
+      <pre><button id ="btt_profil" onClick={info}><img title='Profil' alt='Profil' src={user}/>    Profil Utilisateur</button></pre>
+      <pre><button id ="btt_deco"><img id ="btt_deco_img"title='deconnexion' alt='deconnexion' src={deconnexion}/>    Déconnexion</button></pre>
     </div>
   )
 };
