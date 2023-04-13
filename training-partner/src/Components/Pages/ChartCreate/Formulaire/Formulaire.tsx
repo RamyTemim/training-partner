@@ -220,7 +220,7 @@ const Formulaire: React.FC = () => {
 
       <form className="save" onSubmit={handleSave}>
         <div>
-          <label htmlFor="title"><p className="titre">Titre :</p></label>
+          <label htmlFor="title" className="titre">Titre :</label>
           <input type="text" id="title" name="title" placeholder="Entrer un titre" value={formSave.title} onChange={handleTitleChange} />
           <label htmlFor="selecSport" className="Sport">Sport :</label>
           <select  title="selectSport" className="sportList" value={formSave.sport} onChange={handleSportChange}>

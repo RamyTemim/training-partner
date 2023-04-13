@@ -87,19 +87,20 @@ body{
     position: absolute;
     width: 265px;
     height: 55px;
-    margin-left: 37%;
+    margin-left: 40%;
     top: 219px;
     border-radius: 20px;
     
     font-family: 'Arial';
+    text-align: center;
     font-style: normal;
     font-weight: 700;
     font-size: 40px;
-    padding : 5px 50px 10px 50px;
+    padding : auto;
 
     color: #000000;
     background: #0F9F49;
-    border: 10px solid #0F9F49;
+    border: 4px solid #0F9F49;
 }
 
 .listeAttribut{
@@ -237,7 +238,7 @@ table {
     width: 60%;
     height: 32px;
     left: 31px;
-    margin-top: 130px;
+    margin-top: 30px;
 
     font-family: 'Arial';
     font-style: normal;
@@ -314,9 +315,9 @@ table {
     font-weight: 700;
     font-size: 40px;
     text-align: center;
-    padding : 5px 50px 10px 50px;
+    padding : auto;
 
     color: #000000;
     background: #0F9F49;
-    border: 10px solid #0F9F49;
+    border: 4px solid #0F9F49;
 }
