@@ -1,6 +1,5 @@
 //Library
 import { useState } from 'react';
-import Accueil from '../Pages/Accueil/Acceuil';
 import Auth from '../Pages/Auth/Auth';
 
 
@@ -18,7 +17,6 @@ function App() {
   return(
     <div className='App'>
       {!isConnected && <Auth onLogin={handleLogin} />}
-      {isConnected && <Accueil />}
     </div>
   );
 }
