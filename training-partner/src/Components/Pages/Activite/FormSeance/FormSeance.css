@@ -1,4 +1,3 @@
-
 .formSeance{
     position: relative;
     text-align:left;
@@ -49,7 +48,7 @@
     margin-bottom: 200px;
 }
 
-label{
+.formEX label, .formSeance label{
     font-family: 'Arial';
     font-style: normal;
     font-weight: 600;
@@ -61,7 +60,7 @@ label{
 
     color: #000000;
 }
-input{
+.formEX input, .formSeance input{
     cursor: pointer;
     position: absolute;
     font-family: 'Arial';
@@ -92,7 +91,6 @@ input{
     margin-left: 2%;
     text-align: center;
     border: 1px solid white;
-
 }
 
 #buttonSubmitSeance{
