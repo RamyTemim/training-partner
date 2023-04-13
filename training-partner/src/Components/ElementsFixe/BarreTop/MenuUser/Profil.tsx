@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react';
 import './Profil.css';
 import { User } from '../../../../Interfaces/User';
 
-function Informations(){
+function Informations(props : any){
     const [profil ,setProfil] = useState<User>({ pseudo : '', nom : '', prenom : '', datedenaissance : '', email : '', message_mdp : '', reponse_message : '', motdepasse : ''});
+    const [isDisplay, setIsDisplay] = useState(false);
     const handleInputChange = (event : React.ChangeEvent<HTMLInputElement>) : void => {
         const { name, value } = event.target;
         setProfil((profil)=>({...profil, [name] : value}))
@@ -27,6 +28,8 @@ function Informations(){
         fetchDonnee();
     },[]);
 
+    
+
     const handleSubmit = async (event : React.FormEvent<HTMLFormElement>) : Promise<void> => {
         event.preventDefault();
         try{
@@ -45,8 +48,8 @@ function Informations(){
             console.error(error);
         }
     }    
-    
     return (
+        isDisplay ? (
         <div className='FormulaireProfil'>
             <form onSubmit = {handleSubmit} >
                     <label htmlFor='pseudo'>Pseudo : </label>
@@ -61,7 +64,7 @@ function Informations(){
                     <input type='password' id='motdepasse' name='motdepasse' value = {profil.motdepasse} onChange={handleInputChange}/>
             </form>
         </div>
-    )
+    ): null)
 }
 
 export default Informations;
