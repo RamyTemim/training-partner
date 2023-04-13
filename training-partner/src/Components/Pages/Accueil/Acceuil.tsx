@@ -18,7 +18,7 @@ function Accueil() {
   const [Conseil, setConseil] = useState(false);
   const [chartVisu, setChartVisu] = useState(false);
   const [chartCreate,setChartCreate] = useState(false);
-  const [Battle, setBattle] = useState(false);
+  const [Battle, setBattle] = useState(false); 
   
   const clickcv = (page : number)=>{
     if (page === 0){

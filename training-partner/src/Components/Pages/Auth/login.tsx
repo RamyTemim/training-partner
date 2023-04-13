@@ -51,7 +51,7 @@ function PageLogin (props : {onLogin : () => void}) {
         <div>
             <div className='FormulaireAuth'>
                 <form onSubmit = {handleSubmitLogin} >
-                    <label htmlFor='pseudo'>Username : </label>
+                    <label htmlFor='pseudo'>Pseudo : </label>
                     <input type='text' id='pseudo' name='pseudo' value = {login.pseudo} onChange={handleInputChange}/>
                     <label htmlFor='motdepasse'>Mot de passe : </label>
                     <input type='password' id='motdepasse' name='motdepasse' value = {login.motdepasse} onChange={handleInputChange}/>

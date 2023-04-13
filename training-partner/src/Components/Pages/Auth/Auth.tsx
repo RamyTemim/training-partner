@@ -3,6 +3,7 @@ import {useState, useEffect} from 'react';
 import Head from './head';
 import PageSignUp from './signUp';
 import PageLogin from './login';
+import Accueil from '../Accueil/Acceuil';
 
 
 //Components
@@ -34,8 +35,6 @@ function Auth(props : AuthProps) {
             setLogin(false);
         }
     },[isConnected])
-    //{isConnected && <Accueil />}
-
    
     return(
     <div>
@@ -43,7 +42,7 @@ function Auth(props : AuthProps) {
         {SignUp && <PageSignUp/>}
         {Login && <PageLogin onLogin = { () => setIsConnected(true) }/>}
         {ForgotPassword && null }
-        
+        {isConnected && <Accueil />}
     </div>
  )
 }
