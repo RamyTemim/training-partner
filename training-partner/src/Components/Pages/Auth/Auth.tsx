@@ -12,8 +12,8 @@ import Profil from '../../ElementsFixe/BarreTop/MenuUser/Profil';
 
 
 function Auth() {
-    const [SignUp, setSignUp] = useState(true);
-    const [Login, setLogin] = useState(false);
+    const [SignUp, setSignUp] = useState(false);
+    const [Login, setLogin] = useState(true);
     const [ForgotPassword, setForgotPassword] = useState(false);
     const [isConnected, setIsConnected] = useState(false);
   
@@ -41,7 +41,7 @@ function Auth() {
         {SignUp && <PageSignUp/>}
         {Login && <PageLogin onLogin = { () => setIsConnected(true) }/>}
         {ForgotPassword && null }
-        {isConnected && <Profil />}
+        {isConnected && <Accueil />}
 
     </div>
  )
