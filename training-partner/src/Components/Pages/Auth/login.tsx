@@ -4,7 +4,7 @@ import { User } from '../../../Interfaces/User';
 
 function PageLogin (props : {onLogin : () => void}) {
     //Définit le state login pour stocker les informations du formulaire
-    const [login ,setLogin] = useState<User>({ pseudo : '', nom : '', prenom : '', datedenaissance : '', email : '', message_mdp : '', reponse_message : '', motdepasse : ''});
+    const [login ,setLogin] = useState<User>({ pseudo : '', nom : '', prenom : '', dateDeNaissance : '', email : '', messageMdp : '', reponseMessage : '', motDePasse : ''});
     //Définit le state error pour stocker les erreurs de validation du formulaire
     const [error, setError] = useState<string>('');
 
@@ -24,7 +24,7 @@ function PageLogin (props : {onLogin : () => void}) {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({pseudo : login.pseudo ,motdepasse : login.motdepasse })
+                body: JSON.stringify({pseudo : login.pseudo ,motDePasse : login.motDePasse })
             })
             //Si la réponse de l'API est réussi affiche un message de confirmation
             if (response.ok){
@@ -53,8 +53,8 @@ function PageLogin (props : {onLogin : () => void}) {
                 <form onSubmit = {handleSubmitLogin} >
                     <label htmlFor='pseudo'>Pseudo : </label>
                     <input type='text' id='pseudo' name='pseudo' value = {login.pseudo} onChange={handleInputChange}/>
-                    <label htmlFor='motdepasse'>Mot de passe : </label>
-                    <input type='password' id='motdepasse' name='motdepasse' value = {login.motdepasse} onChange={handleInputChange}/>
+                    <label htmlFor='motDePasse'>Mot de passe : </label>
+                    <input type='password' id='motDePasse' name='motDePasse' value = {login.motDePasse} onChange={handleInputChange}/>
                     {error && <div>{error}</div>}
                     <button type='submit'>Login</button>
                 </form>

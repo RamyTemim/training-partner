@@ -3,7 +3,7 @@ import './Profil.css';
 import { User } from '../../../../Interfaces/User';
 
 function Informations(){
-    const [profil ,setProfil] = useState<User>({ pseudo : '', nom : '', prenom : '', datedenaissance : '', email : '', message_mdp : '', reponse_message : '', motdepasse : ''});
+    const [profil ,setProfil] = useState<User>({ pseudo : '', nom : '', prenom : '', dateDeNaissance : '', email : '', messageMdp : '', reponseMessage : '', motDePasse : ''});
     const handleInputChange = (event : React.ChangeEvent<HTMLInputElement>) : void => {
         const { name, value } = event.target;
         setProfil((profil)=>({...profil, [name] : value}))
@@ -19,6 +19,7 @@ function Informations(){
                 });
                 const donnee = await reponse.json();
                 setProfil(donnee);
+                console.log(donnee);
             }
             catch(error){
                 console.error(error);
@@ -58,7 +59,7 @@ function Informations(){
                     <label htmlFor='email'>Email : </label>
                     <input type='email' id='email' name='email' value = {profil.email} readOnly/>
                     <label htmlFor='motdepasse'>Mot de passe : </label>
-                    <input type='password' id='motdepasse' name='motdepasse' value = {profil.motdepasse} onChange={handleInputChange}/>
+                    <input type='password' id='motdepasse' name='motdepasse' value = {profil.motDePasse} onChange={handleInputChange}/>
             </form>
         </div>
     )

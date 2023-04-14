@@ -4,15 +4,14 @@ import Head from './head';
 import PageSignUp from './signUp';
 import PageLogin from './login';
 import Accueil from '../Accueil/Acceuil';
+import Profil from '../../ElementsFixe/BarreTop/MenuUser/Profil';
 
 
 //Components
 
-type AuthProps ={
-    onLogin : () => void
-}
 
-function Auth(props : AuthProps) {
+
+function Auth() {
     const [SignUp, setSignUp] = useState(true);
     const [Login, setLogin] = useState(false);
     const [ForgotPassword, setForgotPassword] = useState(false);
@@ -42,7 +41,8 @@ function Auth(props : AuthProps) {
         {SignUp && <PageSignUp/>}
         {Login && <PageLogin onLogin = { () => setIsConnected(true) }/>}
         {ForgotPassword && null }
-        {isConnected && <Accueil />}
+        {isConnected && <Profil />}
+
     </div>
  )
 }
