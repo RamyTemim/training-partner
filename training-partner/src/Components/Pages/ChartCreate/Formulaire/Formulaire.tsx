@@ -9,14 +9,14 @@ interface DonneGraph {
 
 interface Graphique {
   sport: string;
-  title:string;
+  titre:string;
 }
 
 
 type GraphType = "spiderchart" | "bar" | "polar";
 
 const Formulaire: React.FC = () => {
-  const [formSave,setformSave]= useState<Graphique>({title: "",sport:"musculation"});
+  const [formSave,setformSave]= useState<Graphique>({titre: "",sport:"musculation"});
   const [formDonnee, setformDonnee]= useState<DonneGraph>({name: "",score : 0});
   const [date,setDate] = useState('');
   const [selectedType, setSelectedType] = useState<GraphType>("spiderchart");
@@ -24,7 +24,7 @@ const Formulaire: React.FC = () => {
     labels: [] as string[],
     datasets: [
       {
-        label:formSave.title,
+        label:formSave.titre,
 
         data: [] as number[],
         backgroundColor: [
@@ -63,7 +63,7 @@ const Formulaire: React.FC = () => {
     event.preventDefault();
     setformSave({
       ...formSave,
-      title:event.target.value
+      titre:event.target.value
     })
   };
 
@@ -86,15 +86,15 @@ const Formulaire: React.FC = () => {
   setformDonnee({name :"",score :0});
   };
 
-  const handleSave=(event: React.FormEvent<HTMLFormElement> ) => {
+  const handleSave = async (event: React.FormEvent<HTMLFormElement> ) => {
     event.preventDefault();
-    if (formSave.title !== ""){
+    if (formSave.titre !== ""){
       setchartDonnee({
         labels: [...chartDonnee.labels],
         datasets: [
           {
             ...chartDonnee.datasets[0],
-            label: formSave.title,
+            label: formSave.titre,
             data:[...chartDonnee.datasets[0].data,],
           },
         ],
@@ -106,26 +106,36 @@ const Formulaire: React.FC = () => {
             console.log(date);
         })
       console.log(date)
-      const jsonData = JSON.stringify({
+      /*const jsonData = JSON.stringify({
         title: formSave.title,
         labels: chartDonnee.labels,
         values: chartDonnee.datasets[0].data,
         sport: formSave.sport,
         graph: selectedType,
         date: date
-      });
+      });*/
 
-      fetch('http://localhost:3001/chartCreate/saveGraph',{
+    try{
+      const reponse = await fetch('http://localhost:3001/graphique/create',{
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: jsonData
+        body: JSON.stringify({typeGraph : selectedType, nomSport : formSave.sport, titre : formSave.titre})
       })
-      console.log("c'est passé")
-      setformSave({title:"",sport:"musculation"});
-
+      
+      if(reponse.ok){
+        const donnee = await reponse.json();
+        console.log("donnee",donnee)
+        console.log("chart crée")
+      }
+    }
+    catch(error){
+      console.error(error)
+    }
+    setformSave({titre:"",sport:"musculation"});
   }
+
   const handleDelete = (id: string) => {
     setchartDonnee((prevState) => ({
       ...prevState,
@@ -220,13 +230,13 @@ const Formulaire: React.FC = () => {
 
       <form className="save" onSubmit={handleSave}>
         <div>
-          <label htmlFor="title" className="titre">Titre :</label>
-          <input type="text" id="title" name="title" placeholder="Entrer un titre" value={formSave.title} onChange={handleTitleChange} />
+          <label htmlFor="titre" className="titre">Titre :</label>
+          <input type="text" id="titre" name="titre" placeholder="Entrer un titre" value={formSave.titre} onChange={handleTitleChange} />
           <label htmlFor="selecSport" className="Sport">Sport :</label>
           <select  title="selectSport" className="sportList" value={formSave.sport} onChange={handleSportChange}>
             <option value="musculation">Musculation</option>
             <option value="escalade">Escalade</option>
-            <option value="course">Course à pieds</option>
+            <option value="course">Course</option>
           </select>
           <button className="submitForm2" type="submit">Sauvegarder</button>
         </div>

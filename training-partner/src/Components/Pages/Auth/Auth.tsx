@@ -38,7 +38,7 @@ function Auth() {
     return(
     <div>
         {!isConnected && <Head onPageChange = {onClick}/>}
-        {SignUp && <PageSignUp/>}
+        {SignUp && <PageSignUp />}
         {Login && <PageLogin onLogin = { () => setIsConnected(true) }/>}
         {ForgotPassword && null }
         {isConnected && <Accueil />}
