@@ -2,12 +2,14 @@ import { useEffect, useState } from 'react';
 import './Profil.css';
 import { User } from '../../../../Interfaces/User';
 
-function Informations(){
+function Profil(){
     const [profil ,setProfil] = useState<User>({ pseudo : '', nom : '', prenom : '', dateDeNaissance : '', email : '', messageMdp : '', reponseMessage : '', motDePasse : ''});
+    
     const handleInputChange = (event : React.ChangeEvent<HTMLInputElement>) : void => {
         const { name, value } = event.target;
         setProfil((profil)=>({...profil, [name] : value}))
     };
+
     useEffect(() => {
         const fetchDonnee = async () => {
             try{
@@ -53,11 +55,11 @@ function Informations(){
                     <label htmlFor='pseudo'>Pseudo : </label>
                     <input type='text' id='pseudo' name='pseudo' value = {profil.pseudo} onChange={handleInputChange}/>
                     <label htmlFor='nom'>Nom : </label>
-                    <input type='text' id='nom' name='nom' value = {profil.nom} readOnly/>
+                    <input type='text' id='nom' name='nom' value = {profil.nom} readOnly />
                     <label htmlFor='prenom'>Prénom : </label>
-                    <input type='texte' id='prenom' name='prenom' value = {profil.prenom} readOnly/>
+                    <input type='texte' id='prenom' name='prenom' value = {profil.prenom} readOnly />
                     <label htmlFor='email'>Email : </label>
-                    <input type='email' id='email' name='email' value = {profil.email} readOnly/>
+                    <input type='email' id='email' name='email' value = {profil.email} readOnly />
                     <label htmlFor='motdepasse'>Mot de passe : </label>
                     <input type='password' id='motdepasse' name='motdepasse' value = {profil.motDePasse} onChange={handleInputChange}/>
             </form>
@@ -65,4 +67,4 @@ function Informations(){
     )
 }
 
-export default Informations;
+export default Profil;
