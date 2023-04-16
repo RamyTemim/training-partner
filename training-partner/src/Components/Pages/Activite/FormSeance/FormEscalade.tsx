@@ -1,8 +1,10 @@
+//import des react hooks useState et useEffect et de l'interface Escalade
 import { useState, useEffect} from "react";
 import { Escalade } from "../../../../Interfaces/Escalade";
 
 
 function FormEscalade(props: any){
+    //initialisation de l'indice et des données de l'exrcice d'escalade
     const[ind, setInd] = useState(0);
     const [valeur,setValeur]=useState<Escalade>({
         difficulte : "",
@@ -11,20 +13,23 @@ function FormEscalade(props: any){
         nbr_prise:0,
     });
 
+    //initialisation d'un tableau d'exercices d'escalade
     const [exercices, setExercices] = useState<Escalade[]>([]);
 
+    //Gestion de l'évènement de la modification d'un champ du formulaire
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
         setValeur({ ...valeur, [name]: value });
-      };
+    };
 
+    //Gestion de l'évènement de la soumission du formulaire
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        if(valeur.nom===""||valeur.type===""){
+        event.preventDefault();//Empêche la page de se recharger lors de la soumission du formulaire
+        if(valeur.nom===""||valeur.type===""){//Si le nom ou le type ne sont pas remplis affiche une alerte
             alert("Veuillez remplir tous les champs obligatoires");
         }else{
-        setExercices([...exercices, valeur]);
-        setValeur({
+        setExercices([...exercices, valeur]);//Ajout de l'exercice à la liste des exercices
+        setValeur({//réinitialise les valeurs par défault du formulaire
             difficulte : "",
             nom:"",
             type : "",
@@ -33,31 +38,36 @@ function FormEscalade(props: any){
     };
     
     useEffect(() => {
-        if (exercices.length > ind){
-            let temp = JSON.stringify({
+        if (exercices.length > ind){//si la liste des exercices est plus grande que l'indice ind
+            let temp = JSON.stringify({//Création d'un chaîne JSON à partir des valeurs de l'exercice
                 difficulte : exercices[ind].difficulte,
                 nom:exercices[ind].nom,
                 type :exercices[ind].type ,
                 nbrprise: exercices[ind].nbr_prise ,
             })
             console.log(temp);
-            props.onSendValue(temp);
-            setInd(ind + 1);}
-      }, [exercices]);
+            props.onSendValue(temp);//Envoie de la chaîne JSON à une fonction qui se trouve dans les props du composant parent
+            setInd(ind + 1);//Mis à jour de l'indice
+        }
+    }, [exercices]);
 
 
+    //initialisation d'un état pour masquer ou afficher les détails d'un exercice
     const [details, setDetails] = useState(-1);
 
+    //fonction pour afficher ou masquer les détails d'un exercice
     const showDetails = (index: number) => {
-        if (details === index) {
-            setDetails(-1);
-        } else {
-            setDetails(index);
+        if (details === index) {//si les détails de l'exercice sont déjà affichés 
+            setDetails(-1);//masque les détails de l'exercice sélectionné
+        } else {//si les détails de l'exercice ne sont pas encore affiché
+            setDetails(index);//affiche les détails de l'exercice sélectionné
         }
     };
+
+    //fonction pour supprimé un exercice de la liste
     const handleDelete = (index: number) => {
-        const newExercices = exercices.filter((_, i) => i !== index);
-        setExercices(newExercices);
+        const newExercices = exercices.filter((_, i) => i !== index);//Crée une nouvelle liste en filtrant celui qui doit être supprimé
+        setExercices(newExercices);//Met à jour la liste d'exercices
     };
 
     return (

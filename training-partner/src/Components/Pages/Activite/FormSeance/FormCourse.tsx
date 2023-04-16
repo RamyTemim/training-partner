@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Course } from '../../../../Interfaces/Course';
 
 function FormCourse(props: any){
-    //initialisation de l'indice et des données de la course
+    //initialisation de l'indice et des données de l'exercice de la course
     const[ind, setInd] = useState(0);
     const [valeur,setValeur]=useState<Course>({
         distance : 0,
@@ -49,7 +49,7 @@ function FormCourse(props: any){
                 nom:exercices[ind].nom,
             })
             console.log(temp);
-            props.onSendValue(temp);//Envoie de la chaîne JSONà une fonction qui se trouve dans les props du composant parent
+            props.onSendValue(temp);//Envoie de la chaîne JSON à une fonction qui se trouve dans les props du composant parent
             setInd(ind + 1);//Mis à jour de l'indice
         }
     }, [exercices]);
