@@ -12,16 +12,22 @@ function Profil(){
 
     useEffect(() => {
         const fetchDonnee = async () => {
+            const user = localStorage.getItem('user');
+            //const us = JSON.parse(user)
+            //const pseudo = user.pseudo;
+            console.log("user :",user)
             try{
-                const reponse = await fetch('http://localhost:3001/user/profil', {
+                const reponse = await fetch(`http://localhost:3001/user/profil?pseudo=${user}`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json'
                     }
                 });
                 const donnee = await reponse.json();
-                setProfil(donnee);
-                console.log(donnee);
+                if(donnee){
+                    setProfil(donnee);
+                    console.log(donnee);
+                }
             }
             catch(error){
                 console.error(error);
@@ -55,11 +61,17 @@ function Profil(){
                     <label htmlFor='pseudo'>Pseudo : </label>
                     <input type='text' id='pseudo' name='pseudo' value = {profil.pseudo} onChange={handleInputChange}/>
                     <label htmlFor='nom'>Nom : </label>
-                    <input type='text' id='nom' name='nom' value = {profil.nom} readOnly />
+                    <input type='text' id='nom' name='nom' value = {profil.nom} onChange={handleInputChange} />
                     <label htmlFor='prenom'>Prénom : </label>
-                    <input type='texte' id='prenom' name='prenom' value = {profil.prenom} readOnly />
+                    <input type='texte' id='prenom' name='prenom' value = {profil.prenom} onChange={handleInputChange} />
+                    <label htmlFor='dateDeNaissance'>Date de naissance : </label>
+                    <input type="date" id='dateDeNaissance' name='dateDeNaissance' value = {profil.dateDeNaissance} onChange={handleInputChange}/>
                     <label htmlFor='email'>Email : </label>
-                    <input type='email' id='email' name='email' value = {profil.email} readOnly />
+                    <input type='email' id='email' name='email' value = {profil.email} onChange={handleInputChange} />
+                    <label htmlFor='messageMdp'> Question de sécurité : </label>
+                    <input type='text' id='messageMdp' name='messageMdp' placeholder="Met ici une question seule toi peut répondre" value = {profil.messageMdp} onChange={handleInputChange}/>
+                    <label htmlFor='reponseMessage'> Réponse : </label>
+                    <input type='text' id='reponseMessage' name='reponseMessage' placeholder="Met ici la réponse à cette question" value = {profil.reponseMessage} onChange={handleInputChange}/>
                     <label htmlFor='motdepasse'>Mot de passe : </label>
                     <input type='password' id='motdepasse' name='motdepasse' value = {profil.motDePasse} onChange={handleInputChange}/>
             </form>
