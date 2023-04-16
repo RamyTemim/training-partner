@@ -2,7 +2,6 @@
 import { useState, useEffect} from "react";
 import { Escalade } from "../../../../Interfaces/Escalade";
 
-
 function FormEscalade(props: any){
     //initialisation de l'indice et des données de l'exrcice d'escalade
     const[ind, setInd] = useState(0);

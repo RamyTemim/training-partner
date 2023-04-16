@@ -1,10 +1,9 @@
-import { stringify } from "querystring";
+//import des react hooks useState et useEffect et de l'interface Muscu
 import { useState, useEffect} from "react";
 import { Muscu } from "../../../../Interfaces/Muscu";
 
-var triangle:any;
-
 function FormMuscu(props : any){
+    //initialisation de l'indice et des données de l'exrcice d'escalade
     const[ind, setInd] = useState(0);
     const [valeur,setValeur]=useState<Muscu>({
         nbr_serie : 0,
@@ -14,20 +13,23 @@ function FormMuscu(props : any){
         tmps_repos :"00:00",
     });
 
+    //initialisation d'un tableau d'exercices de musculation
     const [exercices, setExercices] = useState<Muscu[]>([]);
 
+    //Gestion de l'évènement de la modification d'un champ du formulaire
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
         setValeur({ ...valeur, [name]: value });
     };
 
+    //Gestion de l'évènement de la soumission du formulaire
     const handleSubmit= (event: React.FormEvent<HTMLFormElement>)=>{
-        event.preventDefault();
-        if (valeur.nbr_rep===0 || valeur.nom==="" ||valeur.nbr_serie===0 ){
+        event.preventDefault();//Empêche la page de se recharger lors de la soumission du formulaire
+        if (valeur.nbr_rep===0 || valeur.nom==="" ||valeur.nbr_serie===0 ){//Si le nombre de répétitions ou le nom ou le nombre de séries ne sont pas remplis affiche une alerte
             alert("Veuillez remplir tous les champs obligatoires");
         }else{
-        setExercices([...exercices, valeur]);
-        setValeur({
+        setExercices([...exercices, valeur]);//Ajout de l'exercice à la liste des exercices
+        setValeur({//réinitialise les valeurs par défault du formulaire
             nbr_serie : 0,
             nbr_rep:0,
             poids : 0,
@@ -37,8 +39,8 @@ function FormMuscu(props : any){
     };
     };
     useEffect(() => {
-        if (exercices.length > ind){
-            let temp = JSON.stringify({
+        if (exercices.length > ind){//si la liste des exercices est plus grande que l'indice ind
+            let temp = JSON.stringify({//Création d'un chaîne JSON à partir des valeurs de l'exercice
                 nbrSerie :exercices[ind].nbr_serie ,
                 nbrRep: exercices[ind].nbr_rep ,
                 poids : exercices[ind].poids,
@@ -46,26 +48,31 @@ function FormMuscu(props : any){
                 restTime:exercices[ind].tmps_repos,
             })
             console.log(temp);
-            props.onSendValue(temp);
-            setInd(ind + 1);}
-      }, [exercices]);
+            props.onSendValue(temp);//Envoie de la chaîne JSON à une fonction qui se trouve dans les props du composant parent
+            setInd(ind + 1);//Mis à jour de l'indice
+        }
+    }, [exercices]);
 
 
 
+    //initialisation d'un état pour masquer ou afficher les détails d'un exercice
     const [details, setDetails] = useState(-1);
 
+    //fonction pour afficher ou masquer les détails d'un exercice
     const showDetails = (index: number) => {
-        if (details === index) {
-            setDetails(-1);
-        } else {
-            setDetails(index);
+        if (details === index) {//si les détails de l'exercice sont déjà affichés 
+            setDetails(-1);//masque les détails de l'exercice sélectionné
+        } else {//si les détails de l'exercice ne sont pas encore affiché
+            setDetails(index);//affiche les détails de l'exercice sélectionné
         }
     };
-    const handleDelete = (index: number) => {
-        const newExercices = exercices.filter((_, i) => i !== index);
-        setExercices(newExercices);
-      };
 
+    //fonction pour supprimé un exercice de la liste
+    const handleDelete = (index: number) => {
+        const newExercices = exercices.filter((_, i) => i !== index);//Crée une nouvelle liste en filtrant celui qui doit être supprimé
+        setExercices(newExercices);//Met à jour la liste d'exercices
+    };
+    
     return (
         <div>
             <form className="formEX" onSubmit={handleSubmit}>
