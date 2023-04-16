@@ -1,7 +1,9 @@
+//import des librairies, des graphiques et des éléments des graphiques
 import React, { useState } from "react";
 import { Bar, PolarArea, Radar } from 'react-chartjs-2';
 import './Formulaire.css';
 import {Chart,RadialLinearScale,PointElement,LineElement,Filler,Tooltip,Legend,LinearScale,CategoryScale,BarElement,Title,ArcElement} from 'chart.js';
+
 interface DonneGraph {
   name: string;
   score: number;
@@ -12,10 +14,12 @@ interface Graphique {
   title:string;
 }
 
-
+//Définition des types de graphiques possibles
 type GraphType = "spiderchart" | "bar" | "polar";
 
+//Composant principal du formulaire
 const Formulaire: React.FC = () => {
+  //Initialisation des différents états qui vont stocker les données d'un graphique et le type de graphique
   const [formSave,setformSave]= useState<Graphique>({title: "",sport:"musculation"});
   const [formDonnee, setformDonnee]= useState<DonneGraph>({name: "",score : 0});
   const [date,setDate] = useState('');
@@ -41,6 +45,8 @@ const Formulaire: React.FC = () => {
       },
     ],
   });
+
+  //Définition d'un objet pour les options des graphiques
   const reglage={
     scales: {
         r: {
@@ -50,8 +56,9 @@ const Formulaire: React.FC = () => {
             suggestedMax: 10
         }
     }
-};
+  };
 
+  //Gestion de l'évènement de changement de l'entrée du formulaire
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setformDonnee({
       ...formDonnee,
@@ -59,6 +66,7 @@ const Formulaire: React.FC = () => {
     });
   };
 
+  //Gestion de l'évènement de changement du titre dans le formulaire
   const handleTitleChange=(event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     setformSave({
@@ -67,9 +75,10 @@ const Formulaire: React.FC = () => {
     })
   };
 
+  //Gestion de l'évènement de soumission du formulaire qui contient les donnéees du graphique
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    if(formDonnee.name===""){
+    event.preventDefault();//Empêche la page de se recharger lors de la soumission du formulaire
+    if(formDonnee.name===""){//Vérifie si le nom de l'attribut est rempli
       alert("Entrer un nom d'attribut ");
     }
     else{
@@ -86,9 +95,10 @@ const Formulaire: React.FC = () => {
   setformDonnee({name :"",score :0});
   };
 
+  //Gestion de l'évènement de sauvegarde des données du titre et du type du graphique
   const handleSave=(event: React.FormEvent<HTMLFormElement> ) => {
-    event.preventDefault();
-    if (formSave.title !== ""){
+    event.preventDefault();//Empêche la page de se recharger lors de la soumission du formulaire
+    if (formSave.title !== ""){//Vérifie si le titre du graphique est rempli
       setchartDonnee({
         labels: [...chartDonnee.labels],
         datasets: [
@@ -106,6 +116,7 @@ const Formulaire: React.FC = () => {
             console.log(date);
         })
       console.log(date)
+      //trainsforme les données en JSON et les envoie à l'API pour les sauvegarder le graphique
       const jsonData = JSON.stringify({
         title: formSave.title,
         labels: chartDonnee.labels,
@@ -123,9 +134,12 @@ const Formulaire: React.FC = () => {
         body: jsonData
       })
       console.log("c'est passé")
+      //réinitialise le formulaire 
       setformSave({title:"",sport:"musculation"});
 
   }
+
+  //Gestion de l'évènement qui supprime un attribut du graphique
   const handleDelete = (id: string) => {
     setchartDonnee((prevState) => ({
       ...prevState,
@@ -141,37 +155,40 @@ const Formulaire: React.FC = () => {
     }));
   };
 
-
+  //Gestion de l'évènement qui change le type de graphique sélectionné
   const handleTypeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedType(event.target.value as GraphType);
   };
 
-    const getGraph = () => {
-      switch (selectedType) {
-        case "bar":{
-          Chart.register(CategoryScale,Filler,LinearScale,BarElement,Title,Tooltip,Legend,);
-      
-          return <Bar className="graphBar" data={chartDonnee} options={reglage}/>;
-      }
-        case "polar":{
-          Chart.register(RadialLinearScale,Filler, ArcElement, Tooltip, Legend);
-
-          return <PolarArea className="graphPolar" data={chartDonnee} options={reglage}/>;
-        }
-        case "spiderchart":{
-          Chart.register(RadialLinearScale,Filler,PointElement,LineElement,Tooltip,Legend,);
-          return <Radar className="graphRadar" data={chartDonnee} options={reglage} />;
-        }
-      }
-    };
-    const handleSportChange =(event: React.ChangeEvent<HTMLSelectElement>)=>{
-      event.preventDefault();
-      setformSave({
-        ...formSave,
-        sport:event.target.value
-      });
+  //Fonction qui retourne le type de graphique sélectionné
+  const getGraph = () => {
+    switch (selectedType) {
+      case "bar":{
+        Chart.register(CategoryScale,Filler,LinearScale,BarElement,Title,Tooltip,Legend,);
+    
+        return <Bar className="graphBar" data={chartDonnee} options={reglage}/>;
     }
-    return (
+      case "polar":{
+        Chart.register(RadialLinearScale,Filler, ArcElement, Tooltip, Legend);
+
+        return <PolarArea className="graphPolar" data={chartDonnee} options={reglage}/>;
+      }
+      case "spiderchart":{
+        Chart.register(RadialLinearScale,Filler,PointElement,LineElement,Tooltip,Legend,);
+        return <Radar className="graphRadar" data={chartDonnee} options={reglage} />;
+      }
+    }
+  };
+
+  //fonction appelé lorsqu'il y a un changement dans la sélection d'un sport 
+  const handleSportChange =(event: React.ChangeEvent<HTMLSelectElement>)=>{
+    event.preventDefault();//Empêche la page de se recharger lors de la soumission du formulaire
+    setformSave({
+      ...formSave,
+      sport:event.target.value
+    });
+  }
+  return (
 
     <>
       <form className="selection" onSubmit={handleSubmit}>
