@@ -1,8 +1,9 @@
+//import des modules et interface nécessaires
 import React, { useState } from "react";
-import FormCourse from "./FormCourse";
-import FormEscalade from "./FormEscalade";
-import FormMuscu from "./FormMuscu";
-import "./FormSeance.css";
+import FormCourse from "./FormCourse";//formulaire pour la course
+import FormEscalade from "./FormEscalade";//formulaire pour l'escalde
+import FormMuscu from "./FormMuscu";//formulaire pour la musculation
+import "./FormSeance.css";//style pour le formulaire seance
 
 
 interface FormValues {
@@ -11,64 +12,76 @@ interface FormValues {
  
 }
 
+//composant principal du formulaire
 const FormSeance: React.FC = () => {
+  //initialisation des états pour stocker le sport sélectionné
   const [sport,setSport]=useState("musculation");
-  const [valueSeance, setValueseance] = useState<string[]>([])
+  const [valueSeance, setValueSeance] = useState<string[]>([])
+
+  //état pour stocker les valeurs de la séance
+  const [values, setValues] = useState<FormValues>({
+    nom: "",
+    duree: "00:00",
+  });
+
+  //fonction pour gérer le changement de sport
   const handleSportChange =(event: React.ChangeEvent<HTMLSelectElement>)=>{
       event.preventDefault();
       setSport(event.target.value);
   }
+
+  //fonction pour récupérer les valeurs de la séance
   const getValue = (val : string)=>{
     console.log( "dans get value" +val);
     const updatedValueSeance = [...valueSeance, val];
-    setValueseance(updatedValueSeance);
-
+    setValueSeance(updatedValueSeance);
   }
+
+  //fonction pour afficher le formulaire correspondant au sport sélectionné
   const getForm = () => {
       switch (sport) {
         case "musculation":{
       
-          return <FormMuscu onSendValue = {getValue}/>;
-      }
+          return <FormMuscu onSendValue = {getValue}/>;//affiche le formulaire de la musculation
+        }
         case "escalade":{
          
-          return <FormEscalade onSendValue = {getValue}/>;
+          return <FormEscalade onSendValue = {getValue}/>;//affiche le formulaire d'escalade
         }
         case "course":{
 
-          return <FormCourse onSendValue = {getValue}/>;
+          return <FormCourse onSendValue = {getValue}/>;//affiche le formulaire de la course
         }
       }
-    };
+  };
 
-  const [values, setValues] = useState<FormValues>({
-    nom: "",
-    duree: "00:00",
-
-  });
-
-
+  //fonction pour gérer le changement des valeurs d'un champ du formulaire
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setValues({ ...values, [name]: value });
   };
 
+  //fonction pour gérer la soumission d'un formulaire
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    if(values.duree==="00:00"|| values.nom===""){
+    event.preventDefault();//Empêche la page de se recharger lors de la soumission du formulaire
+    if(values.duree==="00:00"|| values.nom===""){//Si la durée ou le nom ne sont pas remplis affiche une alerte
       alert("Veuillez remplir tous les champs obligatoires");
-    }else{
+    }
+    else{
       setValues({
         nom:"",
         duree:"00:00",
-      });
+    });
     
+    //transforme des valeurs du formulaire en tableau
     const seanceArray = valueSeance.map(seance => JSON.parse(seance));
+    //crée un objet JSON avec les valeurs du formulaire et les stock dans la variable result
     let result = JSON.stringify({
       titre : values.nom,
       duree : values.duree,
       seance : seanceArray
     })
+    //envoie une requête POST avec l'objet JSON 'result' au serveur local pour créer une nouvelle activité
     fetch('http://localhost:3001/activite/creer',{
       method: 'POST',
       headers: {
@@ -83,7 +96,7 @@ const FormSeance: React.FC = () => {
   return (
     <div>
       <form className="formSeance" onSubmit={handleSubmit}>
-      <span className="infoObl" id="needed">*</span><span className="infoObl" >champs obligatoires</span>
+        <span className="infoObl" id="needed">*</span><span className="infoObl" >champs obligatoires</span>
         <label htmlFor="nom" id="nomTitre" >Nom séance<span id="needed">*</span>
           <input id="inputNS" name="nom" type="string" onChange={handleChange} value={values.nom} placeholder="Nom de la séance"></input></label><br/>
         <label htmlFor="duree" id="duree">Durée<span id="needed">*</span>
@@ -91,15 +104,14 @@ const FormSeance: React.FC = () => {
         <select  title="selectSport" className="selectSport" value={sport} onChange={handleSportChange}>
           <option value="musculation">Musculation</option>
           <option value="escalade">Escalade</option>
-          <option value="course">Course à pieds</option>
+          <option value="course">Course</option>
         </select>
         <button id="buttonSubmitSeance" type="submit">Enregistrer Séance</button>
-        </form> 
-        <div>
-          {getForm()}
-        </div>
+      </form> 
+      <div>
+        {getForm()}
+      </div>
     </div>
-
   );
 };
 

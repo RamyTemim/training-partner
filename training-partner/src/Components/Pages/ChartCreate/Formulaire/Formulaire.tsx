@@ -1,4 +1,4 @@
-//import des librairies, des graphiques et des éléments des graphiques
+//import des modules nécessaires, des graphiques et des éléments des graphiques
 import React, { useState } from "react";
 import { Bar, PolarArea, Radar } from 'react-chartjs-2';
 import './Formulaire.css';
