@@ -1,7 +1,9 @@
+//import des react hooks useState et useEffect et de l'interface Course
 import { useState, useEffect } from "react";
 import { Course } from '../../../../Interfaces/Course';
 
 function FormCourse(props: any){
+    //initialisation de l'indice et des données de la course
     const[ind, setInd] = useState(0);
     const [valeur,setValeur]=useState<Course>({
         distance : 0,
@@ -11,20 +13,24 @@ function FormCourse(props: any){
         nom:"",
     });
 
+    //initialisation d'un tableau d'exercices de Course
     const [exercices, setExercices] = useState<Course[]>([]);
 
+    //Gestion de l'évènement de la modification d'un champ du formulaire
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
         setValeur({ ...valeur, [name]: value });
-      };
+    };
       
-      const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        if(valeur.chrono === "00:00" || valeur.distance === 0 || valeur.nom === "" ){
+    //Gestion de l'évènement de la soumission du formulaire
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();//Empêche la page de se recharger lors de la soumission du formulaire
+        if(valeur.chrono === "00:00" || valeur.distance === 0 || valeur.nom === "" ){//Si le chrono, la valeur ou le nom ne sont pas remplis affiche une alerte
             alert("Veuillez remplir tous les champs obligatoires")
-        }else{
-        setExercices([...exercices, valeur]);
-        setValeur({
+        }
+        else{
+        setExercices([...exercices, valeur]);//Ajout de l'exercice à la liste des exercices
+        setValeur({//réinitialise les valeurs par défault du formulaire
             distance : 0,
             chrono:"00:00",
             bpm : 0,
@@ -34,8 +40,8 @@ function FormCourse(props: any){
     };
 
     useEffect(() => {
-        if (exercices.length > ind){
-            let temp = JSON.stringify({
+        if (exercices.length > ind){//si la liste des exercices est plus grande que l'indice ind
+            let temp = JSON.stringify({//Création d'un chaîne JSON à partir des valeurs de l'exercice
                 distance :exercices[ind].distance,
                 chrono : exercices[ind].chrono,
                 bpm : exercices[ind].bpm,
@@ -43,23 +49,27 @@ function FormCourse(props: any){
                 nom:exercices[ind].nom,
             })
             console.log(temp);
-            props.onSendValue(temp);
-            setInd(ind + 1);}
-      }, [exercices]);
+            props.onSendValue(temp);//Envoie de la chaîne JSONà une fonction qui se trouve dans les props du composant parent
+            setInd(ind + 1);//Mis à jour de l'indice
+        }
+    }, [exercices]);
 
+    //initialisation d'un état pour masquer ou afficher les détails d'un exercice
     const [details, setDetails] = useState(-1);
 
+    //fonction pour afficher ou masquer les détails d'un exercice
     const showDetails = (index: number) => {
-        if (details === index) {
-            setDetails(-1);
-        } else {
-            setDetails(index);
+        if (details === index) {//si les détails de l'exercice sont déjà affichés 
+            setDetails(-1);//masque les détails de l'exercice sélectionné
+        } else {//si les détails de l'exercice ne sont pas encore affiché
+            setDetails(index);//affiche les détails de l'exercice sélectionné
         }
     };
 
+    //fonction pour supprimé un exercice de la liste
     const handleDelete = (index: number) => {
-        const newExercices = exercices.filter((_, i) => i !== index);
-        setExercices(newExercices);
+        const newExercices = exercices.filter((_, i) => i !== index);//Crée une nouvelle liste en filtrant celui qui doit être supprimé
+        setExercices(newExercices);//Met à jour la liste d'exercices
     };
     
     return (
