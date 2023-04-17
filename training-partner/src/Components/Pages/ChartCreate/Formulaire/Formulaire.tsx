@@ -4,6 +4,7 @@ import { Bar, PolarArea, Radar } from 'react-chartjs-2';
 import './Formulaire.css';
 import {Chart,RadialLinearScale,PointElement,LineElement,Filler,Tooltip,Legend,LinearScale,CategoryScale,BarElement,Title,ArcElement} from 'chart.js';
 
+//interface des formulaires
 interface DonneGraph {
   name: string;
   score: number;
@@ -31,6 +32,7 @@ const Formulaire: React.FC = () => {
         label:formSave.title,
 
         data: [] as number[],
+        //couleur prédefinies
         backgroundColor: [
           'rgba(255, 99, 132, 0.5)',
           'rgba(54, 162, 235, 0.5)',
@@ -81,7 +83,7 @@ const Formulaire: React.FC = () => {
     if(formDonnee.name===""){//Vérifie si le nom de l'attribut est rempli
       alert("Entrer un nom d'attribut ");
     }
-    else{
+    else{//met a jour les informations du graph
       setchartDonnee({
         labels: [...chartDonnee.labels, formDonnee.name],
         datasets: [
@@ -162,10 +164,9 @@ const Formulaire: React.FC = () => {
 
   //Fonction qui retourne le type de graphique sélectionné
   const getGraph = () => {
-    switch (selectedType) {
+    switch (selectedType) {//switch sur le type de graph selectionné
       case "bar":{
-        Chart.register(CategoryScale,Filler,LinearScale,BarElement,Title,Tooltip,Legend,);
-    
+        Chart.register(CategoryScale,Filler,LinearScale,BarElement,Title,Tooltip,Legend,);//enregistre les options utile pour la création du graphique
         return <Bar className="graphBar" data={chartDonnee} options={reglage}/>;
     }
       case "polar":{

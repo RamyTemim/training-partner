@@ -86,12 +86,12 @@ function Menus(){
     //fonction appelé lorsqu'une séanceX est sélectionné
     const handleSeanceXChange = (seance : string) => {
         setSelectedSeanceX(seance);
-        setSelectedSeanceY(seanceY.filter(item => item !==seance)[0]);
+        setSelectedSeanceY(seanceY.filter(item => item !==seance)[0]);//filtre les senace pour ne pas chosir deux fois la même
     }
     //fonction appelé lorsqu'une séanceY est sélectionné
     const handleSeanceYChange = (seance : string) => {
         setSelectedSeanceY(seance);
-        setSelectedSeanceX(seanceX.filter(item => item !==seance)[0]);
+        setSelectedSeanceX(seanceX.filter(item => item !==seance)[0]);//filtre les senace pour ne pas chosir deux fois la même
     }
     //fonction appelé lorsqu'un exercice est selectionné
     const handleExerciceChange = (exercice : string) => {
@@ -99,7 +99,8 @@ function Menus(){
     }
 
     return (
-        <div className='containerMenus'>       
+        <div className='containerMenus'>  
+             {/* Boucle sur les valeur du state pour afficher les sport */ }
             <select id="dropMenuSport" onChange={ (event)=> handleSportChange(event.target.value) }>
                 {sports.map((sport) =>(
                     <option key ={sport}>
@@ -107,7 +108,7 @@ function Menus(){
                     </option>
                 ))}
             </select>
-
+                {/* Boucle sur les valeur du state pour afficher les seance allant avec le sport selectionné */ }
             <select id="dropMenuSeanceX" value={selectedSeanceX} onChange={ (event)=> handleSeanceXChange(event.target.value) }>
                 {filteredSeances.map((seance) =>(
                     <option key = {seance.nom}>
