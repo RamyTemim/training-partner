@@ -116,12 +116,13 @@ const Formulaire: React.FC = () => {
       });*/
 
     try{
+      const pseudo = localStorage.getItem('user')
       const reponse = await fetch('http://localhost:3001/graphique/create',{
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({typeGraph : selectedType, userPseudo :"John", nomSport : formSave.sport, titre : formSave.titre})
+        body: JSON.stringify({typeGraph : selectedType, nomSport : formSave.sport, titre : formSave.titre, userPseudo : pseudo})
       })
       
       if(reponse.ok){
