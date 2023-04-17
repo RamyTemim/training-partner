@@ -1,11 +1,8 @@
 import { useState } from "react";
 import { Seance } from "../../../../Interfaces/Seance";
 
-interface IAttribute {
-    name: string;
-    value: number;
-    }
 
+    //senace de teste stocker dans une variable
     const seance: Seance[] = [
     {
         nom: 'Session 1',
@@ -21,10 +18,11 @@ interface IAttribute {
     },
 
     ];
-
+    //nombre de seance maximum par page
     const PAGE_SIZE = 10;   
 
     const TableauSeance: React.FC = () => {
+    //state gerzant la page affiche
     const [currentPage, setCurrentPage] = useState(1);
 
     const handlePrevPage = () => {
