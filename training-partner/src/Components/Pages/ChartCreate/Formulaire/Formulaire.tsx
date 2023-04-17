@@ -121,7 +121,7 @@ const Formulaire: React.FC = () => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({typeGraph : selectedType, nomSport : formSave.sport, titre : formSave.titre})
+        body: JSON.stringify({typeGraph : selectedType, userPseudo :"John", nomSport : formSave.sport, titre : formSave.titre})
       })
       
       if(reponse.ok){
