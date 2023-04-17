@@ -37,7 +37,7 @@ function PageLogin (props : {onLogin : () => void}) {
                 if(donnee){
                     const donnees = JSON.parse(donnee);
                     localStorage.setItem('token', donnees.token);
-                    localStorage.setItem("user",JSON.stringify({pseudo : login.pseudo ,motDePasse : login.motDePasse}))
+                    localStorage.setItem("user",JSON.stringify({pseudo : login.pseudo }))
                     console.log("le json marche?")
                 }
                 props.onLogin();
