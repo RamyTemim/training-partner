@@ -38,7 +38,7 @@ function Auth() {
         {SignUp && <PageSignUp />}
         {Login && <PageLogin onLogin = { () => setIsConnected(true) }/>}
         {ForgotPassword && null }
-        {isConnected && <Accueil />}
+        {isConnected && <Profil />}
 
     </div>
  )
