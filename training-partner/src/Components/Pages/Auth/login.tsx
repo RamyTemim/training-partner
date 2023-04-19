@@ -31,7 +31,7 @@ function PageLogin (props : {onLogin : () => void}) {
                 const donnee = await response.text();
                 if(donnee){
                     const donnees = JSON.parse(donnee);
-                    localStorage.setItem('token', donnees.token);
+                    localStorage.setItem('token', donnees);
                     console.log("le json marche?")
                 }
                 props.onLogin();
