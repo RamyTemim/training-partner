@@ -16,32 +16,27 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `exerciceEscalade`
+-- Table structure for table `sessions`
 --
 
-DROP TABLE IF EXISTS `exerciceEscalade`;
+DROP TABLE IF EXISTS `sessions`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `exerciceEscalade` (
-  `idExerciceEscalade` int NOT NULL AUTO_INCREMENT,
-  `idSeance` int NOT NULL,
-  `difficulte` varchar(10) DEFAULT NULL,
-  `nom` varchar(45) NOT NULL,
-  `nbrPrise` int DEFAULT NULL,
-  `type` varchar(45) NOT NULL,
-  PRIMARY KEY (`idExerciceEscalade`,`idSeance`),
-  KEY `fk_exerciceM1_seance_idx` (`idSeance`),
-  CONSTRAINT `fk_exerciceM1_seance` FOREIGN KEY (`idSeance`) REFERENCES `seance` (`idSeance`) ON DELETE CASCADE ON UPDATE CASCADE
+CREATE TABLE `sessions` (
+  `session_id` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `expires` int unsigned NOT NULL,
+  `data` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  PRIMARY KEY (`session_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `exerciceEscalade`
+-- Dumping data for table `sessions`
 --
 
-LOCK TABLES `exerciceEscalade` WRITE;
-/*!40000 ALTER TABLE `exerciceEscalade` DISABLE KEYS */;
-/*!40000 ALTER TABLE `exerciceEscalade` ENABLE KEYS */;
+LOCK TABLES `sessions` WRITE;
+/*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
+/*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -53,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-13 11:17:10
+-- Dump completed on 2023-04-20 13:45:52

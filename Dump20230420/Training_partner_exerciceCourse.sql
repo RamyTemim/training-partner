@@ -16,33 +16,34 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `graphique`
+-- Table structure for table `exerciceCourse`
 --
 
-DROP TABLE IF EXISTS `graphique`;
+DROP TABLE IF EXISTS `exerciceCourse`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `graphique` (
-  `typeGraph` int NOT NULL,
-  `idGraph` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `exerciceCourse` (
+  `idExerciceCourse` int NOT NULL AUTO_INCREMENT,
+  `idSeance` int NOT NULL,
+  `distance` int NOT NULL,
+  `chrono` int NOT NULL,
+  `bpm` int DEFAULT NULL,
+  `vitesse` int DEFAULT NULL,
+  `nom` varchar(45) NOT NULL,
   `userPseudo` varchar(20) NOT NULL,
-  `nomSport` varchar(15) NOT NULL,
-  `titre` varchar(15) NOT NULL,
-  PRIMARY KEY (`idGraph`,`userPseudo`),
-  KEY `U_pseudo_idx` (`userPseudo`),
-  KEY `nom_sport_idx` (`nomSport`),
-  CONSTRAINT `nomSport` FOREIGN KEY (`nomSport`) REFERENCES `sport` (`nom`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `userPseudo` FOREIGN KEY (`userPseudo`) REFERENCES `user` (`pseudo`) ON DELETE CASCADE ON UPDATE CASCADE
+  PRIMARY KEY (`idExerciceCourse`),
+  KEY `fk_exerciceC1_seance_idx` (`idSeance`,`userPseudo`),
+  CONSTRAINT `fk_exerciceC1_seance` FOREIGN KEY (`idSeance`, `userPseudo`) REFERENCES `seance` (`idSeance`, `userPseudo`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `graphique`
+-- Dumping data for table `exerciceCourse`
 --
 
-LOCK TABLES `graphique` WRITE;
-/*!40000 ALTER TABLE `graphique` DISABLE KEYS */;
-/*!40000 ALTER TABLE `graphique` ENABLE KEYS */;
+LOCK TABLES `exerciceCourse` WRITE;
+/*!40000 ALTER TABLE `exerciceCourse` DISABLE KEYS */;
+/*!40000 ALTER TABLE `exerciceCourse` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -54,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-13 11:17:10
+-- Dump completed on 2023-04-20 13:45:52

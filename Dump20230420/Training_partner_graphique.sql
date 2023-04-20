@@ -16,27 +16,29 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `sessions`
+-- Table structure for table `graphique`
 --
 
-DROP TABLE IF EXISTS `sessions`;
+DROP TABLE IF EXISTS `graphique`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `sessions` (
-  `session_id` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  `expires` int unsigned NOT NULL,
-  `data` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
-  PRIMARY KEY (`session_id`)
+CREATE TABLE `graphique` (
+  `idGraph` int NOT NULL AUTO_INCREMENT,
+  `userPseudo` varchar(20) NOT NULL,
+  `typeGraph` varchar(255) NOT NULL,
+  `nomSport` varchar(255) NOT NULL,
+  `titre` varchar(255) NOT NULL,
+  PRIMARY KEY (`idGraph`,`userPseudo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `sessions`
+-- Dumping data for table `graphique`
 --
 
-LOCK TABLES `sessions` WRITE;
-/*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
+LOCK TABLES `graphique` WRITE;
+/*!40000 ALTER TABLE `graphique` DISABLE KEYS */;
+/*!40000 ALTER TABLE `graphique` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -48,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-13 11:17:10
+-- Dump completed on 2023-04-20 13:45:52

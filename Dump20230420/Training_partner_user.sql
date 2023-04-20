@@ -41,7 +41,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('John','Long','Jonathan','2003-02-02','jonathanlong52@gmail.com','root','root','$2b$10$44qhd0Gzyene4rlarm6fhO/KyNZK.adTUlM6nzuLXqtnM4ujCf846'),('Oxouille','Trullard','Martin','2003-02-27','martin.trullard@gmail.com','root','root','$2b$10$1E4ErwerLqi31h4G6X29KeB.foJeR3PSIkJJMaIMsUqbIWiWJ7Wp.');
+INSERT INTO `user` VALUES ('gableul','Leulmi','Gabriel','2003-08-26','gableulmi@gmail.com','porject name','training partner','$2b$10$iym4QyEEIE6TVYXVrLeOw.2J9IAsrMI/1UZyTLYK3OE7jNWT/9cyy'),('John','Long','Jonathan','2003-02-02','jonathanlong52@gmail.com','root','root','$2b$10$44qhd0Gzyene4rlarm6fhO/KyNZK.adTUlM6nzuLXqtnM4ujCf846'),('Oxouille','Trullard','Martin','2003-02-27','martin.trullard@gmail.com','root','root','$2b$10$1E4ErwerLqi31h4G6X29KeB.foJeR3PSIkJJMaIMsUqbIWiWJ7Wp.');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-13 11:17:10
+-- Dump completed on 2023-04-20 13:45:52

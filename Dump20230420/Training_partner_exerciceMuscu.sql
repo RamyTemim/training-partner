@@ -16,30 +16,34 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `donneeGraph`
+-- Table structure for table `exerciceMuscu`
 --
 
-DROP TABLE IF EXISTS `donneeGraph`;
+DROP TABLE IF EXISTS `exerciceMuscu`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `donneeGraph` (
-  `idDonnee` int NOT NULL AUTO_INCREMENT,
-  `idGraph` int NOT NULL,
-  `nomAttribut` varchar(25) NOT NULL,
-  `valeur` int NOT NULL,
-  PRIMARY KEY (`idDonnee`,`idGraph`),
-  KEY `fk_id_graph_idx` (`idGraph`),
-  CONSTRAINT `fk_id_graph` FOREIGN KEY (`idGraph`) REFERENCES `graphique` (`idGraph`) ON DELETE CASCADE ON UPDATE CASCADE
+CREATE TABLE `exerciceMuscu` (
+  `idExercice` int NOT NULL AUTO_INCREMENT,
+  `idSeance` int NOT NULL,
+  `nbrSerie` int NOT NULL,
+  `nbrRep` int NOT NULL,
+  `poids` int NOT NULL,
+  `nom` varchar(45) NOT NULL,
+  `tmpsRepos` int DEFAULT NULL,
+  `userPseudo` varchar(20) NOT NULL,
+  PRIMARY KEY (`idExercice`,`idSeance`),
+  KEY `fk_exercice1_seance_idx` (`idSeance`,`userPseudo`),
+  CONSTRAINT `fk_exercice1_seance` FOREIGN KEY (`idSeance`, `userPseudo`) REFERENCES `seance` (`idSeance`, `userPseudo`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `donneeGraph`
+-- Dumping data for table `exerciceMuscu`
 --
 
-LOCK TABLES `donneeGraph` WRITE;
-/*!40000 ALTER TABLE `donneeGraph` DISABLE KEYS */;
-/*!40000 ALTER TABLE `donneeGraph` ENABLE KEYS */;
+LOCK TABLES `exerciceMuscu` WRITE;
+/*!40000 ALTER TABLE `exerciceMuscu` DISABLE KEYS */;
+/*!40000 ALTER TABLE `exerciceMuscu` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -51,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-13 11:17:10
+-- Dump completed on 2023-04-20 13:45:52

@@ -16,33 +16,26 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `exerciceCourse`
+-- Table structure for table `sport`
 --
 
-DROP TABLE IF EXISTS `exerciceCourse`;
+DROP TABLE IF EXISTS `sport`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `exerciceCourse` (
-  `idExerciceCourse` int NOT NULL AUTO_INCREMENT,
-  `idSeance` int NOT NULL,
-  `distance` int NOT NULL,
-  `chrono` int NOT NULL,
-  `bpm` int DEFAULT NULL,
-  `vitesse` int DEFAULT NULL,
-  `nom` varchar(45) NOT NULL,
-  PRIMARY KEY (`idExerciceCourse`,`idSeance`),
-  KEY `fk_exerciceC1_seance_idx` (`idSeance`),
-  CONSTRAINT `fk_exerciceC1_seance` FOREIGN KEY (`idSeance`) REFERENCES `seance` (`idSeance`) ON DELETE CASCADE ON UPDATE CASCADE
+CREATE TABLE `sport` (
+  `nom` varchar(15) NOT NULL,
+  PRIMARY KEY (`nom`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `exerciceCourse`
+-- Dumping data for table `sport`
 --
 
-LOCK TABLES `exerciceCourse` WRITE;
-/*!40000 ALTER TABLE `exerciceCourse` DISABLE KEYS */;
-/*!40000 ALTER TABLE `exerciceCourse` ENABLE KEYS */;
+LOCK TABLES `sport` WRITE;
+/*!40000 ALTER TABLE `sport` DISABLE KEYS */;
+INSERT INTO `sport` VALUES ('Course'),('Escalade'),('Musculation');
+/*!40000 ALTER TABLE `sport` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -54,4 +47,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-13 11:17:10
+-- Dump completed on 2023-04-20 13:45:52
