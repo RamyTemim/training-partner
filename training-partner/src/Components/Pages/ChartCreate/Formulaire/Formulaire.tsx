@@ -110,7 +110,7 @@ const Formulaire: React.FC = () => {
             data:[...chartDonnee.datasets[0].data,],
           },
         ],
-    })}
+    })}/*
     fetch('http://localhost:3001/date')
       .then(response =>response.text())
       .then((data) =>{
@@ -126,7 +126,7 @@ const Formulaire: React.FC = () => {
       sport: formSave.sport,
       graph: selectedType,
       date: date
-    });
+    });*/
 
     try{
       const pseudo = localStorage.getItem('user')

@@ -75,14 +75,18 @@ const FormSeance: React.FC = () => {
     
     //transforme des valeurs du formulaire en tableau
     const seanceArray = valueSeance.map(seance => JSON.parse(seance));
+    const pseudo = localStorage.getItem('user')
     //crée un objet JSON avec les valeurs du formulaire et les stock dans la variable result
     let result = JSON.stringify({
+      userPseudo : pseudo,
       titre : values.nom,
       duree : values.duree,
-      seance : seanceArray
+      nomSport : sport
+      //seance : seanceArray
     })
+    console.log(result)   
     //envoie une requête POST avec l'objet JSON 'result' au serveur local pour créer une nouvelle activité
-    fetch('http://localhost:3001/activite/creer',{
+    fetch('http://localhost:3001/seance/createSeance',{
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
