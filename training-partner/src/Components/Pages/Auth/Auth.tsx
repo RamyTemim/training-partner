@@ -6,10 +6,7 @@ import PageLogin from './login';
 import Accueil from '../Accueil/Acceuil';
 import Profil from '../../ElementsFixe/BarreTop/MenuUser/Profil';
 
-
 //Components
-
-
 
 function Auth() {
     const [SignUp, setSignUp] = useState(false);
@@ -38,7 +35,7 @@ function Auth() {
     return(
     <div>
         {!isConnected && <Head onPageChange = {onClick}/>}
-        {SignUp && <PageSignUp/>}
+        {SignUp && <PageSignUp />}
         {Login && <PageLogin onLogin = { () => setIsConnected(true) }/>}
         {ForgotPassword && null }
         {isConnected && <Accueil />}

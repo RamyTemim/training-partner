@@ -2,6 +2,11 @@ import  { useState } from 'react';
 import './Auth.css';
 import { User } from '../../../Interfaces/User';
 
+export function storeDataLocally(connected :boolean, user : User){
+    localStorage.setItem('connected', String(connected));
+    localStorage.setItem('user', JSON.stringify(user))
+}
+
 function PageLogin (props : {onLogin : () => void}) {
     //Définit le state login pour stocker les informations du formulaire
     const [login ,setLogin] = useState<User>({ pseudo : '', nom : '', prenom : '', dateDeNaissance : '', email : '', messageMdp : '', reponseMessage : '', motDePasse : ''});
@@ -31,7 +36,8 @@ function PageLogin (props : {onLogin : () => void}) {
                 const donnee = await response.text();
                 if(donnee){
                     const donnees = JSON.parse(donnee);
-                    localStorage.setItem('token', donnees);
+                    localStorage.setItem('token', donnees.token);
+                    localStorage.setItem("user", login.pseudo);
                     console.log("le json marche?")
                 }
                 props.onLogin();

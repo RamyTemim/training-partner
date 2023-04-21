@@ -2,8 +2,9 @@
     border : 2px solid black;
     padding: 2em;
     width: 500px;
-    margin: 10rem auto;
-    z-index: 12;
+    margin: 3rem auto;
+    border-radius: 20px;
+    background : #0F9F49;
 }
 
 .FormulaireProfil input{

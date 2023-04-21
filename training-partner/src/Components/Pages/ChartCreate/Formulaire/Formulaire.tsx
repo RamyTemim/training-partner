@@ -12,7 +12,7 @@ interface DonneGraph {
 
 interface Graphique {
   sport: string;
-  title:string;
+  titre:string;
 }
 
 //Définition des types de graphiques possibles
@@ -29,7 +29,7 @@ const Formulaire: React.FC = () => {
     labels: [] as string[],
     datasets: [
       {
-        label:formSave.title,
+        label:formSave.titre,
 
         data: [] as number[],
         //couleur prédefinies
@@ -73,7 +73,7 @@ const Formulaire: React.FC = () => {
     event.preventDefault();
     setformSave({
       ...formSave,
-      title:event.target.value
+      titre:event.target.value
     })
   };
 
@@ -106,7 +106,7 @@ const Formulaire: React.FC = () => {
         datasets: [
           {
             ...chartDonnee.datasets[0],
-            label: formSave.title,
+            label: formSave.titre,
             data:[...chartDonnee.datasets[0].data,],
           },
         ],
@@ -126,19 +126,26 @@ const Formulaire: React.FC = () => {
         sport: formSave.sport,
         graph: selectedType,
         date: date
-      });
+      });*/
 
-      fetch('http://localhost:3001/chartCreate/saveGraph',{
+    try{
+      const pseudo = localStorage.getItem('user')
+      const reponseChart = await fetch('http://localhost:3001/graphique/create',{
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: jsonData
+        body: JSON.stringify({typeGraph : selectedType, nomSport : formSave.sport, titre : formSave.titre, userPseudo : pseudo})
       })
       console.log("c'est passé")
       //réinitialise le formulaire 
       setformSave({title:"",sport:"musculation"});
 
+    }
+    catch(error){
+      console.error(error)
+    }
+    setformSave({titre:"",sport:"musculation"});
   }
 
   //Gestion de l'évènement qui supprime un attribut du graphique
@@ -238,13 +245,13 @@ const Formulaire: React.FC = () => {
 
       <form className="save" onSubmit={handleSave}>
         <div>
-          <label htmlFor="title" className="titre">Titre :</label>
-          <input type="text" id="title" name="title" placeholder="Entrer un titre" value={formSave.title} onChange={handleTitleChange} />
+          <label htmlFor="titre" className="titre">Titre :</label>
+          <input type="text" id="titre" name="titre" placeholder="Entrer un titre" value={formSave.titre} onChange={handleTitleChange} />
           <label htmlFor="selecSport" className="Sport">Sport :</label>
           <select  title="selectSport" className="sportList" value={formSave.sport} onChange={handleSportChange}>
             <option value="musculation">Musculation</option>
             <option value="escalade">Escalade</option>
-            <option value="course">Course à pieds</option>
+            <option value="course">Course</option>
           </select>
           <button className="submitForm2" type="submit">Sauvegarder</button>
         </div>
