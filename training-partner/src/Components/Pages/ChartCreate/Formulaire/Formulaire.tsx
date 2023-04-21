@@ -92,13 +92,13 @@ const Formulaire: React.FC = () => {
             data:[...chartDonnee.datasets[0].data, formDonnee.score],
           },
         ],
-    })
-  }
+      })
+    }
   setformDonnee({name :"",score :0});
   };
 
   //Gestion de l'évènement de sauvegarde des données du titre et du type du graphique
-  const handleSave=async (event: React.FormEvent<HTMLFormElement> ) => {
+  const handleSave= async (event: React.FormEvent<HTMLFormElement> ) => {
     event.preventDefault();//Empêche la page de se recharger lors de la soumission du formulaire
     if (formSave.titre !== ""){//Vérifie si le titre du graphique est rempli
       setchartDonnee({
@@ -110,23 +110,23 @@ const Formulaire: React.FC = () => {
             data:[...chartDonnee.datasets[0].data,],
           },
         ],
-      })}
-      fetch('http://localhost:3001/date')
-        .then(response =>response.text())
-        .then((data) =>{
-            setDate(data);
-            console.log(date);
-        })
-      console.log(date)
+    })}
+    fetch('http://localhost:3001/date')
+      .then(response =>response.text())
+      .then((data) =>{
+        setDate(data);
+        console.log(date);
+    })
+    console.log(date)
       //trainsforme les données en JSON et les envoie à l'API pour les sauvegarder le graphique
-      const jsonData = JSON.stringify({
-        title: formSave.titre,
-        labels: chartDonnee.labels,
-        values: chartDonnee.datasets[0].data,
-        sport: formSave.sport,
-        graph: selectedType,
-        date: date
-      });
+    const jsonData = JSON.stringify({
+      title: formSave.titre,
+      labels: chartDonnee.labels,
+      values: chartDonnee.datasets[0].data,
+      sport: formSave.sport,
+      graph: selectedType,
+      date: date
+    });
 
     try{
       const pseudo = localStorage.getItem('user')
@@ -140,7 +140,31 @@ const Formulaire: React.FC = () => {
       console.log("c'est passé")
       //réinitialise le formulaire 
       setformSave({titre:"",sport:"musculation"});
-
+      if(reponseChart.ok){
+        const donnee = await reponseChart.json();
+        console.log("donnee",donnee)
+        console.log("chart crée")
+        try{
+          const labels = chartDonnee.labels;
+          const valeurs = chartDonnee.datasets[0].data;
+          console.log(labels,valeurs)
+          const reponseDonnee = await fetch('http://localhost:3001/donneeGraph/donnee',{
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({idGraph : donnee, donnees : chartDonnee.datasets[0].data.map((valeur,index)=>({ nomAttribut : chartDonnee.labels[index],valeur}))})
+          })
+          if(reponseDonnee.ok){
+            const donnee = await reponseDonnee.json();
+            console.log("donnee",donnee)
+            console.log("chart crée")
+          }
+        }
+        catch(error){
+          console.error(error)
+        }
+      }
     }
     catch(error){
       console.error(error)
