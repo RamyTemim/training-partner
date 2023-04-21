@@ -21,7 +21,7 @@ type GraphType = "spiderchart" | "bar" | "polar";
 //Composant principal du formulaire
 const Formulaire: React.FC = () => {
   //Initialisation des différents états qui vont stocker les données d'un graphique et le type de graphique
-  const [formSave,setformSave]= useState<Graphique>({title: "",sport:"musculation"});
+  const [formSave,setformSave]= useState<Graphique>({titre: "",sport:"musculation"});
   const [formDonnee, setformDonnee]= useState<DonneGraph>({name: "",score : 0});
   const [date,setDate] = useState('');
   const [selectedType, setSelectedType] = useState<GraphType>("spiderchart");
@@ -98,9 +98,9 @@ const Formulaire: React.FC = () => {
   };
 
   //Gestion de l'évènement de sauvegarde des données du titre et du type du graphique
-  const handleSave=(event: React.FormEvent<HTMLFormElement> ) => {
+  const handleSave=async (event: React.FormEvent<HTMLFormElement> ) => {
     event.preventDefault();//Empêche la page de se recharger lors de la soumission du formulaire
-    if (formSave.title !== ""){//Vérifie si le titre du graphique est rempli
+    if (formSave.titre !== ""){//Vérifie si le titre du graphique est rempli
       setchartDonnee({
         labels: [...chartDonnee.labels],
         datasets: [
@@ -120,13 +120,13 @@ const Formulaire: React.FC = () => {
       console.log(date)
       //trainsforme les données en JSON et les envoie à l'API pour les sauvegarder le graphique
       const jsonData = JSON.stringify({
-        title: formSave.title,
+        title: formSave.titre,
         labels: chartDonnee.labels,
         values: chartDonnee.datasets[0].data,
         sport: formSave.sport,
         graph: selectedType,
         date: date
-      });*/
+      });
 
     try{
       const pseudo = localStorage.getItem('user')
@@ -139,7 +139,7 @@ const Formulaire: React.FC = () => {
       })
       console.log("c'est passé")
       //réinitialise le formulaire 
-      setformSave({title:"",sport:"musculation"});
+      setformSave({titre:"",sport:"musculation"});
 
     }
     catch(error){
