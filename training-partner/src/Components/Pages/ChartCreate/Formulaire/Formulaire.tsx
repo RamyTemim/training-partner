@@ -135,16 +135,16 @@ const Formulaire: React.FC = () => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({typeGraph : selectedType, nomSport : formSave.sport, titre : formSave.titre, userPseudo : pseudo})
+        body: JSON.stringify({typeGraph : selectedType, nomSport : formSave.sport, titre : formSave.titre, userPseudo : pseudo })
       })
       console.log("c'est passé")
       //réinitialise le formulaire 
       setformSave({titre:"",sport:"musculation"});
       if(reponseChart.ok){
-        const donnee = await reponseChart.json();
-        console.log("donnee",donnee)
+        const idChart = await reponseChart.json();
+        console.log("donnee",idChart)
         console.log("chart crée")
-        try{
+      try{
           const labels = chartDonnee.labels;
           const valeurs = chartDonnee.datasets[0].data;
           console.log(labels,valeurs)
@@ -153,11 +153,11 @@ const Formulaire: React.FC = () => {
             headers: {
               'Content-Type': 'application/json'
             },
-            body: JSON.stringify({idGraph : donnee, donnees : chartDonnee.datasets[0].data.map((valeur,index)=>({ nomAttribut : chartDonnee.labels[index],valeur}))})
+            body: JSON.stringify({idGraph : idChart, userPseudo : pseudo, donnees : chartDonnee.datasets[0].data.map((valeur,index)=>({ nomAttribut : chartDonnee.labels[index],valeur}))})
           })
           if(reponseDonnee.ok){
             const donnee = await reponseDonnee.json();
-            console.log("donnee",donnee)
+            console.log("donnee",donnee)  
             console.log("chart crée")
           }
         }

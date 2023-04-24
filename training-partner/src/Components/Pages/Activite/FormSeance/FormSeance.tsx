@@ -4,13 +4,8 @@ import FormCourse from "./FormCourse";//formulaire pour la course
 import FormEscalade from "./FormEscalade";//formulaire pour l'escalde
 import FormMuscu from "./FormMuscu";//formulaire pour la musculation
 import "./FormSeance.css";//style pour le formulaire seance
+import { FormValues } from "../../../../Interfaces/FormValues";
 
-
-interface FormValues {
-  nom: string;
-  duree: string;
- 
-}
 
 //composant principal du formulaire
 const FormSeance: React.FC = () => {
