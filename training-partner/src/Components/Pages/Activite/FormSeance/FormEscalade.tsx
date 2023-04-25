@@ -13,8 +13,10 @@ function FormEscalade(props: any){
     });
 
     //initialisation d'un tableau d'exercices d'escalade
-    const [exercices, setExercices] = useState<Escalade[]>([]);
-
+    const [exercicesEsca, setExercicesEsca] = useState<Escalade[]>([]);
+    function resetex(){
+        setExercicesEsca([]);
+    }
     //Gestion de l'évènement de la modification d'un champ du formulaire
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
@@ -30,7 +32,7 @@ function FormEscalade(props: any){
             alert("Veuillez rentrer des valeurs positives");
         }
         else{
-        setExercices([...exercices, valeur]);//Ajout de l'exercice à la liste des exercices
+        setExercicesEsca([...exercicesEsca, valeur]);//Ajout de l'exercice à la liste des exercices
         setValeur({//réinitialise les valeurs par défault du formulaire
             difficulte : "",
             nom:"",
@@ -40,18 +42,18 @@ function FormEscalade(props: any){
     };
     
     useEffect(() => {
-        if (exercices.length > ind){//si la liste des exercices est plus grande que l'indice ind
+        if (exercicesEsca.length > ind){//si la liste des exercices est plus grande que l'indice ind
             let temp = JSON.stringify({//Création d'un chaîne JSON à partir des valeurs de l'exercice
-                difficulte : exercices[ind].difficulte,
-                nom:exercices[ind].nom,
-                type :exercices[ind].type ,
-                nbrprise: exercices[ind].nbr_prise ,
+                difficulte : exercicesEsca[ind].difficulte,
+                nom:exercicesEsca[ind].nom,
+                type :exercicesEsca[ind].type ,
+                nbrprise: exercicesEsca[ind].nbr_prise ,
             })
             console.log(temp);
             props.onSendValue(temp);//Envoie de la chaîne JSON à une fonction qui se trouve dans les props du composant parent
             setInd(ind + 1);//Mis à jour de l'indice
         }
-    }, [exercices]);
+    }, [exercicesEsca]);
 
 
     //initialisation d'un état pour masquer ou afficher les détails d'un exercice
@@ -68,8 +70,8 @@ function FormEscalade(props: any){
 
     //fonction pour supprimé un exercice de la liste
     const handleDelete = (index: number) => {
-        const newExercices = exercices.filter((_, i) => i !== index);//Crée une nouvelle liste en filtrant celui qui doit être supprimé
-        setExercices(newExercices);//Met à jour la liste d'exercices
+        const newExercices = exercicesEsca.filter((_, i) => i !== index);//Crée une nouvelle liste en filtrant celui qui doit être supprimé
+        setExercicesEsca(newExercices);//Met à jour la liste d'exercices
     };
 
     return (
@@ -92,7 +94,7 @@ function FormEscalade(props: any){
             <div  className="ListEx">
             <h4>Liste des exercices </h4>
                 <ul className="exercice">
-                    {exercices.map((exercice, index) => (
+                    {exercicesEsca.map((exercice, index) => (
                         <li key={index}>
                             <button  id="buttonExercice" onClick={() => showDetails(index)}>
                             {exercice.nom}<svg className="fleche" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeWidth={1.5} >

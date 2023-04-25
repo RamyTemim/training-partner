@@ -67,7 +67,7 @@ const FormSeance: React.FC = () => {
         nom:"",
         duree:"00:00",
     });
-    
+        
     //transforme des valeurs du formulaire en tableau
     const seanceArray = valueSeance.map(seance => JSON.parse(seance));
     const pseudo = localStorage.getItem('user')
@@ -89,6 +89,7 @@ const FormSeance: React.FC = () => {
       body: result
     })
     //setValueseance<string[]>([]); IL FAUT REMETTRE VALUESEANCE A 0
+
   }};
 
 
