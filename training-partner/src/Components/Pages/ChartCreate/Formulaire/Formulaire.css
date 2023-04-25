@@ -125,7 +125,7 @@ body{
 
 .trashButton{
     border-radius: 5px;
-    top: auto;
+    margin-top: 9%;
     background-color: red;
     width: 35px;
     color: black;
