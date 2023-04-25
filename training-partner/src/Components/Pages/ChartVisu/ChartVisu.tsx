@@ -4,8 +4,10 @@ import {Chart,RadialLinearScale,PointElement,LineElement,Filler,Tooltip,Legend,L
 import { Bar, PolarArea, Radar } from 'react-chartjs-2';
 
 function ChartVisu(){
-    const [lstGraph, setLstGraph] = useState<any[]>([""])
-    const changeLst = (lst : Array<any>)=>{
+    const [lstGraph, setLstGraph] = useState<any[]>([""])// Liste des séances disponible pour le sport.
+    
+    
+    const changeLst = (lst : Array<any>)=>{ // fonction qui permet de changer les séances disponible pour le sport. Elle est passé en props de BoxSport et lst viens de l'appel à l'api.
         setLstGraph(lst);
     }
 
@@ -18,25 +20,25 @@ function ChartVisu(){
 
 }
 
-function BoxSport(props : any){
+function BoxSport(props : any){ // Function qui contient le composant correspondant au select des sports.
     const [save,setSave] = useState("escalade")
 
     const handleSelect = (event: React.ChangeEvent<HTMLSelectElement>)=>{
     
-        const value = JSON.stringify({
+        const value = JSON.stringify({ // sport selectionnée dans le select.
             sport : event.target.value
         })
-        fetch("http://localhost:3001/chartVisu/getlstGraph",{
+        fetch("http://localhost:3001/chartVisu/getlstGraph",{ //Envoie le contenue de value (le sport séléctionné ) au backend.
             method: 'POST',
             headers:{
                 'Content-Type': 'application/json',
               },
             body: value
         })
-        .then(response => response.json())
+        .then(response => response.json()) //On récupere la liste des séances depuis le backend...
         .then((data) => {
             let temp2 = Object.values(data);
-            props.onCall(temp2);
+            props.onCall(temp2); // ... et on l'envoie dans via le props dans la fonction ChartVisu.
 
         });
     }
@@ -53,13 +55,14 @@ function BoxSport(props : any){
     );
 }   
 
-function BoxGraphique(donnee : any){
-    const [selectedOption, setSelectedOption] = useState("");
+function BoxGraphique(donnee : any){ // Fonction contenant le composant affichant le select des séances et le graphique.
+    const [selectedOption, setSelectedOption] = useState(""); 
     const [donneeGraph, setDonneeGraph] = useState({
         attribut : [""],
         score : [],
         type : ""
-    })
+    }) // State pour stocker les donneés "basique" du graphe.
+    
     const [chartDonnee, setchartDonnee] = useState({
         labels: donneeGraph.attribut as string[],
         datasets: [
@@ -78,7 +81,7 @@ function BoxGraphique(donnee : any){
             borderWidth: 2,
           },
         ],
-      });
+      }) // State pour stocker les parametres "avancées" du graph.;
       const reglage={
         scales: {
             r: {
@@ -92,12 +95,12 @@ function BoxGraphique(donnee : any){
 
     const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         if (event.target.value === "base"){
-            
+            // n'affiche rien si l'utilisateur ne séléctionne pas une séance valide.
         }
         else{
-        let temp = JSON.parse(event.target.value)
+        let temp = JSON.parse(event.target.value) // nom de la séance
         setSelectedOption(event.target.value);
-        setDonneeGraph({attribut: temp.labels, score: temp.values, type: temp.graph});
+        setDonneeGraph({attribut: temp.labels, score: temp.values, type: temp.graph}); // On modifie les donneés du graphes
         setchartDonnee({
             labels: temp.labels,
             datasets: [
@@ -116,9 +119,9 @@ function BoxGraphique(donnee : any){
                 borderWidth: 2,
               },
             ],
-          });}
+          });} // Et ses paramètres.
       }
-    const getGraph = () => {
+    const getGraph = () => { // Fonction affichant le graphe.
       switch (donneeGraph.type) {
         case "bar":{
           Chart.register(CategoryScale,Filler,LinearScale,BarElement,Title,Tooltip,Legend,);
@@ -136,7 +139,7 @@ function BoxGraphique(donnee : any){
         }
       }
     };
-    
+    //Affichage du select.
     return(
         <>
         <div>
