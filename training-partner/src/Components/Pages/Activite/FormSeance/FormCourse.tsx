@@ -27,6 +27,8 @@ function FormCourse(props: any){
         event.preventDefault();//Empêche la page de se recharger lors de la soumission du formulaire
         if(valeur.chrono === "00:00" || valeur.distance === 0 || valeur.nom === "" ){//Si le chrono, la valeur ou le nom ne sont pas remplis affiche une alerte
             alert("Veuillez remplir tous les champs obligatoires")
+        }else if(valeur.bpm<0||valeur.distance<0|| valeur.vitesse<0){
+            alert("Veuillez rentrer des valeurs positives");
         }
         else{
         setExercices([...exercices, valeur]);//Ajout de l'exercice à la liste des exercices

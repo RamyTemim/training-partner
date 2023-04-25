@@ -26,7 +26,10 @@ function FormEscalade(props: any){
         event.preventDefault();//Empêche la page de se recharger lors de la soumission du formulaire
         if(valeur.nom===""||valeur.type===""){//Si le nom ou le type ne sont pas remplis affiche une alerte
             alert("Veuillez remplir tous les champs obligatoires");
-        }else{
+        }else if(valeur.nbr_prise<0){
+            alert("Veuillez rentrer des valeurs positives");
+        }
+        else{
         setExercices([...exercices, valeur]);//Ajout de l'exercice à la liste des exercices
         setValeur({//réinitialise les valeurs par défault du formulaire
             difficulte : "",
