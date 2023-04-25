@@ -99,8 +99,8 @@
     position: relative ;
     width: auto;
     height: 40px;
-    left: 87%;
-    top:575px;
+    left: 53%;
+    top:590px;
     border-radius: 20px;
     
     font-family: 'Arial';
@@ -141,7 +141,15 @@
 .infoObl{
     font-size: 15px;
 }
-#buttonExercice{
+#buttonExerciceVisu{
+    cursor: pointer;
+    position:relative;
+    border: none;
+    font-family: "Arial";
+    font-size: 20px;
+    font-weight: 900;
+    top:-10px;
+    left: 40px;
     background-color: #FFFFFF;
     color: #000000;
 }
@@ -160,11 +168,19 @@ ul.exercice{
 }
 .fleche{
     position: relative;
-    top: -4px;
-    left: 15px;
+    cursor: pointer;
+    height: 30px;
+    top:8px;
+    left: 25px;
 }
-.trashButton{
+.trashButtonEx{
+    cursor: pointer;
+    border-radius: 5px;
+    top:auto;
+    background-color: red;
+    width: 35px;
+    color: black;
     position:relative;
-    left:-20px;
-    top:-10px;
+    left:0px;
+    top:auto;
 }
