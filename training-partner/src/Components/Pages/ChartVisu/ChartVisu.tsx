@@ -20,7 +20,7 @@ function ChartVisu(){
 
 }
 
-function BoxSport(props : any){ // Function qui contient le composant correspondant au select des sports.
+function BoxSport(props : any){ // Fonction qui contient le composant correspondant à la liste de sélection des sports.
     const [save,setSave] = useState("escalade")
 
     const handleSelect = (event: React.ChangeEvent<HTMLSelectElement>)=>{
@@ -28,7 +28,7 @@ function BoxSport(props : any){ // Function qui contient le composant correspond
         const value = JSON.stringify({ // sport selectionnée dans le select.
             sport : event.target.value
         })
-        fetch("http://localhost:3001/chartVisu/getlstGraph",{ //Envoie le contenue de value (le sport séléctionné ) au backend.
+        fetch("http://localhost:3001/chartVisu/getlstGraph",{ //Envoie une requête au backend.
             method: 'POST',
             headers:{
                 'Content-Type': 'application/json',
@@ -61,7 +61,7 @@ function BoxGraphique(donnee : any){ // Fonction contenant le composant affichan
         attribut : [""],
         score : [],
         type : ""
-    }) // State pour stocker les donneés "basique" du graphe.
+    }) // State pour stocker les données du graphique.
     
     const [chartDonnee, setchartDonnee] = useState({
         labels: donneeGraph.attribut as string[],
@@ -81,7 +81,7 @@ function BoxGraphique(donnee : any){ // Fonction contenant le composant affichan
             borderWidth: 2,
           },
         ],
-      }) // State pour stocker les parametres "avancées" du graph.;
+      }) // State pour stocker les options du graphique
       const reglage={
         scales: {
             r: {

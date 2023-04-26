@@ -38,13 +38,14 @@ interface Seance {
 
 function Menus(){
     //Tableau qui contient les différents sports disponibles
-    const sports = ["Musculation", "Escalade", "Course"];
+    //const sports = ["Musculation", "Escalade", "Course"];
+    const [sports,setSports] = useState([]);
 
     /*useEffect(() => {
-        fetch("http://localhost:3001/battle/sport")
+        fetch("http://localhost:3001/sport")
         .then(response =>response.json())
         .then((data) =>{
-            setSports(data);
+            setSports(JSON.parse(data));
         })
     },[]);*/
 
