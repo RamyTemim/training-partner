@@ -76,7 +76,8 @@ const FormSeance: React.FC = () => {
       userPseudo : pseudo,
       titre : values.nom,
       duree : values.duree,
-      nomSport : sport
+      nomSport : sport,
+      date : new Date(),
       //seance : seanceArray
     })
     console.log(result)   
