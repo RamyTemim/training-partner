@@ -24,10 +24,8 @@ function PageActivite(){
       <div>
         <button className="btt_showForm" onClick={handleShowForm}>Ajouter une séance</button>
         <button className="btt_showSeance" onClick={handleShowSeance}>Visualiser une séance</button>
-  
-
-           {showForm &&<FormSeance/>}
-           {showSeance &&<VisuSeance/>}
+        {showForm &&<FormSeance/>}
+        {showSeance &&<VisuSeance/>}
         </div>
     )
 }
