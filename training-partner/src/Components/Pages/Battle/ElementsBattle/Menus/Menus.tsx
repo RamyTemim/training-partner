@@ -41,15 +41,6 @@ interface Seance {
 function Menus(){
     //Tableau qui contient les différents sports disponibles
     const sports = ["Musculation", "Escalade", "Course"];
-    //const [sports,setSports] = useState([]);
-
-    /*useEffect(() => {
-        fetch("http://localhost:3001/sport")
-        .then(response =>response.json())
-        .then((data) =>{
-            setSports(JSON.parse(data));
-        })
-    },[]);*/
 
     //Initialise un tableau de séances
     const [seances,setSeances] = useState<Seance[]>([

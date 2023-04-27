@@ -1,15 +1,39 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import "./ChartVisu.css";
 import {Chart,RadialLinearScale,PointElement,LineElement,Filler,Tooltip,Legend,LinearScale,CategoryScale,BarElement,Title,ArcElement} from 'chart.js';
 import { Bar, PolarArea, Radar } from 'react-chartjs-2';
 
 function ChartVisu(){
-    const [lstGraph, setLstGraph] = useState<any[]>([""])// Liste des séances disponible pour le sport.
+    const [lstGraph, setLstGraph] = useState<any[]>([""])// Liste des graphiques disponible pour le sport.
+  
     
-    
-    const changeLst = (lst : Array<any>)=>{ // fonction qui permet de changer les séances disponible pour le sport. Elle est passé en props de BoxSport et lst viens de l'appel à l'api.
+    const changeLst = (lst : Array<any>)=>{ // fonction qui permet de changer les graphiques disponible pour le sport. Elle est passé en props de BoxSport et lst viens de l'appel à l'api.
         setLstGraph(lst);
     }
+
+    useEffect(() => {
+      const user = localStorage.getItem('user')
+      const fetchDonnee = async () => {
+          try{
+              const reponse = await fetch(`http://localhost:3001/graphique/graph`, {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify({pseudo : user})
+              });
+              const donnee = await reponse.json();
+              if(donnee){
+                  setLstGraph(donnee);
+                  console.log(donnee);
+              }
+          }
+          catch(error){
+              console.error(error);
+          }
+      }
+      fetchDonnee();
+  },[]);
 
     return (
         <div id="main">
