@@ -219,7 +219,7 @@ const Formulaire: React.FC = () => {
   const getGraph = () => {
     switch (selectedType) {//switch sur le type de graph selectionné
       case "bar":{
-        Chart.register(CategoryScale,Filler,LinearScale,BarElement,Title,Tooltip,Legend,);//enregistre les options utile pour la création du graphique
+        Chart.register(CategoryScale,Filler,LinearScale,BarElement,Title,Tooltip,Legend,);//enregistre les options utiles pour la création du graphique
         return <Bar className="graphBar" data={chartDonnee} options={reglage}/>;
     }
       case "polar":{

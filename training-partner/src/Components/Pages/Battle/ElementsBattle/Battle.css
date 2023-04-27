@@ -25,23 +25,3 @@
 
     color: #000000;
 }
-
-.containerBar{
-    position: relative;
-    width: 90%;
-    height: auto;
-    margin-left: 7%;
-    top: 200px;
-
-    background: #FFFFFF;
-    border: 10px solid #FFFFFF;
-    border-radius: 20px;
-}
-
-.Bar{
-    position: relative;
-    width: 982px;
-    height: 455px;
-    left: 125px;
-    top: 86px;
-}

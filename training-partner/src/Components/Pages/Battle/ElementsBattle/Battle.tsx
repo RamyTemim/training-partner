@@ -1,9 +1,17 @@
 import "./Battle.css";
 import Menus from './Menus/Menus';
-import BarChart from '../../../Bar/BarChart';
-
 
 function Battle(){
+    const reglage={
+        scales: {
+            r: {
+                angleLines: {display: true,color:'green'},
+                grid:{display:true,color:'black'},
+                suggestedMin: 0,
+                suggestedMax: 10
+            }
+        }
+      };
     return (
         <div>
             <div className='containerParagraphe'>
@@ -12,11 +20,6 @@ function Battle(){
                 et de mieux constater vos amélioration !</p>
             </div>
             <Menus/>
-            <div className='containerBar'>
-                <span className="Bar">  
-                    <BarChart />
-                </span>
-            </div>
         </div>
     )
 }
