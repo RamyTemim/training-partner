@@ -10,7 +10,7 @@ import { FormValues } from "../../../../Interfaces/FormValues";
 //composant principal du formulaire
 const FormSeance: React.FC = () => {
   //initialisation des états pour stocker le sport sélectionné
-  const [sport,setSport]=useState("musculation");
+  const [sport,setSport]=useState("Musculation");
   const [valueSeance, setValueSeance] = useState<string[]>([])
 
   //état pour stocker les valeurs de la séance
@@ -35,15 +35,15 @@ const FormSeance: React.FC = () => {
   //fonction pour afficher le formulaire correspondant au sport sélectionné
   const getForm = () => {
       switch (sport) {
-        case "musculation":{
+        case "Musculation":{
       
           return <FormMuscu onSendValue = {getValue}/>;//affiche le formulaire de la musculation
         }
-        case "escalade":{
+        case "Escalade":{
          
           return <FormEscalade onSendValue = {getValue}/>;//affiche le formulaire d'escalade
         }
-        case "course":{
+        case "Course":{
 
           return <FormCourse onSendValue = {getValue}/>;//affiche le formulaire de la course
         }
@@ -67,16 +67,17 @@ const FormSeance: React.FC = () => {
         nom:"",
         duree:"00:00",
     });
-    
+        
     //transforme des valeurs du formulaire en tableau
     const seanceArray = valueSeance.map(seance => JSON.parse(seance));
     const pseudo = localStorage.getItem('user')
     //crée un objet JSON avec les valeurs du formulaire et les stock dans la variable result
     let result = JSON.stringify({
+      nomSeance : values.nom,
+      nomSport : sport,
+      duree : values.duree.toString(),
       userPseudo : pseudo,
-      titre : values.nom,
-      duree : values.duree,
-      nomSport : sport
+      date : new Date(),
       //seance : seanceArray
     })
     console.log(result)   
@@ -86,9 +87,10 @@ const FormSeance: React.FC = () => {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: result
+      body: JSON.stringify({ nomSeance : values.nom, duree : values.duree, nomSport : sport, userPseudo : pseudo, /*date : new Date()*/ })
     })
     //setValueseance<string[]>([]); IL FAUT REMETTRE VALUESEANCE A 0
+
   }};
 
 

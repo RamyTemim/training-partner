@@ -1,11 +1,11 @@
 //import des modules nécessaires, des graphiques et des éléments des graphiques
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Bar, PolarArea, Radar } from 'react-chartjs-2';
 import './Formulaire.css';
 import {Chart,RadialLinearScale,PointElement,LineElement,Filler,Tooltip,Legend,LinearScale,CategoryScale,BarElement,Title,ArcElement} from 'chart.js';
 
 //interface des formulaires
-interface DonneGraph {
+interface DonneeGraph {
   name: string;
   score: number;
 }
@@ -22,7 +22,7 @@ type GraphType = "spiderchart" | "bar" | "polar";
 const Formulaire: React.FC = () => {
   //Initialisation des différents états qui vont stocker les données d'un graphique et le type de graphique
   const [formSave,setformSave]= useState<Graphique>({titre: "",sport:"musculation"});
-  const [formDonnee, setformDonnee]= useState<DonneGraph>({name: "",score : 0});
+  const [formDonnee, setformDonnee]= useState<DonneeGraph>({name: "",score : 0});
   const [date,setDate] = useState('');
   const [selectedType, setSelectedType] = useState<GraphType>("spiderchart");
   const [chartDonnee, setchartDonnee] = useState({
@@ -135,7 +135,7 @@ const Formulaire: React.FC = () => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({typeGraph : selectedType, nomSport : formSave.sport, titre : formSave.titre, userPseudo : pseudo })
+        body: JSON.stringify({typeGraph : selectedType, nomSport : formSave.sport, titre : formSave.titre, userPseudo : pseudo, date : new Date() })
       })
       console.log("c'est passé")
       //réinitialise le formulaire 
@@ -219,7 +219,7 @@ const Formulaire: React.FC = () => {
   const getGraph = () => {
     switch (selectedType) {//switch sur le type de graph selectionné
       case "bar":{
-        Chart.register(CategoryScale,Filler,LinearScale,BarElement,Title,Tooltip,Legend,);//enregistre les options utile pour la création du graphique
+        Chart.register(CategoryScale,Filler,LinearScale,BarElement,Title,Tooltip,Legend,);//enregistre les options utiles pour la création du graphique
         return <Bar className="graphBar" data={chartDonnee} options={reglage}/>;
     }
       case "polar":{

@@ -1,15 +1,39 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import "./ChartVisu.css";
 import {Chart,RadialLinearScale,PointElement,LineElement,Filler,Tooltip,Legend,LinearScale,CategoryScale,BarElement,Title,ArcElement} from 'chart.js';
 import { Bar, PolarArea, Radar } from 'react-chartjs-2';
 
 function ChartVisu(){
-    const [lstGraph, setLstGraph] = useState<any[]>([""])// Liste des séances disponible pour le sport.
+    const [lstGraph, setLstGraph] = useState<any[]>([""])// Liste des graphiques disponible pour le sport.
+  
     
-    
-    const changeLst = (lst : Array<any>)=>{ // fonction qui permet de changer les séances disponible pour le sport. Elle est passé en props de BoxSport et lst viens de l'appel à l'api.
+    const changeLst = (lst : Array<any>)=>{ // fonction qui permet de changer les graphiques disponible pour le sport. Elle est passé en props de BoxSport et lst viens de l'appel à l'api.
         setLstGraph(lst);
     }
+
+    useEffect(() => {
+      const user = localStorage.getItem('user')
+      const fetchDonnee = async () => {
+          try{
+              const reponse = await fetch(`http://localhost:3001/graphique/graph`, {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify({pseudo : user})
+              });
+              const donnee = await reponse.json();
+              if(donnee){
+                  setLstGraph(donnee);
+                  console.log(donnee);
+              }
+          }
+          catch(error){
+              console.error(error);
+          }
+      }
+      fetchDonnee();
+  },[]);
 
     return (
         <div id="main">
@@ -20,7 +44,7 @@ function ChartVisu(){
 
 }
 
-function BoxSport(props : any){ // Function qui contient le composant correspondant au select des sports.
+function BoxSport(props : any){ // Fonction qui contient le composant correspondant à la liste de sélection des sports.
     const [save,setSave] = useState("escalade")
 
     const handleSelect = (event: React.ChangeEvent<HTMLSelectElement>)=>{
@@ -28,8 +52,13 @@ function BoxSport(props : any){ // Function qui contient le composant correspond
         const value = JSON.stringify({ // sport selectionnée dans le select.
             sport : event.target.value
         })
+<<<<<<< HEAD
         fetch("http://localhost:3001/chartVisu/getlstGraph",{ 
             method: 'POST',//Envoie le contenue de value (le sport séléctionné ) au backend.
+=======
+        fetch("http://localhost:3001/chartVisu/getlstGraph",{ //Envoie une requête au backend.
+            method: 'POST',
+>>>>>>> abf587b314de83d819dd626abd66216198359f5a
             headers:{
                 'Content-Type': 'application/json',
               },
@@ -61,7 +90,7 @@ function BoxGraphique(donnee : any){ // Fonction contenant le composant affichan
         attribut : [""],
         score : [],
         type : ""
-    }) // State pour stocker les donneés "basique" du graphe.
+    }) // State pour stocker les données du graphique.
     
     const [chartDonnee, setchartDonnee] = useState({
         labels: donneeGraph.attribut as string[],
@@ -81,7 +110,7 @@ function BoxGraphique(donnee : any){ // Fonction contenant le composant affichan
             borderWidth: 2,
           },
         ],
-      }) // State pour stocker les parametres "avancées" du graph.;
+      }) // State pour stocker les options du graphique
       const reglage={
         scales: {
             r: {

@@ -32,3 +32,20 @@
 #dropMenuExercices{
     left:300px;
 }
+
+.containerBar{
+    position: relative;
+    width: 90%;
+    height: auto;
+    margin-left: 7%;
+    top: 200px;
+
+    background: #FFFFFF;
+    border: 10px solid #FFFFFF;
+    border-radius: 20px;
+}
+
+.Bar{
+    position: relative;
+    width: 982px;
+}

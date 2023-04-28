@@ -1,6 +1,8 @@
 //import des react hooks et du style appliqué
 import { useEffect, useState } from 'react';
 import './Menus.css';
+import { Bar } from 'react-chartjs-2';
+import { Chart,Tooltip,Legend,LinearScale,CategoryScale,BarElement,Title } from 'chart.js';
 
 //interfaces 
 interface ExerciceEscalade{
@@ -39,14 +41,6 @@ interface Seance {
 function Menus(){
     //Tableau qui contient les différents sports disponibles
     const sports = ["Musculation", "Escalade", "Course"];
-
-    /*useEffect(() => {
-        fetch("http://localhost:3001/battle/sport")
-        .then(response =>response.json())
-        .then((data) =>{
-            setSports(data);
-        })
-    },[]);*/
 
     //Initialise un tableau de séances
     const [seances,setSeances] = useState<Seance[]>([
@@ -106,40 +100,91 @@ function Menus(){
         setSelectedExercice(exercice);
     }
 
+    Chart.register(CategoryScale,
+        LinearScale,
+        BarElement,
+        Title,
+        Tooltip,
+        Legend,);
+    const reglage={
+        indexAxis : 'y' as const,
+        scales: {
+            x: {
+                display: true,
+                color:'green',
+                grid:{display:true,color:'black'},
+                suggestedMin: 0,
+                suggestedMax: 10,
+            },
+            y:{
+                display : true,
+                tick : {
+                    reverse : false
+                }
+            }
+        }
+    };
+    const chartDonnee={
+        labels: ['Vitesse', 'Force', 'Difficulté','Ressenti'],
+    datasets: [
+      {
+        label: 'Séance 1',
+        data:[4, 9, 2,6],
+        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        borderColor: 'DDDDDD',
+        borderWidth: 1,
+      },
+      {
+        label: 'Séance 2',
+        data:[3,2,5],
+        backgroundColor: 'rgba(54, 162, 235, 0.5)',
+        borderColor: 'DDDDDD',
+        borderWidth: 1,
+      },
+    ],
+    };
+
     return (
-        <div className='containerMenus'>  
-             {/* Boucle sur les valeur du state pour afficher les sport */ }
-            <select id="dropMenuSport" onChange={ (event)=> handleSportChange(event.target.value) }>
-                {sports.map((sport) =>(
-                    <option key ={sport}>
-                        {sport}
-                    </option>
-                ))}
-            </select>
-                {/* Boucle sur les valeur du state pour afficher les seance allant avec le sport selectionné */ }
-            <select id="dropMenuSeanceX" value={selectedSeanceX} onChange={ (event)=> handleSeanceXChange(event.target.value) }>
-                {filteredSeances.map((seance) =>(
-                    <option key = {seance.nom}>
-                        {seance.nom}
-                    </option>
-                ))}
-            </select>
+        <div>
+            <div className='containerMenus'>  
+                {/* Boucle sur les valeur du state pour afficher les sport */ }
+                <select id="dropMenuSport" onChange={ (event)=> handleSportChange(event.target.value) }>
+                    {sports.map((sport) =>(
+                        <option key ={sport}>
+                            {sport}
+                        </option>
+                    ))}
+                </select>
+                    {/* Boucle sur les valeur du state pour afficher les seance allant avec le sport selectionné */ }
+                <select id="dropMenuSeanceX" value={selectedSeanceX} onChange={ (event)=> handleSeanceXChange(event.target.value) }>
+                    {filteredSeances.map((seance) =>(
+                        <option key = {seance.nom}>
+                            {seance.nom}
+                        </option>
+                    ))}
+                </select>
 
-            <select id="dropMenuSeanceY" value={selectedSeanceY} onChange={ (event) => handleSeanceYChange(event.target.value) }>
-                {filteredSeances.map((seance) =>(
-                    <option key = {seance.nom}>
-                        {seance.nom}
-                    </option>
-                ))}
-            </select>
+                <select id="dropMenuSeanceY" value={selectedSeanceY} onChange={ (event) => handleSeanceYChange(event.target.value) }>
+                    {filteredSeances.map((seance) =>(
+                        <option key = {seance.nom}>
+                            {seance.nom}
+                        </option>
+                    ))}
+                </select>
 
-            <select id="dropMenuExercices" value={selectedExercice} onChange={ (event) => handleExerciceChange(event.target.value) }>
-                {exercicesCommuns.map((exercice) =>(
-                    <option key = {exercice.nomExercice} >
-                        {exercice.nomExercice}
-                    </option>
-                ))}
-            </select>
+                <select id="dropMenuExercices" value={selectedExercice} onChange={ (event) => handleExerciceChange(event.target.value) }>
+                    {exercicesCommuns.map((exercice) =>(
+                        <option key = {exercice.nomExercice} >
+                            {exercice.nomExercice}
+                        </option>
+                    ))}
+                </select>
+            </div>
+            <div className='containerBar'>
+                <span className="Bar">  
+                    <Bar className="graphBar" data={chartDonnee} options={reglage}/>
+                </span>
+            </div>
         </div>
     )
 }
