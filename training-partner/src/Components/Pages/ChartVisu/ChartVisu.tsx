@@ -28,8 +28,8 @@ function BoxSport(props : any){ // Function qui contient le composant correspond
         const value = JSON.stringify({ // sport selectionnée dans le select.
             sport : event.target.value
         })
-        fetch("http://localhost:3001/chartVisu/getlstGraph",{ //Envoie le contenue de value (le sport séléctionné ) au backend.
-            method: 'POST',
+        fetch("http://localhost:3001/chartVisu/getlstGraph",{ 
+            method: 'POST',//Envoie le contenue de value (le sport séléctionné ) au backend.
             headers:{
                 'Content-Type': 'application/json',
               },
@@ -38,7 +38,7 @@ function BoxSport(props : any){ // Function qui contient le composant correspond
         .then(response => response.json()) //On récupere la liste des séances depuis le backend...
         .then((data) => {
             let temp2 = Object.values(data);
-            props.onCall(temp2); // ... et on l'envoie dans via le props dans la fonction ChartVisu.
+            props.onCall(temp2); // ... et on l'envoie via le props dans la fonction ChartVisu.
 
         });
     }
