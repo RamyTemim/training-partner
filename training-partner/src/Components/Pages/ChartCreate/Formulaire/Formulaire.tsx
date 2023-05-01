@@ -135,7 +135,7 @@ const Formulaire: React.FC = () => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({typeGraph : selectedType, nomSport : formSave.sport, titre : formSave.titre, userPseudo : pseudo, /*date : new Date() */})
+        body: JSON.stringify({typeGraph : selectedType, nomSport : formSave.sport, titre : formSave.titre, userPseudo : pseudo })
       })
       console.log("c'est passé")
       //réinitialise le formulaire 
@@ -144,22 +144,22 @@ const Formulaire: React.FC = () => {
         const idChart = await reponseChart.json();
         console.log("donnee",idChart)
         console.log("chart crée")
-      try{
-          const labels = chartDonnee.labels;
-          const valeurs = chartDonnee.datasets[0].data;
-          console.log(labels,valeurs)
-          const reponseDonnee = await fetch('http://localhost:3001/donneeGraph/donnee',{
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({idGraph : idChart, userPseudo : pseudo, donnees : chartDonnee.datasets[0].data.map((valeur,index)=>({ nomAttribut : chartDonnee.labels[index],valeur}))})
-          })
-          if(reponseDonnee.ok){
-            const donnee = await reponseDonnee.json();
-            console.log("donnee",donnee)  
-            console.log("chart crée")
-          }
+        try{
+            const labels = chartDonnee.labels;
+            const valeurs = chartDonnee.datasets[0].data;
+            console.log(labels,valeurs)
+            const reponseDonnee = await fetch('http://localhost:3001/donneeGraph/donnee',{
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({idGraph : idChart, userPseudo : pseudo, donnees : chartDonnee.datasets[0].data.map((valeur,index)=>({ nomAttribut : chartDonnee.labels[index],valeur}))})
+            })
+            if(reponseDonnee.ok){
+              const donnee = await reponseDonnee.json();
+              console.log("donnee",donnee)  
+              console.log("chart crée")
+            }
         }
         catch(error){
           console.error(error)
