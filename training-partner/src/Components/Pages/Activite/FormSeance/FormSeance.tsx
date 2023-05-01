@@ -57,7 +57,7 @@ const FormSeance: React.FC = () => {
   };
 
   //fonction pour gérer la soumission d'un formulaire
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();//Empêche la page de se recharger lors de la soumission du formulaire
     if(values.duree==="00:00"|| values.nom===""){//Si la durée ou le nom ne sont pas remplis affiche une alerte
       alert("Veuillez remplir tous les champs obligatoires");
@@ -78,19 +78,47 @@ const FormSeance: React.FC = () => {
       duree : values.duree.toString(),
       userPseudo : pseudo,
       date : new Date(),
-      //seance : seanceArray
+      seance : seanceArray
     })
     console.log(result)   
     //envoie une requête POST avec l'objet JSON 'result' au serveur local pour créer une nouvelle activité
-    fetch('http://localhost:3001/seance/createSeance',{
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
+    try {
+      const reponseSeance = await fetch('http://localhost:3001/seance/createSeance',{
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ nomSeance : values.nom, duree : values.duree, nomSport : sport, userPseudo : pseudo, /*date : new Date()*/ })
-    })
+      body: JSON.stringify({ nomSeance : values.nom, duree : values.duree, nomSport : sport, userPseudo : pseudo })
+     })
+     if(reponseSeance.ok){
+      const idSeance = await reponseSeance.json();
+        console.log("donnee",idSeance)
+        console.log("seance crée")
+        if (sport === "Musculation"){
+          try{
+            const reponseDonnee = await fetch('http://localhost:3001/exerciceMusculation/exercice',{
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({idSeance : idSeance, userPseudo : pseudo, donnees : seanceArray })
+            })
+            if(reponseDonnee.ok){
+              const donnee = await reponseDonnee.json();
+              console.log("donnee",donnee)  
+              console.log("seance crée")
+            }
+        }
+        catch(error){
+          console.error(error)
+        }
+        }
+     }
+    }
     //setValueseance<string[]>([]); IL FAUT REMETTRE VALUESEANCE A 0
-
+    catch(error){
+      console.error(error)
+    }
   }};
 
 
