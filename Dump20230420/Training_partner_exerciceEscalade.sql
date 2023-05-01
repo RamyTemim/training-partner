@@ -22,17 +22,17 @@
 DROP TABLE IF EXISTS `exerciceEscalade`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `exerciceEscalade` (
+CREATE TABLE `exercice_escalade` (
   `idExerciceEscalade` int NOT NULL AUTO_INCREMENT,
-  `idSeance` int NOT NULL,
+  `seanceIdSeance` int NOT NULL,
   `difficulte` varchar(10) DEFAULT NULL,
   `nom` varchar(45) NOT NULL,
   `nbrPrise` int DEFAULT NULL,
   `type` varchar(45) NOT NULL,
   `userPseudo` varchar(20) NOT NULL,
   PRIMARY KEY (`idExerciceEscalade`),
-  KEY `fk_exerciceM1_seance_idx` (`idSeance`,`userPseudo`),
-  CONSTRAINT `fk_exerciceM1_seance` FOREIGN KEY (`idSeance`, `userPseudo`) REFERENCES `seance` (`idSeance`, `userPseudo`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `fk_exerciceM1_seance_idx` (`seandeIdSeance`,`userPseudo`),
+  CONSTRAINT `fk_exerciceM1_seance` FOREIGN KEY (`seanceIdSeance`, `userPseudo`) REFERENCES `seance` (`idSeance`, `userPseudo`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
