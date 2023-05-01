@@ -32,6 +32,7 @@ CREATE TABLE `donnee_graph` (
   KEY `fk_id_graph_idx` (`graphiqueidGraph`,`userPseudo`),
   CONSTRAINT `fk_donneeGraph_1` FOREIGN KEY (`graphiqueidGraph`, `userPseudo`) REFERENCES `graphique` (`idGraph`, `userPseudo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 --
 -- Dumping data for table `donneeGraph`
 --
