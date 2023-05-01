@@ -135,7 +135,7 @@ const Formulaire: React.FC = () => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({typeGraph : selectedType, nomSport : formSave.sport, titre : formSave.titre, userPseudo : pseudo, date : new Date() })
+        body: JSON.stringify({typeGraph : selectedType, nomSport : formSave.sport, titre : formSave.titre, userPseudo : pseudo, /*date : new Date() */})
       })
       console.log("c'est passé")
       //réinitialise le formulaire 

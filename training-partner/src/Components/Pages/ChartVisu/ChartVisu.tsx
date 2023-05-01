@@ -7,9 +7,37 @@ function ChartVisu(){
     const [lstGraph, setLstGraph] = useState<any[]>([""])// Liste des graphiques disponible pour le sport.
   
     
-    const changeLst = (lst : Array<any>)=>{ // fonction qui permet de changer les graphiques disponible pour le sport. Elle est passé en props de BoxSport et lst viens de l'appel à l'api.
+    const changeLst = (lst : Array<DonneeGraph>)=>{ // fonction qui permet de changer les graphiques disponible pour le sport. Elle est passé en props de BoxSport et lst viens de l'appel à l'api.
         setLstGraph(lst);
     }
+
+
+    return (
+        <div id="main">
+            <BoxSport onCall = {changeLst}/>
+            <BoxGraphique donnee = {lstGraph}/>
+        </div>
+    );
+
+}
+
+interface Donneeback{
+    idGraph : number;
+    typeGraph : string;
+    nomSport : string;
+    titre : string;
+    donneeGraph : DonneeGraph[];
+};
+
+interface DonneeGraph{
+  idDonnee: number;
+  nomAttribut : string;
+  valeur : number;
+}
+
+function BoxSport(props : any){ // Fonction qui contient le composant correspondant à la liste de sélection des sports.
+    const [save,setSave] = useState("escalade")
+    const [dataFromBack, setDataFromBack] = useState<Donneeback[]>()
 
     useEffect(() => {
       const user = localStorage.getItem('user')
@@ -22,10 +50,9 @@ function ChartVisu(){
                   },
                   body: JSON.stringify({pseudo : user})
               });
-              const donnee = await reponse.json();
+              var donnee = await reponse.json();
               if(donnee){
-                  setLstGraph(donnee);
-                  console.log(donnee);
+                  setDataFromBack(donnee);
               }
           }
           catch(error){
@@ -35,42 +62,12 @@ function ChartVisu(){
       fetchDonnee();
   },[]);
 
-    return (
-        <div id="main">
-            <BoxSport onCall = {changeLst}/>
-            <BoxGraphique donnee = {lstGraph}/>
-        </div>
-    );
-
-}
-
-function BoxSport(props : any){ // Fonction qui contient le composant correspondant à la liste de sélection des sports.
-    const [save,setSave] = useState("escalade")
-
     const handleSelect = (event: React.ChangeEvent<HTMLSelectElement>)=>{
+      const filter = dataFromBack?.filter(data => data.nomSport === event.target.value).map(data => data);
+      props.onCall(filter);
+      }
+        
     
-        const value = JSON.stringify({ // sport selectionnée dans le select.
-            sport : event.target.value
-        })
-<<<<<<< HEAD
-        fetch("http://localhost:3001/chartVisu/getlstGraph",{ 
-            method: 'POST',//Envoie le contenue de value (le sport séléctionné ) au backend.
-=======
-        fetch("http://localhost:3001/chartVisu/getlstGraph",{ //Envoie une requête au backend.
-            method: 'POST',
->>>>>>> abf587b314de83d819dd626abd66216198359f5a
-            headers:{
-                'Content-Type': 'application/json',
-              },
-            body: value
-        })
-        .then(response => response.json()) //On récupere la liste des séances depuis le backend...
-        .then((data) => {
-            let temp2 = Object.values(data);
-            props.onCall(temp2); // ... et on l'envoie via le props dans la fonction ChartVisu.
-
-        });
-    }
     return(
         //Select le sport
     <div>
@@ -124,18 +121,20 @@ function BoxGraphique(donnee : any){ // Fonction contenant le composant affichan
 
     const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         if (event.target.value === "base"){
-            // n'affiche rien si l'utilisateur ne séléctionne pas une séance valide.
+          //rien
         }
         else{
         let temp = JSON.parse(event.target.value) // nom de la séance
+        var tempname = temp.donneeGraph.map((valeur : any) => {return valeur.nomAttribut})
+        var tempscore = temp.donneeGraph.map((valeur : any) => {return valeur.valeur})
         setSelectedOption(event.target.value);
-        setDonneeGraph({attribut: temp.labels, score: temp.values, type: temp.graph}); // On modifie les donneés du graphes
+        setDonneeGraph({attribut: tempname, score: tempscore, type: temp.typeGraph}); // On modifie les donneés du graphes
         setchartDonnee({
-            labels: temp.labels,
+            labels: tempname,
             datasets: [
               {
                 label: "Graphique",
-                data: temp.values,
+                data: tempscore,
                 backgroundColor: [
                   'rgba(255, 99, 132, 0.5)',
                   'rgba(54, 162, 235, 0.5)',
@@ -176,7 +175,7 @@ function BoxGraphique(donnee : any){ // Fonction contenant le composant affichan
             <option value = "base">Choisir un Graph</option>
             {donnee.donnee.map((graph : any) =>(
                     <option value={JSON.stringify(graph)}>
-                        {graph.title}
+                        {graph.titre}
                     </option>
                 ))}
         </select>
