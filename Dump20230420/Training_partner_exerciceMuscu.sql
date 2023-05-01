@@ -22,18 +22,18 @@
 DROP TABLE IF EXISTS `exerciceMuscu`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `exerciceMuscu` (
+CREATE TABLE `exercice_muscu` (
   `idExercice` int NOT NULL AUTO_INCREMENT,
-  `idSeance` int NOT NULL,
+  `seanceIdSeance` int NOT NULL,
   `nbrSerie` int NOT NULL,
   `nbrRep` int NOT NULL,
   `poids` int NOT NULL,
   `nom` varchar(45) NOT NULL,
-  `tmpsRepos` int DEFAULT NULL,
+  `tmpsRepos` varchar(6),
   `userPseudo` varchar(20) NOT NULL,
-  PRIMARY KEY (`idExercice`,`idSeance`),
-  KEY `fk_exercice1_seance_idx` (`idSeance`,`userPseudo`),
-  CONSTRAINT `fk_exercice1_seance` FOREIGN KEY (`idSeance`, `userPseudo`) REFERENCES `seance` (`idSeance`, `userPseudo`) ON DELETE CASCADE ON UPDATE CASCADE
+  PRIMARY KEY (`idExercice`,`seanceIdSeance`),
+  KEY `fk_exercice1_seance_idx` (`seanceIdSeance`,`userPseudo`),
+  CONSTRAINT `fk_exercice1_seance` FOREIGN KEY (`seanceIdSeance`, `userPseudo`) REFERENCES `seance` (`idSeance`, `userPseudo`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
