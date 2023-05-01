@@ -22,18 +22,16 @@
 DROP TABLE IF EXISTS `donneeGraph`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `donneeGraph` (
+CREATE TABLE `donnee_graph` (
   `idDonnee` int NOT NULL AUTO_INCREMENT,
-  `idGraph` int NOT NULL,
   `nomAttribut` varchar(25) NOT NULL,
-  `userPseudo` varchar(20) NOT NULL,
   `valeur` int NOT NULL,
+  `graphiqueidGraph` int NOT NULL,
+  `userPseudo` varchar(20) NOT NULL,
   PRIMARY KEY (`idDonnee`),
-  KEY `fk_id_graph_idx` (`idGraph`,`userPseudo`),
-  CONSTRAINT `fk_donneeGraph_1` FOREIGN KEY (`idGraph`, `userPseudo`) REFERENCES `graphique` (`idGraph`, `userPseudo`)
+  KEY `fk_id_graph_idx` (`graphiqueidGraph`,`userPseudo`),
+  CONSTRAINT `fk_donneeGraph_1` FOREIGN KEY (`graphiqueidGraph`, `userPseudo`) REFERENCES `graphique` (`idGraph`, `userPseudo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
 --
 -- Dumping data for table `donneeGraph`
 --
