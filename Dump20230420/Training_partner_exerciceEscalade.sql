@@ -31,7 +31,7 @@ CREATE TABLE `exercice_escalade` (
   `type` varchar(45) NOT NULL,
   `userPseudo` varchar(20) NOT NULL,
   PRIMARY KEY (`idExerciceEscalade`),
-  KEY `fk_exerciceM1_seance_idx` (`seandeIdSeance`,`userPseudo`),
+  KEY `fk_exerciceM1_seance_idx` (`seanceIdSeance`,`userPseudo`),
   CONSTRAINT `fk_exerciceM1_seance` FOREIGN KEY (`seanceIdSeance`, `userPseudo`) REFERENCES `seance` (`idSeance`, `userPseudo`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
