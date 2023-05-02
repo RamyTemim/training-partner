@@ -10,7 +10,7 @@ import { FormValues } from "../../../../Interfaces/FormValues";
 //composant principal du formulaire
 const FormSeance: React.FC = () => {
   //initialisation des états pour stocker le sport sélectionné
-  const [sport,setSport]=useState("Musculation");
+  const [sport,setSport]=useState<string>("Musculation");
   const [valueSeance, setValueSeance] = useState<string[]>([])
 
   //état pour stocker les valeurs de la séance
@@ -22,7 +22,10 @@ const FormSeance: React.FC = () => {
   //fonction pour gérer le changement de sport
   const handleSportChange =(event: React.ChangeEvent<HTMLSelectElement>)=>{
       event.preventDefault();
+      console.log(event.target.value);
       setSport(event.target.value);
+      console.log(sport);
+
   }
 
   //fonction pour récupérer les valeurs de la séance
@@ -131,9 +134,9 @@ const FormSeance: React.FC = () => {
         <label htmlFor="duree" id="duree">Durée<span id="needed">*</span>
           <input name="duree" type="time" onChange={handleChange} value={values.duree} step="60"></input></label><br/>
         <select  title="selectSport" className="selectSport" value={sport} onChange={handleSportChange}>
-          <option value="musculation">Musculation</option>
-          <option value="escalade">Escalade</option>
-          <option value="course">Course</option>
+          <option value="Musculation">Musculation</option>
+          <option value="Escalade">Escalade</option>
+          <option value="Course">Course</option>
         </select>
         <button id="buttonSubmitSeance" type="submit">Enregistrer Séance</button>
       </form> 
