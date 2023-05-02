@@ -26,7 +26,7 @@ CREATE TABLE `exercice_course` (
   `idExerciceCourse` int NOT NULL AUTO_INCREMENT,
   `seanceIdSeance` int NOT NULL,
   `distance` int NOT NULL,
-  `chrono` int NOT NULL,
+  `chrono` varchar(6) NOT NULL,
   `bpm` int DEFAULT NULL,
   `vitesse` int DEFAULT NULL,
   `nom` varchar(45) NOT NULL,
