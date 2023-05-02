@@ -12,7 +12,7 @@ import PageActivite from '../Activite/Activite';
 import PageAccueil from './PageAccueil';
 
 
-function Accueil() {    
+function Accueil( props : any) {    
   const [Accueil, setAccueil] = useState(true);
   const [Activite, setActivite] = useState(false);
   const [Conseil, setConseil] = useState(false);
@@ -20,6 +20,11 @@ function Accueil() {
   const [chartCreate,setChartCreate] = useState(false);
   const [Battle, setBattle] = useState(false); 
   
+  const setdeco = ()=>{
+    props.deco();
+  }
+
+
   const clickcv = (page : number)=>{
     if (page === 0){
       setAccueil(true);setActivite(false);setConseil(false);setChartCreate(false);setChartVisu(false);setBattle(false);
@@ -45,7 +50,7 @@ function Accueil() {
   return(
     <div>
       <TabBord onPageChange ={clickcv}/>
-      <Header/>
+      <Header deco = {setdeco} />
       {Accueil && <PageAccueil/>} 
       {Activite && <PageActivite/>}
       {Conseil && null}

@@ -13,7 +13,10 @@ function Auth() {
     const [Login, setLogin] = useState(true);
     const [ForgotPassword, setForgotPassword] = useState(false);
     const [isConnected, setIsConnected] = useState(false);
-  
+    
+    const setdeco = ()=> {
+        setIsConnected(false);
+    }
     const onClick = (page : number)=>{
         if (page === 0){
             setSignUp(true);setLogin(false);setForgotPassword(false);
@@ -38,7 +41,7 @@ function Auth() {
         {SignUp && <PageSignUp />}
         {Login && <PageLogin onLogin = { () => setIsConnected(true) }/>}
         {ForgotPassword && null }
-        {isConnected && <Accueil />}
+        {isConnected && <Accueil deco = {setdeco}/>}
 
     </div>
  )

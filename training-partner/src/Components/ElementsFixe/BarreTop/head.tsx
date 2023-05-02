@@ -5,8 +5,12 @@ import logo from './logo.png';
 import logo_user from './logo_user.png';
 import UserMenu from './MenuUser/UserMenu';
 
-function Header(){
+function Header(props : any){
     const [showmenu, setshowmenu] = useState(false);
+    const pseudo = localStorage.getItem('user');
+    const setdeco = ()=>{
+        props.deco()
+    }
 
     const affMenu = ()=>{
         setshowmenu(!showmenu);
@@ -23,8 +27,8 @@ function Header(){
                     <a href ="#" className='Title'>Training Partner</a>
                 </div>
                 <div className='Pseudo'>
-                    <button onClick={affMenu} id="buttonUser"><img title='photo profil' alt='photo profil' src={logo_user} id = "logo_user"/>Pseudo</button>
-                    {showmenu && <UserMenu/>}
+                    <button onClick={affMenu} id="buttonUser"><img title='photo profil' alt='photo profil' src={logo_user} id = "logo_user"/>{pseudo}</button>
+                    {showmenu && <UserMenu deco = {setdeco}/>}
                 </div>
             </nav>
         </header>
