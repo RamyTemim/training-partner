@@ -1,8 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Seance } from "../../../../Interfaces/Seance";
+import { Muscu } from "../../../../Interfaces/Muscu";
+import { Escalade } from "../../../../Interfaces/Escalade";
+import { Course } from "../../../../Interfaces/Course";
 
-
-    //senace de teste stocker dans une variable
+interface Donneeback{
+    idGraph : number;
+    typeGraph : string;
+    nomSport : string;
+    titre : string;
+    donneeGraph : (Muscu | Escalade | Course)[];
+};
+    //seance de teste stocker dans une variable
     const seance: Seance[] = [
     {
         nom: 'Session 1',
@@ -24,6 +33,30 @@ import { Seance } from "../../../../Interfaces/Seance";
     const TableauSeance: React.FC = () => {
     //state gerzant la page affiche
     const [currentPage, setCurrentPage] = useState(1);
+    const [dataFromBack, setDataFromBack] = useState<Donneeback[]>()
+
+    useEffect(() => {
+        const user = localStorage.getItem('user')
+        const fetchDonnee = async () => {
+            try{
+                const reponse = await fetch(`http://localhost:3001/seance/seances`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({pseudo : user})
+                });
+                var donnee = await reponse.json();
+                if(donnee){
+                    setDataFromBack(donnee);
+                }
+            }
+            catch(error){
+                console.error(error);
+            }
+        }
+        fetchDonnee();
+    },[]);
 
     const handlePrevPage = () => {
         setCurrentPage((prev) => prev - 1);

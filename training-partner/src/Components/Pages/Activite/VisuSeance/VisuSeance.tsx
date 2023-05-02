@@ -2,9 +2,10 @@ import { useState } from "react";
 import TableauSeance from "./TableauSeance";
 import "./VisuSeance.css";
 
+
 const VisuSeance : React.FC =()=>{
     //state de gestion du select
-    const [sport,setSport]=useState("musculation");
+    const [sport,setSport]=useState("Musculation");
 
     //fonction de gestion de la selection du sport
     const handleSportChange =(event: React.ChangeEvent<HTMLSelectElement>)=>{
@@ -15,9 +16,9 @@ const VisuSeance : React.FC =()=>{
     return (
         <div>
             <select  title="selectSport" className="selectSportVisu" value={sport} onChange={handleSportChange}>
-                <option value="musculation">Musculation</option>
-                <option value="escalade">Escalade</option>
-                <option value="course">Course à pieds</option>
+                <option value="Musculation">Musculation</option>
+                <option value="Escalade">Escalade</option>
+                <option value="Course">Course à pieds</option>
             </select>
             <TableauSeance/>
         </div>
