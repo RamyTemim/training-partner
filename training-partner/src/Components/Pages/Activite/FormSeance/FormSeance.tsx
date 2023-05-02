@@ -90,15 +90,15 @@ const FormSeance: React.FC = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
-      },
+        },
       body: JSON.stringify({ nomSeance : values.nom, duree : values.duree, nomSport : sport, userPseudo : pseudo })
      })
      if(reponseSeance.ok){
       const idSeance = await reponseSeance.json();
         console.log("donnee",idSeance)
         console.log("seance crée")
-        if (sport === "Musculation"){
-          try{
+        try{
+          if (sport === "Musculation"){
             const reponseDonnee = await fetch('http://localhost:3001/exerciceMusculation/exercice',{
               method: 'POST',
               headers: {
@@ -111,12 +111,40 @@ const FormSeance: React.FC = () => {
               console.log("donnee",donnee)  
               console.log("seance crée")
             }
+          }
+          else if (sport === "Escalade"){
+            const reponseDonnee = await fetch('http://localhost:3001/exerciceEscalade/exercice',{
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({idSeance : idSeance, userPseudo : pseudo, donnees : seanceArray })
+            })
+            if(reponseDonnee.ok){
+              const donnee = await reponseDonnee.json();
+              console.log("donnee",donnee)  
+              console.log("seance crée")
+            }
+          }
+          else if (sport === "Course"){
+            const reponseDonnee = await fetch('http://localhost:3001/exerciceCourse/exercice',{
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({idSeance : idSeance, userPseudo : pseudo, donnees : seanceArray })
+            })
+            if(reponseDonnee.ok){
+              const donnee = await reponseDonnee.json();
+              console.log("donnee",donnee)  
+              console.log("seance crée")
+            }
+          }
         }
         catch(error){
           console.error(error)
         }
-        }
-     }
+      }
     }
     //setValueseance<string[]>([]); IL FAUT REMETTRE VALUESEANCE A 0
     catch(error){
