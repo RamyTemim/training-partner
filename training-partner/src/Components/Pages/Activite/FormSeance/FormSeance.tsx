@@ -1,5 +1,5 @@
 //import des modules et interface nécessaires
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import FormCourse from "./FormCourse";//formulaire pour la course
 import FormEscalade from "./FormEscalade";//formulaire pour l'escalde
 import FormMuscu from "./FormMuscu";//formulaire pour la musculation
@@ -12,6 +12,15 @@ const FormSeance: React.FC = () => {
   //initialisation des états pour stocker le sport sélectionné
   const [sport,setSport]=useState<string>("Musculation");
   const [valueSeance, setValueSeance] = useState<string[]>([])
+  const [date,setDate] = useState('');
+
+  useEffect(() => {
+    fetch('http://localhost:3001/date')
+    .then(response =>response.text())
+    .then((data) =>{
+        setDate(data);
+    })
+  },[]); 
 
   //état pour stocker les valeurs de la séance
   const [values, setValues] = useState<FormValues>({
@@ -80,7 +89,6 @@ const FormSeance: React.FC = () => {
       nomSport : sport,
       duree : values.duree.toString(),
       userPseudo : pseudo,
-      date : new Date(),
       seance : seanceArray
     })
     console.log(result)   
@@ -91,7 +99,7 @@ const FormSeance: React.FC = () => {
         headers: {
           'Content-Type': 'application/json'
         },
-      body: JSON.stringify({ nomSeance : values.nom, duree : values.duree, nomSport : sport, userPseudo : pseudo })
+      body: JSON.stringify({ nomSeance : values.nom, duree : values.duree, nomSport : sport, userPseudo : pseudo, date : date })
      })
      if(reponseSeance.ok){
       const idSeance = await reponseSeance.json();
