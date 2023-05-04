@@ -3,7 +3,6 @@ import { Muscu } from "../../../../Interfaces/Muscu";
 import { Escalade } from "../../../../Interfaces/Escalade";
 import { Course } from "../../../../Interfaces/Course";
 
-
 interface Donneeback{
     idGraph : number;
     typeGraph : string;
@@ -14,21 +13,14 @@ interface Donneeback{
 
  
 
-type Exercise = {
-name: string;
-sets: number;
-reps: number;
-weight: number;
-};
-
 type Seance = {
     nom: string;
     duree : string;
     date: string;
-    exercices: Muscu[];
+    exercices: Course[];
 };
 
-const TableMuscu = () => {
+const TableCourse = () => {
     //state gerzant la page affiche
     const [currentPage, setCurrentPage] = useState(1);
     const [dataFromBack, setDataFromBack] = useState<Donneeback[]>()
@@ -64,18 +56,18 @@ const TableMuscu = () => {
         date:"20 mai",
         exercices: [
             {
-            nbr_rep: 30,
-            nbr_serie: 3,
+            distance: 30,
+            vitesse: 3,
             nom:"DC",
-            poids : 80,
-            tmps_repos: "00:30"
+            bpm : 80,
+            chrono: "00:30"
             },
             {
             nom: "Squat",
-            nbr_rep: 3,
-            nbr_serie: 8,
-            poids: 100,
-            tmps_repos:"00:00"
+            distance: 3,
+            vitesse: 8,
+            bpm: 100,
+            chrono:"00:00"
             },
         ],
         },
@@ -85,25 +77,25 @@ const TableMuscu = () => {
         date:"20 mai",
         exercices: [
             {
-                nbr_rep: 30,
-                nbr_serie: 3,
-                nom:"DC",
-                poids : 80,
-                tmps_repos: "00:30"
-                },
-                {
-                nom: "Squat",
-                nbr_rep: 3,
-                nbr_serie: 8,
-                poids: 100,
-                tmps_repos:"00:00"
-                },
+            distance: 30,
+            vitesse: 3,
+            nom:"DC",
+            bpm : 80,
+            chrono: "00:30"
+            },
+            {
+            nom: "Squat",
+            distance: 3,
+            vitesse: 8,
+            bpm: 100,
+            chrono:"00:00"
+            },
         ],
         },
     ]);
 
     const [selectedSession, setSelectedSession] = useState<Seance | null>(null);
-    const [selectedExercise, setSelectedExercise] = useState<Muscu | null>(null);
+    const [selectedExercise, setSelectedExercise] = useState<Course | null>(null);
 
     const handleSessionClick = (seance: Seance) => {
         if (seance==selectedSession){
@@ -114,7 +106,7 @@ const TableMuscu = () => {
         setSelectedExercise(null);
     };
 
-    const handleExerciseClick = (exercice: Muscu) => {
+    const handleExerciseClick = (exercice: Course) => {
         if (exercice== selectedExercise){
             setSelectedExercise(null);
         }else{
@@ -161,7 +153,7 @@ const TableMuscu = () => {
                     onClick={() => handleExerciseClick(exercice)}
                     >
                     <td>{exercice.nom}</td>
-                    <td>{exercice.nbr_serie} x {exercice.nbr_rep}</td>
+                    <td>{exercice.distance}km     {exercice.chrono}min</td>
                     </tr>
                 ))}
                     <td></td>
@@ -176,21 +168,21 @@ const TableMuscu = () => {
             <table className="tableDetailsEx">
                 <thead>
                     <tr>
-                        <th scope="col">Séries</th>
-                        <th scope="col">Répétitions</th>
-                        <th scope="col">Poids</th>
-                        <th scope="col">Repos</th>
+                        <th scope="col">Distance</th>
+                        <th scope="col">Vitesse</th>
+                        <th scope="col">Rythe Cardiaque</th>
+                        <th scope="col">Chrono</th>
                     </tr>
                 </thead>
                 <tbody>
                 <tr>
-                    <td>{selectedExercise.nbr_serie}</td>
+                    <td>{selectedExercise.distance} km</td>
 
-                    <td>{selectedExercise.nbr_rep}</td>
+                    <td>{selectedExercise.vitesse} km/h</td>
 
-                    <td>{selectedExercise.poids} kg</td>
+                    <td>{selectedExercise.bpm} bpm</td>
 
-                    <td>{selectedExercise.tmps_repos} min</td>
+                    <td>{selectedExercise.chrono} min</td>
                 </tr>
                 </tbody>
             </table>
@@ -200,4 +192,4 @@ const TableMuscu = () => {
     );
 };
 
-export default TableMuscu;
+export default TableCourse;

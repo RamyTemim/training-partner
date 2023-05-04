@@ -1,6 +1,9 @@
 import { useState } from "react";
-import TableauSeance from "./TableauSeance";
+import SessionTables from "./TableauSeance";
 import "./VisuSeance.css";
+import TableMuscu from "./TableauSeance";
+import TableCourse from "./TableauCourse";
+import TableEscalade from "./TableauEscalade";
 
 
 const VisuSeance : React.FC =()=>{
@@ -12,6 +15,16 @@ const VisuSeance : React.FC =()=>{
         event.preventDefault();//empeche le rechargement de la page
         setSport(event.target.value);//met a jour le sport selectionné dans le state
     }
+    const getTable=()=>{
+        switch(sport){
+            case "Musculation":
+                return <TableMuscu/>;
+            case "Course":
+                return <TableCourse/>;
+            case "Escalade":
+                return <TableEscalade/>
+        }
+    }
     //affichage du select et de composant
     return (
         <div>
@@ -20,7 +33,7 @@ const VisuSeance : React.FC =()=>{
                 <option value="Escalade">Escalade</option>
                 <option value="Course">Course à pieds</option>
             </select>
-            <TableauSeance/>
+            {getTable()}
         </div>
     )
 }

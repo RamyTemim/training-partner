@@ -110,24 +110,7 @@ const Formulaire: React.FC = () => {
             data:[...chartDonnee.datasets[0].data,],
           },
         ],
-    })}/*
-    fetch('http://localhost:3001/date')
-      .then(response =>response.text())
-      .then((data) =>{
-        setDate(data);
-        console.log(date);
-    })
-    console.log(date)
-      //trainsforme les données en JSON et les envoie à l'API pour les sauvegarder le graphique
-    const jsonData = JSON.stringify({
-      title: formSave.titre,
-      labels: chartDonnee.labels,
-      values: chartDonnee.datasets[0].data,
-      sport: formSave.sport,
-      graph: selectedType,
-      date: date
-    });*/
-
+    })}
     try{
       const pseudo = localStorage.getItem('user')
       const reponseChart = await fetch('http://localhost:3001/graphique/create',{
