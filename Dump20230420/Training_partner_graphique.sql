@@ -24,11 +24,16 @@ DROP TABLE IF EXISTS `graphique`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `graphique` (
   `idGraph` int NOT NULL AUTO_INCREMENT,
+  `typeGraph` varchar(11) NOT NULL,
   `userPseudo` varchar(20) NOT NULL,
-  `typeGraph` varchar(255) NOT NULL,
-  `nomSport` varchar(255) NOT NULL,
-  `titre` varchar(255) NOT NULL,
-  PRIMARY KEY (`idGraph`,`userPseudo`)
+  `nomSport` varchar(15) NOT NULL,
+  `titre` varchar(15) NOT NULL,
+  `date` varchar(10) NOT NULL,
+  PRIMARY KEY (`idGraph`,`userPseudo`),
+  KEY `U_pseudo_idx` (`userPseudo`),
+  KEY `nom_sport_idx` (`nomSport`),
+  CONSTRAINT `nomSport` FOREIGN KEY (`nomSport`) REFERENCES `sport` (`nom`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `userPseudo` FOREIGN KEY (`userPseudo`) REFERENCES `user` (`pseudo`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
