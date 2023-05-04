@@ -24,12 +24,16 @@ DROP TABLE IF EXISTS `seance`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `seance` (
   `idSeance` int NOT NULL AUTO_INCREMENT,
-  `userPseudo` varchar(20) NOT NULL,
-  `nom` varchar(25) NOT NULL,
-  `duree` time NOT NULL,
+  `nomSeance` varchar(25) NOT NULL,
+  `duree` varchar(6) NOT NULL,
   `nomSport` varchar(15) NOT NULL,
-  `date` date NOT NULL,
-  PRIMARY KEY (`idSeance`,`userPseudo`)
+  `userPseudo` varchar(20) NOT NULL,
+  `date` varchar(10) NOT NULL,
+  PRIMARY KEY (`idSeance`,`userPseudo`),
+  KEY `fk_seance_1_idx` (`nomSport`),
+  KEY `fk_seance_2_idx` (`userPseudo`),
+  CONSTRAINT `fk_seance_1` FOREIGN KEY (`nomSport`) REFERENCES `sport` (`nom`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_seance_2` FOREIGN KEY (`userPseudo`) REFERENCES `user` (`pseudo`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
