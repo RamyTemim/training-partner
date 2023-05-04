@@ -4,7 +4,6 @@ import Head from './head';
 import PageSignUp from './signUp';
 import PageLogin from './login';
 import Accueil from '../Accueil/Acceuil';
-import Profil from '../../ElementsFixe/BarreTop/MenuUser/Profil';
 
 //Components
 

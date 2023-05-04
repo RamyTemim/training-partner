@@ -7,28 +7,28 @@ import { Chart,Tooltip,Legend,LinearScale,CategoryScale,BarElement,Title } from 
 //interfaces 
 interface ExerciceEscalade{
     idExercice : number;
-    nomExercice : string;
+    difficulte : string;
+    nom : string;
     type : string;
     nbPrises : number;
-    difficulte : string;
 }
 
 interface ExerciceCourse{
     idExercice : number;
-    nomExercice : string;
     distance : string;
     chrono : number;
     vitesse : number;
-    rythmeCardiaque : number;
+    nom : string;
+    bpm : number;
 }
 
 interface ExerciceMuscu{
     idExercice : number;
-    nomExercice : string;
     nbSeries : string;
     nbRepetitions : string;
     poids : string;
-    repos : number;
+    nom : string;
+    tmpsRepos : number;
 }
 
 interface Seance {
@@ -44,10 +44,10 @@ function Menus(){
 
     //Initialise un tableau de séances
     const [seances,setSeances] = useState<Seance[]>([
-        { idSeance : 1, nom : "SeanceX1", sport : "Course", exercices : [{ idExercice : 1, nomExercice : "100m", distance : "100m", chrono : 30, vitesse : 10, rythmeCardiaque : 80 }]},
-        { idSeance : 2, nom : "SeanceY1", sport : "Course" , exercices : [{ idExercice : 2, nomExercice : "100m", distance : "100m", chrono : 30, vitesse : 10, rythmeCardiaque : 80 }]},
-        { idSeance : 3, nom : "SeanceX3", sport : "Escalade", exercices : [{ idExercice : 3, nomExercice : "exercice2", type : "valeur1", nbPrises : 3, difficulte :"facile" }]},
-        { idSeance : 4, nom : "SeanceY3", sport : "Escalade", exercices : [{ idExercice : 4,nomExercice : "exercice2", type : "valeur1", nbPrises : 2, difficulte : "moyen" }]},
+        { idSeance : 1, nom : "SeanceX1", sport : "Course", exercices : [{ idExercice : 1, nom : "100m", distance : "100m", chrono : 30, vitesse : 10, bpm : 80 }]},
+        { idSeance : 2, nom : "SeanceY1", sport : "Course" , exercices : [{ idExercice : 2, nom : "100m", distance : "100m", chrono : 30, vitesse : 10, bpm : 80 }]},
+        { idSeance : 3, nom : "SeanceX3", sport : "Escalade", exercices : [{ idExercice : 3, difficulte :"facile", nom : "exercice2", type : "valeur1", nbPrises : 3 }]},
+        { idSeance : 4, nom : "SeanceY3", sport : "Escalade", exercices : [{ idExercice : 4, difficulte : "moyen", nom : "exercice2", type : "valeur1", nbPrises : 2 }]},
     ])
     
     //Etat pour stocker le sport sélectionné
@@ -73,7 +73,7 @@ function Menus(){
         const seanceYSelectionne = seances.find(seance=>seance.nom === selectedSeanceY);
         //Vérifie si 2 séances ont été selectionné et modifie la liste des exercices en communs
         if(seanceXSelectionne && seanceYSelectionne){
-            const exoCommuns = seanceXSelectionne.exercices.filter(exerciceX => seanceYSelectionne.exercices.some(exerciceY => exerciceY.nomExercice === exerciceX.nomExercice));
+            const exoCommuns = seanceXSelectionne.exercices.filter(exerciceX => seanceYSelectionne.exercices.some(exerciceY => exerciceY.nom === exerciceX.nom));
             setExercicesCommuns(exoCommuns);
         }
     },[selectedSeanceX, selectedSeanceY])
@@ -174,8 +174,8 @@ function Menus(){
 
                 <select id="dropMenuExercices" value={selectedExercice} onChange={ (event) => handleExerciceChange(event.target.value) }>
                     {exercicesCommuns.map((exercice) =>(
-                        <option key = {exercice.nomExercice} >
-                            {exercice.nomExercice}
+                        <option key = {exercice.nom} >
+                            {exercice.nom}
                         </option>
                     ))}
                 </select>
