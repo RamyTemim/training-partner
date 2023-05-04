@@ -25,6 +25,15 @@ const Formulaire: React.FC = () => {
   const [formDonnee, setformDonnee]= useState<DonneeGraph>({name: "",score : 0});
   const [date,setDate] = useState('');
   const [selectedType, setSelectedType] = useState<GraphType>("spiderchart");
+
+  useEffect(() => {
+    fetch('http://localhost:3001/date')
+    .then(response =>response.text())
+    .then((data) =>{
+        setDate(data);
+    })
+  },[]); 
+
   const [chartDonnee, setchartDonnee] = useState({
     labels: [] as string[],
     datasets: [
@@ -110,14 +119,8 @@ const Formulaire: React.FC = () => {
             data:[...chartDonnee.datasets[0].data,],
           },
         ],
-    })}/*
-    fetch('http://localhost:3001/date')
-      .then(response =>response.text())
-      .then((data) =>{
-        setDate(data);
-        console.log(date);
-    })
-    console.log(date)
+    })}
+    /*console.log(date)
       //trainsforme les données en JSON et les envoie à l'API pour les sauvegarder le graphique
     const jsonData = JSON.stringify({
       title: formSave.titre,
@@ -135,7 +138,7 @@ const Formulaire: React.FC = () => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({typeGraph : selectedType, nomSport : formSave.sport, titre : formSave.titre, userPseudo : pseudo })
+        body: JSON.stringify({typeGraph : selectedType, nomSport : formSave.sport, titre : formSave.titre, userPseudo : pseudo, date : date })
       })
       console.log("c'est passé")
       //réinitialise le formulaire 
