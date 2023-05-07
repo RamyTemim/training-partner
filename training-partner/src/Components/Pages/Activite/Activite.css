@@ -1,4 +1,5 @@
 .btt_showForm{
+    cursor: pointer;
     position: relative;
     background-color: #FFFFFF;
     color: #000000;
@@ -18,6 +19,7 @@
 }
 
 .btt_showSeance{
+    cursor: pointer;
     position: relative;
     background-color: #FFFFFF;
     color: #000000;

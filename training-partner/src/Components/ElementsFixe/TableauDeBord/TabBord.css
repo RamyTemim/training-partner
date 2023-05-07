@@ -153,6 +153,7 @@
     top: 530px;
 }
 #TB_Battle_logo{
+    cursor: pointer;
     position: absolute;
     width: 150px;
     height: 40px;

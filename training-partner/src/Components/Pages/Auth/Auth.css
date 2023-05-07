@@ -8,6 +8,7 @@
 }
 
 .FormulaireAuth input{
+    cursor: auto;
     width : 100%;
 }
 

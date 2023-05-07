@@ -50,6 +50,7 @@
 
 .formEX label, .formSeance label{
     font-family: 'Arial';
+    cursor: default;
     font-style: normal;
     font-weight: 600;
     font-size: 30px;
@@ -61,7 +62,7 @@
     color: #000000;
 }
 .formEX input, .formSeance input{
-    cursor: pointer;
+    cursor: auto;
     position: absolute;
     font-family: 'Arial';
     font-style: normal;

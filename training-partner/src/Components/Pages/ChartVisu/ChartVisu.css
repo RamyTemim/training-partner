@@ -17,6 +17,7 @@
 }
 
 .ListGraph{ /* Select de graph */
+    cursor: pointer;
     position: relative;
     width: 42%;
     top:29px;

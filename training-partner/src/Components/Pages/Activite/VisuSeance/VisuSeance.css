@@ -72,7 +72,9 @@
     border-collapse: collapse;
     text-align: center;
 }
-
+tr{
+    cursor: pointer;
+}
 .ListeExVisu, .detailsExVisu,  .tabSeanceVisu{
     text-align: center;
 }
