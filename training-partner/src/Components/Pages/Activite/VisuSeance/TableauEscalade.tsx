@@ -1,29 +1,29 @@
 import { useEffect, useState } from "react";
 import { Muscu } from "../../../../Interfaces/Muscu";
-import { Escalade } from "../../../../Interfaces/Escalade";
 import { Course } from "../../../../Interfaces/Course";
 
-interface Donneeback{
-    idGraph : number;
-    typeGraph : string;
-    nomSport : string;
-    titre : string;
-    donneeGraph : (Muscu | Escalade | Course)[];
-};
 
- 
+interface Escalade{
+    difficulte: string;
+    nom:string;
+    type: string;
+    nbrPrise: number;
+}
 
-type Seance = {
-    nom: string;
+
+interface Seance{
+    nomSeance: string;
     duree : string;
     date: string;
-    exercices: Escalade[];
+    nomSport : string;
+    exerciceEscalade: Escalade[];
 };
 
 const TableEscalade = () => {
     //state gerzant la page affiche
-    const [currentPage, setCurrentPage] = useState(1);
-    const [dataFromBack, setDataFromBack] = useState<Donneeback[]>()
+    const [seances, setSeances] = useState<Seance[]>([]);
+    const [selectedSession, setSelectedSession] = useState<Seance | null>(null);
+    const [selectedExercise, setSelectedExercise] = useState<Escalade | null>(null);
 
     useEffect(() => {
         const user = localStorage.getItem('user')
@@ -38,7 +38,9 @@ const TableEscalade = () => {
                 });
                 var donnee = await reponse.json();
                 if(donnee){
-                    setDataFromBack(donnee);
+                    const filter = donnee?.filter((data:Seance )=> data.nomSport === "Escalade").map((data : Seance) => data);
+                    setSeances(filter);
+                    console.log(filter);
                 }
             }
             catch(error){
@@ -48,58 +50,15 @@ const TableEscalade = () => {
         fetchDonnee();
     },[]);
 
-    
-    const [seances, setSeances] = useState<Seance[]>([//state contenat un tableau de senace chaque seance doit contenir un tableau des exercices qui lui sont liés
-        {
-        nom: "Session 1",
-        duree :"01:30",
-        date:"20 mai",
-        exercices: [
-            {
-            type: "bloc",
-            difficulte: "A2",
-            nom:"echauffement",
-            nbr_prise:34,
-            },
-            {
-            nom: "Tentative 1",
-            type: "bloc",
-            difficulte: "C3",
-            nbr_prise:34,
-            },
-        ],
-        },
-        {
-        nom: "Session 2",
-        duree :"01:30",
-        date:"20 mai",
-        exercices: [
-            {
-            type: "bloc",
-            difficulte: "A2",
-            nom:"echauffement",
-            nbr_prise:34,
-            },
-            {
-            nom: "Tentative 1",
-            type: "bloc",
-            difficulte: "C3",
-            nbr_prise:34,
-            },
-        ],
-        },
-    ]);
 
-    const [selectedSession, setSelectedSession] = useState<Seance | null>(null);
-    const [selectedExercise, setSelectedExercise] = useState<Escalade | null>(null);
 
     const handleSessionClick = (seance: Seance) => {
         if (seance==selectedSession){
             setSelectedSession(null);
         }else{
             setSelectedSession(seance);
+            setSelectedExercise(null);
         };
-        setSelectedExercise(null);
     };
 
     const handleExerciseClick = (exercice: Escalade) => {
@@ -123,9 +82,9 @@ const TableEscalade = () => {
             </thead>
             <tbody>
             {seances.map((seance) => (
-                <tr key={seance.nom} onClick={() => handleSessionClick(seance)}>
+                <tr key={seance.nomSeance} onClick={() => handleSessionClick(seance)}>
                      <td>{++i}</td>
-                    <td>{seance.nom}</td>
+                    <td>{seance.nomSeance}</td>
                     <td>{seance.duree}</td>
                 </tr>
             ))}
@@ -134,7 +93,7 @@ const TableEscalade = () => {
 
         {selectedSession && (
             <div>
-            <h2 className="ListeExVisu">{selectedSession.nom}</h2>
+            <h2 className="ListeExVisu">{selectedSession.nomSeance}</h2>
             <table className="tableListEx">
                 <thead>
                 <tr>
@@ -143,7 +102,7 @@ const TableEscalade = () => {
                 </tr>
                 </thead>
                 <tbody>
-                {selectedSession.exercices.map((exercice) => (
+                {selectedSession.exerciceEscalade.map((exercice) => (
                     <tr
                     key={exercice.nom}
                     onClick={() => handleExerciseClick(exercice)}
@@ -173,7 +132,7 @@ const TableEscalade = () => {
                 <tr>
                     <td>{selectedExercise.type}</td>
                     <td>{selectedExercise.difficulte}</td>
-                    <td>{selectedExercise.nbr_prise}</td>
+                    <td>{selectedExercise.nbrPrise}</td>
                 </tr>
                 </tbody>
             </table>

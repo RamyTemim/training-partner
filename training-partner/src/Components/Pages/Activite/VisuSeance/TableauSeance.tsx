@@ -2,36 +2,30 @@ import { useEffect, useState } from "react";
 import { Muscu } from "../../../../Interfaces/Muscu";
 import { Escalade } from "../../../../Interfaces/Escalade";
 import { Course } from "../../../../Interfaces/Course";
+import { NumberLiteralType, NumericLiteral } from "typescript";
 
 
-interface Donneeback{
-    idGraph : number;
-    typeGraph : string;
-    nomSport : string;
-    titre : string;
-    donneeGraph : (Muscu | Escalade | Course)[];
-};
+interface Musculation{
+    nbrRep : number;
+    nbrSerie : number;
+    nom  : string;
+    poids : number;
+    tmpsRepos : number;
+}
 
- 
-
-type Exercise = {
-name: string;
-sets: number;
-reps: number;
-weight: number;
-};
-
-type Seance = {
-    nom: string;
+interface Seance{
+    nomSeance: string;
     duree : string;
     date: string;
-    exercices: Muscu[];
+    exerciceMuscu: Musculation[];
+    nomSport : string;
 };
 
 const TableMuscu = () => {
     //state gerzant la page affiche
-    const [currentPage, setCurrentPage] = useState(1);
-    const [dataFromBack, setDataFromBack] = useState<Donneeback[]>()
+    const [seances, setSeances] = useState<Seance[]>([])//state contenat un tableau de senace chaque seance doit contenir un tableau des exercices qui lui sont liés
+    const [selectedSession, setSelectedSession] = useState<Seance | null>(null);
+    const [selectedExercise, setSelectedExercise] = useState<Musculation | null>(null);
 
     useEffect(() => {
         const user = localStorage.getItem('user')
@@ -46,9 +40,8 @@ const TableMuscu = () => {
                 });
                 var donnee = await reponse.json();
                 if(donnee){
-                    setDataFromBack(donnee);
-                    console.log("tabseancetsx");
-                    console.log(dataFromBack);
+                    const filter = donnee?.filter((data:Seance )=> data.nomSport === "Musculation").map((data : Seance) => data);
+                    setSeances(filter);
                 }
             }
             catch(error){
@@ -59,68 +52,23 @@ const TableMuscu = () => {
     },[]);
 
     
-    const [seances, setSeances] = useState<Seance[]>([//state contenat un tableau de senace chaque seance doit contenir un tableau des exercices qui lui sont liés
-        {
-        nom: "Session 1",
-        duree :"01:30",
-        date:"20 mai",
-        exercices: [
-            {
-            nbr_rep: 30,
-            nbr_serie: 3,
-            nom:"DC",
-            poids : 80,
-            tmps_repos: "00:30"
-            },
-            {
-            nom: "Squat",
-            nbr_rep: 3,
-            nbr_serie: 8,
-            poids: 100,
-            tmps_repos:"00:00"
-            },
-        ],
-        },
-        {
-        nom: "Session 2",
-        duree :"01:30",
-        date:"20 mai",
-        exercices: [
-            {
-                nbr_rep: 30,
-                nbr_serie: 3,
-                nom:"DC",
-                poids : 80,
-                tmps_repos: "00:30"
-                },
-                {
-                nom: "Squat",
-                nbr_rep: 3,
-                nbr_serie: 8,
-                poids: 100,
-                tmps_repos:"00:00"
-                },
-        ],
-        },
-    ]);
-
-    const [selectedSession, setSelectedSession] = useState<Seance | null>(null);
-    const [selectedExercise, setSelectedExercise] = useState<Muscu | null>(null);
 
     const handleSessionClick = (seance: Seance) => {
+        console.log(seances);
+        console.log(seances[0]);
         if (seance==selectedSession){
             setSelectedSession(null);
         }else{
             setSelectedSession(seance);
+            setSelectedExercise(null);
         };
-        setSelectedExercise(null);
     };
 
-    const handleExerciseClick = (exercice: Muscu) => {
-        if (exercice== selectedExercise){
+    const handleExerciseClick = (exercice: Musculation) => {
+        if (exercice == selectedExercise){
             setSelectedExercise(null);
         }else{
-        setSelectedExercise(exercice);
+            setSelectedExercise(exercice);
         }
     };
     let i=0;
@@ -137,9 +85,9 @@ const TableMuscu = () => {
             </thead>
             <tbody>
             {seances.map((seance) => (
-                <tr key={seance.nom} onClick={() => handleSessionClick(seance)}>
+                <tr key={seance.nomSeance} onClick={() => handleSessionClick(seance)}>
                      <td>{++i}</td>
-                    <td>{seance.nom}</td>
+                    <td>{seance.nomSeance}</td>
                     <td>{seance.duree}</td>
                 </tr>
             ))}
@@ -148,7 +96,7 @@ const TableMuscu = () => {
 
         {selectedSession && (
             <div>
-            <h2 className="ListeExVisu">{selectedSession.nom}</h2>
+            <h2 className="ListeExVisu">{selectedSession.nomSeance}</h2>
             <table className="tableListEx">
                 <thead>
                 <tr>
@@ -157,13 +105,13 @@ const TableMuscu = () => {
                 </tr>
                 </thead>
                 <tbody>
-                {selectedSession.exercices.map((exercice) => (
+                {selectedSession.exerciceMuscu.map((exercice : Musculation) => (
                     <tr
                     key={exercice.nom}
                     onClick={() => handleExerciseClick(exercice)}
                     >
                     <td>{exercice.nom}</td>
-                    <td>{exercice.nbr_serie} x {exercice.nbr_rep}</td>
+                    <td>{exercice.nbrSerie} x {exercice.nbrRep}</td>
                     </tr>
                 ))}
                     <td></td>
@@ -186,13 +134,13 @@ const TableMuscu = () => {
                 </thead>
                 <tbody>
                 <tr>
-                    <td>{selectedExercise.nbr_serie}</td>
+                    <td>{selectedExercise.nbrSerie}</td>
 
-                    <td>{selectedExercise.nbr_rep}</td>
+                    <td>{selectedExercise.nbrRep}</td>
 
                     <td>{selectedExercise.poids} kg</td>
 
-                    <td>{selectedExercise.tmps_repos} min</td>
+                    <td>{selectedExercise.tmpsRepos} min</td>
                 </tr>
                 </tbody>
             </table>
