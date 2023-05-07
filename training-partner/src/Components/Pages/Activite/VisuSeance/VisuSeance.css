@@ -30,3 +30,49 @@
     font-weight: 500;
     font-size: 40px;
 }
+
+.TabSeance{
+    position: relative;
+    text-align:left;
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 48px;
+    border-radius: 20px;
+    background: #FFFFFF;
+    border: 10px solid #FFFFFF;
+    margin-left: 7%;
+    top: 50px;
+    height: auto;
+    width: 90%;
+    margin-bottom: 200px;
+}
+
+.tableSeanceVisu{
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+#NumSeance {
+    width: 10%;
+}
+
+
+.tableListEx{
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+.tableDetailsEx{
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.ListeExVisu, .detailsExVisu,  .tabSeanceVisu{
+    text-align: center;
+}

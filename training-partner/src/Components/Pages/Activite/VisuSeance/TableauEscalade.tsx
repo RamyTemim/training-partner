@@ -3,7 +3,6 @@ import { Muscu } from "../../../../Interfaces/Muscu";
 import { Escalade } from "../../../../Interfaces/Escalade";
 import { Course } from "../../../../Interfaces/Course";
 
-
 interface Donneeback{
     idGraph : number;
     typeGraph : string;
@@ -14,21 +13,14 @@ interface Donneeback{
 
  
 
-type Exercise = {
-name: string;
-sets: number;
-reps: number;
-weight: number;
-};
-
 type Seance = {
     nom: string;
     duree : string;
     date: string;
-    exercices: Muscu[];
+    exercices: Escalade[];
 };
 
-const TableMuscu = () => {
+const TableEscalade = () => {
     //state gerzant la page affiche
     const [currentPage, setCurrentPage] = useState(1);
     const [dataFromBack, setDataFromBack] = useState<Donneeback[]>()
@@ -47,8 +39,6 @@ const TableMuscu = () => {
                 var donnee = await reponse.json();
                 if(donnee){
                     setDataFromBack(donnee);
-                    console.log("tabseancetsx");
-                    console.log(dataFromBack);
                 }
             }
             catch(error){
@@ -66,18 +56,16 @@ const TableMuscu = () => {
         date:"20 mai",
         exercices: [
             {
-            nbr_rep: 30,
-            nbr_serie: 3,
-            nom:"DC",
-            poids : 80,
-            tmps_repos: "00:30"
+            type: "bloc",
+            difficulte: "A2",
+            nom:"echauffement",
+            nbr_prise:34,
             },
             {
-            nom: "Squat",
-            nbr_rep: 3,
-            nbr_serie: 8,
-            poids: 100,
-            tmps_repos:"00:00"
+            nom: "Tentative 1",
+            type: "bloc",
+            difficulte: "C3",
+            nbr_prise:34,
             },
         ],
         },
@@ -87,25 +75,23 @@ const TableMuscu = () => {
         date:"20 mai",
         exercices: [
             {
-                nbr_rep: 30,
-                nbr_serie: 3,
-                nom:"DC",
-                poids : 80,
-                tmps_repos: "00:30"
-                },
-                {
-                nom: "Squat",
-                nbr_rep: 3,
-                nbr_serie: 8,
-                poids: 100,
-                tmps_repos:"00:00"
-                },
+            type: "bloc",
+            difficulte: "A2",
+            nom:"echauffement",
+            nbr_prise:34,
+            },
+            {
+            nom: "Tentative 1",
+            type: "bloc",
+            difficulte: "C3",
+            nbr_prise:34,
+            },
         ],
         },
     ]);
 
     const [selectedSession, setSelectedSession] = useState<Seance | null>(null);
-    const [selectedExercise, setSelectedExercise] = useState<Muscu | null>(null);
+    const [selectedExercise, setSelectedExercise] = useState<Escalade | null>(null);
 
     const handleSessionClick = (seance: Seance) => {
         if (seance==selectedSession){
@@ -116,7 +102,7 @@ const TableMuscu = () => {
         setSelectedExercise(null);
     };
 
-    const handleExerciseClick = (exercice: Muscu) => {
+    const handleExerciseClick = (exercice: Escalade) => {
         if (exercice== selectedExercise){
             setSelectedExercise(null);
         }else{
@@ -163,7 +149,7 @@ const TableMuscu = () => {
                     onClick={() => handleExerciseClick(exercice)}
                     >
                     <td>{exercice.nom}</td>
-                    <td>{exercice.nbr_serie} x {exercice.nbr_rep}</td>
+                    <td>{exercice.type}      {exercice.difficulte}</td>
                     </tr>
                 ))}
                     <td></td>
@@ -178,21 +164,16 @@ const TableMuscu = () => {
             <table className="tableDetailsEx">
                 <thead>
                     <tr>
-                        <th scope="col">Séries</th>
-                        <th scope="col">Répétitions</th>
-                        <th scope="col">Poids</th>
-                        <th scope="col">Repos</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Difficulté</th>
+                        <th scope="col">Prise</th>
                     </tr>
                 </thead>
                 <tbody>
                 <tr>
-                    <td>{selectedExercise.nbr_serie}</td>
-
-                    <td>{selectedExercise.nbr_rep}</td>
-
-                    <td>{selectedExercise.poids} kg</td>
-
-                    <td>{selectedExercise.tmps_repos} min</td>
+                    <td>{selectedExercise.type}</td>
+                    <td>{selectedExercise.difficulte}</td>
+                    <td>{selectedExercise.nbr_prise}</td>
                 </tr>
                 </tbody>
             </table>
@@ -202,4 +183,4 @@ const TableMuscu = () => {
     );
 };
 
-export default TableMuscu;
+export default TableEscalade;

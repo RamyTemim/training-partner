@@ -120,16 +120,6 @@ const Formulaire: React.FC = () => {
           },
         ],
     })}
-    /*console.log(date)
-      //trainsforme les données en JSON et les envoie à l'API pour les sauvegarder le graphique
-    const jsonData = JSON.stringify({
-      title: formSave.titre,
-      labels: chartDonnee.labels,
-      values: chartDonnee.datasets[0].data,
-      sport: formSave.sport,
-      graph: selectedType,
-      date: date
-    });*/
 
     try{
       const pseudo = localStorage.getItem('user')
