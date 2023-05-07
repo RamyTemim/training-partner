@@ -78,7 +78,7 @@ header{
 }
 .Pseudo{
     position: absolute;
-    width: 74px;
+    width: 100px;
     height: 38px;
     left: 85%;
     top: 23px;
@@ -86,7 +86,7 @@ header{
     font-family: 'Arial';
     font-style: normal;
     font-weight: 700;
-    font-size: 15px;
+    font-size: 18px;
     line-height: 18px;
     display: flex;
     align-items: center;
@@ -97,11 +97,12 @@ header{
 }
 
 #logo_user{
-    left : 100px;
-    top: -20px;
-    position:absolute;
-    background-color: #1E1E1E;
+    position:absolute ;
+    left: 90%;
 
+    width: 45px;
+    color: white;
+    background-color: #1E1E1E;
 }
 
 #buttonUser{

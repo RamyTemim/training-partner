@@ -4,14 +4,12 @@ import mail from './mail.png';
 import deconnexion from './deconnexion.png';
 import user from './user.png';
 import Profil from './Profil';
+import { set } from 'date-fns';
 
 function UserMenu(props : any){
-
-  const info = ()=>{
-    console.log("info")
-    return(
-        <Profil/>
-    )
+  const [showProfil,setShowProfil]=useState(false);
+  const handleprofil = ()=>{
+    setShowProfil(!showProfil);
   }
   const handleLogout = async() => {
         try {
@@ -28,11 +26,18 @@ function UserMenu(props : any){
     }
 
   return (
+    <>
     <div id= "user_menu">
       <button id ="btt_email"> <img title='Email' alt='Email' src={mail}/>    Email</button>
-      <button id ="btt_profil" onClick={info}><img title='Profil' alt='Profil' src={user}/>    Profil Utilisateur</button>
+      <button id ="btt_profil" onClick={handleprofil}><img title='Profil' alt='Profil' src={user}/>    Profil Utilisateur</button>
       <button id ="btt_deco" onClick={handleLogout}><img id ="btt_deco_img"title='deconnexion' alt='deconnexion' src={deconnexion}/>    Déconnexion</button>
+      </div>
+    <div className='menuProfil'>
+      {showProfil && <Profil />}
+      {showProfil&&<button className='btt_close_Profil' onClick={handleprofil}>Fermer</button>}
     </div>
+    </>
+   
   )
 };
 

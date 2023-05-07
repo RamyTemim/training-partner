@@ -64,8 +64,8 @@ function Profil(){
                     <input type='texte' id='prenom' name='prenom' value = {profil.prenom} readOnly />
                     <label htmlFor='dateDeNaissance'>Date de naissance : </label>
                     <input type="date" id='dateDeNaissance' name='dateDeNaissance' value = {profil.dateDeNaissance} readOnly />
-                    <label htmlFor='motdepasse'>Mot de passe : </label>
-                    <input type='password' id='motdepasse' name='motdepasse' value = {profil.motDePasse} onChange={handleInputChange}/>
+                    <label htmlFor='email'>Email : </label>
+                    <input type='email' id='email' name='email' value = {profil.email} onChange={handleInputChange}/>
             </form>
         </div>
     )
