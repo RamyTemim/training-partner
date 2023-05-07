@@ -19,19 +19,15 @@ const PageSignUp : React.FC = () => {
     const handleSubmitSignUp = async (event : React.FormEvent<HTMLFormElement>) : Promise<void> => {
         event.preventDefault();//Empêche la page de se recharger lors de la soumission du formulaire
         try{
-            console.log(signUp)
             //Envoie les données du formulaire à l'API pour enregistrer un nouvel utilisateur
             const response = await fetch ('http://localhost:3001/user/signUp',{
                 method : 'POST',
                 headers : {'Content-Type' : 'application/json'},
                 body : JSON.stringify(signUp)
             })
-            console.log("response")
             //Si la réponse de l'API est réussi affiche un message de confirmation
             if(response.ok){
                 const donnee = await response.json();
-                console.log("donnee",donnee)
-                console.log("inscription réussi")
             }
             else {
                 setError("Nom d'utilisateur ou email déjà existant.")
