@@ -49,6 +49,8 @@ interface Donneeback{
                 var donnee = await reponse.json();
                 if(donnee){
                     setDataFromBack(donnee);
+                    console.log("tabseancetsx");
+                    console.log(dataFromBack);
                 }
             }
             catch(error){
