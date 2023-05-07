@@ -1,7 +1,6 @@
 #TB_Deplie{
-
+    cursor: default;
     z-index: 10;
-
     background-color: black;
     position: fixed;
     width: 300px;
@@ -11,6 +10,7 @@
 }
 
 #TB_Plie{
+    cursor:pointer;
     z-index: 10 ;
     position: fixed;
     width: 80px;
@@ -27,12 +27,14 @@
 
 
 #TB_Accueil{
+    cursor: pointer;
     position: absolute;
     width: 150px;
     height: 30px;
     top: 50px;
 }
 #TB_Accueil_logo{
+    cursor: pointer;
     position: absolute;
     width: 150px;
     height: 40px;
@@ -42,12 +44,13 @@
 #LogoAcceuil{
     position: absolute;
     width: 150px;
-    height: 30px;
-    top: 36px;
+    height: 40px;
+    top: 40px;
     left:-50px;
 }
 
 #TB_Activite{
+    cursor: pointer;
     position: absolute;
     width: 100px;
     height: 30px;
@@ -55,6 +58,7 @@
 }
 
 #TB_Activite_logo{
+    cursor: pointer;
     position: absolute;
     width: 150px;
     height: 40px;
@@ -70,6 +74,7 @@
 }
 
 #TB_Conseil{
+    cursor: pointer;
     position: absolute;
     width: 100px;
     height: 30px;
@@ -77,6 +82,7 @@
 }
 
 #TB_Conseil_logo{
+    cursor: pointer;
     position: absolute;
     width: 150px;
     height: 40px;
@@ -92,6 +98,7 @@
 }
 
 #TB_Charts{
+    cursor: pointer;
     position: absolute;
     width: 100px;
     height: 30px;
@@ -99,6 +106,7 @@
 }
 
 #TB_Charts_logo{
+    cursor: pointer;
     position: absolute;
     width: 150px;
     height: 40px;
@@ -106,6 +114,7 @@
     left:-50px;    
 }
 #TB_Charts_Visu{
+    cursor: pointer;
     color:#FFFFFF;
     position: absolute;
     font-weight: 600px;
@@ -117,6 +126,7 @@
 }
 
 #TB_Charts_Cree{
+    cursor: pointer;
     color:#FFFFFF;
     position: absolute;
     font-weight: 600px;
@@ -135,7 +145,8 @@
     left:-50px;    
 }
 
-#TB_Battle{   
+#TB_Battle{  
+    cursor: pointer; 
     position: absolute;
     width: 100px;
     height: 30px;

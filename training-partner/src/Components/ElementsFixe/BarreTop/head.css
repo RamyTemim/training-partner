@@ -33,6 +33,7 @@ header{
 
 .Date{
     position: absolute;
+    cursor:default;
     width: 63px;
     height: 42px;
     left: 1%;
@@ -77,6 +78,7 @@ header{
     background-color: #1E1E1E;
 }
 .Pseudo{
+    cursor: pointer;
     position: absolute;
     width: 100px;
     height: 38px;
@@ -97,6 +99,7 @@ header{
 }
 
 #logo_user{
+    cursor: pointer;
     position:absolute ;
     left: 90%;
 
@@ -106,6 +109,7 @@ header{
 }
 
 #buttonUser{
+    cursor: pointer;
     border:none;
     font-family: 'Arial';
     font-weight: bold;

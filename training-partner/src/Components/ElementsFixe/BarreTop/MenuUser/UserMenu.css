@@ -11,7 +11,9 @@
 
 }
 
+
 #btt_email{
+    cursor: pointer;
     border:none;
     background-color: #1E1E1E;
     position: absolute;
@@ -32,6 +34,7 @@
 
 
 #btt_profil{
+    cursor: pointer;
     border:none;
     background-color: #1E1E1E;
     position: absolute;
@@ -51,6 +54,7 @@
 }
 
 #btt_deco{
+    cursor: pointer;
     border-top: 2px solid #7452FF;
     border-bottom:none;
     border-left: none;
