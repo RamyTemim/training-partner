@@ -90,8 +90,6 @@ function Menus(){
                     }
                     console.log(data);
                     setSeances(data);
-
-
                 }
             }
             catch(error){
@@ -107,7 +105,10 @@ function Menus(){
         
         //Vérifie si 2 séances ont été selectionné et modifie la liste des exercices en communs
         if(seanceXSelectionne && seanceYSelectionne){
+            console.log("seanceX : ",seanceXSelectionne)
+            console.log("seanceY : ",seanceYSelectionne)
             const exoCommuns = seanceXSelectionne.exercices.filter(exerciceX => seanceYSelectionne.exercices.some(exerciceY => exerciceY.nom === exerciceX.nom));
+            console.log("exo communs :",exoCommuns)
             setExercicesCommuns(exoCommuns);
         }
     },[selectedSeanceX, selectedSeanceY])
@@ -122,12 +123,12 @@ function Menus(){
     //fonction appelé lorsqu'une séanceX est sélectionné
     const handleSeanceXChange = (seance : string) => {
         setSelectedSeanceX(seance);
-        setSelectedSeanceY(seanceY.filter(item => item !==seance)[0]);//filtre les senace pour ne pas chosir deux fois la même
+        setSelectedSeanceY(seanceY.filter(item => item !==seance)[1]);//filtre les seances pour ne pas chosir deux fois la même
     }
     //fonction appelé lorsqu'une séanceY est sélectionné
     const handleSeanceYChange = (seance : string) => {
         setSelectedSeanceY(seance);
-        setSelectedSeanceX(seanceX.filter(item => item !==seance)[0]);//filtre les senace pour ne pas chosir deux fois la même
+        setSelectedSeanceX(seanceX.filter(item => item !==seance)[1]);//filtre les seances pour ne pas chosir deux fois la même
     }
     //fonction appelé lorsqu'un exercice est selectionné
     const handleExerciceChange = (exercice : string) => {
