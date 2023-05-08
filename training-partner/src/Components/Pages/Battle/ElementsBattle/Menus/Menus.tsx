@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import './Menus.css';
 import { Bar } from 'react-chartjs-2';
 import { Chart,Tooltip,Legend,LinearScale,CategoryScale,BarElement,Title } from 'chart.js';
+import { setConstantValue } from 'typescript';
 
 //interfaces 
 interface ExerciceEscalade{
@@ -33,8 +34,8 @@ interface ExerciceMuscu{
 
 interface Seance {
     idSeance : number;
-    nom : string;
-    sport : string;
+    nomSeance : string;
+    nomSport : string;
     exercices : (ExerciceEscalade | ExerciceCourse | ExerciceMuscu) [];
 }
 
@@ -43,12 +44,7 @@ function Menus(){
     const sports = ["Musculation", "Escalade", "Course"];
 
     //Initialise un tableau de séances
-    const [seances,setSeances] = useState<Seance[]>([
-        { idSeance : 1, nom : "SeanceX1", sport : "Course", exercices : [{ idExercice : 1, nom : "100m", distance : "100m", chrono : 30, vitesse : 10, bpm : 80 }]},
-        { idSeance : 2, nom : "SeanceY1", sport : "Course" , exercices : [{ idExercice : 2, nom : "100m", distance : "100m", chrono : 30, vitesse : 10, bpm : 80 }]},
-        { idSeance : 3, nom : "SeanceX3", sport : "Escalade", exercices : [{ idExercice : 3, difficulte :"facile", nom : "exercice2", type : "valeur1", nbPrises : 3 }]},
-        { idSeance : 4, nom : "SeanceY3", sport : "Escalade", exercices : [{ idExercice : 4, difficulte : "moyen", nom : "exercice2", type : "valeur1", nbPrises : 2 }]},
-    ])
+    const [seances,setSeances] = useState<Seance[]>([])
     
     //Etat pour stocker le sport sélectionné
     const [selectedSport, setSelectedSport] = useState<string>("Sport");
@@ -64,13 +60,51 @@ function Menus(){
     const [exercicesCommuns,setExercicesCommuns] = useState<(ExerciceMuscu | ExerciceEscalade | ExerciceCourse)[]>([]);
 
     //Tableau de nom de séances filtrées en fonction du sport sélectionné
-    const seanceX = filteredSeances.filter( (seance) => seance.sport === selectedSport).map(seance => seance.nom);
-    const seanceY = filteredSeances.filter( (seance) => seance.sport === selectedSport).map(seance => seance.nom);
+    const seanceX = filteredSeances.filter( (seance) => seance.nomSport === selectedSport).map(seance => seance.nomSeance);
+    const seanceY = filteredSeances.filter( (seance) => seance.nomSport === selectedSport).map(seance => seance.nomSeance);
   
+    useEffect(() => {
+        const user = localStorage.getItem('user')
+        const fetchDonnee = async () => {
+            try{
+                const reponse = await fetch(`http://localhost:3001/seance/seances`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({pseudo : user})
+                });
+                var donnee = await reponse.json();
+                if(donnee){
+                    const data : Seance[] =  donnee;
+                    for (let i = 0; i < donnee.length; i++){
+                        if( data[i].nomSport === "Musculation"){
+                            data[i].exercices = donnee[i].exerciceMuscu
+                        }
+                        if( data[i].nomSport === "Escalade"){
+                            data[i].exercices = donnee[i].exerciceEscalade
+                        }
+                        if( data[i].nomSport === "Course"){
+                            data[i].exercices = donnee[i].exerciceCourse
+                        }
+                    }
+                    console.log(data);
+                    setSeances(data);
+
+
+                }
+            }
+            catch(error){
+                console.error(error);
+            }
+        }
+        fetchDonnee();
+    },[]);
     useEffect(()=>{
         //Cherche les séances selectionnées
-        const seanceXSelectionne = seances.find(seance=>seance.nom === selectedSeanceX);
-        const seanceYSelectionne = seances.find(seance=>seance.nom === selectedSeanceY);
+        const seanceXSelectionne = seances.find(seance=>seance.nomSeance === selectedSeanceX);
+        const seanceYSelectionne = seances.find(seance=>seance.nomSeance === selectedSeanceY);
+        
         //Vérifie si 2 séances ont été selectionné et modifie la liste des exercices en communs
         if(seanceXSelectionne && seanceYSelectionne){
             const exoCommuns = seanceXSelectionne.exercices.filter(exerciceX => seanceYSelectionne.exercices.some(exerciceY => exerciceY.nom === exerciceX.nom));
@@ -81,7 +115,7 @@ function Menus(){
     //fonction appelé lorsqu'un sport est sélectionné
     const handleSportChange = (sport : string) => {
         setSelectedSport(sport); 
-        const filtered = seances.filter( (seance) => seance.sport === sport );
+        const filtered = seances.filter( (seance) => seance.nomSport === sport );
         setFilteredSeances(filtered);
     }
 
@@ -158,16 +192,16 @@ function Menus(){
                     {/* Boucle sur les valeur du state pour afficher les seance allant avec le sport selectionné */ }
                 <select id="dropMenuSeanceX" value={selectedSeanceX} onChange={ (event)=> handleSeanceXChange(event.target.value) }>
                     {filteredSeances.map((seance) =>(
-                        <option key = {seance.nom}>
-                            {seance.nom}
+                        <option key = {seance.nomSeance}>
+                            {seance.nomSeance}
                         </option>
                     ))}
                 </select>
 
                 <select id="dropMenuSeanceY" value={selectedSeanceY} onChange={ (event) => handleSeanceYChange(event.target.value) }>
                     {filteredSeances.map((seance) =>(
-                        <option key = {seance.nom}>
-                            {seance.nom}
+                        <option key = {seance.nomSeance}>
+                            {seance.nomSeance}
                         </option>
                     ))}
                 </select>
