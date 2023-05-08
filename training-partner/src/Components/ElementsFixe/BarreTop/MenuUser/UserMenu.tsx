@@ -1,12 +1,38 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './UserMenu.css'
 import mail from './mail.png';
 import deconnexion from './deconnexion.png';
 import user from './user.png';
 import Profil from './Profil';
-import { set } from 'date-fns';
+import { User } from '../../../../Interfaces/User';
 
 function UserMenu(props : any){
+  const [profil ,setProfil] = useState<User>({ pseudo : '', nom : '', prenom : '', dateDeNaissance : '', email : '', messageMdp : '', reponseMessage : '', motDePasse : ''});
+
+  useEffect(() => {
+    const user = localStorage.getItem('user')
+    const fetchDonnee = async () => {
+        try{
+            const reponse = await fetch(`http://localhost:3001/user/profil`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({pseudo :user})
+            });
+            const donnee = await reponse.json();
+            if(donnee){
+                setProfil(donnee);
+                console.log(donnee);
+            }
+        }
+        catch(error){
+            console.error(error);
+        }
+    }
+    fetchDonnee();
+},[]);
+
   const [showProfil,setShowProfil]=useState(false);
   const handleprofil = ()=>{
     setShowProfil(!showProfil);
@@ -28,7 +54,7 @@ function UserMenu(props : any){
   return (
     <>
     <div id= "user_menu">
-      <button id ="btt_email"> <img title='Email' alt='Email' src={mail}/>    Email</button>
+      <img title='Email' alt='Email' id ="_email" src={mail}/><div id="emailMenuUser">{profil.email}</div>
       <button id ="btt_profil" onClick={handleprofil}><img title='Profil' alt='Profil' src={user}/>    Profil Utilisateur</button>
       <button id ="btt_deco" onClick={handleLogout}><img id ="btt_deco_img"title='deconnexion' alt='deconnexion' src={deconnexion}/>    Déconnexion</button>
       </div>

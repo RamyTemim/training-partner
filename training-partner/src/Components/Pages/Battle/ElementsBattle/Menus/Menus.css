@@ -11,6 +11,7 @@
 
 .containerMenus select{
     position: relative;
+    cursor: pointer;
     width: 20%;
     height: 61px;
     text-align: center;
@@ -20,16 +21,20 @@
 }
 
 #dropMenuSport{
+    cursor: pointer;
     left : 0px;
 }
 
 #dropMenuSeanceX {
+    cursor: pointer;
     left : 100px;
 }
 #dropMenuSeanceY {
+    cursor: pointer;
     left : 200px;
 }
 #dropMenuExercices{
+    cursor: pointer;
     left:300px;
 }
 

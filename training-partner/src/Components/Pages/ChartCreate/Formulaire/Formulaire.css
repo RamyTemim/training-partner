@@ -84,6 +84,7 @@ body{
 }
 
 .submitForm1{
+    cursor: pointer;
     position: absolute;
     width: 265px;
     height: 55px;
@@ -124,18 +125,11 @@ body{
 }
 
 .trashButton{
+    cursor: pointer;
     border-radius: 5px;
     top: auto;
     background-color: red;
     width: 35px;
-    color: black;
-}
-.editButton{
-    border-radius: 5px;
-    top: auto;
-    background-color: green;
-    width: 35px;
-    margin-right: 5%;
     color: black;
 }
 
@@ -166,6 +160,7 @@ table {
 
 
 .typeList{
+    cursor: pointer;
     position: relative;
     background-color: #FFFFFF;
     color: #000000;
@@ -287,6 +282,7 @@ table {
 }
 
 .sportList{
+    cursor: pointer;
     position: absolute;
     width: 30%;
     height: 85px;
@@ -303,6 +299,7 @@ table {
 }
 
 .submitForm2{
+    cursor: pointer;
     position: absolute;
     width: 340px;
     height: 55px;

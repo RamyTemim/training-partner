@@ -1,9 +1,9 @@
-import { useState } from 'react';
+/*import { useState } from 'react';
 import './conseil.css';
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 import { MainContainer, ChatContainer, MessageList, Message, MessageInput, TypingIndicator } from '@chatscope/chat-ui-kit-react';
 
-const API_KEY = "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";
+const API_KEY = "sk-6RvGaNOcQC3FEBSBnsKwT3BIbkFJIOVJPU42tSJO29reH5Ps";
 // "Explain things like you would to a 10 year old learning how to code."
 const systemMessage = { //  Explain things like you're talking to a software professional with 5 years of experience.
   "role": "system",
@@ -19,10 +19,12 @@ function PageConseil() {
   ]);
   const [isTyping, setIsTyping] = useState(false);
 
-  const handleSend = async ( message  ) => {
+  const handleSend = async ( message) => {
+    console.log("handleSend");
     const newMessage = {
-      message ,
+      message : message ,
       sender: "user",
+      direction : "outgoing",
     };
 
     const newMessages = [...messages, newMessage];
@@ -62,7 +64,7 @@ function PageConseil() {
       ]
     }
     console.log(apiRequestBody);
-    await fetch("https://api.openai.com/v1/chat/completions ", 
+    await fetch("https://api.openai.com/v1/chat/completions", 
     {
       method: "POST",
       headers: {
@@ -75,7 +77,7 @@ function PageConseil() {
     }).then((data) => {
       console.log(data);
       setMessages([...chatMessages, {
-        message: data.choices[0].message.content,
+        message: data.choice[0].message.content,
         sender: "ChatGPT"
       }]);
       setIsTyping(false);
@@ -92,7 +94,7 @@ function PageConseil() {
               typingIndicator={isTyping ? <TypingIndicator content="ChatGPT is typing" /> : null}
             >
               {messages.map((message, i) => {
-                console.log(message)
+
                 return <Message key={i} model={message} />
               })}
             </MessageList>
@@ -104,4 +106,4 @@ function PageConseil() {
   )
 }
 
-export default PageConseil;
+export default PageConseil;*/

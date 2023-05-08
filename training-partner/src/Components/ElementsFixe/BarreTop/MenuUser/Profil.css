@@ -10,7 +10,7 @@
 }
 
 .FormulaireProfil input{
-    cursor: pointer;
+    cursor:auto;
     width : 100%;
     font-size: 20px;
     margin-bottom: 3%;
