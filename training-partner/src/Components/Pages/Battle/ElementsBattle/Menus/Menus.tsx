@@ -124,6 +124,7 @@ function Menus(){
     //fonction appelé lorsqu'une séanceY est sélectionné
     const handleSeanceYChange = (seance : string) => {
         setSelectedSeanceY(seance);
+<<<<<<< HEAD
         //Cherche les séances selectionnées
         const seanceXSelectionne = seances.find(seance=>seance.nomSeance === selectedSeanceX);
         const seanceYSelectionne = seances.find(seance=>seance.nomSeance === selectedSeanceY);
@@ -134,6 +135,9 @@ function Menus(){
             setExercicesCommuns(exoCommuns);
         }
         //setSelectedSeanceX(seanceX.filter(item => item !==seance)[0]);//filtre les seances pour ne pas chosir deux fois la même
+=======
+        setSelectedSeanceX(seanceX.filter(item => item !==seance)[0]);//filtre les seances pour ne pas chosir deux fois la même
+>>>>>>> 59b1823dc422cbbeaa8338525ab656ed84659ec3
     }
     //fonction appelé lorsqu'un exercice est selectionné
     const handleExerciceChange = (exercice : string) => {
