@@ -128,7 +128,7 @@ function Menus(){
     //fonction appelé lorsqu'une séanceY est sélectionné
     const handleSeanceYChange = (seance : string) => {
         setSelectedSeanceY(seance);
-        setSelectedSeanceX(seanceX.filter(item => item !==seance)[1]);//filtre les seances pour ne pas chosir deux fois la même
+        setSelectedSeanceX(seanceX.filter(item => item !==seance)[0]);//filtre les seances pour ne pas chosir deux fois la même
     }
     //fonction appelé lorsqu'un exercice est selectionné
     const handleExerciceChange = (exercice : string) => {
