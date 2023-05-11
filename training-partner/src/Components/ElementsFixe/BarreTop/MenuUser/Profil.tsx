@@ -34,30 +34,30 @@ function Profil(){
         fetchDonnee();
     },[]);
 
-    const handleSubmit = async (event : React.FormEvent<HTMLFormElement>) : Promise<void> => {
-        event.preventDefault();
-        const pseudo = localStorage.getItem('user')
-        try{
-            const response = await fetch ('http://localhost:3001/user/setProfil',{
-                method : 'POST',
-                headers : {'Content-Type' : 'application/json'},
-                body : JSON.stringify({pseudo : pseudo, newPseudo : profil.pseudo})
-            })
-            if(response.ok){
-                const donnee = await response.json();
-                console.log("donnee",donnee)
-                console.log("Modification réussi")
-                localStorage.setItem('user', JSON.stringify(profil.pseudo))
-            }
-        }
-        catch (error){
-            console.error(error);
-        }
-    }    
+    // const handleSubmit = async (event : React.FormEvent<HTMLFormElement>) : Promise<void> => {
+    //     event.preventDefault();
+    //     const pseudo = localStorage.getItem('user')
+    //     try{
+    //         const response = await fetch ('http://localhost:3001/user/setProfil',{
+    //             method : 'POST',
+    //             headers : {'Content-Type' : 'application/json'},
+    //             body : JSON.stringify({pseudo : pseudo, newPseudo : profil.pseudo})
+    //         })
+    //         if(response.ok){
+    //             const donnee = await response.json();
+    //             console.log("donnee",donnee)
+    //             console.log("Modification réussi")
+    //             localStorage.setItem('user', JSON.stringify(profil.pseudo))
+    //         }
+    //     }
+    //     catch (error){
+    //         console.error(error);
+    //     }
+    //}    
     
     return (
         <div className='FormulaireProfil'>
-            <form onSubmit = {handleSubmit} >
+            <form >
                     <label htmlFor='pseudo'>Pseudo : </label>
                     <input type='text' id='pseudo' name='pseudo' value = {profil.pseudo} onChange={handleInputChange}/>
                     <label htmlFor='nom'>Nom : </label>

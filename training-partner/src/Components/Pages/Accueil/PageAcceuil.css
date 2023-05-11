@@ -1,0 +1,18 @@
+.bonjour{
+    margin-top: 10%;
+    font-size: 40px;
+    text-align: left;
+    font-family: "Arial";
+    font-weight: 800;
+    color: black;
+    margin-left: 10%;
+}
+.accroche{
+    font-style: italic;
+    color:green;
+}
+
+.presentation{
+    font-size: 35px;
+    color:rgb(10, 10, 10);
+}
