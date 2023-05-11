@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/TrainingPartner/static/css/main.96658ded.css",
+    "main.js": "/TrainingPartner/static/js/main.82d7028c.js",
+    "static/js/787.073cae4b.chunk.js": "/TrainingPartner/static/js/787.073cae4b.chunk.js",
+    "index.html": "/TrainingPartner/index.html",
+    "static/media/logo.svg": "/TrainingPartner/static/media/logo.de59aa5a347b8dd84be6e396e938f649.svg",
+    "main.96658ded.css.map": "/TrainingPartner/static/css/main.96658ded.css.map",
+    "main.82d7028c.js.map": "/TrainingPartner/static/js/main.82d7028c.js.map",
+    "787.073cae4b.chunk.js.map": "/TrainingPartner/static/js/787.073cae4b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.96658ded.css",
+    "static/js/main.82d7028c.js"
+  ]
+}
