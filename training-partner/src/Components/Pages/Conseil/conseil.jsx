@@ -1,4 +1,4 @@
-/*import { useState } from 'react';
+import { useState } from 'react';
 import './conseil.css';
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 import { MainContainer, ChatContainer, MessageList, Message, MessageInput, TypingIndicator } from '@chatscope/chat-ui-kit-react';
@@ -106,4 +106,4 @@ function PageConseil() {
   )
 }
 
-export default PageConseil;*/
+export default PageConseil;
