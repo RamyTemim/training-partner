@@ -10,7 +10,6 @@ import Accueil from '../Accueil/Acceuil';
 function Auth() {
     const [SignUp, setSignUp] = useState(false);
     const [Login, setLogin] = useState(true);
-    const [ForgotPassword, setForgotPassword] = useState(false);
     const [isConnected, setIsConnected] = useState(false);
     
     const setdeco = ()=> {
@@ -18,13 +17,13 @@ function Auth() {
     }
     const onClick = (page : number)=>{
         if (page === 0){
-            setSignUp(true);setLogin(false);setForgotPassword(false);
+            setSignUp(true);setLogin(false);
         }
         if (page === 1){
-            setLogin(true);setSignUp(false);setForgotPassword(false);
+            setLogin(true);setSignUp(false);
         }
         if (page === 2){
-            setForgotPassword(true);setSignUp(false);setLogin(false);
+            setSignUp(false);setLogin(false);
         }
     }
 
@@ -39,7 +38,6 @@ function Auth() {
         {!isConnected && <Head onPageChange = {onClick}/>}
         {SignUp && <PageSignUp />}
         {Login && <PageLogin onLogin = { () => setIsConnected(true) }/>}
-        {ForgotPassword && null }
         {isConnected && <Accueil deco = {setdeco}/>}
 
     </div>

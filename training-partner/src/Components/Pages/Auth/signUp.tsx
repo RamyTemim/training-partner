@@ -23,11 +23,14 @@ const PageSignUp : React.FC = () => {
             const response = await fetch ('http://localhost:3001/user/signUp',{
                 method : 'POST',
                 headers : {'Content-Type' : 'application/json'},
-                body : JSON.stringify(signUp)
-            })
+                body : JSON.stringify(signUp),
+                
+            });
+            alert("Inscription réussie veuillez vous rendre a la page de connection");
             //Si la réponse de l'API est réussi affiche un message de confirmation
             if(response.ok){
                 const donnee = await response.json();
+                alert("Inscription réussie");
             }
             else {
                 setError("Nom d'utilisateur ou email déjà existant.")
