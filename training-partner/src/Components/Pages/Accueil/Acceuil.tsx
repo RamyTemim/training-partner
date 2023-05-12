@@ -10,7 +10,7 @@ import TabBord from '../../ElementsFixe/TableauDeBord/TabBord';
 import PageBattle from '../Battle/PageBattle';
 import PageActivite from '../Activite/Activite';
 import PageAccueil from './PageAccueil';
-//import PageConseil from '../Conseil/conseil';
+import PageConseil from '../Conseil/conseil';
 
 
 function Accueil( props : any) {    
@@ -54,7 +54,7 @@ function Accueil( props : any) {
       <Header deco = {setdeco} />
       {Accueil && <PageAccueil/>} 
       {Activite && <PageActivite/>}
-      {/*Conseil && <PageConseil/>*/}
+      {Conseil && <PageConseil/>}
       {chartCreate && <ChartCreate/>}
       {chartVisu && <ChartVisu/>}
       {Battle && <PageBattle/>}

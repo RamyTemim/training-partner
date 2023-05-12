@@ -34,41 +34,40 @@ function Profil(){
         fetchDonnee();
     },[]);
 
-    const handleSubmit = async (event : React.FormEvent<HTMLFormElement>) : Promise<void> => {
-        event.preventDefault();
-        const pseudo = localStorage.getItem('user')
-        try{
-            const response = await fetch ('http://localhost:3001/user/setProfil',{
-                method : 'POST',
-                headers : {'Content-Type' : 'application/json'},
-                body : JSON.stringify({pseudo : pseudo, newPseudo : profil.pseudo})
-            })
-            if(response.ok){
-                const donnee = await response.json();
-                console.log("donnee",donnee)
-                console.log("Modification réussi")
-                localStorage.setItem('user', JSON.stringify(profil.pseudo))
-            }
-        }
-        catch (error){
-            console.error(error);
-        }
-    }    
+    // const handleSubmit = async (event : React.FormEvent<HTMLFormElement>) : Promise<void> => {
+    //     event.preventDefault();
+    //     const pseudo = localStorage.getItem('user')
+    //     try{
+    //         const response = await fetch ('http://localhost:3001/user/setProfil',{
+    //             method : 'POST',
+    //             headers : {'Content-Type' : 'application/json'},
+    //             body : JSON.stringify({pseudo : pseudo, newPseudo : profil.pseudo})
+    //         })
+    //         if(response.ok){
+    //             const donnee = await response.json();
+    //             console.log("donnee",donnee)
+    //             console.log("Modification réussi")
+    //             localStorage.setItem('user', JSON.stringify(profil.pseudo))
+    //         }
+    //     }
+    //     catch (error){
+    //         console.error(error);
+    //     }
+    //}    
     
     return (
         <div className='FormulaireProfil'>
-            <form onSubmit = {handleSubmit} >
+            <form >
                     <label htmlFor='pseudo'>Pseudo : </label>
                     <input type='text' id='pseudo' name='pseudo' value = {profil.pseudo} onChange={handleInputChange}/>
                     <label htmlFor='nom'>Nom : </label>
-                    <input type='text' id='nom' name='nom' value = {profil.nom} readOnly />
+                    <input type='text' id='nom' name='nom' value = {profil.nom}/>
                     <label htmlFor='prenom'>Prénom : </label>
-                    <input type='texte' id='prenom' name='prenom' value = {profil.prenom} readOnly />
+                    <input type='texte' id='prenom' name='prenom' value = {profil.prenom}/>
                     <label htmlFor='dateDeNaissance'>Date de naissance : </label>
-                    <input type="date" id='dateDeNaissance' name='dateDeNaissance' value = {profil.dateDeNaissance} readOnly />
+                    <input type="date" id='dateDeNaissance' name='dateDeNaissance' value = {profil.dateDeNaissance}/>
                     <label htmlFor='email'>Email : </label>
                     <input type='email' id='email' name='email' value = {profil.email} onChange={handleInputChange}/>
-                    <button type="submit">Enregistrer</button>
             </form>
         </div>
     )

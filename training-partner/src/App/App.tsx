@@ -1,5 +1,5 @@
 //Library
-import Auth from '../Pages/Auth/Auth';
+import Auth from '../Components/Pages/Auth/Auth';
 
 
 //Components

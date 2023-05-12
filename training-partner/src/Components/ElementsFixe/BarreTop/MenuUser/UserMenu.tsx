@@ -36,6 +36,7 @@ function UserMenu(props : any){
   const [showProfil,setShowProfil]=useState(false);
   const handleprofil = ()=>{
     setShowProfil(!showProfil);
+    console.log(profil.pseudo);
   }
   const handleLogout = async() => {
         try {
