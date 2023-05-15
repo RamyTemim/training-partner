@@ -43,7 +43,6 @@ CREATE TABLE `exercice_muscu` (
 
 LOCK TABLES `exercice_muscu` WRITE;
 /*!40000 ALTER TABLE `exercice_muscu` DISABLE KEYS */;
-INSERT INTO `exercice_muscu` VALUES (1,1,1,1,1,'test1',NULL,'John'),(2,1,2,2,2,'test2',NULL,'John');
 /*!40000 ALTER TABLE `exercice_muscu` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
