@@ -43,7 +43,6 @@ CREATE TABLE `seance` (
 
 LOCK TABLES `seance` WRITE;
 /*!40000 ALTER TABLE `seance` DISABLE KEYS */;
-INSERT INTO `seance` VALUES (1,'test','11:11','Musculation','John','07/05/2023'),(2,'test','11:11','Course','John','08/05/2023'),(3,'test2','00:13','Course','John','08/05/2023'),(4,'course','11:11','Course','John','08/05/2023');
 /*!40000 ALTER TABLE `seance` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
