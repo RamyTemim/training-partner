@@ -41,7 +41,6 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('John','Long','Jonathan','2003-02-02','jonathanlong52@gmail.com','Question de sécurité','root','$2b$10$vtUnlPmS0vIFi3IcJf/lMObB5gMtfpKVW.N5dvMIlOsEExtcRBKBO'),('John01','Long','Jonathan','2003-02-02','jonathanlong52@gmail.com','Question de sécurité','root','$2b$10$vtUnlPmS0vIFi3IcJf/lMObB5gMtfpKVW.N5dvMIlOsEExtcRBKBO');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
