@@ -43,7 +43,6 @@ CREATE TABLE `exercice_course` (
 
 LOCK TABLES `exercice_course` WRITE;
 /*!40000 ALTER TABLE `exercice_course` DISABLE KEYS */;
-INSERT INTO `exercice_course` VALUES (1,2,100,'00:11',157,21,'100m','John'),(2,2,200,'00:22',160,16,'200m','John'),(3,3,98,'00:13',140,17,'100m','John'),(4,4,97,'10:00',130,25,'100m','John');
 /*!40000 ALTER TABLE `exercice_course` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
